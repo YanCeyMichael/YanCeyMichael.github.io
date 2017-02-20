@@ -149,6 +149,111 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-一个iOS开发者在做人脸识别-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/20/一个iOS开发者在做人脸识别-一/">一个iOS开发者在做人脸识别(一)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/20/一个iOS开发者在做人脸识别-一/" class="archive-article-date">
+  	<time datetime="2017-02-20T02:01:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>写在前面:</p>
+<p>2016年上半年在上海面试的时候。徐汇区有一家做社交的互联网公司开始打算做人脸识别，由此我了解了深圳脸萌科技的FaceU这款超级激萌的App。很有意思的是徐汇区那家社交公司面试我的时候跟我说的很明确：你做一个类似FaceU的demo给我，我就给你发Offer。有时候我在想一份工作好简单啊，只要你会做人脸识别添加贴纸贴片，一碗饭就来了。</p>
+<p>回去之后，我对比了iOS框架自带的人脸识别框架识别的精度不够高，侧脸极其难识别，我只好放弃转而奔向科大讯飞人脸识别的框架去做。</p>
+<p>那一个礼拜的时间里，我看科大讯飞的人脸识别SDK和官方Demo，在做识别的过程中想加贴片装饰品的时候，遇到了二个代理方法的冲突，导致某个识别状态始终无法修改。所以那次的demo最终是没有做出来。</p>
+<p>时隔快一年，我想人脸识别功能我该动一动了，恰好个人技术博客刚开张，也应该来一点技术干货。同时不一样的是，这次我也不打算用科大讯飞的框架，我想从OPenCV的开源库着手，多多少少还可以学点C++的函数也还不错。</p>
+<p>由此我想把研究人脸识别的过程记录下来。所以这个系列是一个不懂C++的iOS开发小白的学习过程。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>本系列文章，所有测试内容以及demo的环境如下：</p>
+<p>1）Xcode Version 8.2.1</p>
+<p>2）OpenCV for iOS 3.2.0 </p>
+</blockquote>
+<hr>
+<p>准备工作：</p>
+<p>1）先去<a href="http://opencv.org/">OpenCV官网</a>下载最新的OpenCV For iOS的视觉库。</p>
+<p>2）Xcode创建一个新的项目，把下载的OpenCV库导入工程，并在工程的Building phase里面添加opencv2.framework。</p>
+<hr>
+<p>如果对OpenCV有所了解的会知道，OpenCV的代码是基于C++编写的。因此，想要在Xcode项目中运行C++代码，你需要把文件名后缀名由.m改成.mm即可（当然最好把OpenCV的功能函数写一层OC的API封装，这样可能会比较安全，也会少很多不必要的错误麻烦，也更符合开发需求。）。</p>
+<p>注意：OpenCV 声明了命名空间 cv，因此 OpenCV 的类的前面会有个 cv:: 前缀，就像 cv::Mat、 cv::Algorithm 等等。你也可以在 .mm 文件中使用 using namespace cv 来避免在一堆类名前使用 cv:: 前缀。</p>
+<p>但是，在某些类名前你必须使用命名空间前缀，比如 cv::Rect 和 cv::Point，因为它们会跟定义在 MacTypes.h 中的 Rect 和 Point 相冲突。尽管这只是个人偏好问题，个人偏向在任何地方都使用 cv:: 以保持一致性。</p>
+<hr>
+<blockquote>
+<p>辅助理解内容部分：</p>
+<p>C++ 命名空间namespace的作用和使用</p>
+<p>命名空间是ANSIC++引入的可以由用户命名的作用域，用来处理程序中 常见的同名冲突。其作用就是规定该文件中使用的标准库函数都是在标准命名空间std中定义的。通常来说，在C++中，命名空间（namespace）的目的是为了防止名字冲突。每个命名空间是一个作用域，在所有命名空间之外，还存在一个全局命名空间（global namespace），全局命名空间以隐式的方式声明，它并没有名字。在命名空间机制中，原来的全局变量，就是位于全局命名空间中（可以用::member的形式表示）。</p>
+<p>在C语言中定义了3个层次的作用域，即文件(编译单元)、函数和复合语句。C++在C的基础上又引入了类作用域，类是出现在文件内的。在不同的作用域中可以定义相同名字的变量，互不于扰，系统能够区别它们。</p>
+</blockquote>
+<hr>
+        
+          <a class="article-more-a" href="/2017/02/20/一个iOS开发者在做人脸识别-一/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">研习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人脸识别</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/20/一个iOS开发者在做人脸识别-一/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-要尝试逃离上广深了么？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -172,15 +277,9 @@
         <p>2017年2月19日了，这天比预期的时间晚来了30天，30天前我告诉自己，要弄一个个人站点，不管这个站点的Theme是从哪个大牛手里偷的，都要先用着。</p>
 <p>本来在现有的Hexo成熟的框架条件下，个人博客最多20分钟就可以弄好，但是我却花了比我预期多的多的时间。这些事件都耗费在哪了？耗费在不够专注：上班修改优化项目零碎的时间里，Hexo安装错误，一波接着一波的安装卸载，GitHub Pages删了又重新添加，全是无用之功。</p>
 <p>2月17日的4个面试还毫无消息，Cisco上海的技术面问了我很多基础的东西，我模凌两可含含糊糊的回答，26分钟就从大厦出来，我想也是应该的，从没有如此草率的面试，毫无准备，必然不会受到待见。可是为啥我要把自己的实力不足归咎于准备不充分呢？没有什么台阶要给自己下的。自己无能是原罪。那天下午在浦东张江高科，那个逆向开发公司的技术面和我聊了20多分钟，问我最近研究什么，问我最近开发上的难点有哪些，我一五一十的说着，后来问我：你会给iPhone越狱嘛？我说我没做过的时候他合起了他的Mac，我想这已经终结聊天了，我也本想抱着试试的态度来的，底层汇编我又没那个能力去做，不被待见显而易见，但是第一次面试和别人聊天不在同一个频道的时候，让我感觉空气里到处弥漫着尴尬。</p>
-<p>之后我坐在老甲公司楼下的台阶上吹冷风，手机没电我打开Mac给它喂奶，我好气的，好不容易编了个很奇葩的理由请假面试，却被自己白白糟蹋一天。我告诉自己都会好的，就像春天来了，柳絮会飘，秋天过来，柿子会熟。少年你不能太着急的。我安慰自己啊，别急，你可以的，这个世界本来就给你留好了位置，你还没遇到最好的自己。可是没用的啊，那天风好大，鼻子好酸，眼角都湿得一直没干，自我安慰的那些屁话肯定没有老甲带我去吃那顿热气腾腾的麻辣烫管用，张江高科消费好贵的，0.8公斤的料，48块钱，温饱了那天我饥饿的灵魂。</p>
-<p>大概是太过于急功近利。技术需要沉淀的，一点点去学，代码要慢慢的打磨，一行行的敲，这个膨胀的社会却不给年轻人那么多时间去沉淀，膨胀的自己也不给自己那么多机会去尝试。</p>
-<p>2016年的每一天我都掰开着用，这一年我都没时间去做噩梦，忙得让我很少在半夜里会醒来，往往都是半夜才睡。那个时候我告诉自己，你要努力，你现在多累些，当下就少求别人一点。下半年项目加班加点，干过40多个小时没合眼，我也不曾抱怨，因为毕竟自己菜，只能用时间来弥补，我把别人喝咖啡的时候都用来写项目了。我庆幸我足够的年轻，年轻到身体严重负荷的时候，仅仅只是胸口有点痛而已。一觉醒来，代码还可以撸的飞起。</p>
-<p>TinyTian说代码是我大老婆，她是小三，满是哀怨的时候我只能咧开嘴笑，的确我欠她太多的时间。有时候我在想，幸福的日子就是有一个人成了你这一生唯一的软肋，遇事再也不莽撞，即使丢掉激情你也不会觉得后悔。好寡淡的时光啊，可就是这么心安理得的欢喜。</p>
-<p>有时候很多事情来的莫名其妙，中午在地铁上打瞌睡打盹点开Boss聊了一个，立马要了简历，后来才知道那是合肥的一家美容公司。紧接着下午就视讯通话面试过了，傍晚给我发了Offer，在合肥，试用期税前9K，转正11K，可是我不知道为啥高兴不起来呢，是我过于贪恋一线城市夜晚的霓虹灯么，总是在心里告诉自己一线城市机会多，技术提升快。可是迟早终究要回到那个城市的，为何不早做打算，非要漫无目的的幻想么？</p>
-<p>现在这个机会就摆在我的面前了，我却踌躇满志，迈不开步子。可这又算什么呢？反正我的时间又不值钱，可以大把的浪费大把的挥霍。</p>
-<p>年轻就是要这样的吧，都不确定，都在准备呢，试试又不是一个坏事，何况又不是最惨的时候。</p>
-<p>毕竟还有那么多希望。</p>
-
+        
+          <a class="article-more-a" href="/2017/02/19/要尝试逃离上广深了么？/#more">more >></a>
+        
       
 
       
@@ -208,65 +307,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/02/19/要尝试逃离上广深了么？/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/19/hello-world/" class="archive-article-date">
-  	<time datetime="2017-02-19T02:47:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/19/hello-world/">展开全文 >></a>
         </p>
       
 
@@ -363,6 +403,22 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">研习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
