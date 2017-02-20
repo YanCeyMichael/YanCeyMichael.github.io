@@ -184,21 +184,6 @@
 <p>2）OpenCV for iOS 3.2.0 </p>
 </blockquote>
 <hr>
-<p>准备工作：</p>
-<p>1）先去<a href="http://opencv.org/">OpenCV官网</a>下载最新的OpenCV For iOS的视觉库。</p>
-<p>2）Xcode创建一个新的项目，把下载的OpenCV库导入工程，并在工程的Building phase里面添加opencv2.framework。</p>
-<hr>
-<p>如果对OpenCV有所了解的会知道，OpenCV的代码是基于C++编写的。因此，想要在Xcode项目中运行C++代码，你需要把文件名后缀名由.m改成.mm即可（当然最好把OpenCV的功能函数写一层OC的API封装，这样可能会比较安全，也会少很多不必要的错误麻烦，也更符合开发需求。）。</p>
-<p>注意：OpenCV 声明了命名空间 cv，因此 OpenCV 的类的前面会有个 cv:: 前缀，就像 cv::Mat、 cv::Algorithm 等等。你也可以在 .mm 文件中使用 using namespace cv 来避免在一堆类名前使用 cv:: 前缀。</p>
-<p>但是，在某些类名前你必须使用命名空间前缀，比如 cv::Rect 和 cv::Point，因为它们会跟定义在 MacTypes.h 中的 Rect 和 Point 相冲突。尽管这只是个人偏好问题，个人偏向在任何地方都使用 cv:: 以保持一致性。</p>
-<hr>
-<blockquote>
-<p>辅助理解内容部分：</p>
-<p>C++ 命名空间namespace的作用和使用</p>
-<p>命名空间是ANSIC++引入的可以由用户命名的作用域，用来处理程序中 常见的同名冲突。其作用就是规定该文件中使用的标准库函数都是在标准命名空间std中定义的。通常来说，在C++中，命名空间（namespace）的目的是为了防止名字冲突。每个命名空间是一个作用域，在所有命名空间之外，还存在一个全局命名空间（global namespace），全局命名空间以隐式的方式声明，它并没有名字。在命名空间机制中，原来的全局变量，就是位于全局命名空间中（可以用::member的形式表示）。</p>
-<p>在C语言中定义了3个层次的作用域，即文件(编译单元)、函数和复合语句。C++在C的基础上又引入了类作用域，类是出现在文件内的。在不同的作用域中可以定义相同名字的变量，互不于扰，系统能够区别它们。</p>
-</blockquote>
-<hr>
         
           <a class="article-more-a" href="/2017/02/20/一个iOS开发者在做人脸识别-一/#more">more >></a>
         
