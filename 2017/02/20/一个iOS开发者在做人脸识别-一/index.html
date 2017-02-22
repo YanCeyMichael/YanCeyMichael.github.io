@@ -20,7 +20,7 @@
 回去之后，我对比了iOS框架自带的人脸">
 <meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/opencvtest1.png">
 <meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/opencvtest2.png">
-<meta property="og:updated_time" content="2017-02-20T10:47:16.000Z">
+<meta property="og:updated_time" content="2017-02-21T02:41:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个iOS开发者在做人脸识别(一)">
 <meta name="twitter:description" content="废话内容，写在前面:
@@ -193,9 +193,8 @@
 <p>本系列文章，所有测试内容以及demo的环境如下：</p>
 <p>1）Xcode Version 8.2.1</p>
 <p>2）OpenCV for iOS 3.2.0 </p>
-<hr>
-</blockquote>
 <a id="more"></a>
+</blockquote>
 <p>准备工作：</p>
 <p>1）先去<a href="http://opencv.org/" target="_blank" rel="external">OpenCV官网</a>下载最新的OpenCV For iOS的视觉库。</p>
 <p>2）Xcode创建一个新的项目，把下载的OpenCV库导入工程，并在工程的Building phase里面添加opencv2.framework。</p>
@@ -252,7 +251,7 @@
     // 将Mat转换为Xcode的UIImageView显示
     self.testImgView1.image = MatToUIImage(cvImage);
 }
-</code></pre><p>如果你和我一样运行Xcode之后能得到下图的处理后的照片内容的话，图像的灰度显示算是完成了。</p>
+</code></pre><p>如果你和我一样运行Xcode之后能得到下图的处理后的照片内容的话，图像的灰度显示算是完成了。 </p>
 <p><img src="http://olnzmhc4r.bkt.clouddn.com/opencvtest1.png" alt="opencvtest1"> </p>
 <p>也就是说OpenCV的第一个代码块已经完成了。</p>
 <hr>
@@ -295,9 +294,21 @@ for(unsigned int i= 0;i &lt; faces.size();i++)
     cv::rectangle(faceImage, tl, br, magenta, 4, 8, 0);
 }
 self.testImgView2.image = MatToUIImage(faceImage);
-</code></pre><p>如果你得到了下图样式(imageView重新布局了)，第三个相框里的每个人脸上都有正方形的框，表示已经找到了人脸位置（haarcascade_frontalface_alt.xml该文件是通过训练获得的数据文件，作为资源训练模型）。</p>
-<p><img src="http://olnzmhc4r.bkt.clouddn.com/opencvtest2.png" alt="opencvtest2"></p>
-<p>到此时，人脸识别算是初步完成。</p>
+</code></pre><p>补充:haarcascade_frontalface_alt.xml该文件是专门用来训练cv::CascadeClassifier函数的资源文件</p>
+<blockquote>
+<p>为什么一定要添加xml文件呢？</p>
+<p>其实这个xml文件就是对人脸石识别的初始化（初始化数据by Paul Viola and later extended by Rainer Lienhart），现在已经成为一种人脸识别的标准了。</p>
+<p>为了能够把xml文件成功倒入，我们需要把NSString object 转化为 std::string（使用UTF8String）</p>
+<p>经过以上的准备工作后我们就可以使用方法detectMultiScale进行人脸检测了。</p>
+<p>方法detectMultiScale有四个参数。分别为：</p>
+<p>scaleFactor ：制定循环递减的图片尺寸</p>
+<p>minNeighbors ：制定保留数据的矩形大小</p>
+<p>CV_HAAR_SCALE_IMAGE ：这是一个标志，它指定算法缩放图像，而不是检测器。它有助于实现最佳的性能</p>
+<p>minSize ：该参数指定最小可能的面部尺寸</p>
+</blockquote>
+<p>如果可以得到下图(imageView重新布局了)，第三张图片里的每个人脸上都有正方形的框，表示已经找到了人脸位置。</p>
+<p><img src="http://olnzmhc4r.bkt.clouddn.com/opencvtest2.png" alt="opencvtest2">   </p>
+<p>到此时，静态图片的人脸识别算是初步完成。</p>
 <hr>
 <p>demo的git链接：</p>
 <hr>
@@ -573,6 +584,10 @@ self.testImgView2.image = MatToUIImage(faceImage);
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo + Github Pages</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">第一篇Blog的一点点心情</a>
               </li>
             
             <div class="clearfix"></div>
