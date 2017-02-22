@@ -26,7 +26,7 @@
 
 
 准备工作：一个网易云音乐账号 + 一个网易云音乐歌单">
-<meta property="og:updated_time" content="2017-02-22T08:34:34.000Z">
+<meta property="og:updated_time" content="2017-02-22T08:36:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Hexo+Yilia的PersonalBlog的PC端添加音乐播放器">
 <meta name="twitter:description" content="有时候偶尔写东西的时候少音乐挺没劲的。
@@ -207,7 +207,7 @@
 <p>将原生的代码段：</p>
 <pre><code>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=298 height=52 src=&quot;//music.163.com/outchain/player?type=0&amp;id=609175973&amp;auto=1&amp;height=32&quot;&gt;&lt;/iframe&gt;
 </code></pre><p>粘贴到themes/yilia/layout/_partial/left-col.ejs文件的第二行，并作如下的修改之后，将和我现在的博客的音乐布局是一样的。<br>修改一下：</p>
-<pre><code>&lt;iframe style=&quot;position:absolute;top: 0px;z-index: 100;&quot; frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=298 height=52 src=&quot;//music.163.com/outchain/player?type=0&amp;id=609175973&amp;auto=1&amp;height=32&quot;&gt;&lt;/iframe&gt;
+<pre><code>&lt;iframe style=&quot;position:absolute;top: 0px;z-index: 100;&quot; frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=100% height=52 src=&quot;//music.163.com/outchain/player?type=0&amp;id=609175973&amp;auto=1&amp;height=32&quot;&gt;&lt;/iframe&gt;
 </code></pre><p>添加的部分是设置播放器的相对位置布局，也是很简单的代码就能搞定。</p>
 <p>为了适配屏幕把原来的固定width修改成100%。你可以通过检测博客的网页，通过浏览器的布局，来确定自己喜欢的位置。</p>
 
