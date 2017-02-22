@@ -153,6 +153,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-基于Hexo-Yilia的PersonalBlog的PC端添加音乐播放器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/22/基于Hexo-Yilia的PersonalBlog的PC端添加音乐播放器/">基于Hexo+Yilia的PersonalBlog的PC端添加音乐播放器</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/22/基于Hexo-Yilia的PersonalBlog的PC端添加音乐播放器/" class="archive-article-date">
+  	<time datetime="2017-02-22T08:13:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>有时候偶尔写东西的时候少音乐挺没劲的。</p>
+<p>当然音乐也是有毒的，它很少能让人专注去做好一件事。我不知道我添加一个音乐播放器是好事还是坏事。</p>
+<p>纠结那么多好像也没那么多的意义。</p>
+<p>所以不管了，先给主题加个音乐播放器吧。</p>
+</blockquote>
+<hr>
+<p>准备工作：一个网易云音乐账号 + 一个网易云音乐歌单</p>
+<hr>
+<p>这个音乐播放器是在网易云音乐官网的个人主页里的任意一个歌单中，通过歌单的 生成外链播放器 来生成的一个 iframe 插件。</p>
+<p>将原生的代码段：</p>
+<pre><code>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=298 height=52 src=&quot;//music.163.com/outchain/player?type=0&amp;id=609175973&amp;auto=1&amp;height=32&quot;&gt;&lt;/iframe&gt;
+</code></pre><p>粘贴到themes/yilia/layout/_partial/left-col.ejs文件的第二行，并作如下的修改之后，将和我现在的博客的音乐布局是一样的。<br>修改一下：</p>
+<pre><code>&lt;iframe style=&quot;position:absolute;top: 0px;z-index: 100;&quot; frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=298 height=52 src=&quot;//music.163.com/outchain/player?type=0&amp;id=609175973&amp;auto=1&amp;height=32&quot;&gt;&lt;/iframe&gt;
+</code></pre><p>添加的部分是设置播放器的相对位置布局，也是很简单的代码就能搞定。</p>
+<p>为了适配屏幕把原来的固定width修改成100%。你可以通过检测博客的网页，通过浏览器的布局，来确定自己喜欢的位置。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hexo+Yilia</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PC端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">音乐播放器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/22/基于Hexo-Yilia的PersonalBlog的PC端添加音乐播放器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-OpenCV之CascadeClassifier-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -307,94 +392,6 @@
 
 
   
-    <article id="post-一个iOS开发者在做人脸识别-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/20/一个iOS开发者在做人脸识别-一/">一个iOS开发者在做人脸识别(一)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/20/一个iOS开发者在做人脸识别-一/" class="archive-article-date">
-  	<time datetime="2017-02-20T02:01:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>废话内容，写在前面:</p>
-<p>2016年上半年在上海面试的时候。徐汇区有一家做社交的互联网公司开始打算做人脸识别，由此我了解了深圳脸萌科技的FaceU这款超级激萌的App。很有意思的是徐汇区那家社交公司面试我的时候跟我说的很明确：你做一个类似FaceU的demo给我，我就给你发Offer。有时候我在想一份工作好简单啊，只要你会做人脸识别添加贴纸贴片，一碗饭就来了。</p>
-<p>回去之后，我对比了iOS框架自带的人脸识别框架识别的精度不够高，侧脸极其难识别，我只好放弃转而奔向科大讯飞人脸识别的框架去做。</p>
-<p>那一个礼拜的时间里，我看科大讯飞的人脸识别SDK和官方Demo，在做识别的过程中想加贴片装饰品的时候，遇到了二个代理方法的冲突，导致某个识别状态始终无法修改。所以那次的demo最终是没有做出来。</p>
-<p>时隔快一年，我想人脸识别功能我该动一动了，恰好个人技术博客刚开张，也应该来一点技术干货。同时不一样的是，这次我也不打算用科大讯飞的框架，我想从OpenCV的开源库着手，多多少少还可以学点C++的函数也还不错。</p>
-<p>由此我想把研究人脸识别的过程记录下来。所以这个系列是一个不懂C++的iOS开发小白的学习过程。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>本系列文章，所有测试内容以及demo的环境如下：</p>
-<p>1）Xcode Version 8.2.1</p>
-<p>2）OpenCV for iOS 3.2.0 </p></blockquote>
-        
-          <a class="article-more-a" href="/2017/02/20/一个iOS开发者在做人脸识别-一/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">研习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人脸识别</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/20/一个iOS开发者在做人脸识别-一/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -493,6 +490,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
               </li>
              
               <li class="article-tag-list-item">
