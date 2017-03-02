@@ -239,6 +239,7 @@ NSLog(@&quot;try&quot;);
 }
 </code></pre><p>如果6抛出异常，那么执行顺序为：1-&gt;5-&gt;6-&gt;8-&gt;3-&gt;4</p>
 <p>如果6没抛出异常，那么执行顺序为：1-&gt;5-&gt;7-&gt;8-&gt;9-&gt;3-&gt;4</p>
+<p>Objective-C将可能出现异常的代码放在@try块中，所有的异常处理逻辑放在@catch块中，最后用@finally块来回收资源。</p>
         
           <a class="article-more-a" href="/2017/03/02/JavaScript03/#more">more >></a>
         
