@@ -161,6 +161,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-阳光正好" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/27/阳光正好/">阳光正好</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/27/阳光正好/" class="archive-article-date">
+  	<time datetime="2017-02-27T04:48:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我回来了，比自己想象中的要快好多。离职，收拾行李，落脚合肥。前后只用了2天时间。雾总二天前给我电话说我走的好快啊，一不留神就走了。仓促，慌张。</p>
+<p>回来的第二天上午又去面试了一个创业团队，产品跟我说：我们的iOS为了女朋友去上海了，所以缺个人。一个萝卜一个坑这种说法在某种意义上是成立的。和他聊的比较投缘。一个挺有想法的同龄人。</p>
+<p>我放弃了那个目前在合肥算高薪的offer，我跟那边的老板说：倘若最终没来你这边，不是薪资的问题，只是单纯的不适合。一晃从我离开合肥庐江，到现如今我回到合肥生活，前前后后有快6年的时间了。6年里我做了很多的选择，每次都考虑的比这次要久。可是适合自己的抉择并不多。</p>
+<p>有时候能做到适合自己好难。</p>
+<p>一直追随的都是当下的最好也许并不是一件坏事，但是不见得能让自己快乐。之前我问过我自己眼下这几年我需要什么：稳定，安静，舒适，积淀。我从没有像现在这样渴望这些东西。</p>
+        
+          <a class="article-more-a" href="/2017/02/27/阳光正好/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/27/阳光正好/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-基于Hexo-Yilia的PersonalBlog的PC端添加音乐播放器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -312,91 +380,6 @@
 
 
   
-    <article id="post-OpenCV之Mat-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/20/OpenCV之Mat-一/">OpenCV之Mat(一)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/20/OpenCV之Mat-一/" class="archive-article-date">
-  	<time datetime="2017-02-20T05:43:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<blockquote>
-<p>废话内容，写在前面：</p>
-<p>Mat是个什么玩意?</p>
-<p>2015年下半年我在深圳的时候，一边看C++的入门，一边敲一点点和工作有关的代码。有一天飞哥和勇哥终于按耐不住觉得我总是测试光学打光做电子元器件可能就真的要废了，便让我用Visual Studio把一张图片用窗口显示出来，然后对图片进行二值化处理，提取特征值。</p>
-<p>我印象特别深刻，方法函数里面涉及到了好多Mat，如今开始动OpenCV第一个碰到的东西就是Mat，在这里把研读的关于Mat类，记录一下。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>OpenCV官方文档是这样界定Mat的：基本的图像容器。</p>
-<p>处理一张图片为何要用到图像的容器这种定义的概念？没有《图像处理技术》基础知识的人可能不太能懂图像为何需要一个基本的图像容器去处理。我本科学的《图像处理技术》的基础内容现在也不太记得，脑海中只有一些隐约的印象：图像是很多像素点构成，每个像素点有具体的像素值(0~255)，一张二维平面上的图片，它上面所有的点平面坐标位置，有点像《线性代数》里的矩阵，处理一张图片就是处理图片上所包含的像素值的信息，所以图片的处理，就可以转换成矩阵运算。</p>
-<p>正如OpenCV官方文档上说到的：如何获取并存储这些像素值由我们的需求而定，最终在计算机世界里所有图像都可以简化为数值矩以及矩阵信息。作为一个计算机视觉库， OpenCV 其主要目的就是通过处理和操作这些信息，来获取更高级的信息。因此，OpenCV如何存储并操作图像是你首先要学习的。</p>
-</blockquote>
-<hr>
-        
-          <a class="article-more-a" href="/2017/02/20/OpenCV之Mat-一/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">研习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/20/OpenCV之Mat-一/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -481,6 +464,38 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">研习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 入门</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 注释</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 变量</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 数据类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
               </li>
              
               <li class="article-tag-list-item">
