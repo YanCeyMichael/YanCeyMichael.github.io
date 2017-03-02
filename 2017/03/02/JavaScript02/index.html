@@ -8,31 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JavaScript02 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##JavaScript的判断语句JavaScript的判断语句和其他语言的判断语句基本一致；
-语法：
-if(条件)
-    {条件成立时执行的代码}
- else
-    {条件不成立时执行的代码}">
+  <meta name="description" content="1.)JavaScript关于对象的理解
+关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript02">
 <meta property="og:url" content="http://yoursite.com/2017/03/02/JavaScript02/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
-<meta property="og:description" content="##JavaScript的判断语句JavaScript的判断语句和其他语言的判断语句基本一致；
-语法：
-if(条件)
-    {条件成立时执行的代码}
- else
-    {条件不成立时执行的代码}">
-<meta property="og:updated_time" content="2017-03-02T05:37:38.000Z">
+<meta property="og:description" content="1.)JavaScript关于对象的理解
+关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based）">
+<meta property="og:updated_time" content="2017-03-02T08:43:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript02">
-<meta name="twitter:description" content="##JavaScript的判断语句JavaScript的判断语句和其他语言的判断语句基本一致；
-语法：
-if(条件)
-    {条件成立时执行的代码}
- else
-    {条件不成立时执行的代码}">
+<meta name="twitter:description" content="1.)JavaScript关于对象的理解
+关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based）">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -198,13 +186,112 @@ if(条件)
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##JavaScript的判断语句<br>JavaScript的判断语句和其他语言的判断语句基本一致；</p>
+        <blockquote>
+<p>1.)JavaScript关于对象的理解</p>
+<p>关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而不是面向对象的（object-oriented）。之所以说它是一门基于对象的语言，主要是因为它没有提供象抽象、继承、重载等有关面向对象语言的许多功能。而是把其它语言所创建的复杂对象统一起来，从而形成一个非常强大的对象系统。虽然JavaScript语言是一门基于对象的，但它还是具有一些面向对象的基本特征。它可以根据需要创建自己的对象，从而进一步扩大JavaScript的应用范围，增强编写功能强大的Web文档。</p>
+</blockquote>
+<p>从上面分析的情况来看，无论是基于对象还是面向对象，对于JavaScript的对象的研究，还是重中之重的一点。</p>
+<p>JavaScript 中的所有事物都是对象：字符串、数字、数组、日期，等等。<br>在 JavaScript 中，对象是拥有属性和方法的数据。</p>
+<p>例如：现在有一个人对象</p>
+<pre><code>var person;
+person = new Object();
+</code></pre><p>属性:</p>
+<pre><code>person.name = &quot;YanCey&quot;;
+person.age = 25;
+person.weight = 87;
+</code></pre><p>方法:</p>
+<pre><code>person.eat()
+person.run()
+person.sleep()   
+</code></pre><a id="more"></a>
+<blockquote>
+<p>2.)JavaScript的函数</p>
+</blockquote>
+<p>函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块。函数在多数语言中被理解为函数或方法,所以JavaScript的函数概念和其他语言是类似的。</p>
+<p>因为每种语言的格式书写差异很大，所以对于JavaScript函数的格式，要注意它有如下基本的格式：</p>
+<pre><code>function functionname()
+{
+  //这里是要执行的代码
+ }
+</code></pre><p>前面使用了关键词 function</p>
+<p>PS:JavaScript 对大小写是敏感的。规定关键词 function 必须是小写，并且必须以与函数名称相同的大小写来调用函数。</p>
+<p>当我们想调用一个函数需要带参数的时候，在（）内增加参数即可，如下：</p>
+<pre><code>function myFunction(var1, var2)
+{
+ //这里是要执行的代码
+ }
+</code></pre><p>有时，我们会希望函数将值返回调用它的地方。通过使用 return 语句就可以实现。在使用 return 语句时，函数会停止执行，并返回指定的值。</p>
+<pre><code>function myFunction()
+{
+var x=5;
+return x;
+}
+</code></pre><p>有时候，想要返回值是基于传递到函数中的参数：</p>
+<pre><code>function myFunction(a, b)
+{
+  return a * b;
+}
+</code></pre><p>从以上的四种情况来看，JavaScript的函数的特性和C语言函数的情况相类似：无参无返，有参无返，无参有返，有参有返四种大的类型。但是必须要有关键词小写的 function 来修饰函数。</p>
+<hr>
+<blockquote>
+<p>PS：了解完JavaScript的函数之后，避免不了的需要知道和函数有关的全局变量以及局部变量。在JS中对于全局变量和局部变量JS的规定和C语言又不谋而合的类似。</p>
+<p>在 JavaScript 函数内部声明的变量（使用 var）是局部变量，所以只能在函数内部访问它。（该变量的作用域是局部的）。</p>
+<p>您可以在不同的函数中使用名称相同的局部变量，因为只有声明过该变量的函数才能识别出该变量。</p>
+<p>只要函数运行完毕，本地变量就会被删除。</p>
+<p>在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它。</p>
+<p>JavaScript 变量的生命期从它们被声明的时间开始。局部变量会在函数运行以后被删除。全局变量会在页面关闭后被删除。</p>
+<p>如果把值赋给尚未声明的变量，该变量将被自动作为全局变量声明。</p>
+<pre><code>personName = &quot;JayKing&quot;;
+</code></pre><p>即使该变量是在函数内执行，也是全局变量。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>3.)JavaScript的运算符</p>
+</blockquote>
+<p>JavaScript的算术运算符和赋值运算符和C以及OC或者其他语言是基本类似的。所以在这里不赘述。</p>
+<p>JavaScript有自己特殊功能的运算符：</p>
+<blockquote>
+<blockquote>
+<p>用于字符串的”+”运算符:</p>
+</blockquote>
+</blockquote>
+<p>“+” 运算符用于把文本值或字符串变量加起来（连接起来)</p>
+<pre><code>var txt1 = &quot;What a very&quot;;
+var txt2 = &quot;nice day&quot;;
+var txt3 = txt1 + txt2;
+</code></pre><p>txt3打印的显示结果就是:  What a very nice day</p>
+<p>据我了解: Java和.net以及Python都支持 + 来做字符串的拼接。  </p>
+<pre><code>txt1=&quot;What a very&quot;;
+txt2=&quot;nice day&quot;;
+txt3=txt1+&quot; &quot;+txt2;
+</code></pre><p>和下面的把空格放到txt1尾巴或者txt2的开头的作用是一样的。</p>
+<pre><code>txt1 = &quot;What a very &quot;;
+txt2 = &quot;nice day&quot;;
+txt3 = txt1 + txt2;  
+</code></pre><p>有时候对字符串和数字进行加法运算</p>
+<pre><code>x = 5 + 5;
+document.write(x);
+
+x = &quot;5&quot; + &quot;5&quot;;
+document.write(x);
+
+x = 5 + &quot;5&quot;;
+document.write(x);
+
+x = &quot;5&quot; + 5;
+document.write(x);
+</code></pre><p>如果把数字与字符串相加，结果将成为字符串。 </p>
+<p>JavaScript的比较运算符和逻辑运算符以及条件运算符和C以及OC还有其他语言的语法是基本类似的,这里不再赘述。</p>
+<blockquote>
+<p>4.)JavaScript的判断语句</p>
+</blockquote>
+<p>JavaScript的判断语句和其他语言的判断语句基本一致；</p>
 <p>语法：</p>
 <pre><code>if(条件)
     {条件成立时执行的代码}
  else
     {条件不成立时执行的代码}
-</code></pre><a id="more"></a>
+</code></pre>
       
 
       
@@ -252,7 +339,15 @@ if(条件)
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 入门</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 对象</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 函数</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript 运算符</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -444,10 +539,6 @@ if(条件)
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 入门</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
               </li>
              
@@ -469,6 +560,18 @@ if(条件)
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
               </li>
              
               <li class="article-tag-list-item">
