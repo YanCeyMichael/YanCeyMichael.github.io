@@ -34,7 +34,7 @@ throw 语句创建自定义错误。
    // 可能会出现崩溃的代码
 }
 @catch (NS">
-<meta property="og:updated_time" content="2017-03-03T02:52:20.000Z">
+<meta property="og:updated_time" content="2017-03-03T03:55:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript03">
 <meta name="twitter:description" content="JavaScript的 try/catch/throw 语句的用法:
@@ -230,7 +230,8 @@ throw 语句创建自定义错误。
  @finally {
    // 结果处理
  }
-</code></pre><p>下面有个比较详细的OC调试的过程的代码：</p>
+</code></pre><a id="more"></a>
+<p>下面有个比较详细的OC调试的过程的代码：</p>
 <pre><code>@try {
 // 1
 [self tryTwo];
@@ -272,7 +273,6 @@ NSLog(@&quot;try&quot;);
 </code></pre><p>如果6抛出异常，那么执行顺序为：1-&gt;5-&gt;6-&gt;8-&gt;3-&gt;4</p>
 <p>如果6没抛出异常，那么执行顺序为：1-&gt;5-&gt;7-&gt;8-&gt;9-&gt;3-&gt;4</p>
 <p>Objective-C将可能出现异常的代码放在@try块中，所有的异常处理逻辑放在@catch块中，最后用@finally块来回收资源。</p>
-<a id="more"></a>
 <p>@作为OC语言最大的标志之一，所以相对于JavaScript来说的话，以上的三个语句的用法其实和OC基本一致，仅仅只是格式和书写上的差别。</p>
 <pre><code>try
 {
@@ -412,6 +412,15 @@ catch(err)
   
 <nav id="article-nav">
   
+    <a href="/2017/03/03/JavaScript04/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript04
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/03/02/JavaScript02/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">JavaScript02</div>
@@ -530,18 +539,6 @@ catch(err)
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -586,6 +583,22 @@ catch(err)
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -606,10 +619,6 @@ catch(err)
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
               </li>
              
@@ -619,6 +628,10 @@ catch(err)
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
