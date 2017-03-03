@@ -32,7 +32,7 @@ function validate_required(field,alerttxt)
 function validate_required(field,alerttxt) 
 {
    with (f">
-<meta property="og:updated_time" content="2017-03-03T03:48:39.000Z">
+<meta property="og:updated_time" content="2017-03-03T04:10:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript04">
 <meta name="twitter:description" content="JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。
@@ -221,18 +221,37 @@ function validate_required(field,alerttxt)
 {
    with (field) 
    {
-   if (value == null || value == &quot;&quot;)
-   {
-       alert(alerttxt);
-       return false;
-   }
-   else 
-   {
-       return true;
-   }
+     if (value == null || value == &quot;&quot;)
+     {
+         alert(alerttxt);
+         return false;
+     }
+     else 
+     {
+         return true;
+     }
    }
 }
-</code></pre><p>一开始对上面的函数并不陌生，但是仔细一瞅发现中间多了一个</p>
+</code></pre><p>有个经典的关于邮箱地址的验证：</p>
+<pre><code>function validate_email(field,alerttxt)
+{
+  with (field)
+  {
+    apos = value.indexOf(&quot;@&quot;)
+    dotpos = value.lastIndexOf(&quot;.&quot;)
+    if (apos&lt;1||dotpos-apos&lt;2) 
+    {
+    alert(alerttxt);
+    return false;
+    }
+    else 
+    {
+    return true;
+    }
+   }
+ }
+</code></pre><a id="more"></a>
+<p>一开始对上面的函数并不陌生，但是仔细一瞅发现中间多了一个</p>
 <pre><code>with（field）
 </code></pre><p>查阅资料看了一下JS中的with语句的用法：</p>
 <p>with语句为一个或一组语句指定默认对象。</p>
@@ -254,9 +273,29 @@ y = Math.tan(14 * Math.E);
   y = tan(14 * E);
 }
 </code></pre><blockquote>
-<p>PS：但是with语句即使带来了很多方便的地方，它也有不好的之处：with语句是运行缓慢的代码块，尤其是在已设置了属性值时。大多数情况下，如果可能，最好避免使用它。        </p>
+<p>PS：但是with语句即使带来了很多方便的地方，它也有不好的之处：with语句是运行缓慢的代码块，尤其是在已设置了属性值时。大多数情况下，如果可能，最好避免使用它。 </p>
 </blockquote>
-
+<p>除了with有引用对象的作用，在JS中另一个this语句也很常见。</p>
+<p>this 对象 是返回“当前”对象。在不同的地方，this代表不同的对象。如果在 JavaScript 的“主程序”中（不在任何 function 中，不在任何事件处理程序中）使用 this，它就代表 window 对象；如果在 with 语句块中使用 this，它就代表 with 所指定的对象；如果在事件处理程序中使用 this，它就代表发生事件的对象。</p>
+<p>this的这个浅层意思和OC语言中的self很类似。当然这里仅仅只是用于类比理解。</p>
+<p>下面有个this常见的用法，用于立刻检测表单输入的有效性。</p>
+<pre><code>&lt;script&gt;
+...
+function check(formObj) {
+...
+}
+...
+&lt;/script&gt;
+&lt;body ...&gt;
+...
+&lt;form ...&gt;
+...
+&lt;input type=&quot;text&quot; ... onchange=&quot;check(this.form)&quot;&gt;
+...
+&lt;/form&gt;
+...
+&lt;/body&gt;
+</code></pre>
       
 
       
@@ -305,6 +344,14 @@ y = Math.tan(14 * Math.E);
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 表单验证</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript with</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript this</a>
         		</li>
       		
 		</ul>
@@ -373,6 +420,15 @@ y = Math.tan(14 * Math.E);
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/03/03/JavaScript05/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript05
+        
+      </div>
+    </a>
   
   
     <a href="/2017/03/02/JavaScript03/" id="article-nav-older" class="article-nav-link-wrap">
@@ -492,26 +548,6 @@ y = Math.tan(14 * Math.E);
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
               </li>
              
@@ -536,6 +572,26 @@ y = Math.tan(14 * Math.E);
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
@@ -548,7 +604,19 @@ y = Math.tan(14 * Math.E);
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript with</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript this</a>
               </li>
              
               <li class="article-tag-list-item">

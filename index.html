@@ -161,6 +161,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaScript05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/JavaScript05/">JavaScript05</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/03/JavaScript05/" class="archive-article-date">
+  	<time datetime="2017-03-03T04:05:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HTML DOM （文档对象模型）</p>
+<p>当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）。</p>
+<p>HTML DOM 模型被构造为对象的树。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">研习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript HTML DOM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/03/JavaScript05/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-JavaScript04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -192,42 +260,39 @@
 {
    with (field) 
    {
-   if (value == null || value == &quot;&quot;)
-   {
-       alert(alerttxt);
-       return false;
-   }
-   else 
-   {
-       return true;
-   }
+     if (value == null || value == &quot;&quot;)
+     {
+         alert(alerttxt);
+         return false;
+     }
+     else 
+     {
+         return true;
+     }
    }
 }
-</code></pre><p>一开始对上面的函数并不陌生，但是仔细一瞅发现中间多了一个</p>
-<pre><code>with（field）
-</code></pre><p>查阅资料看了一下JS中的with语句的用法：</p>
-<p>with语句为一个或一组语句指定默认对象。</p>
-<blockquote>
-<p>with语句可以方便地用来引用某个特定对象中已有的属性，不能用来给对象添加属性。要给对象创建新的属性，必须明确地引用该对象。  </p>
-</blockquote>
-<p>with的语句结构：</p>
-<pre><code>with(object instance) 
-{  
-    //代码块 
-}  
-</code></pre><p>对比下面二段代码会发现功能是一样的，但是明显有with语句的代码可读性更强，并且易于理解。</p>
-<pre><code>x = Math.cos(3 * Math.PI) + Math.sin(Math.LN10);
-y = Math.tan(14 * Math.E);
-</code></pre><hr>
-<pre><code>with (Math) 
+</code></pre><p>有个经典的关于邮箱地址的验证：</p>
+<pre><code>function validate_email(field,alerttxt)
 {
-  x = cos(3 * PI) + sin(LN10);
-  y = tan(14 * E);
-}
-</code></pre><blockquote>
-<p>PS：但是with语句即使带来了很多方便的地方，它也有不好的之处：with语句是运行缓慢的代码块，尤其是在已设置了属性值时。大多数情况下，如果可能，最好避免使用它。        </p>
-</blockquote>
-
+  with (field)
+  {
+    apos = value.indexOf(&quot;@&quot;)
+    dotpos = value.lastIndexOf(&quot;.&quot;)
+    if (apos&lt;1||dotpos-apos&lt;2) 
+    {
+    alert(alerttxt);
+    return false;
+    }
+    else 
+    {
+    return true;
+    }
+   }
+ }
+</code></pre>
+        
+          <a class="article-more-a" href="/2017/03/03/JavaScript04/#more">more >></a>
+        
       
 
       
@@ -245,6 +310,14 @@ y = Math.tan(14 * Math.E);
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 表单验证</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript with</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript this</a>
         		</li>
       		
 		</ul>
@@ -365,107 +438,6 @@ y = Math.tan(14 * Math.E);
 
 
   
-    <article id="post-JavaScript02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/02/JavaScript02/">JavaScript02</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/02/JavaScript02/" class="archive-article-date">
-  	<time datetime="2017-03-02T05:33:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>1.)JavaScript关于对象的理解</p>
-<p>关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而不是面向对象的（object-oriented）。之所以说它是一门基于对象的语言，主要是因为它没有提供象抽象、继承、重载等有关面向对象语言的许多功能。而是把其它语言所创建的复杂对象统一起来，从而形成一个非常强大的对象系统。虽然JavaScript语言是一门基于对象的，但它还是具有一些面向对象的基本特征。它可以根据需要创建自己的对象，从而进一步扩大JavaScript的应用范围，增强编写功能强大的Web文档。</p>
-</blockquote>
-<p>从上面分析的情况来看，无论是基于对象还是面向对象，对于JavaScript的对象的研究，还是重中之重的一点。</p>
-<p>JavaScript 中的所有事物都是对象：字符串、数字、数组、日期，等等。<br>在 JavaScript 中，对象是拥有属性和方法的数据。</p>
-<p>例如：现在有一个人对象</p>
-<pre><code>var person;
-person = new Object();
-</code></pre><p>属性:</p>
-<pre><code>person.name = &quot;YanCey&quot;;
-person.age = 25;
-person.weight = 87;
-</code></pre><p>方法:</p>
-<pre><code>person.eat()
-person.run()
-person.sleep()   
-</code></pre>
-        
-          <a class="article-more-a" href="/2017/03/02/JavaScript02/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">研习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 对象</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript 运算符</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 判断语句</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 循环语句</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/02/JavaScript02/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -553,26 +525,6 @@ person.sleep()
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
               </li>
              
@@ -597,6 +549,26 @@ person.sleep()
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
@@ -609,7 +581,19 @@ person.sleep()
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript with</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript this</a>
               </li>
              
               <li class="article-tag-list-item">
