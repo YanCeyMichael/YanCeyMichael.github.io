@@ -29,7 +29,7 @@ HTML DOM 模型被构造为对象的树。
 2.JavaScript 能够改变页面中的所有 HTML 属性
 3.JavaScript 能够改变页面中的所有">
 <meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/JavaScript02.png">
-<meta property="og:updated_time" content="2017-03-03T06:44:12.000Z">
+<meta property="og:updated_time" content="2017-03-03T10:12:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript05">
 <meta name="twitter:description" content="HTML DOM （文档对象模型）
@@ -215,7 +215,22 @@ HTML DOM 模型被构造为对象的树。
 <p>2.JavaScript 能够改变页面中的所有 HTML 属性</p>
 <p>3.JavaScript 能够改变页面中的所有 CSS 样式</p>
 <p>4.JavaScript 能够对页面中的所有事件做出反应</p>
-<p>对于JavaScript</p>
+<hr>
+<p>对于JavaScript而言，更加关心的是如何找到 HTML 元素，要是找不到 HTML 元素的话，就没法实施操作，而JS中给我们提供了三种方法去找HTML 元素：</p>
+<p>1.通过 id 找到 HTML 元素</p>
+<p>2.通过标签名找到 HTML 元素</p>
+<p>3.通过类名找到 HTML 元素</p>
+<p>①通过 id 查找 HTML 元素</p>
+<p>例:查找id为”intro”的元素</p>
+<pre><code>var x = document.getElementById(&quot;intro&quot;);
+</code></pre><p>②通过标签名查找 HTML 元素</p>
+<p>例:查找 id=”main” 的元素，然后查找 “main” 中的所有 </p><p> 元素</p>
+<pre><code>var x = document.getElementById(&quot;main&quot;);
+var y = x.getElementsByTagName(&quot;p&quot;);
+</code></pre><p>如何改变 HTML 元素的内容 (innerHTML)</p>
+<p>如何改变 HTML 元素的样式 (CSS)</p>
+<p>如何对 HTML DOM 事件对做出反应</p>
+<p>如何添加或删除 HTML 元素  </p>
 
       
 
@@ -476,6 +491,30 @@ HTML DOM 模型被构造为对象的树。
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -493,30 +532,6 @@ HTML DOM 模型被构造为对象的树。
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
               </li>
              
               <li class="article-tag-list-item">
