@@ -26,7 +26,7 @@ weak的使用场景：weak 的常见场景是在 delegate，block，NSTimer 中�
 weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。
 
 单例模式在OC和Swift这经常会被用">
-<meta property="og:updated_time" content="2017-07-19T09:41:36.000Z">
+<meta property="og:updated_time" content="2017-07-19T10:06:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weak singleton模式在iOS中的应用">
 <meta name="twitter:description" content="关于weak要了解的基本内容：
@@ -205,7 +205,7 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
 <p>weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。</p>
 <hr>
 <p>单例模式在OC和Swift这经常会被用到，好用的小模块工具类、很多SDK的初始化等等。但是这些单例的使用场景里都有一个共同的毛病，单例在被创建之后会伴随着进程一直存活，有时候我们的业务需求，特别是对于前端<br>来说的话，很多单例模式的使用都是为了方便，所以我们其实很想在这些单例不必要存在的时候将它们释放掉，因为这些单例在一定程度上是有内存浪费的。</p>
-<p>一个简单的例子：比如登陆模块的LoginInstance单例，我们在登陆之后除非需要二次登陆，不然就可能再也用不到这个单例了，我们最好的处理方式是将这个单例释放掉在登陆之后，而在登陆的过程当中我们随时随地的获取和使用这个单例，似乎这样的应用场景在前端开发中显得更多以及更常用，也似乎更佳的合理，更好的符合前端的性能尽可能的高的这种默认标准。</p>
+<p>一个简单的例子：比如登陆模块的 LoginInstance 单例，我们在登陆之后除非需要二次登陆，不然就可能再也用不到这个单例了，我们最好的处理方式是将这个单例释放掉在登陆之后，而在登陆的过程当中我们随时随地的获取和使用这个单例，似乎这样的应用场景在前端开发中显得更多以及更常用，也似乎更佳的合理，更好的符合前端的性能尽可能的高的这种默认标准。</p>
 <p>可是常规的单例模式无法实现上述需求，我们只能做到随时随地的获取使用这个单例，而无法释法这个单例。</p>
 <p>那么，用weak试一下吧。</p>
 <a id="more"></a>
@@ -224,10 +224,10 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
    return strongInstance;
 }
 </code></pre><p>这种特殊的单例有一个有意思的特性：在所有使用该单例的对象都释放后，单例对象本身也会自己释放。</p>
-<p>如果 viewController A、B、C 三个视图控制器都调用了上面所描述的这种弱引用的弱单例模式。并且 viewController A、B、C 都持有 ASingletonClass 的强引用，一旦 A，B，C 都销毁后，这个单例就跟着销毁，而不像我们之前的单例模式，将一只存在。</p>
-<p>这样我们再一次回到上述的登陆模块的时候，当我们的登陆控制器在棧里被释放掉之后，登陆的LoginInstance单例也会随即释放，这样就达到了我们想要的效果。</p>
-<p>此外重要的是：当LoginInstance再次被调用时，LoginInstance又会重新被创建。这样二次登陆的时候，LoginInstance还是一个单例。</p>
-<p>然而我们会发现：weak singleton这种弱单例模式中的weak，有着很漂亮的作用，巧妙的利用了weak的作用来设计了一种我们很想要的效果的模式，从而也看出来，对于关键词weak而言，还有很多能发现的美。</p>
+<p>如果 viewController A、B、C 三个视图控制器都调用了上面所描述的这种弱引用的弱单例模式。并且 viewController A、B、C 都持有 ASingletonClass 的强引用，一旦 A，B，C 都销毁后，这个单例就跟着销毁，而这个就跟我们之前的单例模式不一样了,它不会是从创建后就只能一直存在,无法释放。</p>
+<p>这样我们再一次回到上述的登陆模块的时候，当我们的登陆控制器在棧里被释放掉之后，登陆的 LoginInstance 单例也会随即释放，这样就达到了我们想要的效果。</p>
+<p>此外重要的是：当 LoginInstance 再次被调用时，LoginInstance 又会重新被创建。这样二次登陆的时候，LoginInstance 还是一个单例。</p>
+<p>然而我们会发现：weak singleton 这种弱单例模式中的 weak ，有着很漂亮的作用，巧妙的利用了weak的作用来设计了一种我们很想要的效果的模式，从而也看出来，对于关键词weak而言，还有很多能发现的美。</p>
 
       
 
@@ -450,26 +450,6 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
               </li>
              
@@ -491,6 +471,26 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,19 +518,19 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
