@@ -155,6 +155,122 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaScript04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/JavaScript04/">JavaScript04</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/03/JavaScript04/" class="archive-article-date">
+  	<time datetime="2017-03-03T02:53:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。</p>
+<blockquote>
+<p>常见的 JavaScript 验证的这些典型的表单数据有：</p>
+<p>用户是否已填写表单中的必填项目？</p>
+<p>用户输入的邮件地址是否合法？</p>
+<p>用户是否在数据域 (numeric field) 中输入了文本？</p>
+</blockquote>
+<pre><code>function validate_required(field,alerttxt) 
+{
+   with (field) 
+   {
+     if (value == null || value == &quot;&quot;)
+     {
+         alert(alerttxt);
+         return false;
+     }
+     else 
+     {
+         return true;
+     }
+   }
+}
+</code></pre><p>有个经典的关于邮箱地址的验证：</p>
+<pre><code>function validate_email(field,alerttxt)
+{
+  with (field)
+  {
+    apos = value.indexOf(&quot;@&quot;)
+    dotpos = value.lastIndexOf(&quot;.&quot;)
+    if (apos&lt;1||dotpos-apos&lt;2) 
+    {
+      alert(alerttxt);
+      return false;
+    }
+    else 
+    {
+      return true;
+    }
+   }
+ }
+</code></pre>
+        
+          <a class="article-more-a" href="/2017/03/03/JavaScript04/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">研习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 表单验证</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript with语句</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript this语句</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/03/JavaScript04/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-JavaScript03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -349,114 +465,6 @@ person.sleep()
 
 
   
-    <article id="post-JavaScript01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/02/JavaScript01/">JavaScript01</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/02/JavaScript01/" class="archive-article-date">
-  	<time datetime="2017-03-02T04:09:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JavaScript语句是发给浏览器的命令。这些命令的作用是告诉浏览器要做的事情。</p>
-<blockquote>
-<p>1.）JavaScript的输出：</p>
-<p>假如需从JavaScript访问某个HTML元素，可以使用document.getElementById(id) 方法。使用 “id” 属性来标识 HTML 元素：</p>
-</blockquote>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;body&gt;
-
-&lt;h1&gt;My First Web Page&lt;/h1&gt;
-
-&lt;p id = &quot;demo&quot;&gt;My First Paragraph&lt;/p&gt;
-
-&lt;script&gt;
-    document.getElementById(&quot;demo&quot;).innerHTML=&quot;My First JavaScript&quot;;
-&lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>JavaScript 由 web 浏览器来执行。在这种情况下，浏览器将访问 id=”demo” 的 HTML 元素，并把它的内容（innerHTML）替换为 “My First JavaScript”。</p>
-<p>使用 document.write() 仅仅向文档输出写内容。<br>如果在文档已完成加载后执行 document.write，整个 HTML 页面将被覆盖。</p>
-        
-          <a class="article-more-a" href="/2017/03/02/JavaScript01/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">研习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 输出</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 语句</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 注释</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 变量</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 数据类型</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript 声明变量类型</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/02/JavaScript01/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -600,15 +608,11 @@ person.sleep()
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,11 +624,27 @@ person.sleep()
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+                <a href="javascript:void(0)" class="js-tag color5">weak singleton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">弱单例模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
               </li>
              
               <li class="article-tag-list-item">

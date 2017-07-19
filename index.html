@@ -155,6 +155,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-weak-singleton模式在iOS中的应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/19/weak-singleton模式在iOS中的应用/">weak singleton模式在iOS中的应用</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/19/weak-singleton模式在iOS中的应用/" class="archive-article-date">
+  	<time datetime="2017-07-19T07:44:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<blockquote>
+<blockquote>
+<p>关于weak要了解的基本内容：</p>
+</blockquote>
+</blockquote>
+<p>weak的使用场景：weak 的常见场景是在 delegate，block，NSTimer 中使用，我们经常用weak来避免以上场景中易产生的循环引用的问题。</p>
+<p>weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。</p>
+<hr>
+<p>单例模式在OC和swift这里经常会被用到，好用的小模块工具类、很多SDK的初始化等等。但是这些单例的使用场景里都有一个共同的毛病，单例在被创建之后会伴随着进程一直存活，有时候我们的业务需求，特别是对于前端<br>来说的话，很多单例模式的使用都是为了方便，所以我们其实很想在这些单例不必要存在的时候将它们释放掉，因为这些单例在一定程度上是有内存浪费的。</p>
+<p>一个简单的例子：比如登陆模块的LoginInstance单例，我们在登陆之后除非需要二次登陆，不然就可能再也用不到这个单例了，我们最好的处理方式是将这个单例释放掉在登陆之后，而在登陆的过程当中我们随时随地的获取和使用这个单例，似乎这样的应用场景在前端开发中显得更多以及更常用，也似乎更佳的合理，更好的符合前端的性能尽可能的高的这种默认标准。</p>
+<p>可是常规的单例模式无法实现上述需求，我们只能做到随时随地的获取使用这个单例，而无法释法这个单例。</p>
+<p>那么，用weak试一下吧。</p>
+        
+          <a class="article-more-a" href="/2017/07/19/weak-singleton模式在iOS中的应用/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">weak</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">weak singleton</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">弱单例模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/19/weak-singleton模式在iOS中的应用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-别管以后将如何结束，冷暖自愿尝透" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -286,122 +370,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/03/03/JavaScript05/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-JavaScript04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/JavaScript04/">JavaScript04</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/03/JavaScript04/" class="archive-article-date">
-  	<time datetime="2017-03-03T02:53:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。</p>
-<blockquote>
-<p>常见的 JavaScript 验证的这些典型的表单数据有：</p>
-<p>用户是否已填写表单中的必填项目？</p>
-<p>用户输入的邮件地址是否合法？</p>
-<p>用户是否在数据域 (numeric field) 中输入了文本？</p>
-</blockquote>
-<pre><code>function validate_required(field,alerttxt) 
-{
-   with (field) 
-   {
-     if (value == null || value == &quot;&quot;)
-     {
-         alert(alerttxt);
-         return false;
-     }
-     else 
-     {
-         return true;
-     }
-   }
-}
-</code></pre><p>有个经典的关于邮箱地址的验证：</p>
-<pre><code>function validate_email(field,alerttxt)
-{
-  with (field)
-  {
-    apos = value.indexOf(&quot;@&quot;)
-    dotpos = value.lastIndexOf(&quot;.&quot;)
-    if (apos&lt;1||dotpos-apos&lt;2) 
-    {
-      alert(alerttxt);
-      return false;
-    }
-    else 
-    {
-      return true;
-    }
-   }
- }
-</code></pre>
-        
-          <a class="article-more-a" href="/2017/03/03/JavaScript04/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">研习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 表单验证</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript with语句</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript this语句</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/03/JavaScript04/">展开全文 >></a>
         </p>
       
 
@@ -562,15 +530,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,11 +546,27 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+                <a href="javascript:void(0)" class="js-tag color5">weak singleton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">弱单例模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
               </li>
              
               <li class="article-tag-list-item">
