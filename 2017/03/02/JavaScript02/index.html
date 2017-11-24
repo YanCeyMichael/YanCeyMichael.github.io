@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JavaScript02 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.)JavaScript关于对象的理解
-关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based）">
+  <meta name="description" content="1、JavaScript关于对象的理解
+关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript02">
 <meta property="og:url" content="http://yoursite.com/2017/03/02/JavaScript02/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
-<meta property="og:description" content="1.)JavaScript关于对象的理解
-关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based）">
-<meta property="og:updated_time" content="2017-11-24T03:14:50.855Z">
+<meta property="og:description" content="1、JavaScript关于对象的理解
+关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而">
+<meta property="og:updated_time" content="2017-11-24T06:56:52.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript02">
-<meta name="twitter:description" content="1.)JavaScript关于对象的理解
-关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based）">
+<meta name="twitter:description" content="1、JavaScript关于对象的理解
+关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -190,7 +190,7 @@
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
                 <strong class="toc-title">文章目录</strong>
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、JavaScript关于对象的理解"><span class="toc-number">1.</span> <span class="toc-text">1、JavaScript关于对象的理解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、JavaScript的函数"><span class="toc-number">2.</span> <span class="toc-text">2、JavaScript的函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、JavaScript的运算符"><span class="toc-number">3.</span> <span class="toc-text">3、JavaScript的运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、JavaScript的判断语句"><span class="toc-number">4.</span> <span class="toc-text">4、JavaScript的判断语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5、JavaScript的for循环while循环以及break语句和continue语句"><span class="toc-number">5.</span> <span class="toc-text">5、JavaScript的for循环while循环以及break语句和continue语句</span></a></li></ol>
         </div>
      <script type="text/javascript">
           function showToc(){
@@ -211,8 +211,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>1.)JavaScript关于对象的理解</p>
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="1、JavaScript关于对象的理解"><a href="#1、JavaScript关于对象的理解" class="headerlink" title="1、JavaScript关于对象的理解"></a>1、JavaScript关于对象的理解</h1><blockquote>
 <p>关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而不是面向对象的（object-oriented）。之所以说它是一门基于对象的语言，主要是因为它没有提供象抽象、继承、重载等有关面向对象语言的许多功能。而是把其它语言所创建的复杂对象统一起来，从而形成一个非常强大的对象系统。虽然JavaScript语言是一门基于对象的，但它还是具有一些面向对象的基本特征。它可以根据需要创建自己的对象，从而进一步扩大JavaScript的应用范围，增强编写功能强大的Web文档。</p>
 </blockquote>
 <p>从上面分析的情况来看，无论是基于对象还是面向对象，对于JavaScript的对象的研究，还是重中之重的一点。</p>
@@ -229,10 +228,7 @@ person.weight = 87;
 person.run()
 person.sleep()   
 </code></pre><a id="more"></a>
-<blockquote>
-<p>2.)JavaScript的函数</p>
-</blockquote>
-<p>函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块。函数在多数语言中被理解为函数或方法,所以JavaScript的函数概念和其他语言是类似的。</p>
+<h1 id="2、JavaScript的函数"><a href="#2、JavaScript的函数" class="headerlink" title="2、JavaScript的函数"></a>2、JavaScript的函数</h1><p>函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块。函数在多数语言中被理解为函数或方法,所以JavaScript的函数概念和其他语言是类似的。</p>
 <p>因为每种语言的格式书写差异很大，所以对于JavaScript函数的格式，要注意它有如下基本的格式：</p>
 <pre><code>function functionname()
 {
@@ -270,10 +266,7 @@ return x;
 </code></pre><p>即使该变量是在函数内执行，也是全局变量。</p>
 </blockquote>
 <hr>
-<blockquote>
-<p>3.)JavaScript的运算符</p>
-</blockquote>
-<p>JavaScript的算术运算符和赋值运算符和C以及OC或者其他语言是基本类似的，这里不再赘述。</p>
+<h1 id="3、JavaScript的运算符"><a href="#3、JavaScript的运算符" class="headerlink" title="3、JavaScript的运算符"></a>3、JavaScript的运算符</h1><p>JavaScript的算术运算符和赋值运算符和C以及OC或者其他语言是基本类似的，这里不再赘述。</p>
 <p>JavaScript有自己特殊功能的运算符：</p>
 <blockquote>
 <blockquote>
@@ -307,14 +300,8 @@ x = &quot;5&quot; + 5;
 document.write(x);
 </code></pre><p>如果把数字与字符串相加，结果将成为字符串。 </p>
 <p>JavaScript的比较运算符和逻辑运算符以及条件运算符和C以及OC还有其他语言的语法是基本类似的,这里不再赘述。</p>
-<blockquote>
-<p>4.)JavaScript的判断语句</p>
-</blockquote>
-<p>JavaScript的判断语句和其他语言的判断语句基本一致，这里不再赘述（if语句/if-else语句/if-elseif-…-else语句/switch语句）。</p>
-<blockquote>
-<p>5.)JavaScript的for循环while循环以及break语句和continue语句</p>
-</blockquote>
-<p>这些语句和C语言或OC以及其他语言类似，这里不再赘述。</p>
+<h1 id="4、JavaScript的判断语句"><a href="#4、JavaScript的判断语句" class="headerlink" title="4、JavaScript的判断语句"></a>4、JavaScript的判断语句</h1><p>JavaScript的判断语句和其他语言的判断语句基本一致，这里不再赘述（if语句/if-else语句/if-elseif-…-else语句/switch语句）。</p>
+<h1 id="5、JavaScript的for循环while循环以及break语句和continue语句"><a href="#5、JavaScript的for循环while循环以及break语句和continue语句" class="headerlink" title="5、JavaScript的for循环while循环以及break语句和continue语句"></a>5、JavaScript的for循环while循环以及break语句和continue语句</h1><p>这些语句和C语言或OC以及其他语言类似，这里不再赘述。</p>
 
       
 
@@ -603,18 +590,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -644,6 +619,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
              
               <li class="article-tag-list-item">

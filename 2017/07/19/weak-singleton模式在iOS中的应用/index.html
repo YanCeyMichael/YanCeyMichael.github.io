@@ -9,33 +9,27 @@
   <title>weak singleton模式在iOS中的应用 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="关于weak要了解的基本内容：
-
-
 weak的使用场景：weak 的常见场景是在 delegate，block，NSTimer 中使用，我们经常用weak来避免以上场景中易产生的循环引用的问题。
 weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。
 
-单例模式在OC和Swift这经常会被用">
+单例模式在OC和Swift这经常会被用到，好用的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weak singleton模式在iOS中的应用">
 <meta property="og:url" content="http://yoursite.com/2017/07/19/weak-singleton模式在iOS中的应用/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="关于weak要了解的基本内容：
-
-
 weak的使用场景：weak 的常见场景是在 delegate，block，NSTimer 中使用，我们经常用weak来避免以上场景中易产生的循环引用的问题。
 weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。
 
-单例模式在OC和Swift这经常会被用">
-<meta property="og:updated_time" content="2017-11-24T06:03:13.048Z">
+单例模式在OC和Swift这经常会被用到，好用的">
+<meta property="og:updated_time" content="2017-11-24T06:59:08.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weak singleton模式在iOS中的应用">
 <meta name="twitter:description" content="关于weak要了解的基本内容：
-
-
 weak的使用场景：weak 的常见场景是在 delegate，block，NSTimer 中使用，我们经常用weak来避免以上场景中易产生的循环引用的问题。
 weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。
 
-单例模式在OC和Swift这经常会被用">
+单例模式在OC和Swift这经常会被用到，好用的">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -205,7 +199,7 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
                 <strong class="toc-title">文章目录</strong>
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于weak要了解的基本内容："><span class="toc-number">1.</span> <span class="toc-text">关于weak要了解的基本内容：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#弱单例模式的-weak-singleton-的具体实现代码如下"><span class="toc-number">2.</span> <span class="toc-text">弱单例模式的 weak singleton 的具体实现代码如下</span></a></li></ol>
         </div>
      <script type="text/javascript">
           function showToc(){
@@ -226,12 +220,7 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
 
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><hr>
-<blockquote>
-<blockquote>
-<p>关于weak要了解的基本内容：</p>
-</blockquote>
-</blockquote>
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="关于weak要了解的基本内容："><a href="#关于weak要了解的基本内容：" class="headerlink" title="关于weak要了解的基本内容："></a>关于weak要了解的基本内容：</h1><hr>
 <p>weak的使用场景：weak 的常见场景是在 delegate，block，NSTimer 中使用，我们经常用weak来避免以上场景中易产生的循环引用的问题。</p>
 <p>weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。</p>
 <hr>
@@ -240,10 +229,7 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
 <p>可是常规的单例模式无法实现上述需求，我们只能做到随时随地的获取使用这个单例，而无法释法这个单例。</p>
 <p>那么，用weak试一下吧。</p>
 <a id="more"></a>
-<hr>
-<p>弱单例模式的 weak singleton 的具体实现代码如下</p>
-<hr>
-<pre><code>+ (id)sharedInstance {
+<h1 id="弱单例模式的-weak-singleton-的具体实现代码如下"><a href="#弱单例模式的-weak-singleton-的具体实现代码如下" class="headerlink" title="弱单例模式的 weak singleton 的具体实现代码如下"></a>弱单例模式的 weak singleton 的具体实现代码如下</h1><pre><code>+ (id)sharedInstance {
    static __weak ASingletonClass *instance;
    ASingletonClass *strongInstance = instance;
    @synchronized(self) {
@@ -530,18 +516,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -571,6 +545,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -17,7 +17,7 @@
 <meta property="og:description" content="废话写在前面：这个博客没有相册，这会儿刚好不是特别的忙，所以也有点精力来整理一下blog。音乐播放器加了，还差一个相册。为了整个相册出来，我还是要摸一下前端的内容的，也许方向不是特别的对，但是还是先从JS入手吧。
 我对JS不是特别了解的，在iOS这边原生的框架开发做的时间用不了多久，就会遇到JS的交互问题，在iOS这边有个UI控件叫UIWebView，它是专门用来承载html内容的一个控件（通俗">
 <meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/JavaScript01.png">
-<meta property="og:updated_time" content="2017-11-24T03:13:44.487Z">
+<meta property="og:updated_time" content="2017-11-24T07:01:13.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给blog添加一个相册，先把JS干掉">
 <meta name="twitter:description" content="废话写在前面：这个博客没有相册，这会儿刚好不是特别的忙，所以也有点精力来整理一下blog。音乐播放器加了，还差一个相册。为了整个相册出来，我还是要摸一下前端的内容的，也许方向不是特别的对，但是还是先从JS入手吧。
@@ -185,30 +185,6 @@
 
 <!-- 目录内容 -->
 
-    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-          <span class="btn-bg"></span>
-          <span class="btn-text">文章导航</span>
-          </p>
-        <div id="toc-article" class="toc-article">
-            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-                <strong class="toc-title">文章目录</strong>
-            
-        </div>
-     <script type="text/javascript">
-          function showToc(){
-                   var toc_article = document.getElementById("toc-article");
-                   var show_toc_btn = document.getElementById("show-toc-btn");
-                   toc_article.setAttribute("style","display:block");
-                   show_toc_btn.setAttribute("style","display:none");
-                   };
-          function showBtn(){
-                   var toc_article = document.getElementById("toc-article");
-                   var show_toc_btn = document.getElementById("show-toc-btn");
-                   toc_article.setAttribute("style","display:none");
-                   show_toc_btn.setAttribute("style","display:block");
-                   };
-    </script>
-       
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
@@ -525,18 +501,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -566,6 +530,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
              
               <li class="article-tag-list-item">
