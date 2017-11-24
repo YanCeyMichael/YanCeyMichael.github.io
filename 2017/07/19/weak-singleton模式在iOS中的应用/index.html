@@ -26,7 +26,7 @@ weak的使用场景：weak 的常见场景是在 delegate，block，NSTimer 中�
 weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。
 
 单例模式在OC和Swift这经常会被用">
-<meta property="og:updated_time" content="2017-11-24T03:16:10.306Z">
+<meta property="og:updated_time" content="2017-11-24T06:03:13.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weak singleton模式在iOS中的应用">
 <meta name="twitter:description" content="关于weak要了解的基本内容：
@@ -62,7 +62,7 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
       
 
 <div style="position:absolute;top: 0px;z-index: 100;">
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=609175973&auto=1&height=90"></iframe>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=52 src="//music.163.com/outchain/player?type=0&id=609175973&auto=1&height=90"></iframe>
 </div>
 
 <div class="overlay" style="background: #1E90FF"></div>
@@ -195,6 +195,35 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
         
       </header>
     
+
+<!-- 目录内容 -->
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+        <div id="toc-article" class="toc-article">
+            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+                <strong class="toc-title">文章目录</strong>
+            
+        </div>
+     <script type="text/javascript">
+          function showToc(){
+                   var toc_article = document.getElementById("toc-article");
+                   var show_toc_btn = document.getElementById("show-toc-btn");
+                   toc_article.setAttribute("style","display:block");
+                   show_toc_btn.setAttribute("style","display:none");
+                   };
+          function showBtn(){
+                   var toc_article = document.getElementById("toc-article");
+                   var show_toc_btn = document.getElementById("show-toc-btn");
+                   toc_article.setAttribute("style","display:none");
+                   show_toc_btn.setAttribute("style","display:block");
+                   };
+    </script>
+       
+<!-- 目录内容结束 -->
+
     <div class="article-entry" itemprop="articleBody">
       
         <script src="/assets/js/APlayer.min.js"> </script><hr>
@@ -477,6 +506,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
               </li>
              
@@ -498,26 +547,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,19 +574,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
