@@ -6,30 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>weak singleton模式在iOS中的应用 | YanCey’s Blog</title>
+  <title>Tag: 杭州 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于weak要了解的基本内容：
-weak的使用场景：weak 的常见场景是在 delegate，block，NSTimer 中使用，我们经常用weak来避免以上场景中易产生的循环引用的问题。
-weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。
-
-单例模式在OC和Swift这经常会被用到，好用的">
-<meta property="og:type" content="article">
-<meta property="og:title" content="weak singleton模式在iOS中的应用">
-<meta property="og:url" content="http://yoursite.com/2017/07/19/weak-singleton模式在iOS中的应用/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="YanCey’s Blog">
+<meta property="og:url" content="http://yoursite.com/tags/杭州/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
-<meta property="og:description" content="关于weak要了解的基本内容：
-weak的使用场景：weak 的常见场景是在 delegate，block，NSTimer 中使用，我们经常用weak来避免以上场景中易产生的循环引用的问题。
-weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。
-
-单例模式在OC和Swift这经常会被用到，好用的">
-<meta property="og:updated_time" content="2017-11-24T06:59:08.139Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="weak singleton模式在iOS中的应用">
-<meta name="twitter:description" content="关于weak要了解的基本内容：
-weak的使用场景：weak 的常见场景是在 delegate，block，NSTimer 中使用，我们经常用weak来避免以上场景中易产生的循环引用的问题。
-weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。
-
-单例模式在OC和Swift这经常会被用到，好用的">
+<meta name="twitter:title" content="YanCey’s Blog">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -179,233 +163,64 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-weak-singleton模式在iOS中的应用" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      weak singleton模式在iOS中的应用
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/11/25/钱塘二渡/" class="archive-article-date">
+  	<time datetime="2017-11-24T16:21:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-25</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/11/25/钱塘二渡/">钱塘二渡</a>
     </h1>
   
 
-        
-        <a href="/2017/07/19/weak-singleton模式在iOS中的应用/" class="archive-article-date">
-  	<time datetime="2017-07-19T07:44:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-19</time>
-</a>
-        
-      </header>
-    
-
-<!-- 目录内容 -->
-
-    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-          <span class="btn-bg"></span>
-          <span class="btn-text">文章导航</span>
-          </p>
-        <div id="toc-article" class="toc-article">
-            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-                <strong class="toc-title">文章目录</strong>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于weak要了解的基本内容："><span class="toc-number">1.</span> <span class="toc-text">关于weak要了解的基本内容：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#弱单例模式的-weak-singleton-的具体实现代码如下"><span class="toc-number">2.</span> <span class="toc-text">弱单例模式的 weak singleton 的具体实现代码如下</span></a></li></ol>
-        </div>
-     <script type="text/javascript">
-          function showToc(){
-                   var toc_article = document.getElementById("toc-article");
-                   var show_toc_btn = document.getElementById("show-toc-btn");
-                   toc_article.setAttribute("style","display:block");
-                   show_toc_btn.setAttribute("style","display:none");
-                   };
-          function showBtn(){
-                   var toc_article = document.getElementById("toc-article");
-                   var show_toc_btn = document.getElementById("show-toc-btn");
-                   toc_article.setAttribute("style","display:none");
-                   show_toc_btn.setAttribute("style","display:block");
-                   };
-    </script>
-       
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="/assets/js/APlayer.min.js"> </script><h1 id="关于weak要了解的基本内容："><a href="#关于weak要了解的基本内容：" class="headerlink" title="关于weak要了解的基本内容："></a>关于weak要了解的基本内容：</h1><hr>
-<p>weak的使用场景：weak 的常见场景是在 delegate，block，NSTimer 中使用，我们经常用weak来避免以上场景中易产生的循环引用的问题。</p>
-<p>weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误的内存访问。也就是说：weak 可以在不增加对象的引用计数的同时，又使得指针的访问是安全的。</p>
-<hr>
-<p>单例模式在OC和Swift这经常会被用到，好用的小模块工具类、很多SDK的初始化等等。但是这些单例的使用场景里都有一个共同的毛病，单例在被创建之后会伴随着进程一直存活，有时候我们的业务需求，特别是对于前端<br>来说的话，很多单例模式的使用都是为了方便，所以我们其实很想在这些单例不必要存在的时候将它们释放掉，因为这些单例在一定程度上是有内存浪费的。</p>
-<p>一个简单的例子：比如登陆模块的 LoginInstance 单例，我们在登陆之后除非需要二次登陆，不然就可能再也用不到这个单例了，我们最好的处理方式是将这个单例释放掉在登陆之后，而在登陆的过程当中我们随时随地的获取和使用这个单例，似乎这样的应用场景在前端开发中显得更多以及更常用，也似乎更佳的合理，更好的符合前端的性能尽可能的高的这种默认标准。</p>
-<p>可是常规的单例模式无法实现上述需求，我们只能做到随时随地的获取使用这个单例，而无法释法这个单例。</p>
-<p>那么，用weak试一下吧。</p>
-<a id="more"></a>
-<h1 id="弱单例模式的-weak-singleton-的具体实现代码如下"><a href="#弱单例模式的-weak-singleton-的具体实现代码如下" class="headerlink" title="弱单例模式的 weak singleton 的具体实现代码如下"></a>弱单例模式的 weak singleton 的具体实现代码如下</h1><pre><code>+ (id)sharedInstance {
-   static __weak ASingletonClass *instance;
-   ASingletonClass *strongInstance = instance;
-   @synchronized(self) {
-      if (strongInstance == nil) {
-        strongInstance = [[[self class] alloc] init];
-        instance = strongInstance;
-      }
-   }
-   return strongInstance;
-}
-</code></pre><p>这种特殊的单例有一个有意思的特性：在所有使用该单例的对象都释放后，单例对象本身也会自己释放。</p>
-<p>如果 viewController A、B、C 三个视图控制器都调用了上面所描述的这种弱引用的弱单例模式。并且 viewController A、B、C 都持有 ASingletonClass 的强引用，一旦 A，B，C 都销毁后，这个单例就跟着销毁，而这个就跟我们之前的单例模式不一样了,它不会是从创建后就只能一直存在,无法释放。</p>
-<p>这样我们再一次回到上述的登陆模块的时候，当我们的登陆控制器在棧里被释放掉之后，登陆的 LoginInstance 单例也会随即释放，这样就达到了我们想要的效果。</p>
-<p>此外重要的是：当 LoginInstance 再次被调用时，LoginInstance 又会重新被创建。这样二次登陆的时候，LoginInstance 还是一个单例。</p>
-<p>然而我们会发现：weak singleton 这种弱单例模式中的 weak ，有着很漂亮的作用，巧妙的利用了weak的作用来设计了一种我们很想要的效果的模式，从而也看出来，对于关键词weak而言，还有很多能发现的美。</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>哟～谢谢你长得这么好看，还来逛我的博客 ：P <i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="http://olnzmhc4r.bkt.clouddn.com/alipayQRCode.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="http://olnzmhc4r.bkt.clouddn.com/wechatQRCode.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Travel</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">weak</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">weak singleton</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">弱单例模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杭州</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/19/weak-singleton模式在iOS中的应用/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/11/25/钱塘二渡/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          钱塘二渡
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/04/01/别管以后将如何结束，冷暖自愿尝透/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">别管以后将如何结束，冷暖自愿尝透</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-    <div class="duoshuo"></div>
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -426,9 +241,9 @@ weak的实际作用是：弱引用，在对象释放后置为 nil，避免错误
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
