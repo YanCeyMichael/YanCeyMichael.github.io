@@ -6,15 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>test | YanCey’s Blog</title>
+  <title>OpenCV之CascadeClassifier(一) | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://yoursite.com/2017/11/27/test/index.html">
+<meta property="og:title" content="OpenCV之CascadeClassifier(一)">
+<meta property="og:url" content="http://yoursite.com/2017/02/20/OpenCV之CascadeClassifier(一)/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
-<meta property="og:updated_time" content="2017-11-27T09:15:59.445Z">
+<meta property="og:updated_time" content="2017-11-24T03:18:19.230Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
+<meta name="twitter:title" content="OpenCV之CascadeClassifier(一)">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -166,20 +166,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-test" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-OpenCV之CascadeClassifier(一)" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      test
+      OpenCV之CascadeClassifier(一)
     </h1>
   
 
         
-        <a href="/2017/11/27/test/" class="archive-article-date">
-  	<time datetime="2017-11-27T09:15:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-27</time>
+        <a href="/2017/02/20/OpenCV之CascadeClassifier(一)/" class="archive-article-date">
+  	<time datetime="2017-02-20T06:23:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
 </a>
         
       </header>
@@ -187,6 +187,30 @@
 
 <!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+        <div id="toc-article" class="toc-article">
+            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+                <strong class="toc-title">文章目录</strong>
+            
+        </div>
+     <script type="text/javascript">
+          function showToc(){
+                   var toc_article = document.getElementById("toc-article");
+                   var show_toc_btn = document.getElementById("show-toc-btn");
+                   toc_article.setAttribute("style","display:block");
+                   show_toc_btn.setAttribute("style","display:none");
+                   };
+          function showBtn(){
+                   var toc_article = document.getElementById("toc-article");
+                   var show_toc_btn = document.getElementById("show-toc-btn");
+                   toc_article.setAttribute("style","display:none");
+                   show_toc_btn.setAttribute("style","display:block");
+                   };
+    </script>
+       
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
@@ -230,6 +254,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -280,7 +319,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/11/27/test/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/20/OpenCV之CascadeClassifier(一)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -294,9 +333,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/02/22/基于Hexo+Yilia的PersonalBlog的PC端添加音乐播放器/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          基于Hexo+Yilia的PersonalBlog的PC端添加音乐播放器
+        
+      </div>
+    </a>
   
-    <a href="/2017/11/27/我能做些什么和我打算做些什么/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我能做些什么和我打算做些什么</div>
+  
+    <a href="/2017/02/20/OpenCV之Mat(一)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OpenCV之Mat(一)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -415,15 +463,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 注释</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 变量</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 数据类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -459,35 +519,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 语句</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 注释</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 变量</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 数据类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,6 +536,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
