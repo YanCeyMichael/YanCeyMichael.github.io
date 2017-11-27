@@ -483,20 +483,20 @@
 
 
   
-    <article id="post-要尝试逃离上广深了么？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-人脸识别01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/19/要尝试逃离上广深了么？/">要尝试逃离上广深了么？</a>
+      <a class="article-title" href="/2017/02/20/人脸识别01/">人脸识别01</a>
     </h1>
   
 
         
-        <a href="/2017/02/19/要尝试逃离上广深了么？/" class="archive-article-date">
-  	<time datetime="2017-02-19T13:53:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-19</time>
+        <a href="/2017/02/20/人脸识别01/" class="archive-article-date">
+  	<time datetime="2017-02-20T02:01:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
 </a>
         
       </header>
@@ -508,11 +508,19 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>2017年2月19日了，这天比预期的时间晚来了30天，30天前我告诉自己，要弄一个个人站点，不管这个站点的Theme是从哪个大牛手里偷的，都要先用着。</p>
-<p>本来在现有的Hexo成熟的框架条件下，个人博客最多20分钟就可以弄好，但是我却花了比我预期多的多的时间。这些事件都耗费在哪了？耗费在不够专注：上班修改优化项目零碎的时间里，Hexo安装错误，一波接着一波的安装卸载，GitHub Pages删了又重新添加，全是无用之功。</p>
-<p>2月17日那天一天跑了四个面试，Cisco上海的技术面问了我很多基础的东西，26分钟后从大厦出来，从没有如此草率的面试，毫无准备，必然不会受到太高的待见。可是为啥我要把自己的实力不足归咎于准备不充分呢？没有什么台阶要给自己下的。自己的无能是原罪。下午在浦东张江高科，那个逆向开发公司的技术面和我聊了20多分钟，问我最近研究什么，问我最近开发上的难点有哪些，我一五一十的说着：搭建个人站点，研究夜间模式以及多主题设计思路和优化方案。后来问我：你会给iPhone越狱嘛？我说我没做过的时候他合起了他的Mac。我想这已经终结聊天了。我原本也是抱着试试的态度来的，iOS开发的汇编底层我知道暂时没那个能力去做，不被待见显而易见。但是这还是我第一次面试像别人展示自己的时候和别人想获取的信息完全不在同一个频道上，难免感到话题有点难聊，让我感觉空气里到处弥漫着尴尬。</p>
+        <blockquote>
+<p>废话内容，写在前面:</p>
+<p>2016年上半年在上海面试的时候。徐汇区有一家做社交的互联网公司开始打算做人脸识别，由此我了解了深圳脸萌科技的FaceU这款超级激萌的App。很有意思的是徐汇区那家社交公司面试我的时候跟我说的很明确：你做一个类似FaceU的demo给我，我就给你发Offer。有时候我在想一份工作好简单啊，只要你会做人脸识别添加贴纸贴片，一碗饭就来了。</p>
+<p>回去之后，我对比了iOS框架自带的人脸识别框架识别的精度不够高，侧脸极其难识别，我只好放弃转而奔向科大讯飞人脸识别的框架去做。</p>
+<p>那一个礼拜的时间里，我看科大讯飞的人脸识别SDK和官方Demo，在做识别的过程中想加贴片装饰品的时候，遇到了二个代理方法的冲突，导致某个识别状态始终无法修改。所以那次的demo最终是没有做出来。</p>
+<p>时隔快一年，我想人脸识别功能我该动一动了，恰好个人技术博客刚开张，也应该来一点技术干货。同时不一样的是，这次我也不打算用科大讯飞的框架，我想从OpenCV的开源库着手，多多少少还可以学点C++的函数也还不错。</p>
+<p>由此我想把研究人脸识别的过程记录下来。所以这个系列是一个不懂C++的iOS开发小白的学习过程。</p>
+<p>本系列文章，所有测试内容以及demo的环境如下：</p>
+<p>1）Xcode Version 8.2.1</p>
+<p>2）OpenCV for iOS 3.2.0 </p>
+</blockquote>
         
-          <a class="article-more-a" href="/2017/02/19/要尝试逃离上广深了么？/#more">more >></a>
+          <a class="article-more-a" href="/2017/02/20/人脸识别01/#more">more >></a>
         
       
 
@@ -526,7 +534,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Essays</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人脸识别</a>
         		</li>
       		
 		</ul>
@@ -536,7 +552,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/19/要尝试逃离上广深了么？/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/20/人脸识别01/">展开全文 >></a>
         </p>
       
 
@@ -556,7 +572,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -759,6 +775,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">弱单例模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
