@@ -24,7 +24,7 @@
 #Python缩进多少个空格还是一个tab的长度呢,没有明确规定,但是约定俗成采用 4 个空格缩进
 #为了方便在文本编辑器中，把Tab自动转换为4个空格，确保不混用Tab和空格,可以提高编写效率
 #缩进的坏处就">
-<meta property="og:updated_time" content="2017-11-29T10:33:41.117Z">
+<meta property="og:updated_time" content="2017-11-29T10:34:53.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python01">
 <meta name="twitter:description" content="Python的语法比较简单，采用缩进方式 实例:
@@ -205,6 +205,30 @@
 
 <!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+        <div id="toc-article" class="toc-article">
+            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+                <strong class="toc-title">文章目录</strong>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python的语法比较简单，采用缩进方式"><span class="toc-number">1.</span> <span class="toc-text">Python的语法比较简单，采用缩进方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据类型"><span class="toc-number">2.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#变量"><span class="toc-number">3.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+        </div>
+     <script type="text/javascript">
+          function showToc(){
+                   var toc_article = document.getElementById("toc-article");
+                   var show_toc_btn = document.getElementById("show-toc-btn");
+                   toc_article.setAttribute("style","display:block");
+                   show_toc_btn.setAttribute("style","display:none");
+                   };
+          function showBtn(){
+                   var toc_article = document.getElementById("toc-article");
+                   var show_toc_btn = document.getElementById("show-toc-btn");
+                   toc_article.setAttribute("style","display:none");
+                   show_toc_btn.setAttribute("style","display:block");
+                   };
+    </script>
+       
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
@@ -520,18 +544,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -544,11 +556,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,6 +573,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,11 +616,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
