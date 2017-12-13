@@ -18,7 +18,7 @@
 <meta property="og:description" content="list (列表)Python内置一种数据类型是列表:list,list是一种有序的集合,可以随时添加和删除其中的元素;其功效和作用和OC以及swift里的可变数组类似;
 用len(xxxx)函数可以获得list元素的个数;
 用索引来访问list中每一个位置的元素,索引是从0开始;当索引超出了范围时,Python会报一个IndexError错误,所以,要确保索引不要越界,最后一个元素的索引是le">
-<meta property="og:updated_time" content="2017-12-12T04:31:05.950Z">
+<meta property="og:updated_time" content="2017-12-12T08:35:22.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python02">
 <meta name="twitter:description" content="list (列表)Python内置一种数据类型是列表:list,list是一种有序的集合,可以随时添加和删除其中的元素;其功效和作用和OC以及swift里的可变数组类似;
@@ -203,7 +203,7 @@
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
                 <strong class="toc-title">文章目录</strong>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#list-列表"><span class="toc-number">1.</span> <span class="toc-text">list (列表)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tuple-元组"><span class="toc-number">2.</span> <span class="toc-text">tuple (元组)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#条件判断"><span class="toc-number">3.</span> <span class="toc-text">条件判断</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#list-列表"><span class="toc-number">1.</span> <span class="toc-text">list (列表)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tuple-元组"><span class="toc-number">2.</span> <span class="toc-text">tuple (元组)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#条件判断"><span class="toc-number">3.</span> <span class="toc-text">条件判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#循环"><span class="toc-number">4.</span> <span class="toc-text">循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dict-dictionary"><span class="toc-number">5.</span> <span class="toc-text">dict (dictionary)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set"><span class="toc-number">6.</span> <span class="toc-text">set</span></a></li></ol>
         </div>
      <script type="text/javascript">
           function showToc(){
@@ -246,6 +246,13 @@ elif &lt;条件判断3&gt;:
 else:
      &lt;执行4&gt;
 </code></pre><p>if语句执行有个特点,它是从上往下判断,如果在某个判断上是True,把该判断对应的语句执行后,就忽略掉剩下的elif和else   </p>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>for in 和 while ;<br>while循环,只要条件满足,就不断循环,条件不满足时退出循环.<br>在循环中,break语句可以提前退出循环.<br>在循环过程中,可以通过continue语句,跳过当前的这次循环,直接开始下一次循环.continue的作用是提前结束本轮循环,并直接开始下一轮循环.</p>
+<h2 id="dict-dictionary"><a href="#dict-dictionary" class="headerlink" title="dict (dictionary)"></a>dict (dictionary)</h2><p>Python内置了字典：dict的支持,dict全称dictionary,在其他语言中也称为map,使用键-值（key-value）存储,有极快的查找速度.<br>由于一个key只能对应一个value,所以,多次对一个key放入value,后面的值会把前面的值冲掉;如果key不存在,dict就会报错;<br>要避免key不存在的错误,有两种办法:<br>一是通过in判断key是否存在;<br>二是通过dict提供的get()方法,如果key不存在,可以返回None,或者自己指定的value;<br>(返回None的时候Python的交互环境不显示结果)<br>要删除一个key,用pop(key)方法,对应的value也会从dict中删除;</p>
+<p>和list比较,dict有以下几个特点:</p>
+<p>查找和插入的速度极快,不会随着key的增加而变慢;<br>需要占用大量的内存,内存浪费多.<br>而list相反:<br>查找和插入的时间随着元素的增加而增加;<br>占用空间小,浪费内存很少.</p>
+<p>所以,dict是用空间来换取时间的一种方法.</p>
+<p>dict通过Key找Value的位置遵循的是哈希算法,所以同时也就要求了dict的Key必须具有唯一性,所以dict的Key是一个不可变对象且唯一,要保证hash的正确性,作为key的对象就不能变.在Python中,字符串、整数等都是不可变的,因此,可以放心地作为key.而list是可变的,就不能作为key;</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>set和dict类似,也是一组key的集合,但不存储value.由于key不能重复,所以，在set中,没有重复的key.<br>通过add(key)方法可以添加元素到set中,可以重复添加,但不会有效果.</p>
 
       
 
@@ -493,26 +500,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
               </li>
              
@@ -549,6 +536,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -561,11 +568,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,11 +592,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,11 +628,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
