@@ -192,7 +192,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><h2 id="list-列表"><a href="#list-列表" class="headerlink" title="list (列表)"></a>list (列表)</h2><p>Python内置一种数据类型是列表:list,list是一种有序的集合,可以随时添加和删除其中的元素;<br>其功效和作用和OC以及swift里的可变数组类似;</p>
+        <h2 id="list-列表"><a href="#list-列表" class="headerlink" title="list (列表)"></a>list (列表)</h2><p>Python内置一种数据类型是列表:list,list是一种有序的集合,可以随时添加和删除其中的元素;<br>其功效和作用和OC以及swift里的可变数组类似;</p>
 <p>用len(xxxx)函数可以获得list元素的个数;</p>
 <p>用索引来访问list中每一个位置的元素,索引是从0开始;当索引超出了范围时,Python会报一个IndexError错误,所以,要确保索引不要越界,最后一个元素的索引是len(xxxx) - 1;当用来倒数索引查找的时候,我们可以省略len(xxxx),直接写-1,-2,-3,以此类推;</p>
 <p>用append(xxxxxxx)函数可以在list末尾追加元素;</p>
@@ -204,24 +204,10 @@
 <p>list元素也可以是另一个list;</p>
 <h2 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple (元组)"></a>tuple (元组)</h2><p>Python内置另一种有序列表叫元组:tuple,tuple和list非常类似,但是tuple一旦初始化就不能修改;<br>其功效和作用和OC以及swift里的不可变数组类似;<br>tuple没有append()，insert()这样的方法,其他获取元素的方法和list是一样的;<br>因为tuple不可变,所以代码更安全.如果可能,能用tuple代替list就尽量用tuple.<br>当定义一个tuple时,在定义的时候tuple的元素就必须被确定下来;<br>如果要定义一个空的tuple,可以写成();<br>只有1个元素的tuple定义时必须加一个逗号,用来来消除歧义;</p>
 <pre><code>t(1,) 
-</code></pre><h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><p>elif是else if的缩写</p>
-<pre><code>if &lt;条件判断1&gt;:
-     &lt;执行1&gt;
-elif &lt;条件判断2&gt;:
-     &lt;执行2&gt;
-elif &lt;条件判断3&gt;:
-     &lt;执行3&gt;
-else:
-     &lt;执行4&gt;
-</code></pre><p>if语句执行有个特点,它是从上往下判断,如果在某个判断上是True,把该判断对应的语句执行后,就忽略掉剩下的elif和else   </p>
-<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>for in 和 while ;<br>while循环,只要条件满足,就不断循环,条件不满足时退出循环.<br>在循环中,break语句可以提前退出循环.<br>在循环过程中,可以通过continue语句,跳过当前的这次循环,直接开始下一次循环.continue的作用是提前结束本轮循环,并直接开始下一轮循环.</p>
-<h2 id="dict-dictionary"><a href="#dict-dictionary" class="headerlink" title="dict (dictionary)"></a>dict (dictionary)</h2><p>Python内置了字典：dict的支持,dict全称dictionary,在其他语言中也称为map,使用键-值（key-value）存储,有极快的查找速度.<br>由于一个key只能对应一个value,所以,多次对一个key放入value,后面的值会把前面的值冲掉;如果key不存在,dict就会报错;<br>要避免key不存在的错误,有两种办法:<br>一是通过in判断key是否存在;<br>二是通过dict提供的get()方法,如果key不存在,可以返回None,或者自己指定的value;<br>(返回None的时候Python的交互环境不显示结果)<br>要删除一个key,用pop(key)方法,对应的value也会从dict中删除;</p>
-<p>和list比较,dict有以下几个特点:</p>
-<p>查找和插入的速度极快,不会随着key的增加而变慢;<br>需要占用大量的内存,内存浪费多.<br>而list相反:<br>查找和插入的时间随着元素的增加而增加;<br>占用空间小,浪费内存很少.</p>
-<p>所以,dict是用空间来换取时间的一种方法.</p>
-<p>dict通过Key找Value的位置遵循的是哈希算法,所以同时也就要求了dict的Key必须具有唯一性,所以dict的Key是一个不可变对象且唯一,要保证hash的正确性,作为key的对象就不能变.在Python中,字符串、整数等都是不可变的,因此,可以放心地作为key.而list是可变的,就不能作为key;</p>
-<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>set和dict类似,也是一组key的集合,但不存储value.由于key不能重复,所以，在set中,没有重复的key.<br>通过add(key)方法可以添加元素到set中,可以重复添加,但不会有效果.</p>
-
+</code></pre>
+        
+          <a class="article-more-a" href="/2017/12/05/Python02/#more">more >></a>
+        
       
 
       
@@ -736,6 +722,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -753,18 +751,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
              
               <li class="article-tag-list-item">
