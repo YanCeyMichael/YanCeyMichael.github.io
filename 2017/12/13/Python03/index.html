@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/13/Python03/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="调用函数要调用一个函数,需要知道函数的名称和参数,比如求绝对值的函数abs,只有一个参数.调用函数的时候,如果传入的参数数量不对,会报TypeError的错误,并且Python会明确地告诉你:abs()有且仅有1个参数,但给出了两个.如果传入的参数数量是对的,但参数类型不能被函数所接受,也会报TypeError的错误,并且给出错误信息.Python在数据转换的时候,也可以用数据类型转换函数.函数名">
-<meta property="og:updated_time" content="2017-12-15T07:25:37.528Z">
+<meta property="og:updated_time" content="2017-12-15T07:57:18.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python03">
 <meta name="twitter:description" content="调用函数要调用一个函数,需要知道函数的名称和参数,比如求绝对值的函数abs,只有一个参数.调用函数的时候,如果传入的参数数量不对,会报TypeError的错误,并且Python会明确地告诉你:abs()有且仅有1个参数,但给出了两个.如果传入的参数数量是对的,但参数类型不能被函数所接受,也会报TypeError的错误,并且给出错误信息.Python在数据转换的时候,也可以用数据类型转换函数.函数名">
@@ -235,7 +235,7 @@
 <pre><code>&gt;&gt;&gt; extra = {&apos;city&apos;: &apos;Beijing&apos;, &apos;job&apos;: &apos;Engineer&apos;}
 &gt;&gt;&gt; person(&apos;Jack&apos;, 24, **extra)
 name: Jack age: 24 other: {&apos;city&apos;: &apos;Beijing&apos;, &apos;job&apos;: &apos;Engineer&apos;}
-</code></pre><p><strong>extra表示把extra这个dict的所有key-value用关键字参数传入到函数的</strong>kw参数,kw将获得一个dict,注意kw获得的dict是extra的一份拷贝,对kw的改动不会影响到函数外的extra.</p>
+</code></pre><p>**extra表示把extra这个dict的所有key-value用关键字参数传入到函数的**kw参数,kw将获得一个dict,注意kw获得的dict是extra的一份拷贝,对kw的改动不会影响到函数外的extra.</p>
 <h4 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h4><p>对于关键字参数,函数的调用者可以传入任意不受限制的关键字参数.至于到底传入了哪些,就需要在函数内部通过kw检查.</p>
 <pre><code>def person(name, age, **kw):
     if &apos;city&apos; in kw:
@@ -245,14 +245,14 @@ name: Jack age: 24 other: {&apos;city&apos;: &apos;Beijing&apos;, &apos;job&apos
         # 有job参数
         pass
     print(&apos;name:&apos;, name, &apos;age:&apos;, age, &apos;other:&apos;, kw)
-</code></pre><p>如果要限制关键字参数的名字,就可以用命名关键字参数.和关键字参数<em>*kw不同,命名关键字参数需要一个特殊分隔符</em>,*后面的参数被视为命名关键字参数.</p>
+</code></pre><p>如果要限制关键字参数的名字,就可以用命名关键字参数.和关键字参数**kw不同,命名关键字参数需要一个特殊分隔符*,*后面的参数被视为命名关键字参数.</p>
 <pre><code>&gt;&gt;&gt; person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
 Jack 24 Beijing Engineer
 </code></pre><p>如果函数定义中已经有了一个可变参数,后面跟着的命名关键字参数就不再需要一个特殊分隔符*了:</p>
 <pre><code>def person(name, age, *args, city, job):
 print(name, age, args, city, job)
 </code></pre><p>命名关键字参数必须传入参数名,这和位置参数不同.如果没有传入参数名,调用将报错.</p>
-<p>使用命名关键字参数时,要特别注意,如果没有可变参数,就必须加一个<em>作为特殊分隔符.如果缺少</em>,Python解释器将无法识别位置参数和命名关键字参数   </p>
+<p>使用命名关键字参数时,要特别注意,如果没有可变参数,就必须加一个*作为特殊分隔符.如果缺少*,Python解释器将无法识别位置参数和命名关键字参数   </p>
 
       
 
@@ -500,18 +500,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
               </li>
              
@@ -556,6 +544,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -568,14 +568,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
               </li>
              
@@ -584,35 +576,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 函数调用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 定义函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数的参数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">weak</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">weak singleton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">弱单例模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,6 +624,38 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 函数调用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 定义函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数的参数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">weak</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">weak singleton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">弱单例模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
@@ -665,10 +669,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
