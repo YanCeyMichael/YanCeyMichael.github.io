@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/13/Python03/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="调用函数要调用一个函数,需要知道函数的名称和参数,比如求绝对值的函数abs,只有一个参数.调用函数的时候,如果传入的参数数量不对,会报TypeError的错误,并且Python会明确地告诉你:abs()有且仅有1个参数,但给出了两个.如果传入的参数数量是对的,但参数类型不能被函数所接受,也会报TypeError的错误,并且给出错误信息.Python在数据转换的时候,也可以用数据类型转换函数.函数名">
-<meta property="og:updated_time" content="2017-12-14T09:47:38.297Z">
+<meta property="og:updated_time" content="2017-12-15T07:25:37.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python03">
 <meta name="twitter:description" content="调用函数要调用一个函数,需要知道函数的名称和参数,比如求绝对值的函数abs,只有一个参数.调用函数的时候,如果传入的参数数量不对,会报TypeError的错误,并且Python会明确地告诉你:abs()有且仅有1个参数,但给出了两个.如果传入的参数数量是对的,但参数类型不能被函数所接受,也会报TypeError的错误,并且给出错误信息.Python在数据转换的时候,也可以用数据类型转换函数.函数名">
@@ -197,7 +197,7 @@
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
                 <strong class="toc-title">文章目录</strong>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#调用函数"><span class="toc-number">1.</span> <span class="toc-text">调用函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义函数"><span class="toc-number">2.</span> <span class="toc-text">定义函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数检查"><span class="toc-number">2.1.</span> <span class="toc-text">参数检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回多个值"><span class="toc-number">2.2.</span> <span class="toc-text">返回多个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">2.3.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数的参数"><span class="toc-number">3.</span> <span class="toc-text">函数的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#位置参数"><span class="toc-number">3.1.</span> <span class="toc-text">位置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认参数"><span class="toc-number">3.2.</span> <span class="toc-text">默认参数</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#调用函数"><span class="toc-number">1.</span> <span class="toc-text">调用函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义函数"><span class="toc-number">2.</span> <span class="toc-text">定义函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数检查"><span class="toc-number">2.1.</span> <span class="toc-text">参数检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回多个值"><span class="toc-number">2.2.</span> <span class="toc-text">返回多个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">2.3.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数的参数"><span class="toc-number">3.</span> <span class="toc-text">函数的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#位置参数"><span class="toc-number">3.1.</span> <span class="toc-text">位置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认参数"><span class="toc-number">3.2.</span> <span class="toc-text">默认参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变参数"><span class="toc-number">3.3.</span> <span class="toc-text">可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字参数"><span class="toc-number">3.4.</span> <span class="toc-text">关键字参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命名关键字参数"><span class="toc-number">3.4.1.</span> <span class="toc-text">命名关键字参数</span></a></li></ol></li></ol></li></ol>
         </div>
      <script type="text/javascript">
           function showToc(){
@@ -226,7 +226,33 @@
 <a id="more"></a>
 <h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><p>Python的函数定义非常简单,但灵活度却非常大.除了正常定义的必选参数外,还可以使用默认参数、可变参数和关键字参数,使得函数定义出来的接口,不但能处理复杂的参数,还可以简化调用者的代码.</p>
 <h3 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h3><p>power(x, n)函数有两个参数,x和n都是位置参数</p>
-<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>def power(x, n=2):   这里的n是默认参数<br>默认参数可以简化函数的调用.设置默认参数时,要注意:<br>一是必选参数在前,默认参数在后,否则Python的解释器会报错;<br>二当函数有多个参数时,把变化大的参数放前面,变化小的参数放后面.变化小的参数就可以作为默认参数.<br>PS:默认参数必须指向不变对象.</p>
+<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>def power(x, n=2):   这里的n是默认参数<br>默认参数可以简化函数的调用.设置默认参数时,要注意:<br>一是必选参数在前,默认参数在后,否则Python的解释器会报错;<br>二当函数有多个参数时,把变化大的参数放前面,变化小的参数放后面.变化小的参数就可以作为默认参数.<br>PS:默认参数必须指向不变对象.不变对象一旦创建,对象内部的数据就不能修改,这样就减少了由于修改数据导致的错误.此外,由于对象不变,多任务环境下同时读取对象不需要加锁,同时读一点问题都没有.我们在编写程序时,如果可以设计一个不变对象,那就尽量设计成不变对象.</p>
+<h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><pre><code>&gt;&gt;&gt; nums = [1, 2, 3]
+&gt;&gt;&gt; calc(*nums)
+14
+</code></pre><p>*nums表示把nums这个list的所有元素作为可变参数传进去.</p>
+<h3 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h3><p>可变参数允许传入0个或任意个参数,这些可变参数在函数调用时自动组装为一个tuple.而关键字参数允许你传入0个或任意个含参数名的参数,这些关键字参数在函数内部自动组装为一个dict.关键字参数有什么用？它可以扩展函数的功能.</p>
+<pre><code>&gt;&gt;&gt; extra = {&apos;city&apos;: &apos;Beijing&apos;, &apos;job&apos;: &apos;Engineer&apos;}
+&gt;&gt;&gt; person(&apos;Jack&apos;, 24, **extra)
+name: Jack age: 24 other: {&apos;city&apos;: &apos;Beijing&apos;, &apos;job&apos;: &apos;Engineer&apos;}
+</code></pre><p><strong>extra表示把extra这个dict的所有key-value用关键字参数传入到函数的</strong>kw参数,kw将获得一个dict,注意kw获得的dict是extra的一份拷贝,对kw的改动不会影响到函数外的extra.</p>
+<h4 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h4><p>对于关键字参数,函数的调用者可以传入任意不受限制的关键字参数.至于到底传入了哪些,就需要在函数内部通过kw检查.</p>
+<pre><code>def person(name, age, **kw):
+    if &apos;city&apos; in kw:
+        # 有city参数
+        pass
+    if &apos;job&apos; in kw:
+        # 有job参数
+        pass
+    print(&apos;name:&apos;, name, &apos;age:&apos;, age, &apos;other:&apos;, kw)
+</code></pre><p>如果要限制关键字参数的名字,就可以用命名关键字参数.和关键字参数<em>*kw不同,命名关键字参数需要一个特殊分隔符</em>,*后面的参数被视为命名关键字参数.</p>
+<pre><code>&gt;&gt;&gt; person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)
+Jack 24 Beijing Engineer
+</code></pre><p>如果函数定义中已经有了一个可变参数,后面跟着的命名关键字参数就不再需要一个特殊分隔符*了:</p>
+<pre><code>def person(name, age, *args, city, job):
+print(name, age, args, city, job)
+</code></pre><p>命名关键字参数必须传入参数名,这和位置参数不同.如果没有传入参数名,调用将报错.</p>
+<p>使用命名关键字参数时,要特别注意,如果没有可变参数,就必须加一个<em>作为特殊分隔符.如果缺少</em>,Python解释器将无法识别位置参数和命名关键字参数   </p>
 
       
 
@@ -474,6 +500,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
               </li>
              
@@ -518,18 +556,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -539,6 +565,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,18 +588,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 数据类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 变量</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 函数调用</a>
               </li>
              
@@ -575,14 +597,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Python 函数的参数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,6 +613,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">弱单例模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 数据类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 变量</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,10 +656,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
               </li>
              
@@ -643,6 +665,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
