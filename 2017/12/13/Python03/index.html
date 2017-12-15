@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/13/Python03/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="调用函数要调用一个函数,需要知道函数的名称和参数,比如求绝对值的函数abs,只有一个参数.调用函数的时候,如果传入的参数数量不对,会报TypeError的错误,并且Python会明确地告诉你:abs()有且仅有1个参数,但给出了两个.如果传入的参数数量是对的,但参数类型不能被函数所接受,也会报TypeError的错误,并且给出错误信息.Python在数据转换的时候,也可以用数据类型转换函数.函数名">
-<meta property="og:updated_time" content="2017-12-15T07:57:18.137Z">
+<meta property="og:updated_time" content="2017-12-15T08:54:57.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python03">
 <meta name="twitter:description" content="调用函数要调用一个函数,需要知道函数的名称和参数,比如求绝对值的函数abs,只有一个参数.调用函数的时候,如果传入的参数数量不对,会报TypeError的错误,并且Python会明确地告诉你:abs()有且仅有1个参数,但给出了两个.如果传入的参数数量是对的,但参数类型不能被函数所接受,也会报TypeError的错误,并且给出错误信息.Python在数据转换的时候,也可以用数据类型转换函数.函数名">
@@ -197,7 +197,7 @@
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
                 <strong class="toc-title">文章目录</strong>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#调用函数"><span class="toc-number">1.</span> <span class="toc-text">调用函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义函数"><span class="toc-number">2.</span> <span class="toc-text">定义函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数检查"><span class="toc-number">2.1.</span> <span class="toc-text">参数检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回多个值"><span class="toc-number">2.2.</span> <span class="toc-text">返回多个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">2.3.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数的参数"><span class="toc-number">3.</span> <span class="toc-text">函数的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#位置参数"><span class="toc-number">3.1.</span> <span class="toc-text">位置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认参数"><span class="toc-number">3.2.</span> <span class="toc-text">默认参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变参数"><span class="toc-number">3.3.</span> <span class="toc-text">可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字参数"><span class="toc-number">3.4.</span> <span class="toc-text">关键字参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命名关键字参数"><span class="toc-number">3.4.1.</span> <span class="toc-text">命名关键字参数</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#调用函数"><span class="toc-number">1.</span> <span class="toc-text">调用函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义函数"><span class="toc-number">2.</span> <span class="toc-text">定义函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数检查"><span class="toc-number">2.1.</span> <span class="toc-text">参数检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回多个值"><span class="toc-number">2.2.</span> <span class="toc-text">返回多个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">2.3.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数的参数"><span class="toc-number">3.</span> <span class="toc-text">函数的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#位置参数"><span class="toc-number">3.1.</span> <span class="toc-text">位置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认参数"><span class="toc-number">3.2.</span> <span class="toc-text">默认参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变参数"><span class="toc-number">3.3.</span> <span class="toc-text">可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字参数"><span class="toc-number">3.4.</span> <span class="toc-text">关键字参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命名关键字参数"><span class="toc-number">3.4.1.</span> <span class="toc-text">命名关键字参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数组合"><span class="toc-number">3.5.</span> <span class="toc-text">参数组合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-1"><span class="toc-number">3.6.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
         </div>
      <script type="text/javascript">
           function showToc(){
@@ -253,6 +253,13 @@ Jack 24 Beijing Engineer
 print(name, age, args, city, job)
 </code></pre><p>命名关键字参数必须传入参数名,这和位置参数不同.如果没有传入参数名,调用将报错.</p>
 <p>使用命名关键字参数时,要特别注意,如果没有可变参数,就必须加一个*作为特殊分隔符.如果缺少*,Python解释器将无法识别位置参数和命名关键字参数   </p>
+<pre><code>def person(name, age, city, job):
+   # 缺少 *，city和job被视为位置参数
+   pass
+</code></pre><h3 id="参数组合"><a href="#参数组合" class="headerlink" title="参数组合"></a>参数组合</h3><p>在Python中定义函数,可以用必选参数、默认参数、可变参数、关键字参数和命名关键字参数,这5种参数都可以组合使用.但是请注意,参数定义的顺序必须是:必选参数、默认参数、可变参数、命名关键字参数和关键字参数.所以,对于任意函数,都可以通过类似func(*args, **kw)的形式调用它,无论它的参数是如何定义的.虽然可以组合多达5种参数,但不要同时使用太多的组合,否则函数接口的可理解性很差.</p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>Python的函数具有非常灵活的参数形态,既可以实现简单的调用,又可以传入非常复杂的参数.<br>默认参数一定要用不可变对象,如果是可变对象,程序运行时会有逻辑错误!<br>要注意定义可变参数和关键字参数的语法:<br>*args是可变参数,args接收的是一个tuple;<br>**kw是关键字参数,kw接收的是一个dict.</p>
+<p>以及调用函数时如何传入可变参数和关键字参数的语法:<br>可变参数既可以直接传入:func(1, 2, 3),又可以先组装list或tuple,再通过*args传入:func(*(1, 2, 3));<br>关键字参数既可以直接传入:func(a=1, b=2),又可以先组装dict,再通过**kw传入：func(**{‘a’: 1, ‘b’: 2}).</p>
+<p>使用*args和**kw是Python的习惯写法,当然也可以用其他参数名,但最好使用习惯用法.<br>命名的关键字参数是为了限制调用者可以传入的参数名,同时可以提供默认值.<br>定义命名的关键字参数在没有可变参数的情况下不要忘了写分隔符*,否则定义的将是位置参数.</p>
 
       
 
@@ -378,6 +385,15 @@ print(name, age, args, city, job)
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/12/15/Python04/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python04
+        
+      </div>
+    </a>
   
   
     <a href="/2017/12/05/Python02/" id="article-nav-older" class="article-nav-link-wrap">
@@ -633,6 +649,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Python 函数的参数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
               </li>
              
               <li class="article-tag-list-item">
