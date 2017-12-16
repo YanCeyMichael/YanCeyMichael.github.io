@@ -184,34 +184,6 @@
       </header>
     
 
-<!-- 目录内容 -->
-
-<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-<span class="btn-bg"></span>
-<span class="btn-text">文章导航</span>
-</p>
-<div id="toc-article" class="toc-article">
-<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-<strong class="toc-title">文章目录</strong>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#递归函数"><span class="toc-number">1.</span> <span class="toc-text">递归函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#示例"><span class="toc-number">1.1.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">1.2.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
-</div>
-<script type="text/javascript">
-function showToc(){
-var toc_article = document.getElementById("toc-article");
-var show_toc_btn = document.getElementById("show-toc-btn");
-toc_article.setAttribute("style","display:block");
-show_toc_btn.setAttribute("style","display:none");
-};
-function showBtn(){
-var toc_article = document.getElementById("toc-article");
-var show_toc_btn = document.getElementById("show-toc-btn");
-toc_article.setAttribute("style","display:none");
-show_toc_btn.setAttribute("style","display:block");
-};
-</script>
-
-<!-- 目录内容结束 -->
-
     <div class="article-entry" itemprop="articleBody">
       
         <script src="/assets/js/APlayer.min.js"> </script><h1 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h1><p>在函数内部,可以调用其他函数.如果一个函数在内部调用自身本身,这个函数就是递归函数.<br>递归函数的优点是定义简单,逻辑清晰.理论上,所有的递归函数都可以写成循环的方式,但循环的逻辑不如递归清晰.<br>使用递归函数需要注意防止栈溢出.在计算机中,函数调用是通过栈（stack）这种数据结构实现的,每当进入一个函数调用,栈就会加一层栈帧,每当函数返回,栈就会减一层栈帧.由于栈的大小不是无限的,所以,递归调用的次数过多,会导致栈溢出.<br>解决递归调用栈溢出的方法是通过尾递归优化,事实上尾递归和循环的效果是一样的,所以,把循环看成是一种特殊的尾递归函数也是可以的.<br>尾递归是指,在函数返回的时候,调用自身本身,并且,return语句不能包含表达式.这样,编译器或者解释器就可以把尾递归做优化,使递归本身无论调用多少次,都只占用一个栈帧,不会出现栈溢出的情况.<br>尾递归调用时,如果做了优化,栈不会增长,因此,无论多少次调用也不会导致栈溢出.<br>使用递归函数的优点是逻辑简单清晰,缺点是过深的调用会导致栈溢出.<br>针对尾递归优化的语言可以通过尾递归防止栈溢出.尾递归事实上和循环是等价的,没有循环语句的编程语言只能通过尾递归实现循环.<br>Python标准的解释器没有针对尾递归做优化,任何递归函数都存在栈溢出的问题.</p>

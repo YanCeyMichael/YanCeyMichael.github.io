@@ -184,34 +184,6 @@
       </header>
     
 
-<!-- 目录内容 -->
-
-<p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-<span class="btn-bg"></span>
-<span class="btn-text">文章导航</span>
-</p>
-<div id="toc-article" class="toc-article">
-<span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-<strong class="toc-title">文章目录</strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#调用函数"><span class="toc-number">1.</span> <span class="toc-text">调用函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义函数"><span class="toc-number">2.</span> <span class="toc-text">定义函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数检查"><span class="toc-number">2.1.</span> <span class="toc-text">参数检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回多个值"><span class="toc-number">2.2.</span> <span class="toc-text">返回多个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">2.3.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数的参数"><span class="toc-number">3.</span> <span class="toc-text">函数的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#位置参数"><span class="toc-number">3.1.</span> <span class="toc-text">位置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认参数"><span class="toc-number">3.2.</span> <span class="toc-text">默认参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变参数"><span class="toc-number">3.3.</span> <span class="toc-text">可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字参数"><span class="toc-number">3.4.</span> <span class="toc-text">关键字参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命名关键字参数"><span class="toc-number">3.4.1.</span> <span class="toc-text">命名关键字参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数组合"><span class="toc-number">3.5.</span> <span class="toc-text">参数组合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-1"><span class="toc-number">3.6.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
-</div>
-<script type="text/javascript">
-function showToc(){
-var toc_article = document.getElementById("toc-article");
-var show_toc_btn = document.getElementById("show-toc-btn");
-toc_article.setAttribute("style","display:block");
-show_toc_btn.setAttribute("style","display:none");
-};
-function showBtn(){
-var toc_article = document.getElementById("toc-article");
-var show_toc_btn = document.getElementById("show-toc-btn");
-toc_article.setAttribute("style","display:none");
-show_toc_btn.setAttribute("style","display:block");
-};
-</script>
-
-<!-- 目录内容结束 -->
-
     <div class="article-entry" itemprop="articleBody">
       
         <script src="/assets/js/APlayer.min.js"> </script><h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>要调用一个函数,需要知道函数的名称和参数,比如求绝对值的函数abs,只有一个参数.<br>调用函数的时候,如果传入的参数数量不对,会报TypeError的错误,并且Python会明确地告诉你:abs()有且仅有1个参数,但给出了两个.<br>如果传入的参数数量是对的,但参数类型不能被函数所接受,也会报TypeError的错误,并且给出错误信息.<br>Python在数据转换的时候,也可以用数据类型转换函数.<br>函数名其实就是指向一个函数对象的引用,完全可以把函数名赋给一个变量,相当于给这个函数起了一个“别名”.</p>
