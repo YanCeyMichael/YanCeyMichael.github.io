@@ -20,7 +20,7 @@ Python针对所有需要截取的操作,统一都用切片操作来处理,比如
 Python针对所有需要截取的操作,统一都用切片操作来处理,比如对list,tuple元素的截取,对string的字符截取,都可以用切片操作来完成.
 [1,2,3,4,5] [0:5]
 (0, 1, 2, 3,">
-<meta property="og:updated_time" content="2017-12-16T08:41:39.936Z">
+<meta property="og:updated_time" content="2017-12-16T10:03:15.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python05">
 <meta name="twitter:description" content="切片在很多编程语言中,针对字符串提供了很多各种截取函数（例如,substring）,其实目的就是对字符串切片.Python没有针对字符串的截取函数,只需要切片一个操作就可以完成,非常简单.
@@ -227,7 +227,24 @@ False
 </code></pre><p>还可以使用两层循环,可以生成全排列:</p>
 <pre><code>&gt;&gt;&gt; [m + n for m in &apos;ABC&apos; for n in &apos;XYZ&apos;]
 [&apos;AX&apos;, &apos;AY&apos;, &apos;AZ&apos;, &apos;BX&apos;, &apos;BY&apos;, &apos;BZ&apos;, &apos;CX&apos;, &apos;CY&apos;, &apos;CZ&apos;]
-</code></pre><h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p> Python的语法对矩阵的表示太友好了.    </p>
+</code></pre><p>列表生成式也可以使用两个变量来生成list:</p>
+<pre><code>&gt;&gt;&gt; d = {&apos;x&apos;: &apos;A&apos;, &apos;y&apos;: &apos;B&apos;, &apos;z&apos;: &apos;C&apos; }
+&gt;&gt;&gt; [k + &apos;=&apos; + v for k, v in d.items()]
+[&apos;y=B&apos;, &apos;x=A&apos;, &apos;z=C&apos;]
+</code></pre><p>最后把一个list中所有的字符串变成小写:</p>
+<pre><code>&gt;&gt;&gt; L = [&apos;Hello&apos;, &apos;World&apos;, &apos;IBM&apos;, &apos;apple&apos;]
+&gt;&gt;&gt; [s.lower() for s in L]
+[&apos;hello&apos;, &apos;world&apos;, &apos;ibm&apos;, &apos;apple&apos;]   
+</code></pre><p>使用内建的isinstance函数可以判断一个变量是不是字符串:</p>
+<pre><code>&gt;&gt;&gt; x = &apos;abc&apos;
+&gt;&gt;&gt; y = 123
+&gt;&gt;&gt; isinstance(x, str)
+True
+&gt;&gt;&gt; isinstance(y, str)
+False    
+</code></pre><h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>Python的语法对矩阵的表示太友好了.  </p>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>通过列表生成式,我们可以直接创建一个列表.但是,受到内存限制,列表容量肯定是有限.而且,创建一个包含100万个元素的列表,不仅占用很大的存储空间,如果我们仅仅需要访问前面几个元素,那后面绝大多数元素占用的空间都白白浪费了.</p>
+<p>如果列表元素可以按照某种算法推算出来,那我们是否可以在循环的过程中不断推算出后续的元素呢?这样就不必创建完整的list,从而节省大量的空间.<br>在Python中,这种一边循环一边计算的机制,称为生成器:generator.</p>
 
       
 
@@ -395,7 +412,7 @@ False
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#切片"><span class="toc-number">1.</span> <span class="toc-text">切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代"><span class="toc-number">2.</span> <span class="toc-text">迭代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">2.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表生成式"><span class="toc-number">3.</span> <span class="toc-text">列表生成式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-1"><span class="toc-number">3.1.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#切片"><span class="toc-number">1.</span> <span class="toc-text">切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代"><span class="toc-number">2.</span> <span class="toc-text">迭代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">2.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表生成式"><span class="toc-number">3.</span> <span class="toc-text">列表生成式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-1"><span class="toc-number">3.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成器"><span class="toc-number">4.</span> <span class="toc-text">生成器</span></a></li></ol>
                     </div>
                 </span>
             </div>
