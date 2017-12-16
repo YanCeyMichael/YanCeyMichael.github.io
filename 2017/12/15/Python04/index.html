@@ -35,8 +35,6 @@
 
   
 
-  <!-- 给网页头添加icon -->
-  <link rel="icon" href="http://olnzmhc4r.bkt.clouddn.com/webPageHeadIcon-Y.png">
 </head>
 
 <body>
@@ -44,15 +42,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-
-<!--
-<div style="position:fixed;top: 0px;z-index: 100;left: 8px;">
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=110 src="//music.163.com/outchain/player?type=0&id=609175973&auto=1&height=90"></iframe>
-</div>
--->
-
 <div class="overlay" style="background: #1E90FF"></div>
-
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -64,6 +54,7 @@
 		
 		<p class="header-subtitle">Only the paranoid survive!</p>
 		
+
 		<nav class="header-menu">
 			<ul>
 			
@@ -97,9 +88,8 @@
 		        
 			</div>
 		</nav>
-    </header>
+	</header>		
 </div>
-
 
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
@@ -183,7 +173,6 @@
         
       </header>
     
-
     <div class="article-entry" itemprop="articleBody">
       
         <script src="/assets/js/APlayer.min.js"> </script><h1 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h1><p>在函数内部,可以调用其他函数.如果一个函数在内部调用自身本身,这个函数就是递归函数.<br>递归函数的优点是定义简单,逻辑清晰.理论上,所有的递归函数都可以写成循环的方式,但循环的逻辑不如递归清晰.<br>使用递归函数需要注意防止栈溢出.在计算机中,函数调用是通过栈（stack）这种数据结构实现的,每当进入一个函数调用,栈就会加一层栈帧,每当函数返回,栈就会减一层栈帧.由于栈的大小不是无限的,所以,递归调用的次数过多,会导致栈溢出.<br>解决递归调用栈溢出的方法是通过尾递归优化,事实上尾递归和循环的效果是一样的,所以,把循环看成是一种特殊的尾递归函数也是可以的.<br>尾递归是指,在函数返回的时候,调用自身本身,并且,return语句不能包含表达式.这样,编译器或者解释器就可以把尾递归做优化,使递归本身无论调用多少次,都只占用一个栈帧,不会出现栈溢出的情况.<br>尾递归调用时,如果做了优化,栈不会增长,因此,无论多少次调用也不会导致栈溢出.<br>使用递归函数的优点是逻辑简单清晰,缺点是过深的调用会导致栈溢出.<br>针对尾递归优化的语言可以通过尾递归防止栈溢出.尾递归事实上和循环是等价的,没有循环语句的编程语言只能通过尾递归实现循环.<br>Python标准的解释器没有针对尾递归做优化,任何递归函数都存在栈溢出的问题.</p>
@@ -382,10 +371,12 @@ def factor_iteration(num, product):
     	<div class="footer-left">
     		&copy; 2017 YanCey
     	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
     </div>
   </div>
 </footer>
-
     </div>
     <script>
 	var yiliaConfig = {
@@ -554,14 +545,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -578,15 +561,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 函数调用</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 定义函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数的参数</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,6 +593,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 函数调用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 定义函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数的参数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
               </li>
              
@@ -634,11 +625,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
