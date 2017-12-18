@@ -20,7 +20,7 @@ Python针对所有需要截取的操作,统一都用切片操作来处理,比如
 Python针对所有需要截取的操作,统一都用切片操作来处理,比如对list,tuple元素的截取,对string的字符截取,都可以用切片操作来完成.
 [1,2,3,4,5] [0:5]
 (0, 1, 2, 3,">
-<meta property="og:updated_time" content="2017-12-16T10:03:15.777Z">
+<meta property="og:updated_time" content="2017-12-18T08:27:30.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python05">
 <meta name="twitter:description" content="切片在很多编程语言中,针对字符串提供了很多各种截取函数（例如,substring）,其实目的就是对字符串切片.Python没有针对字符串的截取函数,只需要切片一个操作就可以完成,非常简单.
@@ -243,8 +243,102 @@ True
 &gt;&gt;&gt; isinstance(y, str)
 False    
 </code></pre><h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>Python的语法对矩阵的表示太友好了.  </p>
-<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>通过列表生成式,我们可以直接创建一个列表.但是,受到内存限制,列表容量肯定是有限.而且,创建一个包含100万个元素的列表,不仅占用很大的存储空间,如果我们仅仅需要访问前面几个元素,那后面绝大多数元素占用的空间都白白浪费了.</p>
-<p>如果列表元素可以按照某种算法推算出来,那我们是否可以在循环的过程中不断推算出后续的元素呢?这样就不必创建完整的list,从而节省大量的空间.<br>在Python中,这种一边循环一边计算的机制,称为生成器:generator.</p>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>通过列表生成式,可以直接创建一个列表.但是,受到内存限制,列表容量肯定是有限.假如创建一个包含100万个元素的列表,不仅占用很大的存储空间,如果我们仅仅需要访问前面几个元素,那后面绝大多数元素占用的空间都白白浪费了.</p>
+<p>如果列表元素可以按照某种算法推算出来,那我们是否可以在循环的过程中不断推算出后续的元素呢?这样就不必创建完整的list,从而节省大量的空间.</p>
+<p>在Python中,这种一边循环一边计算的机制,称为生成器:generator.</p>
+<h3 id="创建生成器方法"><a href="#创建生成器方法" class="headerlink" title="创建生成器方法"></a>创建生成器方法</h3><p>方法一:有个简单的方法,把一个列表生成式的[]改成(),就创建了一个生成器</p>
+<pre><code>&gt;&gt;&gt; L = [x * x for x in range(10)]
+&gt;&gt;&gt; L
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+&gt;&gt;&gt; g = (x * x for x in range(10))
+&gt;&gt;&gt; g
+</code></pre><p>其中L是一个列表,而g是一个生成器;<br>一般情况下,我们可以直接打印出List,而生成器要用何方法打印呢?可以用next()函数;</p>
+<pre><code>&gt;&gt;&gt; next(g)
+0
+&gt;&gt;&gt; next(g)
+1
+&gt;&gt;&gt; next(g)
+4
+&gt;&gt;&gt; next(g)
+9
+&gt;&gt;&gt; next(g)
+16
+&gt;&gt;&gt; next(g)
+25
+&gt;&gt;&gt; next(g)
+36
+&gt;&gt;&gt; next(g)
+49
+&gt;&gt;&gt; next(g)
+64
+&gt;&gt;&gt; next(g)
+81
+&gt;&gt;&gt; next(g)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+StopIteration
+</code></pre><p>为何每次都只打印一个值的原因是:generator保存的是算法,每次调用next(g),就计算出g的下一个元素的值,直到计算到最后一个元素,没有更多的元素时,抛出StopIteration的错误.所以是符合我们之前对generator的定义和最初要求的.</p>
+<p>当然逐个打印出来的方法显得略笨,同样可以用for循环来操作打印</p>
+<pre><code>&gt;&gt;&gt; g = (x * x for x in range(10))
+&gt;&gt;&gt; for n in g:
+...     print(n)
+... 
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+</code></pre><p>对于generator来说,如果推算的算法比较复杂,用类似列表生成式的for循环无法实现的时候,还可以用函数来实现.</p>
+<p>这里有个典型的例子:<br>斐波拉契数列函数如下</p>
+<pre><code>def fib(max):
+    n, a, b = 0, 0, 1
+    while n &lt; max:
+        print(b)
+
+        a, b = b, a + b   #这一句相当于下面的注释的三句代码
+        #t = (b, a + b)   # t是一个tuple
+        #a = t[0]
+        #b = t[1]
+
+        n = n + 1
+    return &apos;done&apos;
+</code></pre><p>fib函数实际上是定义了斐波拉契数列的推算规则,可以从第一个元素开始,推算出后续任意的元素,这其实非常类似generator的思想,且达到了generator的意义;</p>
+<p>对于另一种生成器的创建方法就是:改写函数,当一个函数中含有关键字yield的时候,那么这个函数就不是一个普通函数,值得注意的是generator和函数的区别:函数是顺序执行,遇到return语句或者最后一行函数语句就返回.而generator函数,在每次调用next()的时候执行,遇到yield语句返回,再次执行时从上次返回的yield语句处继续执行.</p>
+<pre><code>def fib(max):
+        n, a, b = 0, 0, 1
+        while n &lt; max:
+            yield b
+
+            a, b = b, a + b   #这一句相当于下面的注释的三句代码
+            #t = (b, a + b)   # t是一个tuple
+            #a = t[0]
+            #b = t[1]
+
+            n = n + 1
+        return &apos;done&apos;
+</code></pre><p>用for循环调用generator时,如果拿不到generator的return语句的返回值,且又想要拿到返回值,那就需要捕获StopIteration错误,返回值包含在StopIteration的value中;</p>
+<pre><code>&gt;&gt;&gt; g = fib(6)
+&gt;&gt;&gt; while True:
+...     try:
+...         x = next(g)
+...         print(&apos;g:&apos;, x)
+...     except StopIteration as e:
+...         print(&apos;Generator return value:&apos;, e.value)
+...         break
+...
+g: 1
+g: 1
+g: 2
+g: 3
+g: 5
+g: 8
+Generator return value: done    
+</code></pre><h2 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h2><p>在Python中,可以简单地把列表生成式改成generator,也可以通过函数实现复杂逻辑的generator.<br>要理解generator的工作原理,它是在for循环的过程中不断计算出下一个元素,并在适当的条件结束for循环.对于函数改成的generator来说,遇到return语句或者执行到函数体最后一行语句,就是结束generator的指令,for循环随之结束.</p>
 
       
 
@@ -412,7 +506,7 @@ False
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#切片"><span class="toc-number">1.</span> <span class="toc-text">切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代"><span class="toc-number">2.</span> <span class="toc-text">迭代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">2.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表生成式"><span class="toc-number">3.</span> <span class="toc-text">列表生成式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-1"><span class="toc-number">3.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成器"><span class="toc-number">4.</span> <span class="toc-text">生成器</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#切片"><span class="toc-number">1.</span> <span class="toc-text">切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代"><span class="toc-number">2.</span> <span class="toc-text">迭代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">2.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表生成式"><span class="toc-number">3.</span> <span class="toc-text">列表生成式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-1"><span class="toc-number">3.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成器"><span class="toc-number">4.</span> <span class="toc-text">生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建生成器方法"><span class="toc-number">4.1.</span> <span class="toc-text">创建生成器方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结-2"><span class="toc-number">5.</span> <span class="toc-text">小结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -568,6 +662,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -588,18 +694,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -609,22 +703,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -641,6 +719,50 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Python 变量</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 切片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 迭代</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 列表生成式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Python 生成器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Python 迭代器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,34 +802,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 切片</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 迭代</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 列表生成式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Python 生成器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Python 迭代器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
@@ -724,14 +818,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
               </li>
              
@@ -741,6 +827,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
