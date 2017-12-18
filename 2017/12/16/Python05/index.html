@@ -20,7 +20,7 @@ Python针对所有需要截取的操作,统一都用切片操作来处理,比如
 Python针对所有需要截取的操作,统一都用切片操作来处理,比如对list,tuple元素的截取,对string的字符截取,都可以用切片操作来完成.
 [1,2,3,4,5] [0:5]
 (0, 1, 2, 3,">
-<meta property="og:updated_time" content="2017-12-18T08:29:29.966Z">
+<meta property="og:updated_time" content="2017-12-18T10:16:57.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python05">
 <meta name="twitter:description" content="切片在很多编程语言中,针对字符串提供了很多各种截取函数（例如,substring）,其实目的就是对字符串切片.Python没有针对字符串的截取函数,只需要切片一个操作就可以完成,非常简单.
@@ -339,7 +339,50 @@ g: 5
 g: 8
 Generator return value: done    
 </code></pre><h3 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h3><p>在Python中,可以简单地把列表生成式改成generator,也可以通过函数实现复杂逻辑的generator.<br>要理解generator的工作原理,它是在for循环的过程中不断计算出下一个元素,并在适当的条件结束for循环.对于函数改成的generator来说,遇到return语句或者执行到函数体最后一行语句,就是结束generator的指令,for循环随之结束.</p>
-
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>直接作用于for循环的数据类型有以下几种：<br>一类是集合数据类型,如list、tuple、dict、set、str等;<br>一类是generator,包括生成器和带yield的generator function.<br>这些可以直接作用于for循环的对象统称为可迭代对象:Iterable.</p>
+<pre><code>&gt;&gt;&gt; from collections import Iterable
+&gt;&gt;&gt; isinstance([], Iterable)
+True
+&gt;&gt;&gt; isinstance({}, Iterable)
+True
+&gt;&gt;&gt; isinstance(&apos;abc&apos;, Iterable)
+True
+&gt;&gt;&gt; isinstance((x for x in range(10)), Iterable)
+True
+&gt;&gt;&gt; isinstance(100, Iterable)
+False
+</code></pre><p>生成器不但可以作用于for循环,还可以被next()函数不断调用并返回下一个值,直到最后抛出StopIteration错误表示无法继续返回下一个值了.<br>可以被next()函数调用并不断返回下一个值的对象称为迭代器:Iterator.<br>可以使用isinstance()判断一个对象是否是Iterator对象.</p>
+<pre><code>&gt;&gt;&gt; from collections import Iterator
+&gt;&gt;&gt; isinstance((x for x in range(10)), Iterator)
+True
+&gt;&gt;&gt; isinstance([], Iterator)
+False
+&gt;&gt;&gt; isinstance({}, Iterator)
+False
+&gt;&gt;&gt; isinstance(&apos;abc&apos;, Iterator)
+False
+</code></pre><p>生成器都是Iterator对象,但list、dict、str虽然是Iterable(可迭代的),却不是Iterator(迭代器).</p>
+<p>但是要把list、dict、str等Iterable变成Iterator可以使用iter()函数:</p>
+<pre><code>&gt;&gt;&gt; isinstance(iter([]), Iterator)
+True
+&gt;&gt;&gt; isinstance(iter(&apos;abc&apos;), Iterator)
+True
+</code></pre><p>因为Python的Iterator对象表示的是一个数据流,Iterator对象可以被next()函数调用并不断返回下一个数据,直到没有数据时抛出StopIteration错误.可以把这个数据流看做是一个有序序列,但我们却不能提前知道序列的长度,只能不断通过next()函数实现按需计算下一个数据,所以Iterator的计算是惰性的,只有在需要返回下一个数据时它才会计算.<br>Iterator甚至可以表示一个无限大的数据流,例如全体自然数.而使用list是永远不可能存储全体自然数的.</p>
+<h3 id="小结-3"><a href="#小结-3" class="headerlink" title="小结"></a>小结</h3><p>凡是可作用于for循环的对象都是Iterable类型;<br>凡是可作用于next()函数的对象都是Iterator类型,它们表示一个惰性计算的序列;<br>集合数据类型如list、dict、str等是Iterable但不是Iterator,不过可以通过iter()函数获得一个Iterator对象.<br>Python的for循环本质上就是通过不断调用next()函数实现的,例如:</p>
+<pre><code>for x in [1, 2, 3, 4, 5]:
+    pass
+</code></pre><p>等价于：  </p>
+<pre><code># 首先获得Iterator对象:
+it = iter([1, 2, 3, 4, 5])
+# 循环:
+while True:
+    try:
+        # 获得下一个值:
+        x = next(it)
+    except StopIteration:
+        # 遇到StopIteration就退出循环
+        break  
+</code></pre>
       
 
       
@@ -506,7 +549,7 @@ Generator return value: done
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#切片"><span class="toc-number">1.</span> <span class="toc-text">切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代"><span class="toc-number">2.</span> <span class="toc-text">迭代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">2.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表生成式"><span class="toc-number">3.</span> <span class="toc-text">列表生成式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-1"><span class="toc-number">3.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成器"><span class="toc-number">4.</span> <span class="toc-text">生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建生成器方法"><span class="toc-number">4.1.</span> <span class="toc-text">创建生成器方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-2"><span class="toc-number">4.2.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#切片"><span class="toc-number">1.</span> <span class="toc-text">切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代"><span class="toc-number">2.</span> <span class="toc-text">迭代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">2.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表生成式"><span class="toc-number">3.</span> <span class="toc-text">列表生成式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-1"><span class="toc-number">3.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成器"><span class="toc-number">4.</span> <span class="toc-text">生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建生成器方法"><span class="toc-number">4.1.</span> <span class="toc-text">创建生成器方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-2"><span class="toc-number">4.2.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代器"><span class="toc-number">5.</span> <span class="toc-text">迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-3"><span class="toc-number">5.1.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
