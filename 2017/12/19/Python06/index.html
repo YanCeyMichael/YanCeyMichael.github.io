@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/19/Python06/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="高阶函数定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作">
-<meta property="og:updated_time" content="2017-12-20T09:58:44.527Z">
+<meta property="og:updated_time" content="2017-12-20T10:09:17.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python06">
 <meta name="twitter:description" content="高阶函数定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作">
@@ -184,6 +184,13 @@
 &gt;&gt;&gt; f
 &lt;built-in function abs&gt;
 </code></pre><p>上面是将abs函数整体赋值给f,也就是函数本身赋值给变量,即:变量可以指向函数.</p>
+<p>当一个变量指向了一个函数,那么可以通过该变量来调用这个函数;</p>
+<pre><code>&gt;&gt;&gt; f = abs
+&gt;&gt;&gt; f(-10)
+10
+</code></pre><p>直接调用abs()函数和调用变量f()完全相同;</p>
+<h2 id="函数名也是变量"><a href="#函数名也是变量" class="headerlink" title="函数名也是变量"></a>函数名也是变量</h2><p>那么函数名是什么呢?函数名其实就是指向函数的变量!对于abs()这个函数,完全可以把函数名abs看成变量,它指向一个可以计算绝对值的函数!</p>
+<h2 id="传入函数"><a href="#传入函数" class="headerlink" title="传入函数"></a>传入函数</h2><p>既然变量可以指向函数,函数的参数能接收变量,那么一个函数就可以接收另一个函数作为参数,这种函数就称之为高阶函数.</p>
 
       
 
@@ -335,7 +342,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#高阶函数"><span class="toc-number">1.</span> <span class="toc-text">高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量可以指向函数"><span class="toc-number">1.1.</span> <span class="toc-text">变量可以指向函数</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#高阶函数"><span class="toc-number">1.</span> <span class="toc-text">高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量可以指向函数"><span class="toc-number">1.1.</span> <span class="toc-text">变量可以指向函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数名也是变量"><span class="toc-number">1.2.</span> <span class="toc-text">函数名也是变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传入函数"><span class="toc-number">1.3.</span> <span class="toc-text">传入函数</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
