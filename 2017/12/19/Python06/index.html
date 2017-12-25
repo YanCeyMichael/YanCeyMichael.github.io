@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/19/Python06/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="高阶函数定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作为">
-<meta property="og:updated_time" content="2017-12-21T06:59:40.806Z">
+<meta property="og:updated_time" content="2017-12-25T04:23:57.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python06">
 <meta name="twitter:description" content="高阶函数定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作为">
@@ -46,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://olnzmhc4r.bkt.clouddn.com/CartonAvatar.jpg" class="js-avatar">
+			<img src="http://olnzmhc4r.bkt.clouddn.com/CartonAvatarIcon.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">YanCey</a></h1>
@@ -102,7 +102,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://olnzmhc4r.bkt.clouddn.com/CartonAvatar.jpg" class="js-avatar">
+				<img src="http://olnzmhc4r.bkt.clouddn.com/CartonAvatarIcon.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">YanCey</h1>
@@ -201,10 +201,87 @@ f(x) + f(y) ==&gt; abs(-5) + abs(6) ==&gt; 11
 return 11
 </code></pre><p>编写高阶函数,就是让函数的参数能够接收别的函数.</p>
 <a id="more"></a>
-<h2 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map/reduce"></a>map/reduce</h2><p>重点了解map()和reduce()两个函数;</p>
+<h2 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map/reduce"></a>map/reduce</h2><h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>重点了解map()和reduce()两个函数;</p>
 <p>对于map()而言:接收两个参数,一个是函数,一个是Iterable,map将传入的函数依次作用到序列的每个元素,并把结果作为新的Iterator返回;</p>
-<p>举例:将函数f(x) = x^2 ，要把这个函数作用在一个list [1, 2, 3, 4, 5, 6, 7, 8, 9]上</p>
+<p>举例:将函数f(x) = x ^ 2 ,要把这个函数作用在一个list [1, 2, 3, 4, 5, 6, 7, 8, 9]上.</p>
+<pre><code>&gt;&gt;&gt; def f(x):
+...     return x * x
+...
+&gt;&gt;&gt; r = map(f, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+&gt;&gt;&gt; list(r)
+[1, 4, 9, 16, 25, 36, 49, 64, 81]
+</code></pre><p>map()传入的第一个参数是f,即函数对象本身.由于结果r是一个Iterator,Iterator是惰性序列,因此通过list()函数让它把整个序列都计算出来并返回一个list.</p>
+<p>当然上面的过程和需求的作用结果,我们用循环遍历也可以做,比如讲循环遍历挨个平方,也能得到类似的结果,但是你需要看真个循环你才知道这个循环的作用是用来干嘛的,而map()的意义在于,它作为高阶函数,把具体的运算规则抽象化;</p>
+<p>例如:要把list [1, 2, 3, 4, 5, 6, 7, 8, 9]所有元素转成字符</p>
+<pre><code>&gt;&gt;&gt; list(map(str, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
+[&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;, &apos;9&apos;]
+</code></pre><p>用map()去执行的话,相当的简洁明.</p>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><p>reduce把一个函数作用在一个序列[x1, x2, x3, …]上,这个函数必须接收两个参数,reduce把结果继续和序列的下一个元素做累积计算,其效果就是:</p>
+<pre><code>reduce(f, [x1, x2, x3, x4]) = f(f(f(x1, x2), x3), x4)
+</code></pre><p>求和运算可以直接用Python内建函数sum(),没必要动用reduce.<br>假如需要把 [1,3,5,7,9]变换成整数13579,reduce就可以施展拳脚了.</p>
+<pre><code>&gt;&gt;&gt; from functools import reduce
+&gt;&gt;&gt; def fn(x, y):
+...     return x * 10 + y
+...
+&gt;&gt;&gt; reduce(fn, [1, 3, 5, 7, 9])
+13579
+</code></pre><h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>filter()和map()类似,filter()也接收一个函数和一个序列.和map()不同的是,filter()把传入的函数依次作用于每个元素,然后根据返回值是True还是False决定保留还是丢弃该元素.</p>
+<p>举例:删掉list里的偶数,保留基数</p>
+<pre><code>def is_odd(n):
+return n % 2 == 1
 
+list(filter(is_odd, [1, 2, 4, 5, 6, 9, 10, 15]))
+# 结果: [1, 5, 9, 15]
+</code></pre><p>filter()函数返回的是一个Iterator,也就是一个惰性序列,所以要强迫filter()完成计算结果,需要用list()函数获得所有结果并返回list.</p>
+<p>经典案例分析:用filter求素数<br>(质数又称素数,一个大于1的自然数,除了1和它自身外,不能被其他自然数整除的数叫做质数;否则称为合数.)</p>
+<p>最常见的统计素数的方法是埃氏筛法,原理如下:</p>
+<p>首先,列出从2开始的所有自然数,构造一个序列:<br>2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, …<br>取序列的第一个数2,它一定是素数,然后用2把序列的2的倍数筛掉:<br>3, 4(X), 5, 6(X), 7, 8(X), 9, 10(X), 11, 12(X), 13, 14(X), 15, 16(X), 17, 18(X), 19, 20(X), …<br>取新序列的第一个数3,它一定是素数,然后用3把序列的3的倍数筛掉:<br>5, 6(X), 7, 8(X), 9(X), 10(X), 11, 12(X), 13, 14(X), 15(X), 16(X), 17, 18(X), 19, 20(X), …<br>取新序列的第一个数5,然后用5把序列的5的倍数筛掉:<br>7, 8(X), 9(X), 10(X), 11, 12(X), 13, 14(X), 15(X), 16(X), 17, 18(X), 19, 20(X), …</p>
+<p>不断筛下去,就可以得到所有的素数.</p>
+<pre><code>def _int_iter():
+    n = 1
+    while True:
+        n = n + 1
+        yield n
+
+def  _not_divisible(n):
+    return lambda x:x % n &gt; 0
+
+def primes():
+    it = _int_iter()
+    while True:
+        n = next(it)
+        yield n
+        it = filter(_not_divisible(n), it)
+</code></pre><h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h3><p>排序不管是常见的冒泡还是快排,核心的思想都是比较两个元素的大小;有个问题是:当我们比较数字大小的时候,可以直接快速的比较,但是对于比较字符串或者dict的时候,便没有了数学意义上的大小意义,因此可以把过程抽象出来.</p>
+<p>举例:对List排序</p>
+<pre><code>&gt;&gt;&gt; sorted([36, 5, -12, 9, -21])
+[-21, -12, 5, 9, 36]
+</code></pre><p>sorted()可以接收一个key函数来实现自定义的排序,比如按绝对值大小排序: </p>
+<pre><code>&gt;&gt;&gt; sorted([36, 5, -12, 9, -21], key=abs)
+[5, 9, -12, -21, 36]
+</code></pre><p>从这里可以看出,sorted()排序的关键在于实现一个映射函数.</p>
+<h1 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h1><h2 id="函数作为返回值"><a href="#函数作为返回值" class="headerlink" title="函数作为返回值"></a>函数作为返回值</h2><p>高阶函数不仅可以把函数作为参数,同时也可以把函数作为结果返回.</p>
+<p>下面是个求和函数</p>
+<pre><code>def calc_sum(*args):
+    ax = 0
+    for n in args:
+        ax = ax + n
+    return ax
+</code></pre><p>如果不需要立即求和,后续根据需求再求和,可以不返回求和结果,而是返回求和的函数:</p>
+<pre><code>def lazy_sum(*args):
+    def sum():
+        ax = 0
+        for n in args:
+            ax = ax + n
+        return ax
+    return sum
+</code></pre><p>(这两个是python中的可变参数.*args表示任何多个无名参数,它是一个tuple;**kwargs表示关键字参数,它是一个dict.并且同时使用*args和**kwargs时,必须*args参数列要在**\kwargs前.)</p>
+<pre><code>&gt;&gt;&gt; f = lazy_sum(1,3,5,7,9)
+&gt;&gt;&gt; f
+&lt;function sum at 0x1010f9d70&gt;
+&gt;&gt;&gt; f()
+25
+</code></pre><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2>
       
 
       
@@ -355,7 +432,7 @@ return 11
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#高阶函数"><span class="toc-number">1.</span> <span class="toc-text">高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量可以指向函数"><span class="toc-number">1.1.</span> <span class="toc-text">变量可以指向函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数名也是变量"><span class="toc-number">1.2.</span> <span class="toc-text">函数名也是变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传入函数"><span class="toc-number">1.3.</span> <span class="toc-text">传入函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map-reduce"><span class="toc-number">1.4.</span> <span class="toc-text">map/reduce</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#高阶函数"><span class="toc-number">1.</span> <span class="toc-text">高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量可以指向函数"><span class="toc-number">1.1.</span> <span class="toc-text">变量可以指向函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数名也是变量"><span class="toc-number">1.2.</span> <span class="toc-text">函数名也是变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传入函数"><span class="toc-number">1.3.</span> <span class="toc-text">传入函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map-reduce"><span class="toc-number">1.4.</span> <span class="toc-text">map/reduce</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-number">1.4.1.</span> <span class="toc-text">map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reduce"><span class="toc-number">1.4.2.</span> <span class="toc-text">reduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filter"><span class="toc-number">1.4.3.</span> <span class="toc-text">filter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sorted"><span class="toc-number">1.4.4.</span> <span class="toc-text">sorted</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#返回函数"><span class="toc-number">2.</span> <span class="toc-text">返回函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#函数作为返回值"><span class="toc-number">2.1.</span> <span class="toc-text">函数作为返回值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包"><span class="toc-number">2.2.</span> <span class="toc-text">闭包</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -563,14 +640,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -584,6 +653,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Python 变量</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,34 +704,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 切片</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 迭代</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 列表生成式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Python 生成器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Python 迭代器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
@@ -675,7 +728,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 切片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 迭代</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 列表生成式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Python 生成器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Python 迭代器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,6 +761,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
