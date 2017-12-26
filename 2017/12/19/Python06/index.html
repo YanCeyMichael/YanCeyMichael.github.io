@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/19/Python06/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="高阶函数定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作为">
-<meta property="og:updated_time" content="2017-12-26T03:42:59.095Z">
+<meta property="og:updated_time" content="2017-12-26T03:51:58.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python06">
 <meta name="twitter:description" content="高阶函数定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作为">
@@ -349,7 +349,11 @@ def now():
 <pre><code>&gt;&gt;&gt; now()
 execute now():
 2015-3-25
-</code></pre>
+</code></pre><p>本质上调用了如下代码:</p>
+<pre><code>&gt;&gt;&gt; now = log(&apos;execute&apos;)(now)
+</code></pre><p>首先执行log(‘execute’),返回的是decorator函数,再调用返回的函数,参数是now函数,返回值最终是wrapper函数</p>
+<h1 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h1><p>当函数的参数个数太多,需要简化时,使用functools.partial可以创建一个新的函数,这个新函数可以固定住原函数的部分参数,从而在调用时更简单.</p>
+
       
 
       
@@ -500,7 +504,7 @@ execute now():
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#高阶函数"><span class="toc-number">1.</span> <span class="toc-text">高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量可以指向函数"><span class="toc-number">1.1.</span> <span class="toc-text">变量可以指向函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数名也是变量"><span class="toc-number">1.2.</span> <span class="toc-text">函数名也是变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传入函数"><span class="toc-number">1.3.</span> <span class="toc-text">传入函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map-reduce"><span class="toc-number">1.4.</span> <span class="toc-text">map/reduce</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-number">1.4.1.</span> <span class="toc-text">map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reduce"><span class="toc-number">1.4.2.</span> <span class="toc-text">reduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filter"><span class="toc-number">1.4.3.</span> <span class="toc-text">filter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sorted"><span class="toc-number">1.4.4.</span> <span class="toc-text">sorted</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#返回函数"><span class="toc-number">2.</span> <span class="toc-text">返回函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#函数作为返回值"><span class="toc-number">2.1.</span> <span class="toc-text">函数作为返回值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包"><span class="toc-number">2.2.</span> <span class="toc-text">闭包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#匿名函数"><span class="toc-number">3.</span> <span class="toc-text">匿名函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#装饰器"><span class="toc-number">4.</span> <span class="toc-text">装饰器</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#高阶函数"><span class="toc-number">1.</span> <span class="toc-text">高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量可以指向函数"><span class="toc-number">1.1.</span> <span class="toc-text">变量可以指向函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数名也是变量"><span class="toc-number">1.2.</span> <span class="toc-text">函数名也是变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传入函数"><span class="toc-number">1.3.</span> <span class="toc-text">传入函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map-reduce"><span class="toc-number">1.4.</span> <span class="toc-text">map/reduce</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-number">1.4.1.</span> <span class="toc-text">map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reduce"><span class="toc-number">1.4.2.</span> <span class="toc-text">reduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filter"><span class="toc-number">1.4.3.</span> <span class="toc-text">filter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sorted"><span class="toc-number">1.4.4.</span> <span class="toc-text">sorted</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#返回函数"><span class="toc-number">2.</span> <span class="toc-text">返回函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#函数作为返回值"><span class="toc-number">2.1.</span> <span class="toc-text">函数作为返回值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包"><span class="toc-number">2.2.</span> <span class="toc-text">闭包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#匿名函数"><span class="toc-number">3.</span> <span class="toc-text">匿名函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#装饰器"><span class="toc-number">4.</span> <span class="toc-text">装饰器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#偏函数"><span class="toc-number">5.</span> <span class="toc-text">偏函数</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -700,22 +704,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 数据类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 变量</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
               </li>
              
@@ -732,7 +720,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 数据类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 变量</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -772,11 +772,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高阶函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -804,6 +800,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高阶函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
@@ -820,6 +824,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
               </li>
              
@@ -829,14 +841,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
