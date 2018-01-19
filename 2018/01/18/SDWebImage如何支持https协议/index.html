@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: JavaScript 判断语句 | YanCey’s Blog</title>
+  <title>SDWebImage如何支持https协议 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="YanCey’s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/JavaScript-判断语句/index.html">
+  <meta name="description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 框架来显示和展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,全面的普及 https 的措施一定会逐渐全面普及起来.
+实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SDWebImage如何支持https协议">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/SDWebImage如何支持https协议/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
+<meta property="og:description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 框架来显示和展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,全面的普及 https 的措施一定会逐渐全面普及起来.
+实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际">
+<meta property="og:updated_time" content="2018-01-19T08:35:19.794Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="YanCey’s Blog">
+<meta name="twitter:title" content="SDWebImage如何支持https协议">
+<meta name="twitter:description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 框架来显示和展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,全面的普及 https 的措施一定会逐渐全面普及起来.
+实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -151,80 +158,268 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SDWebImage如何支持https协议" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/02/JavaScript02/" class="archive-article-date">
-  	<time datetime="2017-03-02T05:33:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/02/JavaScript02/">JavaScript02</a>
+    <h1 class="article-title" itemprop="name">
+      SDWebImage如何支持https协议
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/01/18/SDWebImage如何支持https协议/" class="archive-article-date">
+  	<time datetime="2018-01-18T07:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><p>大量的App现在都用优秀的图片处理框架 SDWebImage 框架来显示和展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,全面的普及 https 的措施一定会逐渐全面普及起来.</p>
+<p>实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际开发过程中,网络模块和 SDWebImage 联合起来才算一个完整的网络架构模块,而 SDWebImage 本身是有校验证书方法的,只不过内部没有具体的操作,也没有详细写,每个开发者可以根据具体业务需要根据实际情况来处理,所以对 SDWebImage 框架在哪里修改,在哪里改写来成功完成 https 的请求,就变成了一个事儿.</p>
+<p>对于 SDWebImage 框架下的 SDWebImageDownloaderOperation 这个类中的这个方法重写:</p>
+<pre><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler;
+</code></pre><p>个人建议不要修改原框架的原文件,无破坏性无入侵式修改的话,对  SDWebImageDownloaderOperation 这个类 写一个分类,然后重写上述方法,以下是具体重写内容.</p>
+<pre><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
+{
+NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+__block NSURLCredential *credential = nil;
+
+if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+    if (!(self.options &amp; SDWebImageDownloaderAllowInvalidSSLCertificates)) {
+        disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+    } else {
+        //改写方法 然后插入证书验证代码
+        do
+        {
+            SecTrustRef serverTrust = [[challenge protectionSpace] serverTrust];
+            NSCAssert(serverTrust != nil, @&quot;serverTrust is nil&quot;);
+            if(nil == serverTrust)                break;
+            /* failed */
+            /**
+             *  导入多张CA证书（Certification Authority，支持SSL证书以及自签名的CA），请替换掉你的证书名称
+             */
+            NSString *cerPath = [[NSBundle mainBundle] pathForResource:@&quot;oss-ifeixiu-com&quot; ofType:@&quot;cer&quot;];
+            //自签名证书
+            NSData *caCert = [NSData dataWithContentsOfFile:cerPath];
+
+            NSCAssert(caCert != nil, @&quot;caCert is nil&quot;);
+
+            if(nil == caCert)                break;
+            /* failed */
+            SecCertificateRef caRef = SecCertificateCreateWithData(NULL, (__bridge CFDataRef)caCert);
+            NSCAssert(caRef != nil, @&quot;caRef is nil&quot;);
+            if(nil == caRef)                 break;
+            /* failed */
+            //可以添加多张证书
+            NSArray *caArray = @[(__bridge id)(caRef)];
+            NSCAssert(caArray != nil, @&quot;caArray is nil&quot;);
+            if(nil == caArray)                break;
+            /* failed */
+            //将读取的证书设置为服务端帧数的根证书
+            OSStatus status = SecTrustSetAnchorCertificates(serverTrust, (__bridge CFArrayRef)caArray);
+            NSCAssert(errSecSuccess == status, @&quot;SecTrustSetAnchorCertificates failed&quot;);
+            if(!(errSecSuccess == status))                break;
+            /* failed */
+            SecTrustResultType result = - 1;
+            //通过本地导入的证书来验证服务器的证书是否可信
+            status = SecTrustEvaluate(serverTrust, &amp;result);
+            if(!(errSecSuccess == status))                break;
+            /* failed */
+            debug_NSLog(@&quot;stutas:%d&quot;,(int)status);
+            debug_NSLog(@&quot;Result: %d&quot;, result);
+            BOOL allowConnect = (result == kSecTrustResultUnspecified) || (result == kSecTrustResultProceed);
+            if (allowConnect) {
+                debug_NSLog(@&quot;success&quot;);
+            }else {
+                debug_NSLog(@&quot;error&quot;);
+            }
+
+            /* kSecTrustResultUnspecified and kSecTrustResultProceed are success */
+            if(!allowConnect)            {
+                break;
+                /* failed */
+            }
+</code></pre><p>#if 0<br>                /<em><br>                 Treat kSecTrustResultConfirm and kSecTrustResultRecoverableTrustFailure as success
+                 </em>/</p>
+<pre><code>/*   since the user will likely tap-through to see the dancing bunnies */
+if(result == kSecTrustResultDeny || result == kSecTrustResultFatalTrustFailure || result == kSecTrustResultOtherError)                break;
+/* failed to trust cert (good in this case) */
+</code></pre><p>#endif<br>                // The only good exit point<br>                debug_NSLog(@”信任该证书”);<br>                credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];<br>                disposition = NSURLSessionAuthChallengeUseCredential;<br>            }<br>            while(0);<br>        }<br>    } else {<br>        if (challenge.previousFailureCount == 0) {<br>            if (self.credential) {<br>                credential = self.credential;<br>                disposition = NSURLSessionAuthChallengeUseCredential;<br>            } else {<br>                disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;<br>            }<br>        } else {<br>            disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;<br>        }<br>    }</p>
+<pre><code>if (completionHandler) {
+    completionHandler(disposition, credential);
+}
+}
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>哟～谢谢你长得这么好看，还来逛我的博客 ：P <i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://olnzmhc4r.bkt.clouddn.com/alipayQRCode.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://olnzmhc4r.bkt.clouddn.com/wechatQRCode.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SDWebImage</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 对象</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript 运算符</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 判断语句</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 循环语句</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">https</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/18/SDWebImage如何支持https协议/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/01/03/全新的生活和逐渐的喜爱/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">全新的生活和逐渐的喜爱</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -250,9 +445,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
