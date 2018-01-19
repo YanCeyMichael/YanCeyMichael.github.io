@@ -238,13 +238,36 @@ if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthent
                 break;
                 /* failed */
             }
-</code></pre><p>#if 0<br>                /<em><br>                 Treat kSecTrustResultConfirm and kSecTrustResultRecoverableTrustFailure as success
-                 </em>/</p>
-<pre><code>/*   since the user will likely tap-through to see the dancing bunnies */
-if(result == kSecTrustResultDeny || result == kSecTrustResultFatalTrustFailure || result == kSecTrustResultOtherError)                break;
-/* failed to trust cert (good in this case) */
-</code></pre><p>#endif<br>                // The only good exit point<br>                debug_NSLog(@”信任该证书”);<br>                credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];<br>                disposition = NSURLSessionAuthChallengeUseCredential;<br>            }<br>            while(0);<br>        }<br>    } else {<br>        if (challenge.previousFailureCount == 0) {<br>            if (self.credential) {<br>                credential = self.credential;<br>                disposition = NSURLSessionAuthChallengeUseCredential;<br>            } else {<br>                disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;<br>            }<br>        } else {<br>            disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;<br>        }<br>    }</p>
-<pre><code>if (completionHandler) {
+#if 0
+            /*
+             Treat kSecTrustResultConfirm and kSecTrustResultRecoverableTrustFailure as success
+             */
+
+            /*   since the user will likely tap-through to see the dancing bunnies */
+            if(result == kSecTrustResultDeny || result == kSecTrustResultFatalTrustFailure || result == kSecTrustResultOtherError)                break;
+            /* failed to trust cert (good in this case) */
+#endif
+            // The only good exit point
+            debug_NSLog(@&quot;信任该证书&quot;);
+            credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+            disposition = NSURLSessionAuthChallengeUseCredential;
+        }
+        while(0);
+    }
+} else {
+    if (challenge.previousFailureCount == 0) {
+        if (self.credential) {
+            credential = self.credential;
+            disposition = NSURLSessionAuthChallengeUseCredential;
+        } else {
+            disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
+        }
+    } else {
+        disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
+    }
+}
+
+if (completionHandler) {
     completionHandler(disposition, credential);
 }
 }
@@ -808,18 +831,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -837,6 +848,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -872,15 +895,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -896,15 +919,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
