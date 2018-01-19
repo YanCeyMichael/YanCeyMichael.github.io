@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 框架来显示和展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,全面的普及 https 的措施一定会逐渐全面普及起来.
 实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际">
-<meta property="og:updated_time" content="2018-01-19T08:37:32.531Z">
+<meta property="og:updated_time" content="2018-01-19T08:38:45.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SDWebImage如何支持https协议">
 <meta name="twitter:description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 框架来显示和展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,全面的普及 https 的措施一定会逐渐全面普及起来.
@@ -185,96 +185,96 @@
 </code></pre><p>个人建议不要修改原框架的原文件,无破坏性无入侵式修改的话,对  SDWebImageDownloaderOperation 这个类 写一个分类,然后重写上述方法,以下是具体重写内容.</p>
 <pre><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
 {
-NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
-__block NSURLCredential *credential = nil;
+   NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+   __block NSURLCredential *credential = nil;
 
-if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-    if (!(self.options &amp; SDWebImageDownloaderAllowInvalidSSLCertificates)) {
-        disposition = NSURLSessionAuthChallengePerformDefaultHandling;
-    } else {
-        //改写方法 然后插入证书验证代码
-        do
-        {
-            SecTrustRef serverTrust = [[challenge protectionSpace] serverTrust];
-            NSCAssert(serverTrust != nil, @&quot;serverTrust is nil&quot;);
-            if(nil == serverTrust)                break;
-            /* failed */
-            /**
-             *  导入多张CA证书（Certification Authority，支持SSL证书以及自签名的CA），请替换掉你的证书名称
-             */
-            NSString *cerPath = [[NSBundle mainBundle] pathForResource:@&quot;oss-ifeixiu-com&quot; ofType:@&quot;cer&quot;];
-            //自签名证书
-            NSData *caCert = [NSData dataWithContentsOfFile:cerPath];
+   if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+       if (!(self.options &amp; SDWebImageDownloaderAllowInvalidSSLCertificates)) {
+           disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+       } else {
+           //改写方法 然后插入证书验证代码
+           do
+           {
+               SecTrustRef serverTrust = [[challenge protectionSpace] serverTrust];
+               NSCAssert(serverTrust != nil, @&quot;serverTrust is nil&quot;);
+               if(nil == serverTrust)                break;
+               /* failed */
+               /**
+                *  导入多张CA证书（Certification Authority，支持SSL证书以及自签名的CA），请替换掉你的证书名称
+                */
+               NSString *cerPath = [[NSBundle mainBundle] pathForResource:@&quot;oss-ifeixiu-com&quot; ofType:@&quot;cer&quot;];
+               //自签名证书
+               NSData *caCert = [NSData dataWithContentsOfFile:cerPath];
 
-            NSCAssert(caCert != nil, @&quot;caCert is nil&quot;);
+               NSCAssert(caCert != nil, @&quot;caCert is nil&quot;);
 
-            if(nil == caCert)                break;
-            /* failed */
-            SecCertificateRef caRef = SecCertificateCreateWithData(NULL, (__bridge CFDataRef)caCert);
-            NSCAssert(caRef != nil, @&quot;caRef is nil&quot;);
-            if(nil == caRef)                 break;
-            /* failed */
-            //可以添加多张证书
-            NSArray *caArray = @[(__bridge id)(caRef)];
-            NSCAssert(caArray != nil, @&quot;caArray is nil&quot;);
-            if(nil == caArray)                break;
-            /* failed */
-            //将读取的证书设置为服务端帧数的根证书
-            OSStatus status = SecTrustSetAnchorCertificates(serverTrust, (__bridge CFArrayRef)caArray);
-            NSCAssert(errSecSuccess == status, @&quot;SecTrustSetAnchorCertificates failed&quot;);
-            if(!(errSecSuccess == status))                break;
-            /* failed */
-            SecTrustResultType result = - 1;
-            //通过本地导入的证书来验证服务器的证书是否可信
-            status = SecTrustEvaluate(serverTrust, &amp;result);
-            if(!(errSecSuccess == status))                break;
-            /* failed */
-            debug_NSLog(@&quot;stutas:%d&quot;,(int)status);
-            debug_NSLog(@&quot;Result: %d&quot;, result);
-            BOOL allowConnect = (result == kSecTrustResultUnspecified) || (result == kSecTrustResultProceed);
-            if (allowConnect) {
-                debug_NSLog(@&quot;success&quot;);
-            }else {
-                debug_NSLog(@&quot;error&quot;);
-            }
+               if(nil == caCert)                break;
+               /* failed */
+               SecCertificateRef caRef = SecCertificateCreateWithData(NULL, (__bridge CFDataRef)caCert);
+               NSCAssert(caRef != nil, @&quot;caRef is nil&quot;);
+               if(nil == caRef)                 break;
+               /* failed */
+               //可以添加多张证书
+               NSArray *caArray = @[(__bridge id)(caRef)];
+               NSCAssert(caArray != nil, @&quot;caArray is nil&quot;);
+               if(nil == caArray)                break;
+               /* failed */
+               //将读取的证书设置为服务端帧数的根证书
+               OSStatus status = SecTrustSetAnchorCertificates(serverTrust, (__bridge CFArrayRef)caArray);
+               NSCAssert(errSecSuccess == status, @&quot;SecTrustSetAnchorCertificates failed&quot;);
+               if(!(errSecSuccess == status))                break;
+               /* failed */
+               SecTrustResultType result = - 1;
+               //通过本地导入的证书来验证服务器的证书是否可信
+               status = SecTrustEvaluate(serverTrust, &amp;result);
+               if(!(errSecSuccess == status))                break;
+               /* failed */
+               debug_NSLog(@&quot;stutas:%d&quot;,(int)status);
+               debug_NSLog(@&quot;Result: %d&quot;, result);
+               BOOL allowConnect = (result == kSecTrustResultUnspecified) || (result == kSecTrustResultProceed);
+               if (allowConnect) {
+                   debug_NSLog(@&quot;success&quot;);
+               }else {
+                   debug_NSLog(@&quot;error&quot;);
+               }
 
-            /* kSecTrustResultUnspecified and kSecTrustResultProceed are success */
-            if(!allowConnect)            {
-                break;
-                /* failed */
-            }
-#if 0
-            /*
-             Treat kSecTrustResultConfirm and kSecTrustResultRecoverableTrustFailure as success
-             */
+               /* kSecTrustResultUnspecified and kSecTrustResultProceed are success */
+               if(!allowConnect)            {
+                   break;
+                   /* failed */
+               }
+   #if 0
+               /*
+                Treat kSecTrustResultConfirm and kSecTrustResultRecoverableTrustFailure as success
+                */
 
-            /*   since the user will likely tap-through to see the dancing bunnies */
-            if(result == kSecTrustResultDeny || result == kSecTrustResultFatalTrustFailure || result == kSecTrustResultOtherError)                break;
-            /* failed to trust cert (good in this case) */
-#endif
-            // The only good exit point
-            debug_NSLog(@&quot;信任该证书&quot;);
-            credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-            disposition = NSURLSessionAuthChallengeUseCredential;
-        }
-        while(0);
-    }
-} else {
-    if (challenge.previousFailureCount == 0) {
-        if (self.credential) {
-            credential = self.credential;
-            disposition = NSURLSessionAuthChallengeUseCredential;
-        } else {
-            disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
-        }
-    } else {
-        disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
-    }
-}
+               /*   since the user will likely tap-through to see the dancing bunnies */
+               if(result == kSecTrustResultDeny || result == kSecTrustResultFatalTrustFailure || result == kSecTrustResultOtherError)                break;
+               /* failed to trust cert (good in this case) */
+   #endif
+               // The only good exit point
+               debug_NSLog(@&quot;信任该证书&quot;);
+               credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+               disposition = NSURLSessionAuthChallengeUseCredential;
+           }
+           while(0);
+       }
+   } else {
+       if (challenge.previousFailureCount == 0) {
+           if (self.credential) {
+               credential = self.credential;
+               disposition = NSURLSessionAuthChallengeUseCredential;
+           } else {
+               disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
+           }
+       } else {
+           disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
+       }
+   }
 
-if (completionHandler) {
-    completionHandler(disposition, credential);
-}
+   if (completionHandler) {
+       completionHandler(disposition, credential);
+   }
 }
 </code></pre>
       
@@ -611,6 +611,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -620,14 +628,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,10 +643,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
@@ -656,6 +652,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
