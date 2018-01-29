@@ -173,8 +173,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>大量的App现在都用优秀的图片处理框架 SDWebImage 框架来显示和展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,全面的普及 https 的措施一定会逐渐全面普及起来.</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>大量的App现在都用优秀的图片处理框架 SDWebImage 框架来展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,普及 https 的措施一定会逐渐全面覆盖.</p>
 <p>实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际开发过程中,网络模块和 SDWebImage 联合起来才算一个完整的网络架构模块,而 SDWebImage 本身是有校验证书方法的,只不过内部没有具体的操作,也没有详细写,每个开发者可以根据具体业务需要根据实际情况来处理,所以对 SDWebImage 框架在哪里修改,在哪里改写来成功完成 https 的请求,就变成了一个事儿.</p>
+<p>其实只要理解了SDWebImage框架的底层,以及几个关键类的作用,这个问题便不是问题:</p>
 <p>对于 SDWebImage 框架下的 SDWebImageDownloaderOperation 这个类中的这个方法重写:</p>
 <pre><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler;
 </code></pre><p>个人建议不要修改原框架的原文件,无破坏性无入侵式修改的话,对  SDWebImageDownloaderOperation 这个类 写一个分类,然后重写上述方法,以下是具体重写内容.</p>
@@ -911,11 +912,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
               </li>
              
               <li class="article-tag-list-item">
