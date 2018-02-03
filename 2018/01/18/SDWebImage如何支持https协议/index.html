@@ -9,18 +9,18 @@
   <title>SDWebImage如何支持https协议 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 框架来展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,普及 https 的措施一定会逐渐全面覆盖.
-实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际开发过程中,网络">
+实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际开发过程中,网络模">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SDWebImage如何支持https协议">
 <meta property="og:url" content="http://yoursite.com/2018/01/18/SDWebImage如何支持https协议/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 框架来展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,普及 https 的措施一定会逐渐全面覆盖.
-实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际开发过程中,网络">
-<meta property="og:updated_time" content="2018-01-29T01:49:26.016Z">
+实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际开发过程中,网络模">
+<meta property="og:updated_time" content="2018-02-03T08:10:47.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SDWebImage如何支持https协议">
 <meta name="twitter:description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 框架来展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,普及 https 的措施一定会逐渐全面覆盖.
-实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际开发过程中,网络">
+实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际开发过程中,网络模">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -183,7 +183,8 @@
 <p>其实只要理解了SDWebImage框架的底层,以及几个关键类的作用,这个问题便不是问题:</p>
 <p>对于 SDWebImage 框架下的 SDWebImageDownloaderOperation 这个类中的这个方法重写:</p>
 <pre><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler;
-</code></pre><p>个人建议不要修改原框架的原文件,无破坏性无入侵式修改的话,对  SDWebImageDownloaderOperation 这个类 写一个分类,然后重写上述方法,以下是具体重写内容.</p>
+</code></pre><a id="more"></a>
+<p>个人建议不要修改原框架的原文件,无破坏性无入侵式修改的话,对  SDWebImageDownloaderOperation 这个类 写一个分类,然后重写上述方法,以下是具体重写内容.</p>
 <pre><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
 {
    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
@@ -625,14 +626,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -642,6 +635,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
