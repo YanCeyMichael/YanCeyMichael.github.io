@@ -8,13 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS自动布局高级用法以及代码约束小纪 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="现阶段对于自动布局来说,有一些很成熟的第三方框架,其中较为优秀的是 OC 有: SnapKit/Masonry 框架等. Swift 有: SnapKit/SnapKit 框架等.其本质上都是对 Apple 的 autolayout 的二次封装.提到 autolayout 就不得不提 autoresizing.
+对于 autoresizing 需要注意的是 storyboard 中设置的约束和手">
+<meta property="og:type" content="article">
 <meta property="og:title" content="iOS自动布局高级用法以及代码约束小纪">
 <meta property="og:url" content="http://yoursite.com/2018/02/03/iOS自动布局高级用法以及代码约束小纪/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
-<meta property="og:updated_time" content="2018-02-03T07:04:58.993Z">
+<meta property="og:description" content="现阶段对于自动布局来说,有一些很成熟的第三方框架,其中较为优秀的是 OC 有: SnapKit/Masonry 框架等. Swift 有: SnapKit/SnapKit 框架等.其本质上都是对 Apple 的 autolayout 的二次封装.提到 autolayout 就不得不提 autoresizing.
+对于 autoresizing 需要注意的是 storyboard 中设置的约束和手">
+<meta property="og:updated_time" content="2018-02-03T08:08:21.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS自动布局高级用法以及代码约束小纪">
+<meta name="twitter:description" content="现阶段对于自动布局来说,有一些很成熟的第三方框架,其中较为优秀的是 OC 有: SnapKit/Masonry 框架等. Swift 有: SnapKit/SnapKit 框架等.其本质上都是对 Apple 的 autolayout 的二次封装.提到 autolayout 就不得不提 autoresizing.
+对于 autoresizing 需要注意的是 storyboard 中设置的约束和手">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -172,7 +178,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script>
+        <script src="/assets/js/APlayer.min.js"> </script><p>现阶段对于自动布局来说,有一些很成熟的第三方框架,其中较为优秀的是 OC 有: <strong>SnapKit/Masonry</strong> 框架等. Swift 有: <strong>SnapKit/SnapKit</strong> 框架等.其本质上都是对 Apple 的 <strong>autolayout</strong> 的二次封装.提到 <strong>autolayout</strong> 就不得不提 autoresizing.</p>
+<p>对于 <strong>autoresizing</strong> 需要注意的是 storyboard 中设置的约束和手码中设置的约束是相反的.</p>
+<p><strong>autoresizing</strong> 所体现的 <strong>autoresizingMasks</strong> 属性的枚举都是 flexible 可“伸缩”的, <strong>autoresizingMasks</strong> 的枚举一共有7个值:无/宽可伸缩/高可伸缩/左间距可伸缩/右间距可伸缩/上间距可伸缩/下间距可伸缩,对应的分别是:</p>
+<pre><code>UIViewAutoresizingNone                 = 0,
+
+UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,
+
+UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,
+
+UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,
+
+UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,
+
+UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,
+
+UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
+</code></pre><p>每个枚举值都是位移枚举，可以在一行代码中传多个值。</p>
+<p>有一个较为核心的思想提炼出来的一个公式,任何两个控件间的约束都可以通过这个公式算出:</p>
+<pre><code>obj1.property1 =（obj2.property2 * multiplier）+ constant value
+</code></pre><p><strong>multiplier</strong> 和 <strong>constant</strong> 就是向量系数和偏移量.</p>
+<p>还有为了避免和系统生成的自动伸缩的约束不冲突一般加上这句代码:</p>
+<pre><code>view.translatesAutoresizingMaskIntoConstraints = NO;
+</code></pre><p>translatesAutoresizingMaskIntoConstraints 属性系统默认这个属性是 YES.</p>
+<p><strong>约束改变添加动画注意事项:</strong></p>
+<p>由于约束的改变是瞬时操作,这和改变frame的动画的改变存在明显的差异,这里要把更新约束的代码放到动画的block里是无效的.从而必须要把约束写在外面,然后block里包裹 layoutIfNeed.</p>
+<p>错误:</p>
+<pre><code>[UIView animateWithDuration:2.0 animations:^{
+    NSLayoutConstraint *width = [_constaints firstObject];
+    width.constant = 200;
+}];
+</code></pre><p><strong>正确:</strong></p>
+<pre><code>[UIView animateWithDuration:2.0 animations:^{
+    [self.view layoutIfNeeded];
+}];
+</code></pre>
       
 
       
@@ -221,6 +261,10 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">autoresizing</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">约束改变添加动画注意事项</a>
         		</li>
       		
 		</ul>
@@ -516,6 +560,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -525,14 +577,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,6 +640,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
@@ -612,11 +660,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
