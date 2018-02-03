@@ -6,21 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>关于运行时的损耗和内存管理在几种语言中的差异小记 | YanCey’s Blog</title>
+  <title>Archives: 2018/2 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="OC 和 Swift 运行时的损耗主要来自于内存管理中对对象的计数,一个对象会不停地进行 retain 和 release, runtime 必须一直 observe 每一个对象的 retain count,当 retain count 达到 0 的时候就释放这个对象.而 C 就没有这个问题,因为 C 没有对象,不需要对对象进行生命周期的内存维护,没有运行时的损耗.
-目前主流的内存管理方式分三种">
-<meta property="og:type" content="article">
-<meta property="og:title" content="关于运行时的损耗和内存管理在几种语言中的差异小记">
-<meta property="og:url" content="http://yoursite.com/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="YanCey’s Blog">
+<meta property="og:url" content="http://yoursite.com/archives/2018/02/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
-<meta property="og:description" content="OC 和 Swift 运行时的损耗主要来自于内存管理中对对象的计数,一个对象会不停地进行 retain 和 release, runtime 必须一直 observe 每一个对象的 retain count,当 retain count 达到 0 的时候就释放这个对象.而 C 就没有这个问题,因为 C 没有对象,不需要对对象进行生命周期的内存维护,没有运行时的损耗.
-目前主流的内存管理方式分三种">
-<meta property="og:updated_time" content="2018-02-03T02:34:12.100Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于运行时的损耗和内存管理在几种语言中的差异小记">
-<meta name="twitter:description" content="OC 和 Swift 运行时的损耗主要来自于内存管理中对对象的计数,一个对象会不停地进行 retain 和 release, runtime 必须一直 observe 每一个对象的 retain count,当 retain count 达到 0 的时候就释放这个对象.而 C 就没有这个问题,因为 C 没有对象,不需要对对象进行生命周期的内存维护,没有运行时的损耗.
-目前主流的内存管理方式分三种">
+<meta name="twitter:title" content="YanCey’s Blog">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -158,199 +151,91 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关于运行时的损耗和内存管理在几种语言中的差异纪要" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      关于运行时的损耗和内存管理在几种语言中的差异小记
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/02/03/C语言-malloc-和-free/" class="archive-article-date">
+  	<time datetime="2018-02-03T07:01:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/02/03/C语言-malloc-和-free/">C语言 malloc 和 free</a>
     </h1>
   
 
-        
-        <a href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/" class="archive-article-date">
-  	<time datetime="2018-01-31T04:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="/assets/js/APlayer.min.js"> </script><p>OC 和 Swift 运行时的损耗主要来自于内存管理中对对象的计数,一个对象会不停地进行 retain 和 release, runtime 必须一直 observe 每一个对象的 retain count,当 retain count 达到 0 的时候就释放这个对象.而 C 就没有这个问题,因为 C 没有对象,不需要对对象进行生命周期的内存维护,没有运行时的损耗.</p>
-<p>目前主流的内存管理方式分三种:</p>
-<p>手动: C 语言的 malloc 库,特点就是无运行时损耗,但不好控制释放内存的时机.</p>
-<p>半自动: Objective-C 和 Swift 的 MRC/ARC,有运行时损耗,但基本上可以让程序员不用去考虑内存管理的问题.</p>
-<p>自动的: Java/Go 的 GC.基本上同上,但需要在某个时间点去停止所有线程,释放内存的时机不可控.</p>
-<p>Objective-C 的 MRC 还需要手动去写 retain/release,在进化到 ARC 之后,除了需要在类成员变量声明的时候,显式地声明是 weak/strong/retain/copy 就可以了, retain/release 的插入交给编译器即可, ARC 其实已经是实际上的自动化内存管理模式了.</p>
-<p>而 Swift 在把指针抽象为引用类型,加入 Mutable/Immutable 的概念之后,就只需要偶尔写写 weak 就行了,唯一需要对于内存管理费心的就是 retain cycle 的问题,但也比之前省心很多了.而且随着 Swift 工具链的发展,这些问题都可以在编译期或者 Debug 时就暴露出来.</p>
-<p>半自动的内存管理,实际上还有一种,就是 Rust 的 OwnerShip ,这种方式其实是 MRC/ARC 的一种延续,但 MRC/ARC 内存释放的时机还是需要在运行时才能知道,而 Rust 可以在编译期就解析出什么时候可以释放掉内存,从而省略掉 retain/release 的存在,也没必要专门跑一个 runtime 去监测对象的引用计数.从而达到比 ARC 更高的运行效率.仔细思考一下这种自动化的内存管理模式,其实都是在把指针分类,加上 context(上下文),抽象出来,暴露给编译器更多与关于指针的信息,而不是单纯的一个内存地址,从而让编译器可以分析释放对象的时机.</p>
-<p>Rust 也不例外,既然要达到比 ARC 更高的运行效率,那就必然要提供给编译器更多的指针信息,以此提供给编译器更多的优化空间,因此在指针声明和传递时都需要显式地声明所有权,代码量也会相应地增多,对于程序员的要求也会更高.</p>
-<p>虽然写起来比 ARC 更麻烦一点,但也比 C 那种原始的方式简单很多,提供给了 Rust, Swift 这些”现代编程语言”编写底层程序的可能性.</p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>哟～谢谢你长得这么好看，还来逛我的博客 ：P <i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="http://olnzmhc4r.bkt.clouddn.com/alipayQRCode.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="http://olnzmhc4r.bkt.clouddn.com/wechatQRCode.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/02/03/iOS自动布局高级用法以及代码约束小纪/" class="archive-article-date">
+  	<time datetime="2018-02-03T03:48:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/02/03/iOS自动布局高级用法以及代码约束小纪/">iOS自动布局高级用法以及代码约束小纪</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内存管理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">autolayout</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">autoresizing</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
   
   
-    <a href="/2018/01/18/SDWebImage如何支持https协议/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SDWebImage如何支持https协议</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    目录，不存在的…
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -376,8 +261,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -519,14 +404,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -536,6 +413,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,6 +460,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
@@ -587,7 +476,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,15 +496,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">

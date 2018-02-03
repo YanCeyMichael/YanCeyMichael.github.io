@@ -153,6 +153,189 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/05/Python02/">Python02</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/05/Python02/" class="archive-article-date">
+  	<time datetime="2017-12-05T07:47:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="list-列表"><a href="#list-列表" class="headerlink" title="list (列表)"></a>list (列表)</h2><p>Python内置一种数据类型是列表:list,list是一种有序的集合,可以随时添加和删除其中的元素;<br>其功效和作用和OC以及swift里的可变数组类似;</p>
+<p>用len(xxxx)函数可以获得list元素的个数;</p>
+<p>用索引来访问list中每一个位置的元素,索引是从0开始;当索引超出了范围时,Python会报一个IndexError错误,所以,要确保索引不要越界,最后一个元素的索引是len(xxxx) - 1;当用来倒数索引查找的时候,我们可以省略len(xxxx),直接写-1,-2,-3,以此类推;</p>
+<p>用append(xxxxxxx)函数可以在list末尾追加元素;</p>
+<p>用insert(index,xxxxxxx)函数可以在list中插入元素,且是指定位置插入;</p>
+<p>用pop()函数可以删除list末尾的元素;</p>
+<p>要删除指定位置的元素,用pop(i)方法,其中i是索引位置;</p>
+<p>要把某个元素替换成别的元素，可以直接赋值给对应的索引位置;</p>
+<p>list里面的元素的数据类型也可以不同;</p>
+<p>list元素也可以是另一个list;</p>
+<h2 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple (元组)"></a>tuple (元组)</h2><p>Python内置另一种有序列表叫元组:tuple,tuple和list非常类似,但是tuple一旦初始化就不能修改;<br>其功效和作用和OC以及swift里的不可变数组类似;<br>tuple没有append()，insert()这样的方法,其他获取元素的方法和list是一样的;<br>因为tuple不可变,所以代码更安全.如果可能,能用tuple代替list就尽量用tuple.<br>当定义一个tuple时,在定义的时候tuple的元素就必须被确定下来;<br>如果要定义一个空的tuple,可以写成();<br>只有1个元素的tuple定义时必须加一个逗号,用来来消除歧义;</p>
+<pre><code>t(1,) 
+</code></pre>
+        
+          <a class="article-more-a" href="/2017/12/05/Python02/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python 数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Python 条件判断循环</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/05/Python02/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/29/Python01/">Python01</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/29/Python01/" class="archive-article-date">
+  	<time datetime="2017-11-29T03:22:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python基础"><a href="#Python基础" class="headerlink" title="Python基础"></a>Python基础</h1><h2 id="Python的语法比较简单，采用缩进方式"><a href="#Python的语法比较简单，采用缩进方式" class="headerlink" title="Python的语法比较简单，采用缩进方式"></a>Python的语法比较简单，采用缩进方式</h2><p> 实例:</p>
+<pre><code>#这里是注释,可以写随便的内容,Python的注释采用#
+#Python的每一行都是一个语句,假如语句以:结尾,其后缩进的语句相当于代码块
+#Python缩进多少个空格还是一个tab的长度呢,没有明确规定,但是约定俗成采用 4 个空格缩进
+#为了方便在文本编辑器中，把Tab自动转换为4个空格，确保不混用Tab和空格,可以提高编写效率
+#缩进的坏处就是“复制－粘贴”功能失效
+#当你重构代码时，粘贴过去的代码必须重新检查缩进是否正确
+#此外，ide很难像格式化Java代码那样格式化Python代码
+#PS:Python程序是大小写敏感的，是区分大小写的
+
+a = 100
+if a &gt;= 0:
+    print(a)
+else:
+    print(-a)
+</code></pre>
+        
+          <a class="article-more-a" href="/2017/11/29/Python01/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Python 基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/29/Python01/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-我能做些什么和我打算做些什么" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -407,178 +590,6 @@
 
 
   
-    <article id="post-别管以后将如何结束，冷暖自愿尝透" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/01/别管以后将如何结束，冷暖自愿尝透/">别管以后将如何结束，冷暖自愿尝透</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/01/别管以后将如何结束，冷暖自愿尝透/" class="archive-article-date">
-  	<time datetime="2017-03-31T16:16:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天晚上9点多写代码的时候，隔壁的后端用电脑放了一首《萍聚》，霎那间被旋律带出了些许的难受。</p>
-<p>很感谢尚且足够年轻的自己，感谢自己拥有一个每天爬起来都充满干劲的自己。我仔细的回忆了一下，我已经将近有3年的时间，不曾惶惶度日，从那一刻感到考研复习学习的时间不够的大四开始，我就每天都在舔着刀口数着时间过日子。</p>
-<p>虽然有挺多时候熬夜特别幸苦，感到胸闷呼吸不够舒畅，但是好在身体并无大碍，我知道我亏欠年轻的自己太多，所以我好想爬的足够快，快到我自己可以为自己所做的事情开心。</p>
-<p>我深感自己的平凡，但心里总会充满了对平庸的不甘和对庸俗的愤怒，但你却不得不承认，一个人的能力很有限。但是每次挫败的时候，我都在问自己做的够好不。</p>
-<p>自从心里想好好写代码到现在，无时无刻不深感自己的无力，不是所有的事情都和学习成长般简单，你认识到了这世间还有事情是花时间是不够的。编程像一个无底深渊，没有最好，只有更好，一个没有极限的东西，你穷极所有时间，最后只会换来筋疲力竭的妥协。然后臭骂自己一句：你还是那么没用，毫无是处。</p>
-        
-          <a class="article-more-a" href="/2017/04/01/别管以后将如何结束，冷暖自愿尝透/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Essays</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/01/别管以后将如何结束，冷暖自愿尝透/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/JavaScript05/">JavaScript05</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/03/JavaScript05/" class="archive-article-date">
-  	<time datetime="2017-03-03T04:05:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>HTML DOM （文档对象模型）</p>
-<p>当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）。</p>
-<p>HTML DOM 模型被构造为对象的树。</p>
-<p><img src="http://olnzmhc4r.bkt.clouddn.com/JavaScript02.png" alt="JavaScript02"></p>
-<p>从目前我了解的情况来看，JS可以做到以下几点：</p>
-<p>1.JavaScript 能够改变页面中的所有 HTML 元素</p>
-<p>2.JavaScript 能够改变页面中的所有 HTML 属性</p>
-<p>3.JavaScript 能够改变页面中的所有 CSS 样式</p>
-<p>4.JavaScript 能够对页面中的所有事件做出反应</p>
-        
-          <a class="article-more-a" href="/2017/03/03/JavaScript05/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript HTML DOM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript HTML</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/03/JavaScript05/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -752,14 +763,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -769,6 +772,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,6 +819,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
@@ -820,7 +835,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -836,15 +855,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">

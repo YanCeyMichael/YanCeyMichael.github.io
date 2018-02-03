@@ -153,6 +153,195 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/26/Python07/">Python07</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/26/Python07/" class="archive-article-date">
+  	<time datetime="2017-12-26T03:59:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><pre><code>import sys
+</code></pre><p>导入sys模块,用变量sys指向该模块,利用sys这个变量,就可以访问sys模块的所有功能.<br>sys模块有一个argv变量,用list存储了命令行的所有参数.argv至少有一个元素,因为第一个参数永远是该.py文件的名称.</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>在Python中函数和变量的访问限制可以用<em>来实现.<br>一般情况下函数和变量名是公开的（public）,可以被直接引用.<br>类似<strong>xxx</strong>这样的变量是特殊变量,可以被直接引用,但是有特殊用途.比如 \</em>_author__和__name__是特殊变量,但是我们一般不这样去定义变量.<br>一般情况下我们定义的变量是:类似_xxx和__xxx这样的函数或变量就是非公开的（private）,不应该被直接引用.<br>值得注意的是private函数和变量“不应该”被直接引用,而不是“不能”被直接引用,是因为Python并没有一种方法可以完全限制访问private函数或变量,但是,从编程习惯上不应该引用private函数或变量.这种意义上来看Python和很多其他语言一样,也是注重开源的.</p>
+<p>举例:</p>
+<pre><code>def _private_1(name):
+    return &apos;Hello, %s&apos; % name
+
+def _private_2(name):
+    return &apos;Hi, %s&apos; % name
+
+def greeting(name):
+    if len(name) &gt; 3:
+        return _private_1(name)
+    else:
+        return _private_2(name)
+</code></pre><p>外部不需要引用的函数全部定义成private,只有外部需要引用的函数才定义为public.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Python 模块</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/26/Python07/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/19/Python06/">Python06</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/19/Python06/" class="archive-article-date">
+  	<time datetime="2017-12-19T04:44:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.<br>理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作为参数使用传递.</p>
+<h2 id="变量可以指向函数"><a href="#变量可以指向函数" class="headerlink" title="变量可以指向函数"></a>变量可以指向函数</h2><pre><code>&gt;&gt;&gt; x = abs(-10)
+&gt;&gt;&gt; x
+10
+</code></pre><p>abs是函数,abs(-10)是函数的调用,上面是将abs(-10)的结果赋值给x;</p>
+<pre><code>&gt;&gt;&gt; f = abs
+&gt;&gt;&gt; f
+&lt;built-in function abs&gt;
+</code></pre><p>上面是将abs函数整体赋值给f,也就是函数本身赋值给变量,即:变量可以指向函数.</p>
+<p>当一个变量指向了一个函数,那么可以通过该变量来调用这个函数;</p>
+<pre><code>&gt;&gt;&gt; f = abs
+&gt;&gt;&gt; f(-10)
+10
+</code></pre><p>直接调用abs()函数和调用变量f()完全相同;</p>
+<h2 id="函数名也是变量"><a href="#函数名也是变量" class="headerlink" title="函数名也是变量"></a>函数名也是变量</h2><p>那么函数名是什么呢?函数名其实就是指向函数的变量!对于abs()这个函数,完全可以把函数名abs看成变量,它指向一个可以计算绝对值的函数!</p>
+<h2 id="传入函数"><a href="#传入函数" class="headerlink" title="传入函数"></a>传入函数</h2><p>既然变量可以指向函数,函数的参数能接收变量,那么一个函数就可以接收另一个函数作为参数,这种函数就称之为高阶函数.</p>
+<pre><code>def add(x, y, f):
+    return f(x) + f(y)
+</code></pre><p>当调用add(-5, 6, abs)时,推导计算过程为</p>
+<pre><code>x = -5
+y = 6
+f = abs
+f(x) + f(y) ==&gt; abs(-5) + abs(6) ==&gt; 11
+return 11
+</code></pre><p>编写高阶函数,就是让函数的参数能够接收别的函数.</p>
+        
+          <a class="article-more-a" href="/2017/12/19/Python06/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Python 函数式编程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/19/Python06/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Python05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -390,189 +579,6 @@
 
 
   
-    <article id="post-Python02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/05/Python02/">Python02</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/05/Python02/" class="archive-article-date">
-  	<time datetime="2017-12-05T07:47:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="list-列表"><a href="#list-列表" class="headerlink" title="list (列表)"></a>list (列表)</h2><p>Python内置一种数据类型是列表:list,list是一种有序的集合,可以随时添加和删除其中的元素;<br>其功效和作用和OC以及swift里的可变数组类似;</p>
-<p>用len(xxxx)函数可以获得list元素的个数;</p>
-<p>用索引来访问list中每一个位置的元素,索引是从0开始;当索引超出了范围时,Python会报一个IndexError错误,所以,要确保索引不要越界,最后一个元素的索引是len(xxxx) - 1;当用来倒数索引查找的时候,我们可以省略len(xxxx),直接写-1,-2,-3,以此类推;</p>
-<p>用append(xxxxxxx)函数可以在list末尾追加元素;</p>
-<p>用insert(index,xxxxxxx)函数可以在list中插入元素,且是指定位置插入;</p>
-<p>用pop()函数可以删除list末尾的元素;</p>
-<p>要删除指定位置的元素,用pop(i)方法,其中i是索引位置;</p>
-<p>要把某个元素替换成别的元素，可以直接赋值给对应的索引位置;</p>
-<p>list里面的元素的数据类型也可以不同;</p>
-<p>list元素也可以是另一个list;</p>
-<h2 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple (元组)"></a>tuple (元组)</h2><p>Python内置另一种有序列表叫元组:tuple,tuple和list非常类似,但是tuple一旦初始化就不能修改;<br>其功效和作用和OC以及swift里的不可变数组类似;<br>tuple没有append()，insert()这样的方法,其他获取元素的方法和list是一样的;<br>因为tuple不可变,所以代码更安全.如果可能,能用tuple代替list就尽量用tuple.<br>当定义一个tuple时,在定义的时候tuple的元素就必须被确定下来;<br>如果要定义一个空的tuple,可以写成();<br>只有1个元素的tuple定义时必须加一个逗号,用来来消除歧义;</p>
-<pre><code>t(1,) 
-</code></pre>
-        
-          <a class="article-more-a" href="/2017/12/05/Python02/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python 数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Python 条件判断循环</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/05/Python02/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/29/Python01/">Python01</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/29/Python01/" class="archive-article-date">
-  	<time datetime="2017-11-29T03:22:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Python基础"><a href="#Python基础" class="headerlink" title="Python基础"></a>Python基础</h1><h2 id="Python的语法比较简单，采用缩进方式"><a href="#Python的语法比较简单，采用缩进方式" class="headerlink" title="Python的语法比较简单，采用缩进方式"></a>Python的语法比较简单，采用缩进方式</h2><p> 实例:</p>
-<pre><code>#这里是注释,可以写随便的内容,Python的注释采用#
-#Python的每一行都是一个语句,假如语句以:结尾,其后缩进的语句相当于代码块
-#Python缩进多少个空格还是一个tab的长度呢,没有明确规定,但是约定俗成采用 4 个空格缩进
-#为了方便在文本编辑器中，把Tab自动转换为4个空格，确保不混用Tab和空格,可以提高编写效率
-#缩进的坏处就是“复制－粘贴”功能失效
-#当你重构代码时，粘贴过去的代码必须重新检查缩进是否正确
-#此外，ide很难像格式化Java代码那样格式化Python代码
-#PS:Python程序是大小写敏感的，是区分大小写的
-
-a = 100
-if a &gt;= 0:
-    print(a)
-else:
-    print(-a)
-</code></pre>
-        
-          <a class="article-more-a" href="/2017/11/29/Python01/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Python 基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/29/Python01/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -746,14 +752,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -763,6 +761,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,6 +808,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
@@ -814,7 +824,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -830,15 +844,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
