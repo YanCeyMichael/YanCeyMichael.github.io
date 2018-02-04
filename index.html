@@ -215,19 +215,19 @@
 
 
   
-    <article id="post-iOS自动布局高级用法以及代码约束小纪" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-iOS自动布局高级用法以及代码约束纪要" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/03/iOS自动布局高级用法以及代码约束小纪/">iOS自动布局高级用法以及代码约束小纪</a>
+      <a class="article-title" href="/2018/02/03/iOS自动布局高级用法以及代码约束纪要/">iOS自动布局高级用法以及代码约束纪要</a>
     </h1>
   
 
         
-        <a href="/2018/02/03/iOS自动布局高级用法以及代码约束小纪/" class="archive-article-date">
+        <a href="/2018/02/03/iOS自动布局高级用法以及代码约束纪要/" class="archive-article-date">
   	<time datetime="2018-02-03T03:48:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
 </a>
         
@@ -235,7 +235,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>现阶段对于自动布局来说,有一些很成熟的第三方框架,其中较为优秀的是 OC 有: <strong>SnapKit/Masonry</strong> 框架等. Swift 有: <strong>SnapKit/SnapKit</strong> 框架等.其本质上都是对 Apple 的 <strong>autolayout</strong> 的二次封装.提到 <strong>autolayout</strong> 就不得不提 autoresizing.</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>现阶段对于自动布局来说,有一些很成熟的第三方框架,其中较为优秀的是 OC 有: <strong>SnapKit/Masonry</strong> 框架等. Swift 有: <strong>SnapKit/SnapKit</strong> 框架等.其本质上都是对 Apple 的 <strong>autolayout</strong> 的二次封装.提到 <strong>autolayout</strong> 就不得不提 <strong>autoresizing</strong>.</p>
 <p>对于 <strong>autoresizing</strong> 需要注意的是 storyboard 中设置的约束和手码中设置的约束是相反的.</p>
 <p><strong>autoresizing</strong> 所体现的 <strong>autoresizingMasks</strong> 属性的枚举都是 flexible 可“伸缩”的, <strong>autoresizingMasks</strong> 的枚举一共有7个值:无/宽可伸缩/高可伸缩/左间距可伸缩/右间距可伸缩/上间距可伸缩/下间距可伸缩,对应的分别是:</p>
 <pre><code>UIViewAutoresizingNone                 = 0,
@@ -300,7 +300,7 @@ UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/03/iOS自动布局高级用法以及代码约束小纪/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/02/03/iOS自动布局高级用法以及代码约束纪要/">展开全文 >></a>
         </p>
       
 
@@ -330,19 +330,19 @@ UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
 
 
   
-    <article id="post-关于运行时的损耗和内存管理在几种语言中的差异小纪" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-关于运行时的损耗和内存管理在几种语言中的差异纪要" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异小纪/">关于运行时的损耗和内存管理在几种语言中的差异小记</a>
+      <a class="article-title" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/">关于运行时的损耗和内存管理在几种语言中的差异纪要</a>
     </h1>
   
 
         
-        <a href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异小纪/" class="archive-article-date">
+        <a href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/" class="archive-article-date">
   	<time datetime="2018-01-31T04:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-31</time>
 </a>
         
@@ -358,7 +358,7 @@ UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
 <p>Objective-C 的 MRC 还需要手动去写 retain/release,在进化到 ARC 之后,除了需要在类成员变量声明的时候,显式地声明是 weak/strong/retain/copy 就可以了, retain/release 的插入交给编译器即可, ARC 其实已经是实际上的自动化内存管理模式了.</p>
 <p>而 Swift 在把指针抽象为引用类型,加入 Mutable/Immutable 的概念之后,就只需要偶尔写写 weak 就行了,唯一需要对于内存管理费心的就是 retain cycle 的问题,但也比之前省心很多了.而且随着 Swift 工具链的发展,这些问题都可以在编译期或者 Debug 时就暴露出来.</p>
         
-          <a class="article-more-a" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异小纪/#more">more >></a>
+          <a class="article-more-a" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/#more">more >></a>
         
       
 
@@ -382,7 +382,7 @@ UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异小纪/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/">展开全文 >></a>
         </p>
       
 
@@ -754,18 +754,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -775,6 +763,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -794,10 +794,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
@@ -806,11 +802,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -818,11 +814,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -838,15 +846,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -867,10 +871,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Essays</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
