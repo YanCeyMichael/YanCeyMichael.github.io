@@ -173,7 +173,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><h2 id="一-、malloc-和free-的基本概念以及基本用法"><a href="#一-、malloc-和free-的基本概念以及基本用法" class="headerlink" title="一 、malloc()和free()的基本概念以及基本用法"></a>一 、malloc()和free()的基本概念以及基本用法</h2><h3 id="1）malloc"><a href="#1）malloc" class="headerlink" title="1）malloc()"></a>1）malloc()</h3><h4 id="malloc-的函数原型"><a href="#malloc-的函数原型" class="headerlink" title="malloc() 的函数原型"></a>malloc() 的函数原型</h4><p>原型： extern void *malloc(unsigned int num_bytes)。</p>
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="malloc-和free-的基本概念以及基本用法"><a href="#malloc-和free-的基本概念以及基本用法" class="headerlink" title="malloc()和free()的基本概念以及基本用法"></a>malloc()和free()的基本概念以及基本用法</h2><h3 id="malloc"><a href="#malloc" class="headerlink" title="malloc()"></a>malloc()</h3><h4 id="malloc-的函数原型"><a href="#malloc-的函数原型" class="headerlink" title="malloc() 的函数原型"></a>malloc() 的函数原型</h4><p>原型： extern void *malloc(unsigned int num_bytes)。</p>
 <p>头文件： #include <malloc.h> 或 #include <alloc.h> (注意：alloc.h 与 malloc.h 的内容是完全一致的。)。</alloc.h></malloc.h></p>
 <p>功能：分配长度为 num_bytes 字节的内存块。</p>
 <p>当内存不再使用时，应使用free()函数将内存块释放。</p>
@@ -219,7 +219,7 @@ p = (int *) malloc (sizeof(int));
 <pre><code>int* p = (int *) malloc ( sizeof(int) * 100 ); //分配可以放得下100个整数的内存空间。
 </code></pre><p>另外有一点不能直接看出的区别是，malloc 只管分配内存，并不能对所得的内存进行初始化，所以得到的一片新内存中，其值将是随机的。</p>
 <p>除了分配及最后释放的方法不一样以外，通过malloc或new得到指针，在其它操作上保持一致。</p>
-<h4 id="malloc-总结"><a href="#malloc-总结" class="headerlink" title="malloc() 总结"></a>malloc() 总结</h4><p>malloc()函数其实就在内存中找一片指定大小的空间，然后将这个空间的首地址范围给一个指针变量，这里的指针变量可以是一个单独的指针，也可以是一个数组的首地址，这要看 malloc() 函数中参数 size 的具体内容。我们这里 malloc 分配的内存空间在逻辑上连续的，而在物理上可以连续也可以不连续。对于我们程序员来说，我们关注的是逻辑上的连续，因为操作系统会帮我们安排内存分配，所以我们使用起来就可以当做是连续的。</p>
+<h4 id="malloc-的总结"><a href="#malloc-的总结" class="headerlink" title="malloc() 的总结"></a>malloc() 的总结</h4><p>malloc()函数其实就在内存中找一片指定大小的空间，然后将这个空间的首地址范围给一个指针变量，这里的指针变量可以是一个单独的指针，也可以是一个数组的首地址，这要看 malloc() 函数中参数 size 的具体内容。我们这里 malloc 分配的内存空间在逻辑上连续的，而在物理上可以连续也可以不连续。对于我们程序员来说，我们关注的是逻辑上的连续，因为操作系统会帮我们安排内存分配，所以我们使用起来就可以当做是连续的。</p>
 
       
 
@@ -772,18 +772,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -809,6 +797,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
               </li>
              
               <li class="article-tag-list-item">
