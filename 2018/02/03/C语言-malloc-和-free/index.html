@@ -8,13 +8,25 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>C语言 malloc 和 free | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="malloc()和free()的基本概念以及基本用法malloc()malloc() 的函数原型原型： extern void *malloc(unsigned int num_bytes)。
+头文件： #include  或 #include  (注意：alloc.h 与 malloc.h 的内容是完全一致的。)。
+功能：分配长度为 num_bytes 字节的内存块。
+当内存不再使用时，应使用">
+<meta property="og:type" content="article">
 <meta property="og:title" content="C语言 malloc 和 free">
 <meta property="og:url" content="http://yoursite.com/2018/02/03/C语言-malloc-和-free/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
-<meta property="og:updated_time" content="2018-02-03T07:01:44.168Z">
+<meta property="og:description" content="malloc()和free()的基本概念以及基本用法malloc()malloc() 的函数原型原型： extern void *malloc(unsigned int num_bytes)。
+头文件： #include  或 #include  (注意：alloc.h 与 malloc.h 的内容是完全一致的。)。
+功能：分配长度为 num_bytes 字节的内存块。
+当内存不再使用时，应使用">
+<meta property="og:updated_time" content="2018-02-23T10:12:48.726Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言 malloc 和 free">
+<meta name="twitter:description" content="malloc()和free()的基本概念以及基本用法malloc()malloc() 的函数原型原型： extern void *malloc(unsigned int num_bytes)。
+头文件： #include  或 #include  (注意：alloc.h 与 malloc.h 的内容是完全一致的。)。
+功能：分配长度为 num_bytes 字节的内存块。
+当内存不再使用时，应使用">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -172,7 +184,54 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script>
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="malloc-和free-的基本概念以及基本用法"><a href="#malloc-和free-的基本概念以及基本用法" class="headerlink" title="malloc()和free()的基本概念以及基本用法"></a>malloc()和free()的基本概念以及基本用法</h2><h3 id="malloc"><a href="#malloc" class="headerlink" title="malloc()"></a>malloc()</h3><h4 id="malloc-的函数原型"><a href="#malloc-的函数原型" class="headerlink" title="malloc() 的函数原型"></a>malloc() 的函数原型</h4><p>原型： extern void *malloc(unsigned int num_bytes)。</p>
+<p>头文件： #include <malloc.h> 或 #include <alloc.h> (注意：alloc.h 与 malloc.h 的内容是完全一致的。)。</alloc.h></malloc.h></p>
+<p>功能：分配长度为 num_bytes 字节的内存块。</p>
+<p>当内存不再使用时，应使用free()函数将内存块释放。</p>
+<p>举例：</p>
+<pre><code>#include&lt;stdio.h&gt;  
+#include&lt;malloc.h&gt;  
+int main()  
+{  
+    char *p;  
+    p = (char *)malloc(100);  
+    if(p)  
+        printf(&quot;Memory Allocated at: %x/n&quot;,p);  
+    else  
+        printf(&quot;Not Enough Memory!/n&quot;);  
+    free(p);  
+    return 0;  
+} 
+</code></pre><h4 id="malloc-的函数声明-函数原型"><a href="#malloc-的函数声明-函数原型" class="headerlink" title="malloc() 的函数声明(函数原型)"></a>malloc() 的函数声明(函数原型)</h4><p>void *malloc(int size);</p>
+<p>malloc 向系统申请分配指定 size 个字节的内存空间。返回类型是 void<em> 类型。void</em> 表示未确定类型的指针，如果分配成功则返回指向被分配内存的指针，否则返回空指针NULL。C,C++规定，void* 类型可以强制转换为任何其它类型的指针。这个在 MSDN 上可以找到相关的解释，具体内容如下：</p>
+<p>malloc returns a void pointer to the allocated space, or NULL if there is insufficient memory available. To return a pointer to a type other than void, use a type cast on the return value. The storage space pointed to by the return value is guaranteed to be suitably aligned for storage of any type of object. If size is 0, malloc allocates a zero-length item in the heap and returns a valid pointer to that item. Always check the return from malloc, even if the amount of memory requested is small.</p>
+<h4 id="malloc-与-new-的不同点"><a href="#malloc-与-new-的不同点" class="headerlink" title="malloc 与 new 的不同点"></a>malloc 与 new 的不同点</h4><p>从函数声明上可以看出。malloc 和 new 至少有两个不同: new 返回指定类型的指针，并且可以自动计算所需要大小。</p>
+<pre><code>int *p;
+
+p = new int; //返回类型为int* 类型(整数型指针)，分配大小为 sizeof(int);
+
+或：
+
+int* parr;
+
+parr = new int [100]; //返回类型为 int* 类型(整数型指针)，分配大小为 sizeof(int) * 100;
+　　
+　　
+</code></pre><p>而 malloc 则必须由我们计算要字节数，并且在返回后强行转换为实际类型的指针。</p>
+<pre><code>int* p;
+
+p = (int *) malloc (sizeof(int));
+</code></pre><p>第一、malloc 函数返回的是 void <em> 类型，如果你写成：p = malloc (sizeof(int)); 则程序无法通过编译，报错：“不能将 void</em> 赋值给 int <em> 类型变量”。所以必须通过 (int </em>) 来将强制转换。</p>
+<p>第二、函数的实参为 sizeof(int) ，用于指明一个整型数据需要的大小。如果你写成：</p>
+<pre><code>int* p = (int *) malloc (1);
+</code></pre><p>代码也能通过编译，但事实上只分配了1个字节大小的内存空间，当你往里头存入一个整数，就会有3个字节无家可归，而直接“住进邻居家”！造成的结果是后面的内存中原有数据内容全部被清空。</p>
+<p>malloc 也可以达到 new [] 的效果，申请出一段连续的内存，方法无非是指定你所需要内存大小。</p>
+<p>比如想分配100个int类型的空间：</p>
+<pre><code>int* p = (int *) malloc ( sizeof(int) * 100 ); //分配可以放得下100个整数的内存空间。
+</code></pre><p>另外有一点不能直接看出的区别是，malloc 只管分配内存，并不能对所得的内存进行初始化，所以得到的一片新内存中，其值将是随机的。</p>
+<p>除了分配及最后释放的方法不一样以外，通过malloc或new得到指针，在其它操作上保持一致。</p>
+<h4 id="malloc-总结"><a href="#malloc-总结" class="headerlink" title="malloc() 总结"></a>malloc() 总结</h4><p>malloc()函数其实就在内存中找一片指定大小的空间，然后将这个空间的首地址范围给一个指针变量，这里的指针变量可以是一个单独的指针，也可以是一个数组的首地址，这要看 malloc() 函数中参数 size 的具体内容。我们这里 malloc 分配的内存空间在逻辑上连续的，而在物理上可以连续也可以不连续。对于我们程序员来说，我们关注的是逻辑上的连续，因为操作系统会帮我们安排内存分配，所以我们使用起来就可以当做是连续的。</p>
+
       
 
       
@@ -211,6 +270,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">malloc()</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">free()</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -304,7 +382,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#malloc-和free-的基本概念以及基本用法"><span class="toc-number">1.</span> <span class="toc-text">malloc()和free()的基本概念以及基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#malloc"><span class="toc-number">1.1.</span> <span class="toc-text">malloc()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#malloc-的函数原型"><span class="toc-number">1.1.1.</span> <span class="toc-text">malloc() 的函数原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#malloc-的函数声明-函数原型"><span class="toc-number">1.1.2.</span> <span class="toc-text">malloc() 的函数声明(函数原型)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#malloc-与-new-的不同点"><span class="toc-number">1.1.3.</span> <span class="toc-text">malloc 与 new 的不同点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#malloc-总结"><span class="toc-number">1.1.4.</span> <span class="toc-text">malloc() 总结</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -432,6 +510,18 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -480,18 +570,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
@@ -504,11 +582,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,6 +602,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
@@ -528,11 +622,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,7 +634,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,14 +666,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
@@ -597,6 +683,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
