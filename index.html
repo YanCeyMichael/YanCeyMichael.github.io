@@ -153,19 +153,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-对于malloc-alloc-calloc-realloc的区别理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-对于malloc:alloc:calloc:realloc的区别浅显的理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/对于malloc-alloc-calloc-realloc的区别理解/">对于malloc/alloc/calloc/realloc的区别理解</a>
+      <a class="article-title" href="/2018/03/07/对于malloc:alloc:calloc:realloc的区别浅显的理解/">对于malloc/alloc/calloc/realloc的区别浅显的理解</a>
     </h1>
   
 
         
-        <a href="/2018/03/07/对于malloc-alloc-calloc-realloc的区别理解/" class="archive-article-date">
+        <a href="/2018/03/07/对于malloc:alloc:calloc:realloc的区别浅显的理解/" class="archive-article-date">
   	<time datetime="2018-03-07T04:27:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
 </a>
         
@@ -181,11 +181,38 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">malloc()</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">alloc()</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">calloc()</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">realloc()</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/对于malloc-alloc-calloc-realloc的区别理解/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/07/对于malloc:alloc:calloc:realloc的区别浅显的理解/">展开全文 >></a>
         </p>
       
 
@@ -305,6 +332,7 @@ int main()
 }
 </code></pre><p>此时没有把 free（ptr）编译进来，同样会发生异常，程序输出很多个10个a,如果把 free(ptr); 编译进来，就会发生运行错误！</p>
 <h4 id="malloc-的总结"><a href="#malloc-的总结" class="headerlink" title="malloc() 的总结"></a>malloc() 的总结</h4><p>malloc()函数其实就在内存中找一片指定大小的空间，然后将这个空间的首地址范围给一个指针变量，这里的指针变量可以是一个单独的指针，也可以是一个数组的首地址，这要看 malloc() 函数中参数 size 的具体内容。我们这里 malloc 分配的内存空间在逻辑上连续的，而在物理上可以连续也可以不连续。对于我们程序员来说，我们关注的是逻辑上的连续，因为操作系统会帮我们安排内存分配，所以我们使用起来就可以当做是连续的。</p>
+<p>那么在理解了malloc的基本内容之后，对于malloc/alloc/calloc/realloc的区别浅显的理解，请移步：<a href="http://www.yanceymichael.com/2018/03/07/%E5%AF%B9%E4%BA%8Emalloc-alloc-calloc-realloc%E7%9A%84%E5%8C%BA%E5%88%AB%E7%90%86%E8%A7%A3/">对于malloc/alloc/calloc/realloc的区别浅显的理解</a>.</p>
         
           <a class="article-more-a" href="/2018/02/03/C语言-malloc-和-free/#more">more >></a>
         
@@ -767,6 +795,18 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -815,15 +855,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -839,19 +879,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -947,6 +987,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">calloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">realloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 简介</a>
               </li>
              
@@ -960,18 +1012,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杭州</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
             
             <div class="clearfix"></div>
