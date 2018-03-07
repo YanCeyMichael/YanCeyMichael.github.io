@@ -153,6 +153,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/13/Python03/">Python03</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/13/Python03/" class="archive-article-date">
+  	<time datetime="2017-12-13T08:04:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>要调用一个函数,需要知道函数的名称和参数,比如求绝对值的函数abs,只有一个参数.<br>调用函数的时候,如果传入的参数数量不对,会报TypeError的错误,并且Python会明确地告诉你:abs()有且仅有1个参数,但给出了两个.<br>如果传入的参数数量是对的,但参数类型不能被函数所接受,也会报TypeError的错误,并且给出错误信息.<br>Python在数据转换的时候,也可以用数据类型转换函数.<br>函数名其实就是指向一个函数对象的引用,完全可以把函数名赋给一个变量,相当于给这个函数起了一个“别名”.</p>
+<h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><p>Python中,定义一个函数要使用def语句,依次写出函数名、括号、括号中的参数和冒号:,然后,在缩进块中编写函数体,函数的返回值用return语句返回.<br>函数体内部的语句在执行时,一旦执行到return时,函数就执行完毕,并将结果返回.<br>如果没有return语句,函数执行完毕后也会返回结果,只是结果为None,return None可以简写为return.<br>如果想定义一个什么事也不做的空函数,可以用pass语句,pass语句什么都不做,那有什么用？实际上pass可以用来作为占位符,比如现在还没想好怎么写函数的代码,就可以先放一个pass,让代码能运行起来.<br>缺少了pass，代码运行就会有语法错误.<br>PS:此处的pass其实相当于别的语言里的空实现,OC/C/Cpp中的空实现,可以不写任何代码或者放任不管不执行,而Python为了达到这一目的,需要用关键词pass来处理.</p>
+<h3 id="参数检查"><a href="#参数检查" class="headerlink" title="参数检查"></a>参数检查</h3><p>调用函数时,如果参数个数不对,Python解释器会自动检查出来,并抛出TypeError.但是如果参数类型不对,Python解释器就无法检查.所以对参数类型做检查,例如只允许整数和浮点数类型的参数会给我们避免很多错误.数据类型检查可以用内置函数isinstance()实现.</p>
+<h3 id="返回多个值"><a href="#返回多个值" class="headerlink" title="返回多个值"></a>返回多个值</h3><p>Python的函数返回多值其实就是返回一个tuple,按照参数位置顺序取值即可</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>定义函数时,需要确定函数名和参数个数;<br>如果有必要,可以先对参数的数据类型做检查;<br>函数体内部可以用return随时返回函数结果;<br>函数执行完毕也没有return语句时,自动return None.<br>函数可以同时返回多个值,但其实就是一个tuple.</p>
+        
+          <a class="article-more-a" href="/2017/12/13/Python03/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Python 函数</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/13/Python03/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Python02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -495,101 +575,6 @@ else:
 
 
   
-    <article id="post-weak-singleton模式在iOS中的应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/19/weak-singleton模式在iOS中的应用/">weak singleton模式在iOS中的应用</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/19/weak-singleton模式在iOS中的应用/" class="archive-article-date">
-  	<time datetime="2017-07-19T07:44:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="关于weak要了解的基本内容："><a href="#关于weak要了解的基本内容：" class="headerlink" title="关于weak要了解的基本内容："></a>关于weak要了解的基本内容：</h1><hr>
-<p>weak的使用场景: weak 的常见场景是在 delegate,block,NSTimer 中使用,我们经常用weak来避免以上场景中易产生的循环引用的问题.</p>
-<p>weak的实际作用是:弱引用,在对象释放后置为 nil,避免错误的内存访问.也就是说:weak 可以在不增加对象的引用计数的同时,又使得指针的访问是安全的.</p>
-<hr>
-<p>单例模式在OC和Swift这经常会被用到,好用的小模块工具类、很多SDK的初始化等等.但是这些单例的使用场景里都有一个共同的毛病,单例在被创建之后会伴随着进程一直存活,有时候我们的业务需求,特别是对于前端来说的话,很多单例模式的使用都是为了方便,所以我们其实很想在这些单例不必要存在的时候将它们释放掉,因为这些单例在一定程度上是有内存浪费的.</p>
-<p>一个简单的例子:比如登陆模块的 LoginInstance 单例,我们在登陆之后除非需要二次登陆,不然就可能再也用不到这个单例了,我们最好的处理方式是将这个单例释放掉在登陆之后,而在登陆的过程当中我们随时随地的获取和使用这个单例,似乎这样的应用场景在前端开发中显得更多以及更常用,也似乎更佳的合理,更好的符合前端的性能尽可能的高的这种默认标准.</p>
-<p>可是常规的单例模式无法实现上述需求,我们只能做到随时随地的获取使用这个单例,而无法释法这个单例.</p>
-<p>那么,用weak试一下吧.</p>
-        
-          <a class="article-more-a" href="/2017/07/19/weak-singleton模式在iOS中的应用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">weak</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">weak singleton</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">弱单例模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/19/weak-singleton模式在iOS中的应用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -703,18 +688,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -763,15 +736,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -803,15 +776,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -827,11 +800,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -844,6 +817,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -860,18 +845,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -908,6 +881,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杭州</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
             
             <div class="clearfix"></div>
