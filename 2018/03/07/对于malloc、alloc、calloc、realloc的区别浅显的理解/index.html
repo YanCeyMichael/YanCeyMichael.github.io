@@ -6,27 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>人脸识别01 | YanCey’s Blog</title>
+  <title>对于malloc、alloc、calloc、realloc的区别浅显的理解 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="废话内容，写在前面:
-2016年上半年在上海面试的时候。徐汇区有一家做社交的互联网公司开始打算做人脸识别，由此我了解了深圳脸萌科技的FaceU这款超级激萌的App。很有意思的是徐汇区那家社交公司面试我的时候跟我说的很明确：你做一个类似FaceU的demo给我，我就给你发Offer。有时候我在想一份工作好简单啊，只要你会做人脸识别添加贴纸贴片，一碗饭就来了。
-回去之后，我对比了iOS框架自带的人脸">
-<meta property="og:type" content="article">
-<meta property="og:title" content="人脸识别01">
-<meta property="og:url" content="http://yoursite.com/2017/02/20/人脸识别01/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="对于malloc、alloc、calloc、realloc的区别浅显的理解">
+<meta property="og:url" content="http://yoursite.com/2018/03/07/对于malloc、alloc、calloc、realloc的区别浅显的理解/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
-<meta property="og:description" content="废话内容，写在前面:
-2016年上半年在上海面试的时候。徐汇区有一家做社交的互联网公司开始打算做人脸识别，由此我了解了深圳脸萌科技的FaceU这款超级激萌的App。很有意思的是徐汇区那家社交公司面试我的时候跟我说的很明确：你做一个类似FaceU的demo给我，我就给你发Offer。有时候我在想一份工作好简单啊，只要你会做人脸识别添加贴纸贴片，一碗饭就来了。
-回去之后，我对比了iOS框架自带的人脸">
-<meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/opencvtest1.png">
-<meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/opencvtest2.png">
-<meta property="og:updated_time" content="2017-11-27T10:08:29.295Z">
+<meta property="og:updated_time" content="2018-03-07T04:41:15.806Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="人脸识别01">
-<meta name="twitter:description" content="废话内容，写在前面:
-2016年上半年在上海面试的时候。徐汇区有一家做社交的互联网公司开始打算做人脸识别，由此我了解了深圳脸萌科技的FaceU这款超级激萌的App。很有意思的是徐汇区那家社交公司面试我的时候跟我说的很明确：你做一个类似FaceU的demo给我，我就给你发Offer。有时候我在想一份工作好简单啊，只要你会做人脸识别添加贴纸贴片，一碗饭就来了。
-回去之后，我对比了iOS框架自带的人脸">
-<meta name="twitter:image" content="http://olnzmhc4r.bkt.clouddn.com/opencvtest1.png">
+<meta name="twitter:title" content="对于malloc、alloc、calloc、realloc的区别浅显的理解">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -164,149 +152,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-人脸识别01" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-对于malloc、alloc、calloc、realloc的区别浅显的理解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      人脸识别01
+      对于malloc、alloc、calloc、realloc的区别浅显的理解
     </h1>
   
 
         
-        <a href="/2017/02/20/人脸识别01/" class="archive-article-date">
-  	<time datetime="2017-02-20T02:01:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
+        <a href="/2018/03/07/对于malloc、alloc、calloc、realloc的区别浅显的理解/" class="archive-article-date">
+  	<time datetime="2018-03-07T04:41:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>废话内容，写在前面:</p>
-<p>2016年上半年在上海面试的时候。徐汇区有一家做社交的互联网公司开始打算做人脸识别，由此我了解了深圳脸萌科技的FaceU这款超级激萌的App。很有意思的是徐汇区那家社交公司面试我的时候跟我说的很明确：你做一个类似FaceU的demo给我，我就给你发Offer。有时候我在想一份工作好简单啊，只要你会做人脸识别添加贴纸贴片，一碗饭就来了。</p>
-<p>回去之后，我对比了iOS框架自带的人脸识别框架识别的精度不够高，侧脸极其难识别，我只好放弃转而奔向科大讯飞人脸识别的框架去做。</p>
-<p>那一个礼拜的时间里，我看科大讯飞的人脸识别SDK和官方Demo，在做识别的过程中想加贴片装饰品的时候，遇到了二个代理方法的冲突，导致某个识别状态始终无法修改。所以那次的demo最终是没有做出来。</p>
-<p>时隔快一年，我想人脸识别功能我该动一动了，恰好个人技术博客刚开张，也应该来一点技术干货。同时不一样的是，这次我也不打算用科大讯飞的框架，我想从OpenCV的开源库着手，多多少少还可以学点C++的函数也还不错。</p>
-<p>由此我想把研究人脸识别的过程记录下来。所以这个系列是一个不懂C++的iOS开发小白的学习过程。</p>
-<p>本系列文章，所有测试内容以及demo的环境如下：</p>
-<p>1）Xcode Version 8.2.1</p>
-<p>2）OpenCV for iOS 3.2.0 </p>
-</blockquote>
-<a id="more"></a>
-<p>准备工作：</p>
-<p>1）先去<a href="http://opencv.org/" target="_blank" rel="external">OpenCV官网</a>下载最新的OpenCV For iOS的视觉库。</p>
-<p>2）Xcode创建一个新的项目，把下载的OpenCV库导入工程，并在工程的Building phase里面添加 opencv2.framework。</p>
-<p>如果对OpenCV有所了解的会知道，OpenCV的代码是基于C++编写的。因此，想要在Xcode项目中运行C++代码，你需要把文件名后缀名由.m改成.mm即可（当然最好把OpenCV的功能函数写一层OC的API封装，这样可能会比较安全，也会少很多不必要的错误麻烦，也更符合开发需求。）。</p>
-<p>注意：OpenCV 声明了命名空间 cv，因此 OpenCV 的类的前面会有个 cv:: 前缀，就像 cv::Mat、 cv::Algorithm 等等。你也可以在 .mm 文件中使用 using namespace cv 来避免在一堆类名前使用 cv:: 前缀。</p>
-<p>但是，在某些类名前你必须使用命名空间前缀，比如 cv::Rect 和 cv::Point，因为它们会跟定义在 MacTypes.h 中的 Rect 和 Point 相冲突。尽管这只是个人偏好问题，个人偏向在任何地方都使用 cv:: 以保持一致性。</p>
-<blockquote>
-<p>C++ 命名空间namespace的作用和使用:</p>
-<p>命名空间是ANSIC++引入的可以由用户命名的作用域，用来处理程序中 常见的同名冲突。其作用就是规定该文件中使用的标准库函数都是在标准命名空间std中定义的。通常来说，在C++中，命名空间（namespace）的目的是为了防止名字冲突。每个命名空间是一个作用域，在所有命名空间之外，还存在一个全局命名空间（global namespace），全局命名空间以隐式的方式声明，它并没有名字。在命名空间机制中，原来的全局变量，就是位于全局命名空间中（可以用::member的形式表示）。</p>
-<p>在C语言中定义了3个层次的作用域，即文件(编译单元)、函数和复合语句。C++在C的基础上又引入了类作用域，类是出现在文件内的。在不同的作用域中可以定义相同名字的变量，互不于扰，系统能够区别它们。</p>
-</blockquote>
-<p>在导入  opencv2.framework  之后，把你需要加入OpenCV代码的文件的.m文件后缀由.m改成.mm</p>
-<p>引入头文件</p>
-<pre><code>#import &lt; opencv2/opencv.hpp&gt;
-#import &lt;opencv2/imgproc/types_c.h&gt;
-#import &lt;opencv2/imgcodecs/ios.h&gt;
-</code></pre><p>编译运行。</p>
-<p>PS:我编译的时候，有二个报错。经过查阅资料做了具体的修改调整之后可以正常运行，分别是OpenCV库的 </p>
-<p> blenders.hpp 文件</p>
-<pre><code>enum { NO, FEATHER, MULTI_BAND };
-</code></pre><p>修改成：</p>
-<pre><code>enum { NO_EXPOSURE_COMPENSATOR, FEATHER, MULTI_BAND };
-</code></pre><p>和  exposure_compensate.hpp  文件</p>
-<pre><code>enum { NO, GAIN, GAIN_BLOCKS };   
-</code></pre><p>修改成：</p>
-<pre><code>enum { NO_EXPOSURE_COMPENSATOR, GAIN, GAIN_BLOCKS };
-</code></pre><p>先来试试OpenCV的入门内容，把一张彩色图片变成灰色的</p>
-<p>在控制器的.mm文件中引入Mat类</p>
-<pre><code>@interface ViewController ()
-{
-   cv::Mat cvImage;
-}
-@end
-</code></pre><blockquote>
-<p>关于Mat类:<br>详见另一篇Blog：<a href="/2017/02/20/OpenCV之Mat-一/">OpenCV之Mat(一)</a></p>
-</blockquote>
-<p>图像处理的代码块如下：</p>
-<pre><code>if(!cvImage.empty()){
-    cv::Mat gray;
-    // 将图像转换为灰度显示
-    cv::cvtColor(cvImage,gray,CV_RGB2GRAY);
-    // 应用高斯滤波器去除小的边缘
-    cv::GaussianBlur(gray, gray, cv::Size(5,5), 1.2,1.2);
-    // 计算与画布边缘
-    cv::Mat edges;
-    cv::Canny(gray, edges, 0, 50);
-    // 使用白色填充
-    cvImage.setTo(cv::Scalar::all(225));
-    // 修改边缘颜色
-    cvImage.setTo(cv::Scalar(0,128,255,255),edges);
-    // 将Mat转换为Xcode的UIImageView显示
-    self.testImgView1.image = MatToUIImage(cvImage);
-}
-</code></pre><p>如果你和我一样运行Xcode之后能得到下图的处理后的照片内容的话，图像的灰度显示算是完成了。 </p>
-<p><img src="http://olnzmhc4r.bkt.clouddn.com/opencvtest1.png" alt=" opencvtest1 "> </p>
-<p>也就是说OpenCV的第一个代码块已经完成了。</p>
-<p>如果还有兴趣的话，可以接着玩玩—–人脸识别 </p>
-<p>现在在你的.mm控制器里引入CascadeClassifier类</p>
-<pre><code>@interface ViewController ()
-{
-    cv::CascadeClassifier faceDetector;
-}
-@end
-</code></pre><blockquote>
-<p>关于CascadeClassifier类的调研:<br>详见另一篇Blog：<a href="/2017/02/20/OpenCV之CascadeClassifier-一/">OpenCV之CascadeClassifier(一)</a></p>
-</blockquote>
-<p>人脸识别核心代码如下:</p>
-<pre><code>NSString *cascadePath = [[NSBundle mainBundle]
-                         pathForResource:@&quot;haarcascade_frontalface_alt&quot;
-                         ofType:@&quot;xml&quot;];
-faceDetector.load([cascadePath UTF8String]);
-
-cv::Mat faceImage;
-UIImageToMat(image, faceImage);
-
-// 转为灰度
-cv::Mat gray;
-cvtColor(faceImage, gray, CV_BGR2GRAY);
-
-// 检测人脸并储存
-std::vector&lt;cv::Rect&gt;faces;
-faceDetector.detectMultiScale(gray, faces,1.1,2,0|CV_HAAR_SCALE_IMAGE,cv::Size(30,30));
-
-// 在每个人脸上画一个红色四方形
-for(unsigned int i= 0;i &lt; faces.size();i++)
-{
-    const cv::Rect&amp; face = faces[i];
-    cv::Point tl(face.x,face.y);
-    cv::Point br = tl + cv::Point(face.width,face.height);
-
-    // 四方形的画法
-    cv::Scalar magenta = cv::Scalar(255, 0, 255);
-    cv::rectangle(faceImage, tl, br, magenta, 4, 8, 0);
-}
-self.testImgView2.image = MatToUIImage(faceImage);
-</code></pre><p>补充:haarcascade_frontalface_alt.xml该文件是专门用来训练cv::CascadeClassifier函数的资源文件</p>
-<blockquote>
-<p>为什么一定要添加xml文件呢？</p>
-<p>其实这个xml文件就是对人脸识别的初始化（初始化数据by Paul Viola and later extended by Rainer Lienhart），现在已经成为一种人脸识别的标准了。</p>
-<p>为了能够把xml文件成功倒入，我们需要把NSString object 转化为 std::string（使用UTF8String）</p>
-<p>经过以上的准备工作后我们就可以使用方法detectMultiScale进行人脸检测了。</p>
-<p>方法detectMultiScale有四个参数。分别为：</p>
-<p>scaleFactor ：制定循环递减的图片尺寸</p>
-<p>minNeighbors ：制定保留数据的矩形大小</p>
-<p>CV_HAAR_SCALE_IMAGE ：这是一个标志，它指定算法缩放图像，而不是检测器。它有助于实现最佳的性能</p>
-<p>minSize ：该参数指定最小可能的面部尺寸</p>
-</blockquote>
-<p>如果可以得到下图(imageView重新布局了)，第三张图片里的每个人脸上都有正方形的框，表示已经找到了人脸位置。</p>
-<p><img src="http://olnzmhc4r.bkt.clouddn.com/opencvtest2.png" alt=" opencvtest2">   </p>
-<p>到此时，静态图片的人脸识别算是初步完成。</p>
-
+        <script src="/assets/js/APlayer.min.js"> </script>
       
 
       
@@ -345,25 +211,6 @@ self.testImgView2.image = MatToUIImage(faceImage);
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人脸识别</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -414,7 +261,7 @@ self.testImgView2.image = MatToUIImage(faceImage);
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/02/20/人脸识别01/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/07/对于malloc、alloc、calloc、realloc的区别浅显的理解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -428,18 +275,9 @@ self.testImgView2.image = MatToUIImage(faceImage);
   
 <nav id="article-nav">
   
-    <a href="/2017/02/20/OpenCV之Mat(一)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          OpenCV之Mat(一)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/19/要尝试逃离上广深了么？/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">要尝试逃离上广深了么？</div>
+    <a href="/2018/03/07/对于malloc-alloc-calloc-realloc的区别浅显的理解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">对于malloc/alloc/calloc/realloc的区别浅显的理解</div>
       <i class="icon-circle-right"></i>
     </a>
   
