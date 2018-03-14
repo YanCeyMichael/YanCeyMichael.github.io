@@ -8,13 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>对于malloc、alloc、calloc、realloc的区别浅显的理解 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="总述:
+内存区域可分为栈,堆,静态存储区和常量存储区,对于常见的局部变量,函数形参,临时变量都是在栈上获得内存的,它们的获取方式都是通过编译器直接执行.
+而利用指针来管理内存的时候,可以更加自由的像汇编一样处理内存的地址, C 标准函数库提供了很多函数来实现对堆上内存的管理,从开辟内存空间到释放内存空间都有相应的函数,这些函数都包含在头文件 stdlib.h 中,其中有几个特别重要的函数需要做">
+<meta property="og:type" content="article">
 <meta property="og:title" content="对于malloc、alloc、calloc、realloc的区别浅显的理解">
 <meta property="og:url" content="http://yoursite.com/2018/03/07/对于malloc、alloc、calloc、realloc的区别浅显的理解/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
-<meta property="og:updated_time" content="2018-03-07T04:56:46.211Z">
+<meta property="og:description" content="总述:
+内存区域可分为栈,堆,静态存储区和常量存储区,对于常见的局部变量,函数形参,临时变量都是在栈上获得内存的,它们的获取方式都是通过编译器直接执行.
+而利用指针来管理内存的时候,可以更加自由的像汇编一样处理内存的地址, C 标准函数库提供了很多函数来实现对堆上内存的管理,从开辟内存空间到释放内存空间都有相应的函数,这些函数都包含在头文件 stdlib.h 中,其中有几个特别重要的函数需要做">
+<meta property="og:updated_time" content="2018-03-14T09:21:58.482Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对于malloc、alloc、calloc、realloc的区别浅显的理解">
+<meta name="twitter:description" content="总述:
+内存区域可分为栈,堆,静态存储区和常量存储区,对于常见的局部变量,函数形参,临时变量都是在栈上获得内存的,它们的获取方式都是通过编译器直接执行.
+而利用指针来管理内存的时候,可以更加自由的像汇编一样处理内存的地址, C 标准函数库提供了很多函数来实现对堆上内存的管理,从开辟内存空间到释放内存空间都有相应的函数,这些函数都包含在头文件 stdlib.h 中,其中有几个特别重要的函数需要做">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -172,7 +181,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script>
+        <script src="/assets/js/APlayer.min.js"> </script><p> <strong>总述:</strong></p>
+<p>内存区域可分为栈,堆,静态存储区和常量存储区,对于常见的局部变量,函数形参,临时变量都是在栈上获得内存的,它们的获取方式都是通过编译器直接执行.</p>
+<p>而利用指针来管理内存的时候,可以更加自由的像汇编一样处理内存的地址, C 标准函数库提供了很多函数来实现对堆上内存的管理,从开辟内存空间到释放内存空间都有相应的函数,这些函数都包含在头文件 stdlib.h 中,其中有几个特别重要的函数需要做区分和了解,它们分别是: malloc、alloc、calloc、realloc 以及 free,而对 malloc 和 free 的具体内容分析请移步<a href="http://www.yanceymichael.com/2018/02/03/C%E8%AF%AD%E8%A8%80-malloc-%E5%92%8C-free/" target="_blank" rel="external">C语言 malloc 和 free</a>.这些函数之间的细微差别在于对内存的管理的细节和操作不同.</p>
+<p>从函数名的字面上理解:这几个函数都带 alloc 也就是 allocate ,分配的意思. calloc() 是”分配内存给多个对象”, malloc() 是”分配内存给一个对象”, realloc() 是”重新分配内存”.</p>
+<h2 id="逐个理解"><a href="#逐个理解" class="headerlink" title="逐个理解"></a>逐个理解</h2><h3 id="calloc"><a href="#calloc" class="headerlink" title="calloc()"></a>calloc()</h3><pre><code>void *calloc(size_t nobj, size_t size);
+</code></pre><p>分配足够的内存给nobj个大小为size的对象组成的数组,并返回指向所分配区域的第一个字节的指针;<br>若内存不够,则返回NULL.该空间的初始化大小为0字节.</p>
+<p>举例:</p>
+<pre><code>char *p = (char *) calloc(100,sizeof(char));
+</code></pre><h3 id="malloc"><a href="#malloc" class="headerlink" title="malloc()"></a>malloc()</h3><pre><code>void *malloc(size_t size);
+</code></pre><p>分配足够的内存给大小为size的对象,并返回指向所分配区域的第一个字节的指针;<br>若内存不够,则返回NULL.不对分配的空间进行初始化.</p>
+<p>举例:</p>
+<pre><code>char *p = (char *)malloc(sizeof(char));
+</code></pre><h3 id="realloc"><a href="#realloc" class="headerlink" title="realloc()"></a>realloc()</h3><pre><code>void *realloc(void *p, size_t size);
+</code></pre><p>将p所指向的对象的大小改为size个字节.<br>如果新分配的内存比原内存大,那么原内存的内容保持不变,增加的空间不进行初始化.<br>如果新分配的内存比原内存小,那么新内存保持原内存的内容,增加的空间不进行初始化.<br>返回指向新分配空间的指针;若内存不够,则返回NULL,原p指向的内存区不变.</p>
+<p>举列:</p>
+<pre><code>char *p = (char *)malloc(sizeof(char));
+p = (char *)realloc(p, 256);
+</code></pre>
       
 
       
@@ -331,7 +357,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#逐个理解"><span class="toc-number">1.</span> <span class="toc-text">逐个理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#calloc"><span class="toc-number">1.1.</span> <span class="toc-text">calloc()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#malloc"><span class="toc-number">1.2.</span> <span class="toc-text">malloc()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#realloc"><span class="toc-number">1.3.</span> <span class="toc-text">realloc()</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -459,6 +485,18 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -484,18 +522,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,19 +569,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,27 +605,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,6 +626,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,23 +657,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,6 +674,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">realloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
               </li>
              
               <li class="article-tag-list-item">
