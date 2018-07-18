@@ -8,22 +8,28 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>几种常见的POST请求提交数据方式对iOS开发的影响 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HTTP协议中,规定的HTTP请求方法大致有: GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW .其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.
-1.HTTP请求报文解剖首">
+  <meta name="description" content="HTTP协议中,规定的HTTP请求方法大致有: 
+GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW 
+其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.
+1.HTTP请求报文解剖">
 <meta property="og:type" content="article">
 <meta property="og:title" content="几种常见的POST请求提交数据方式对iOS开发的影响">
 <meta property="og:url" content="http://yoursite.com/2018/07/18/几种常见的POST请求提交数据方式对iOS开发的影响/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
-<meta property="og:description" content="HTTP协议中,规定的HTTP请求方法大致有: GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW .其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.
-1.HTTP请求报文解剖首">
+<meta property="og:description" content="HTTP协议中,规定的HTTP请求方法大致有: 
+GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW 
+其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.
+1.HTTP请求报文解剖">
 <meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/theContentOfHTTP.png">
 <meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/AnalysisOfTheHTTP.jpg">
 <meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/TheContentOfHTTPResponse.jpg">
-<meta property="og:updated_time" content="2018-07-18T16:13:40.035Z">
+<meta property="og:updated_time" content="2018-07-18T16:29:29.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几种常见的POST请求提交数据方式对iOS开发的影响">
-<meta name="twitter:description" content="HTTP协议中,规定的HTTP请求方法大致有: GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW .其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.
-1.HTTP请求报文解剖首">
+<meta name="twitter:description" content="HTTP协议中,规定的HTTP请求方法大致有: 
+GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW 
+其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.
+1.HTTP请求报文解剖">
 <meta name="twitter:image" content="http://olnzmhc4r.bkt.clouddn.com/theContentOfHTTP.png">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
@@ -176,7 +182,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>HTTP协议中,规定的HTTP请求方法大致有: GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW .其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>HTTP协议中,规定的HTTP请求方法大致有: </p>
+<p>GET/POST/PUT/PATCH/DELETE/<br>COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/<br>LOCK/UNLOCK/PROPFIND/VIEW </p>
+<p>其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.</p>
 <h2 id="1-HTTP请求报文解剖"><a href="#1-HTTP请求报文解剖" class="headerlink" title="1.HTTP请求报文解剖"></a>1.HTTP请求报文解剖</h2><p>首先HTTP协议建立在 TCP/IP 协议之上,且以 ASCII 码传输信息内容.</p>
 <p>HTTP 的规范将 HTTP 请求分为三个部分:状态行、请求头、消息主体.举例如下:</p>
 <p><img src="http://olnzmhc4r.bkt.clouddn.com/theContentOfHTTP.png" alt="HTTP请求"></p>
@@ -185,12 +193,12 @@
 </blockquote>
 <p><img src="http://olnzmhc4r.bkt.clouddn.com/AnalysisOfTheHTTP.jpg" alt="HTTP请求报文体结构图"></p>
 <a id="more"></a>
-<h3 id="常见的HTTP请求报文头属性"><a href="#常见的HTTP请求报文头属性" class="headerlink" title="常见的HTTP请求报文头属性"></a>常见的HTTP请求报文头属性</h3><h4 id="1-1-Accept"><a href="#1-1-Accept" class="headerlink" title="1.1 Accept"></a>1.1 Accept</h4><p>请求报文可通过一个“Accept”报文头属性告诉服务端,客户端接受什么类型的响应.</p>
+<h3 id="1-1-常见的HTTP请求报文头属性"><a href="#1-1-常见的HTTP请求报文头属性" class="headerlink" title="1.1 常见的HTTP请求报文头属性"></a>1.1 常见的HTTP请求报文头属性</h3><h4 id="1-1-1-Accept"><a href="#1-1-1-Accept" class="headerlink" title="1.1.1 Accept"></a>1.1.1 Accept</h4><p>请求报文可通过一个“Accept”报文头属性告诉服务端,客户端接受什么类型的响应.</p>
 <pre><code>Accept:text/plain  
-</code></pre><h4 id="1-2-Cookie"><a href="#1-2-Cookie" class="headerlink" title="1.2 Cookie"></a>1.2 Cookie</h4><p>客户端的Cookie是通过这个报文头属性传给服务端.Cookie包含一些版本信息内容等,进而服务器可以识别请求是哪个版本的客户端发送来的请求等其他作用.</p>
+</code></pre><h4 id="1-1-2-Cookie"><a href="#1-1-2-Cookie" class="headerlink" title="1.1.2 Cookie"></a>1.1.2 Cookie</h4><p>客户端的Cookie是通过这个报文头属性传给服务端.Cookie包含一些版本信息内容等,进而服务器可以识别请求是哪个版本的客户端发送来的请求等其他作用.</p>
 <pre><code>Cookie: $Version=1; Skin=new;jsessionid=5F4771183629C9834F8382E23BE13C4C  
-</code></pre><h4 id="1-3-Referer"><a href="#1-3-Referer" class="headerlink" title="1.3 Referer"></a>1.3 Referer</h4><p>请求是从哪个URL过来的.</p>
-<h4 id="1-4-Cache-Control"><a href="#1-4-Cache-Control" class="headerlink" title="1.4 Cache-Control"></a>1.4 Cache-Control</h4><p>缓存控制,一个请求希望响应返回的内容在客户端要被缓存多久,或不希望被缓存可以通过这个报文头达到目的.</p>
+</code></pre><h4 id="1-1-3-Referer"><a href="#1-1-3-Referer" class="headerlink" title="1.1.3 Referer"></a>1.1.3 Referer</h4><p>请求是从哪个URL过来的.</p>
+<h4 id="1-1-4-Cache-Control"><a href="#1-1-4-Cache-Control" class="headerlink" title="1.1.4 Cache-Control"></a>1.1.4 Cache-Control</h4><p>缓存控制,一个请求希望响应返回的内容在客户端要被缓存多久,或不希望被缓存可以通过这个报文头达到目的.</p>
 <pre><code>Cache-Control: no-cache
 </code></pre><p>以上是个人觉得比较常见和重要的报文头属性,还有其他内容暂不做介绍.</p>
 <p>报文头属性参数以及数值,都是客户端对服务端发起的,服务端只能读.</p>
@@ -199,7 +207,7 @@
 <blockquote>
 <p>HTTP响应报文分析:<br>①报文协议及版本；<br>②状态码及状态描述；<br>③响应报文头,也是由多个属性组成；<br>④响应报文体,即客户端想要获取的请求内容. </p>
 </blockquote>
-<h3 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a>响应状态码</h3><p>和请求报文相比,响应报文多了一个“响应状态码”,它以“清晰明确”的语言告诉客户端本次请求的处理结果.</p>
+<h3 id="2-1-响应状态码"><a href="#2-1-响应状态码" class="headerlink" title="2.1 响应状态码"></a>2.1 响应状态码</h3><p>和请求报文相比,响应报文多了一个“响应状态码”,它以“清晰明确”的语言告诉客户端本次请求的处理结果.</p>
 <p>HTTP的响应状态码由5段组成：</p>
 <pre><code>- 1xx 消息,一般是告诉客户端,请求已经收到了,正在处理,别急...
 - 2xx 处理成功,一般表示：请求收悉、我明白你要的、请求已受理、已经处理完成等信息.
@@ -208,13 +216,13 @@
 - 5xx 处理发生错误,责任在服务端,如服务端抛出异常,路由出错,HTTP版本不支持等.
 </code></pre><p>常见的几个状态码如下:</p>
 <p>200 OK<br>303 See Other / 304 Not Modified<br>404 Not Found<br>500 Internal Server Error</p>
-<h3 id="常见的HTTP响应报文头属性"><a href="#常见的HTTP响应报文头属性" class="headerlink" title="常见的HTTP响应报文头属性"></a>常见的HTTP响应报文头属性</h3><h4 id="2-1-Cache-Control"><a href="#2-1-Cache-Control" class="headerlink" title="2.1 Cache-Control"></a>2.1 Cache-Control</h4><p>响应输出到客户端后,服务端通过该报文头属告诉客户端如何控制响应内容的缓存.</p>
+<h3 id="2-2-常见的HTTP响应报文头属性"><a href="#2-2-常见的HTTP响应报文头属性" class="headerlink" title="2.2 常见的HTTP响应报文头属性"></a>2.2 常见的HTTP响应报文头属性</h3><h4 id="2-2-1-Cache-Control"><a href="#2-2-1-Cache-Control" class="headerlink" title="2.2.1 Cache-Control"></a>2.2.1 Cache-Control</h4><p>响应输出到客户端后,服务端通过该报文头属告诉客户端如何控制响应内容的缓存.</p>
 <pre><code>Cache-Control: max-age=3600  
-</code></pre><h4 id="2-2-ETag"><a href="#2-2-ETag" class="headerlink" title="2.2 ETag"></a>2.2 ETag</h4><p>一个代表响应服务端资源（如页面）版本的报文头属性,如果某个服务端资源发生变化了,这个ETag就会相应发生变化.它是Cache-Control的有益补充,可以让客户端“更智能”地处理什么时候要从服务端取资源,什么时候可以直接从缓存中返回响应. </p>
+</code></pre><h4 id="2-2-2-ETag"><a href="#2-2-2-ETag" class="headerlink" title="2.2.2 ETag"></a>2.2.2 ETag</h4><p>一个代表响应服务端资源（如页面）版本的报文头属性,如果某个服务端资源发生变化了,这个ETag就会相应发生变化.它是Cache-Control的有益补充,可以让客户端“更智能”地处理什么时候要从服务端取资源,什么时候可以直接从缓存中返回响应. </p>
 <pre><code>ETag: &quot;737060cd8c284d8af7ad3082f209582d&quot;  
-</code></pre><h4 id="2-3-Location"><a href="#2-3-Location" class="headerlink" title="2.3 Location"></a>2.3 Location</h4><p>在JSP中让页面Redirect到一个某个A页面中,其实是让客户端再发一个请求到A页面,这个需要Redirect到的A页面的URL,其实就是通过响应报文头的Location属性告知客户端的,如下的报文头属性,将使客户端redirect到iteye的首页中:</p>
+</code></pre><h4 id="2-2-3-Location"><a href="#2-2-3-Location" class="headerlink" title="2.2.3 Location"></a>2.2.3 Location</h4><p>在JSP中让页面Redirect到一个某个A页面中,其实是让客户端再发一个请求到A页面,这个需要Redirect到的A页面的URL,其实就是通过响应报文头的Location属性告知客户端的,如下的报文头属性,将使客户端redirect到iteye的首页中:</p>
 <pre><code>Location: http://www.iteye.com  
-</code></pre><h4 id="2-4-Set-Cookie"><a href="#2-4-Set-Cookie" class="headerlink" title="2.4 Set-Cookie"></a>2.4 Set-Cookie</h4><p>服务端可以设置客户端的Cookie,其原理就是通过这个响应报文头属性实现的： </p>
+</code></pre><h4 id="2-2-4-Set-Cookie"><a href="#2-2-4-Set-Cookie" class="headerlink" title="2.2.4 Set-Cookie"></a>2.2.4 Set-Cookie</h4><p>服务端可以设置客户端的Cookie,其原理就是通过这个响应报文头属性实现的： </p>
 <pre><code>Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1 
 </code></pre><p>以上是个人觉得比较常见和重要的报文头属性,还有其他内容暂不做介绍.</p>
 <h2 id="3-关于HTTP请求的具体操作-构建请求体Body"><a href="#3-关于HTTP请求的具体操作-构建请求体Body" class="headerlink" title="3.关于HTTP请求的具体操作(构建请求体Body)"></a>3.关于HTTP请求的具体操作(构建请求体Body)</h2><p>通过前面1和2的粗浅分析,可以知道在客户端和服务端数据通信过程中,能否正常通顺的请求到客户端想要的数据,对于客户端来说是客户端最关心的事情.</p>
@@ -474,7 +482,7 @@ Content-Type: text/xml
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-HTTP请求报文解剖"><span class="toc-number">1.</span> <span class="toc-text">1.HTTP请求报文解剖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的HTTP请求报文头属性"><span class="toc-number">1.1.</span> <span class="toc-text">常见的HTTP请求报文头属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-Accept"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 Accept</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-Cookie"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 Cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-Referer"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 Referer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-Cache-Control"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 Cache-Control</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-HTTP响应报文解剖"><span class="toc-number">2.</span> <span class="toc-text">2.HTTP响应报文解剖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#响应状态码"><span class="toc-number">2.1.</span> <span class="toc-text">响应状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的HTTP响应报文头属性"><span class="toc-number">2.2.</span> <span class="toc-text">常见的HTTP响应报文头属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Cache-Control"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.1 Cache-Control</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-ETag"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2 ETag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-Location"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.3 Location</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-Set-Cookie"><span class="toc-number">2.2.4.</span> <span class="toc-text">2.4 Set-Cookie</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-关于HTTP请求的具体操作-构建请求体Body"><span class="toc-number">3.</span> <span class="toc-text">3.关于HTTP请求的具体操作(构建请求体Body)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-multipart-form-data-form-data"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 multipart/form-data (form-data)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-application-x-www-form-urlencoded-x-www-form-urlencoded"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 application/x-www-form-urlencoded (x-www-form-urlencoded)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-application-json-ROW"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 application/json (ROW)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-application-text-xml-ROW"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 application/text/xml (ROW)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-其他内容"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 其他内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-综述"><span class="toc-number">4.</span> <span class="toc-text">4.综述</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-HTTP请求报文解剖"><span class="toc-number">1.</span> <span class="toc-text">1.HTTP请求报文解剖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-常见的HTTP请求报文头属性"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 常见的HTTP请求报文头属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-Accept"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1.1 Accept</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-Cookie"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.1.2 Cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3-Referer"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.1.3 Referer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-4-Cache-Control"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.1.4 Cache-Control</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-HTTP响应报文解剖"><span class="toc-number">2.</span> <span class="toc-text">2.HTTP响应报文解剖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-响应状态码"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 响应状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-常见的HTTP响应报文头属性"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 常见的HTTP响应报文头属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-Cache-Control"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 Cache-Control</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-ETag"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2 ETag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-Location"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.2.3 Location</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-4-Set-Cookie"><span class="toc-number">2.2.4.</span> <span class="toc-text">2.2.4 Set-Cookie</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-关于HTTP请求的具体操作-构建请求体Body"><span class="toc-number">3.</span> <span class="toc-text">3.关于HTTP请求的具体操作(构建请求体Body)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-multipart-form-data-form-data"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 multipart/form-data (form-data)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-application-x-www-form-urlencoded-x-www-form-urlencoded"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 application/x-www-form-urlencoded (x-www-form-urlencoded)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-application-json-ROW"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 application/json (ROW)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-application-text-xml-ROW"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 application/text/xml (ROW)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-其他内容"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 其他内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-综述"><span class="toc-number">4.</span> <span class="toc-text">4.综述</span></a></li></ol>
                     </div>
                 </span>
             </div>
