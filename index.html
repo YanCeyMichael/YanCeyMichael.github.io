@@ -147,6 +147,109 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-几种常见的POST请求提交数据方式对iOS开发的影响" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/18/几种常见的POST请求提交数据方式对iOS开发的影响/">几种常见的POST请求提交数据方式对iOS开发的影响</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/18/几种常见的POST请求提交数据方式对iOS开发的影响/" class="archive-article-date">
+  	<time datetime="2018-07-18T12:42:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HTTP协议中,规定的HTTP请求方法大致有: GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW .其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.</p>
+<h2 id="1-HTTP请求报文解剖"><a href="#1-HTTP请求报文解剖" class="headerlink" title="1.HTTP请求报文解剖"></a>1.HTTP请求报文解剖</h2><p>首先HTTP协议建立在 TCP/IP 协议之上,且以 ASCII 码传输信息内容.</p>
+<p>HTTP 的规范将 HTTP 请求分为三个部分:状态行、请求头、消息主体.举例如下:</p>
+<p><img src="http://olnzmhc4r.bkt.clouddn.com/theContentOfHTTP.png" alt="HTTP请求"></p>
+<blockquote>
+<p>HTTP请求报文分析:<br>①是请求方法,GET和POST是最常见的HTTP方法.大多数浏览器只支持GET和POST,Spring 3.0提供了一个HiddenHttpMethodFilter,允许通过“_method”的表单参数指定这些特殊的HTTP方法（实际上还是通过POST提交表单）.服务端配置了HiddenHttpMethodFilter后,Spring会根据_method参数指定的值模拟出相应的HTTP方法,这样,就可以使用这些HTTP方法对处理方法进行映射了.<br>②为请求对应的URL地址,它和报文头的Host属性组成完整的请求URL.<br>③是协议名称及版本号.<br>④是HTTP的报文头,报文头包含若干个属性,格式为“属性名:属性值”,服务端据此获取客户端的信息.<br>⑤是报文体,它将一个页面表单中的组件值通过param1=value1&amp;param2=value2的键值对形式编码成一个格式化串,它承载多个请求参数的数据.不但报文体可以传递请求参数,请求URL也可以通过类似于“/chapter15/user.html? param1=value1&amp;param2=value2”的方式传递请求参数. </p>
+</blockquote>
+<p><img src="http://olnzmhc4r.bkt.clouddn.com/AnalysisOfTheHTTP.jpg" alt="HTTP请求报文体结构图"></p>
+        
+          <a class="article-more-a" href="/2018/07/18/几种常见的POST请求提交数据方式对iOS开发的影响/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">POST请求</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">POSTMAN</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">form-data</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">x-www-form-urlencoded</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">row</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">binary</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/18/几种常见的POST请求提交数据方式对iOS开发的影响/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日三问" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -614,91 +717,9 @@ UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
 
 
   
-    <article id="post-关于运行时的损耗和内存管理在几种语言中的差异纪要" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/">关于运行时的损耗和内存管理在几种语言中的差异纪要</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/" class="archive-article-date">
-  	<time datetime="2018-01-31T04:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>OC 和 Swift 运行时的损耗主要来自于内存管理中对对象的计数,一个对象会不停地进行 retain 和 release, runtime 必须一直 observe 每一个对象的 retain count,当 retain count 达到 0 的时候就释放这个对象.而 C 就没有这个问题,因为 C 没有对象,不需要对对象进行生命周期的内存维护,没有运行时的损耗.</p>
-<p>目前主流的内存管理方式分三种:</p>
-<p>手动: C 语言的 malloc 库,特点就是无运行时损耗,但不好控制释放内存的时机.关于 C 语言 malloc 和 free 初步了解,移步:<a href="http://www.yanceymichael.com/2018/02/03/C%E8%AF%AD%E8%A8%80-malloc-%E5%92%8C-free/">C语言 malloc 和 free</a>.</p>
-<p>半自动: Objective-C 和 Swift 的 MRC/ARC,有运行时损耗,但基本上可以让程序员不用去考虑内存管理的问题.</p>
-<p>自动的: Java/Go 的 GC.基本上同上,但需要在某个时间点去停止所有线程,释放内存的时机不可控.</p>
-<p>Objective-C 的 MRC 还需要手动去写 retain/release,在进化到 ARC 之后,除了需要在类成员变量声明的时候,显式地声明是 weak/strong/retain/copy 就可以了, retain/release 的插入交给编译器即可, ARC 其实已经是实际上的自动化内存管理模式了.</p>
-<p>而 Swift 在把指针抽象为引用类型,加入 Mutable/Immutable 的概念之后,就只需要偶尔写写 weak 就行了,唯一需要对于内存管理费心的就是 retain cycle 的问题,但也比之前省心很多了.而且随着 Swift 工具链的发展,这些问题都可以在编译期或者 Debug 时就暴露出来.</p>
-        
-          <a class="article-more-a" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内存管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -825,27 +846,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 语句</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 注释</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 变量</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 数据类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -869,18 +878,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -890,6 +887,30 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 注释</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 变量</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 数据类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -937,11 +958,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -969,6 +990,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
@@ -981,11 +1006,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+                <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+                <a href="javascript:void(0)" class="js-tag color3">POSTMAN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">form-data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">x-www-form-urlencoded</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">row</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">binary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
