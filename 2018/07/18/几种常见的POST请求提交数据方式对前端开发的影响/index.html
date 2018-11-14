@@ -20,17 +20,13 @@ GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFI
 GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW 
 其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.
 1.HTTP请求报文解剖">
-<meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/theContentOfHTTP.png">
-<meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/AnalysisOfTheHTTP.jpg">
-<meta property="og:image" content="http://olnzmhc4r.bkt.clouddn.com/TheContentOfHTTPResponse.jpg">
-<meta property="og:updated_time" content="2018-07-19T08:55:41.558Z">
+<meta property="og:updated_time" content="2018-11-14T07:37:58.508Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几种常见的POST请求提交数据方式对前端开发的影响">
 <meta name="twitter:description" content="HTTP协议中,规定的HTTP请求方法大致有: 
 GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW 
 其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.
 1.HTTP请求报文解剖">
-<meta name="twitter:image" content="http://olnzmhc4r.bkt.clouddn.com/theContentOfHTTP.png">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -187,11 +183,9 @@ GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFI
 <p>其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.</p>
 <h2 id="1-HTTP请求报文解剖"><a href="#1-HTTP请求报文解剖" class="headerlink" title="1.HTTP请求报文解剖"></a>1.HTTP请求报文解剖</h2><p>首先HTTP协议建立在 TCP/IP 协议之上,且以 ASCII 码传输信息内容.</p>
 <p>HTTP 的规范将 HTTP 请求分为三个部分:状态行、请求头、消息主体.举例如下:</p>
-<p><img src="http://olnzmhc4r.bkt.clouddn.com/theContentOfHTTP.png" alt="HTTP请求"></p>
 <blockquote>
 <p>HTTP请求报文分析:<br>①是请求方法,GET和POST是最常见的HTTP方法.大多数浏览器只支持GET和POST,Spring 3.0提供了一个HiddenHttpMethodFilter,允许通过“_method”的表单参数指定这些特殊的HTTP方法（实际上还是通过POST提交表单）.服务端配置了HiddenHttpMethodFilter后,Spring会根据_method参数指定的值模拟出相应的HTTP方法,这样,就可以使用这些HTTP方法对处理方法进行映射了.<br>②为请求对应的URL地址,它和报文头的Host属性组成完整的请求URL.<br>③是协议名称及版本号.<br>④是HTTP的报文头,报文头包含若干个属性,格式为“属性名:属性值”,服务端据此获取客户端的信息.<br>⑤是报文体,它将一个页面表单中的组件值通过param1=value1&amp;param2=value2的键值对形式编码成一个格式化串,它承载多个请求参数的数据.不但报文体可以传递请求参数,请求URL也可以通过类似于“/chapter15/user.html? param1=value1&amp;param2=value2”的方式传递请求参数. </p>
 </blockquote>
-<p><img src="http://olnzmhc4r.bkt.clouddn.com/AnalysisOfTheHTTP.jpg" alt="HTTP请求报文体结构图"></p>
 <a id="more"></a>
 <h3 id="1-1-常见的HTTP请求报文头属性"><a href="#1-1-常见的HTTP请求报文头属性" class="headerlink" title="1.1 常见的HTTP请求报文头属性"></a>1.1 常见的HTTP请求报文头属性</h3><h4 id="1-1-1-Accept"><a href="#1-1-1-Accept" class="headerlink" title="1.1.1 Accept"></a>1.1.1 Accept</h4><p>请求报文可通过一个“Accept”报文头属性告诉服务端,客户端接受什么类型的响应.</p>
 <pre><code>Accept:text/plain  
@@ -203,7 +197,6 @@ GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFI
 </code></pre><p>以上是个人觉得比较常见和重要的报文头属性,还有其他内容暂不做介绍.</p>
 <p>报文头属性参数以及数值,都是客户端对服务端发起的,服务端只能读.</p>
 <h2 id="2-HTTP响应报文解剖"><a href="#2-HTTP响应报文解剖" class="headerlink" title="2.HTTP响应报文解剖"></a>2.HTTP响应报文解剖</h2><p>HTTP 响应也分为三个部分:响应行、响应头、响应体.举例如下:</p>
-<p><img src="http://olnzmhc4r.bkt.clouddn.com/TheContentOfHTTPResponse.jpg" alt="HTTP响应"></p>
 <blockquote>
 <p>HTTP响应报文分析:<br>①报文协议及版本；<br>②状态码及状态描述；<br>③响应报文头,也是由多个属性组成；<br>④响应报文体,即客户端想要获取的请求内容. </p>
 </blockquote>
@@ -336,7 +329,7 @@ Content-Type: text/xml
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="https://i.loli.net/2018/11/14/5bebce0b944c6.jpg">
+                      <img class="reward-img" src="https://i.loli.net/2018/11/14/5bebcfd635781.jpg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
@@ -453,11 +446,11 @@ Content-Type: text/xml
   
 <nav id="article-nav">
   
-    <a href="/2018/08/03/爱你就像爱生命/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/31/《从点子到产品》读书笔记/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-           爱你就像爱生命
+          《从点子到产品》读书笔记
         
       </div>
     </a>
@@ -727,15 +720,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,18 +760,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
@@ -788,6 +769,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">弱单例模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
               </li>
              
               <li class="article-tag-list-item">
