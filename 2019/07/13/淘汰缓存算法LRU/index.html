@@ -10,20 +10,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。
 LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。
-与 LRU">
+与 LRU 算">
 <meta property="og:type" content="article">
 <meta property="og:title" content="淘汰缓存算法LRU">
 <meta property="og:url" content="http://yoursite.com/2019/07/13/淘汰缓存算法LRU/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。
 LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。
-与 LRU">
-<meta property="og:updated_time" content="2019-07-13T06:02:03.377Z">
+与 LRU 算">
+<meta property="og:updated_time" content="2019-07-13T06:04:14.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="淘汰缓存算法LRU">
 <meta name="twitter:description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。
 LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。
-与 LRU">
+与 LRU 算">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -190,7 +190,7 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
 <p>实现简单。</p>
 <p>【代价】</p>
 <p>命中时需要遍历链表，找到命中的数据块索引，然后需要将数据移到头部。</p>
-<p>&lt;–more!&gt;</p>
+<a id="more"></a>
 <h1 id="LRU-K-算法"><a href="#LRU-K-算法" class="headerlink" title="LRU-K 算法"></a>LRU-K 算法</h1><h2 id="一-原理-1"><a href="#一-原理-1" class="headerlink" title="一 原理"></a>一 原理</h2><p>LRU-K中的K代表最近使用的次数，因此LRU可以认为是LRU-1。LRU-K的主要目的是为了解决LRU算法“缓存污染”的问题，其核心思想是将“最近使用过1次”的判断标准扩展为“最近使用过K次”。</p>
 <h2 id="二-实现-1"><a href="#二-实现-1" class="headerlink" title="二 实现"></a>二 实现</h2><p>相比LRU，LRU-K需要多维护一个队列，用于记录所有缓存数据被访问的历史。只有当数据的访问次数达到K次的时候，才将数据放入缓存。当需要淘汰数据时，LRU-K会淘汰第K次访问时间距当前时间最大的数据。详细实现如下：</p>
 <ol>
@@ -656,14 +656,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
@@ -672,11 +664,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,14 +685,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">OC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,6 +697,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -784,15 +784,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 简介</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
               </li>
              
               <li class="article-tag-list-item">
