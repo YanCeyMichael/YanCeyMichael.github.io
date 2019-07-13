@@ -8,13 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>淘汰缓存算法LRU | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。
+LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。
+与 LRU">
+<meta property="og:type" content="article">
 <meta property="og:title" content="淘汰缓存算法LRU">
 <meta property="og:url" content="http://yoursite.com/2019/07/13/淘汰缓存算法LRU/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
-<meta property="og:updated_time" content="2019-07-13T02:37:17.117Z">
+<meta property="og:description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。
+LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。
+与 LRU">
+<meta property="og:updated_time" content="2019-07-13T06:02:03.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="淘汰缓存算法LRU">
+<meta name="twitter:description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。
+LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。
+与 LRU">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -159,14 +168,116 @@
 
         
         <a href="/2019/07/13/淘汰缓存算法LRU/" class="archive-article-date">
-  	<time datetime="2019-07-13T02:37:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
+  	<time datetime="2019-07-13T02:40:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script>
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="LRU-算法"><a href="#LRU-算法" class="headerlink" title="LRU 算法"></a>LRU 算法</h1><h2 id="一-原理"><a href="#一-原理" class="headerlink" title="一 原理"></a>一 原理</h2><p>如果数据最近被访问过，那么将来被访问的几率也更高。</p>
+<p>LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。</p>
+<p>与 LRU 算法相近的是 LFU（Least Frequently Used）最近最少使用算法。LFU 是指如果一个数据在最近一段时间内使用次数很少，那么在将来一段时间内被使用的可能性也很小。LFU 和 LRU 算法的不同之处，LRU 的淘汰规则是基于访问时间，而 LFU 是基于访问次数的。</p>
+<h2 id="二-实现"><a href="#二-实现" class="headerlink" title="二 实现"></a>二 实现</h2><p>常见方法是利用链表保存数据。</p>
+<ol>
+<li>新数据插入到链表头部；</li>
+<li>每当缓存命中（即缓存数据被访问），则将数据移到链表头部；</li>
+<li>当链表满的时候，将链表尾部的数据丢弃。</li>
+</ol>
+<h2 id="三-分析"><a href="#三-分析" class="headerlink" title="三 分析"></a>三 分析</h2><p>【命中率】</p>
+<p>当存在热点数据时，LRU的效率很好，但偶发性的、周期性的批量操作会导致LRU命中率急剧下降，缓存污染情况比较严重。</p>
+<p>【复杂度】</p>
+<p>实现简单。</p>
+<p>【代价】</p>
+<p>命中时需要遍历链表，找到命中的数据块索引，然后需要将数据移到头部。</p>
+<p>&lt;–more!&gt;</p>
+<h1 id="LRU-K-算法"><a href="#LRU-K-算法" class="headerlink" title="LRU-K 算法"></a>LRU-K 算法</h1><h2 id="一-原理-1"><a href="#一-原理-1" class="headerlink" title="一 原理"></a>一 原理</h2><p>LRU-K中的K代表最近使用的次数，因此LRU可以认为是LRU-1。LRU-K的主要目的是为了解决LRU算法“缓存污染”的问题，其核心思想是将“最近使用过1次”的判断标准扩展为“最近使用过K次”。</p>
+<h2 id="二-实现-1"><a href="#二-实现-1" class="headerlink" title="二 实现"></a>二 实现</h2><p>相比LRU，LRU-K需要多维护一个队列，用于记录所有缓存数据被访问的历史。只有当数据的访问次数达到K次的时候，才将数据放入缓存。当需要淘汰数据时，LRU-K会淘汰第K次访问时间距当前时间最大的数据。详细实现如下：</p>
+<ol>
+<li><p>数据第一次被访问，加入到访问历史列表；</p>
+</li>
+<li><p>如果数据在访问历史列表里后没有达到K次访问，则按照一定规则（FIFO，LRU）淘汰；</p>
+</li>
+<li><p>当访问历史队列中的数据访问次数达到K次后，将数据索引从历史队列删除，将数据移到缓存队列中，并缓存此数据，缓存队列重新按照时间排序；</p>
+</li>
+<li><p>缓存数据队列中被再次访问后，重新排序；</p>
+</li>
+<li><p>需要淘汰数据时，淘汰缓存队列中排在末尾的数据，即：淘汰“倒数第K次访问离现在最久”的数据。</p>
+</li>
+</ol>
+<p>LRU-K具有LRU的优点，同时能够避免LRU的缺点，实际应用中LRU-2是综合各种因素后最优的选择，LRU-3或者更大的K值命中率会高，但适应性差，需要大量的数据访问才能将历史访问记录清除掉。</p>
+<h2 id="三-分析-1"><a href="#三-分析-1" class="headerlink" title="三 分析"></a>三 分析</h2><p>【命中率】</p>
+<p>LRU-K降低了“缓存污染”带来的问题，命中率比LRU要高。</p>
+<p>【复杂度】</p>
+<p>LRU-K队列是一个优先级队列，算法复杂度和代价比较高。</p>
+<p>【代价】</p>
+<p>由于LRU-K还需要记录那些被访问过、但还没有放入缓存的对象，因此内存消耗会比LRU要多；当数据量很大的时候，内存消耗会比较可观。</p>
+<p>LRU-K需要基于时间进行排序（可以需要淘汰时再排序，也可以即时排序），CPU消耗比LRU要高。</p>
+<h1 id="Two-queues（2Q）"><a href="#Two-queues（2Q）" class="headerlink" title="Two queues（2Q）"></a>Two queues（2Q）</h1><h2 id="一-原理-2"><a href="#一-原理-2" class="headerlink" title="一 原理"></a>一 原理</h2><p>Two queues（以下使用2Q代替）算法类似于LRU-2，不同点在于2Q将LRU-2算法中的访问历史队列（注意这不是缓存数据的）改为一个FIFO缓存队列，即：2Q算法有两个缓存队列，一个是FIFO队列，一个是LRU队列。</p>
+<h2 id="二-实现-2"><a href="#二-实现-2" class="headerlink" title="二 实现"></a>二 实现</h2><p>当数据第一次访问时，2Q算法将数据缓存在FIFO队列里面，当数据第二次被访问时，则将数据从FIFO队列移到LRU队列里面，两个队列各自按照自己的方法淘汰数据。详细实现如下：</p>
+<ol>
+<li><p>新访问的数据插入到FIFO队列；</p>
+</li>
+<li><p>如果数据在FIFO队列中一直没有被再次访问，则最终按照FIFO规则淘汰；</p>
+</li>
+<li><p>如果数据在FIFO队列中被再次访问，则将数据移到LRU队列头部；</p>
+</li>
+<li><p>如果数据在LRU队列再次被访问，则将数据移到LRU队列头部；</p>
+</li>
+<li><p>LRU队列淘汰末尾的数据。</p>
+</li>
+</ol>
+<p>注：上图中FIFO队列比LRU队列短，但并不代表这是算法要求，实际应用中两者比例没有硬性规定。</p>
+<h2 id="三-分析-2"><a href="#三-分析-2" class="headerlink" title="三 分析"></a>三 分析</h2><p>【命中率】</p>
+<p>2Q算法的命中率要高于LRU。</p>
+<p>【复杂度】</p>
+<p>需要两个队列，但两个队列本身都比较简单。</p>
+<p>【代价】</p>
+<p>FIFO和LRU的代价之和。</p>
+<p>2Q算法和LRU-2算法命中率类似，内存消耗也比较接近，但对于最后缓存的数据来说，2Q会减少一次从原始存储读取数据或者计算数据的操作。</p>
+<h1 id="Multi-Queue（MQ）"><a href="#Multi-Queue（MQ）" class="headerlink" title="Multi Queue（MQ）"></a>Multi Queue（MQ）</h1><h2 id="一-原理-3"><a href="#一-原理-3" class="headerlink" title="一 原理"></a>一 原理</h2><p>MQ算法根据访问频率将数据划分为多个队列，不同的队列具有不同的访问优先级，其核心思想是：优先缓存访问次数多的数据。</p>
+<h2 id="二-实现-3"><a href="#二-实现-3" class="headerlink" title="二 实现"></a>二 实现</h2><p>MQ算法将缓存划分为多个LRU队列，每个队列对应不同的访问优先级。访问优先级是根据访问次数计算出来的，例如</p>
+<p>详细的算法结构图如下，Q0，Q1….Qk代表不同的优先级队列，Q-history代表从缓存中淘汰数据，但记录了数据的索引和引用次数的队列。</p>
+<p>算法详细描述如下：</p>
+<ol>
+<li><p>新插入的数据放入Q0；</p>
+</li>
+<li><p>每个队列按照LRU管理数据；</p>
+</li>
+<li><p>当数据的访问次数达到一定次数，需要提升优先级时，将数据从当前队列删除，加入到高一级队列的头部；</p>
+</li>
+<li><p>为了防止高优先级数据永远不被淘汰，当数据在指定的时间里访问没有被访问时，需要降低优先级，将数据从当前队列删除，加入到低一级的队列头部；</p>
+</li>
+<li><p>需要淘汰数据时，从最低一级队列开始按照LRU淘汰；每个队列淘汰数据时，将数据从缓存中删除，将数据索引加入Q-history头部；</p>
+</li>
+<li><p>如果数据在Q-history中被重新访问，则重新计算其优先级，移到目标队列的头部；</p>
+</li>
+<li><p>Q-history按照LRU淘汰数据的索引。</p>
+</li>
+</ol>
+<h2 id="三-分析-3"><a href="#三-分析-3" class="headerlink" title="三 分析"></a>三 分析</h2><p>【命中率】</p>
+<p>MQ降低了“缓存污染”带来的问题，命中率比LRU要高。</p>
+<p>【复杂度】</p>
+<p>MQ需要维护多个队列，且需要维护每个数据的访问时间，复杂度比LRU高。</p>
+<p>【代价】</p>
+<p>MQ需要记录每个数据的访问时间，需要定时扫描所有队列，代价比LRU要高。</p>
+<p>注：虽然MQ的队列看起来数量比较多，但由于所有队列之和受限于缓存容量的大小，因此这里多个队列长度之和和一个LRU队列是一样的，因此队列扫描性能也相近。</p>
+<h1 id="LRU类算法对比"><a href="#LRU类算法对比" class="headerlink" title="LRU类算法对比"></a>LRU类算法对比</h1><p>由于不同的访问模型导致命中率变化较大，此处对比仅基于理论定性分析，不做定量分析。</p>
+<p>对比</p>
+<p>命中率</p>
+<p>LRU-2 &gt; MQ(2) &gt; 2Q &gt; LRU</p>
+<p>复杂度</p>
+<p>LRU-2 &gt; MQ(2) &gt; 2Q &gt; LRU</p>
+<p>代价</p>
+<p>LRU-2  &gt; MQ(2) &gt; 2Q &gt; LRU</p>
+<p>实际应用中需要根据业务的需求和对数据的访问情况进行选择，并不是命中率越高越好。例如：虽然LRU看起来命中率会低一些，且存在”缓存污染“的问题，但由于其简单和代价小，实际应用中反而应用更多。</p>
+<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><p>基于双链表的 LRU 实现:</p>
+<p>　　传统意义的 LRU 算法是为每一个 Cache 对象设置一个计数器，每次 Cache 命中则给计数器+1，而 Cache 用完，需要淘汰旧内容，放置新内容时，就查看所有的计数器，并将最少使用的内容替换掉。</p>
+<p>   它的弊端很明显，如果 Cache 的数量少，问题不会很大， 但是如果 Cache 的空间过大，达到10W或者100W以上，一旦需要淘汰，则需要遍历所有计算器，其性能与资源消耗是巨大的。效率也就非常的慢了。</p>
+<p>   它的原理：将 Cache 的所有位置都用双连表连接起来，当一个位置被命中之后，就将通过调整链表的指向，将该位置调整到链表头的位置，新加入的 Cache 直接加到链表头中。</p>
+<p>   这样，在多次进行 Cache 操作后，最近被命中的，就会被向链表头方向移动，而没有命中的，而想链表后面移动，链表尾则表示最近最少使用的 Cache 。</p>
+<p>   当需要替换内容时候，链表的最后位置就是最少被命中的位置，我们只需要淘汰链表最后的部分即可。</p>
+
       
 
       
@@ -205,6 +316,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LRU</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -298,7 +420,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU-算法"><span class="toc-number">1.</span> <span class="toc-text">LRU 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-原理"><span class="toc-number">1.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-实现"><span class="toc-number">1.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-分析"><span class="toc-number">1.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU-K-算法"><span class="toc-number">2.</span> <span class="toc-text">LRU-K 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-原理-1"><span class="toc-number">2.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-实现-1"><span class="toc-number">2.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-分析-1"><span class="toc-number">2.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Two-queues（2Q）"><span class="toc-number">3.</span> <span class="toc-text">Two queues（2Q）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-原理-2"><span class="toc-number">3.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-实现-2"><span class="toc-number">3.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-分析-2"><span class="toc-number">3.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Multi-Queue（MQ）"><span class="toc-number">4.</span> <span class="toc-text">Multi Queue（MQ）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-原理-3"><span class="toc-number">4.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-实现-3"><span class="toc-number">4.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-分析-3"><span class="toc-number">4.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU类算法对比"><span class="toc-number">5.</span> <span class="toc-text">LRU类算法对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拓展"><span class="toc-number">6.</span> <span class="toc-text">拓展</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -550,11 +672,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,10 +693,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,11 +720,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -638,18 +760,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">calloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">realloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
               </li>
              
@@ -662,7 +772,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杭州</a>
+                <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">calloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">realloc()</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,6 +789,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杭州</a>
               </li>
             
             <div class="clearfix"></div>
