@@ -618,10 +618,10 @@ UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>大量的App现在都用优秀的图片处理框架 SDWebImage 框架来展示图片内容,由于现在 Apple 对 app 的安全管控开始越来越严格. Apple 的做法是从管控开发者的角度来提升用户的安全度,普及 https 的措施一定会逐渐全面覆盖.</p>
-<p>实际开发当中,我们的网络请求封住模块,除非 App 内部有下载资源的模块,不然我们很少会将自己的 App 内部的图片做特殊处理,在实际开发过程中,网络模块和 SDWebImage 联合起来才算一个完整的网络架构模块,而 SDWebImage 本身是有校验证书方法的,只不过内部没有具体的操作,也没有详细写,每个开发者可以根据具体业务需要根据实际情况来处理,所以对 SDWebImage 框架在哪里修改,在哪里改写来成功完成 https 的请求,就变成了一个事儿.</p>
-<p>其实只要理解了SDWebImage框架的底层,以及几个关键类的作用,这个问题便不是问题:</p>
-<p>对于 SDWebImage 框架下的 SDWebImageDownloaderOperation 这个类中的这个方法重写:</p>
+        <p>大量的App现在都用优秀的图片处理框架 SDWebImage 来展示图片内容，由于现在 Apple 对 app 的安全管控开始越来越严格。 Apple 的做法是从管控开发者的角度来提升用户的安全度，普及 https 的措施一定会逐渐全面覆盖。</p>
+<p>实际开发当中，我们的网络请求模块，除非 App 内部有下载资源的模块，不然我们很少会将自己的 App 内部的图片做特殊处理，在实际开发过程中，网络模块和 SDWebImage 联合起来才算一个完整的网络架构模块，而 SDWebImage 本身是有校验证书方法的，只不过内部没有具体的操作，也没有详细写，每个开发者可以根据具体业务需要根据实际情况来处理，所以对 SDWebImage 框架在哪里修改，在哪里改写来成功完成 https 的请求，就变成了一个事儿。</p>
+<p>其实只要理解了SDWebImage框架的底层，以及几个关键类的作用，这个问题便不是问题：</p>
+<p>对于 SDWebImage 框架下的 SDWebImageDownloaderOperation 这个类中的这个方法重写：</p>
 <pre><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler;
 </code></pre>
         
@@ -800,18 +800,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -837,6 +825,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -872,14 +872,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -889,6 +881,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -908,10 +908,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
@@ -920,11 +916,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -940,6 +940,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
               </li>
              
@@ -952,11 +960,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -976,15 +980,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1036,15 +1036,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 简介</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
               </li>
              
               <li class="article-tag-list-item">
