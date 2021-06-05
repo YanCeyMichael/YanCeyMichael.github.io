@@ -281,59 +281,7 @@ int main()
     free(p);  
     return 0;  
 } 
-</code></pre><h4 id="malloc-的函数声明-函数原型"><a href="#malloc-的函数声明-函数原型" class="headerlink" title="malloc() 的函数声明(函数原型)"></a>malloc() 的函数声明(函数原型)</h4><p>void *malloc(int size);</p>
-<p>malloc 向系统申请分配指定 size 个字节的内存空间。返回类型是 void<em> 类型。void</em> 表示未确定类型的指针，如果分配成功则返回指向被分配内存的指针，否则返回空指针NULL。C,C++规定，void* 类型可以强制转换为任何其它类型的指针。这个在 MSDN 上可以找到相关的解释，具体内容如下：</p>
-<p>malloc returns a void pointer to the allocated space, or NULL if there is insufficient memory available. To return a pointer to a type other than void, use a type cast on the return value. The storage space pointed to by the return value is guaranteed to be suitably aligned for storage of any type of object. If size is 0, malloc allocates a zero-length item in the heap and returns a valid pointer to that item. Always check the return from malloc, even if the amount of memory requested is small.</p>
-<h4 id="malloc-与-new-的不同点"><a href="#malloc-与-new-的不同点" class="headerlink" title="malloc 与 new 的不同点"></a>malloc 与 new 的不同点</h4><p>从函数声明上可以看出。malloc 和 new 至少有两个不同: new 返回指定类型的指针，并且可以自动计算所需要大小。</p>
-<pre><code>int *p;
-
-p = new int; //返回类型为int* 类型(整数型指针)，分配大小为 sizeof(int);
-
-或：
-
-int* parr;
-
-parr = new int [100]; //返回类型为 int* 类型(整数型指针)，分配大小为 sizeof(int) * 100;
-　　
-　　
-</code></pre><p>而 malloc 则必须由我们计算要字节数，并且在返回后强行转换为实际类型的指针。</p>
-<pre><code>int* p;
-
-p = (int *) malloc (sizeof(int));
-</code></pre><p>第一、malloc 函数返回的是 void <em> 类型，如果你写成：p = malloc (sizeof(int)); 则程序无法通过编译，报错：“不能将 void</em> 赋值给 int <em> 类型变量”。所以必须通过 (int </em>) 来将强制转换。</p>
-<p>第二、函数的实参为 sizeof(int) ，用于指明一个整型数据需要的大小。如果你写成：</p>
-<pre><code>int* p = (int *) malloc (1);
-</code></pre><p>代码也能通过编译，但事实上只分配了1个字节大小的内存空间，当你往里头存入一个整数，就会有3个字节无家可归，而直接“住进邻居家”！造成的结果是后面的内存中原有数据内容全部被清空。</p>
-<p>malloc 也可以达到 new [] 的效果，申请出一段连续的内存，方法无非是指定你所需要内存大小。</p>
-<p>比如想分配100个int类型的空间：</p>
-<pre><code>int* p = (int *) malloc ( sizeof(int) * 100 ); //分配可以放得下100个整数的内存空间。
-</code></pre><p>另外有一点不能直接看出的区别是，malloc 只管分配内存，并不能对所得的内存进行初始化，所以得到的一片新内存中，其值将是随机的。</p>
-<p>除了分配及最后释放的方法不一样以外，通过malloc或new得到指针，在其它操作上保持一致。</p>
-<h4 id="malloc-0-搞事情"><a href="#malloc-0-搞事情" class="headerlink" title="malloc(0) 搞事情"></a>malloc(0) 搞事情</h4><p>在C语法中, malloc(0)无疑是对的，并且也一定是分配了对应的内存空间，但是有一点可能理解有点困难，那就是分配了内存空间为0的内存大小，内存空间大小是0的时候由于无法存储内容，导致无法被使用，对于malloc而言也就是返回了一个让你无法使用的指针；</p>
-<p>在操作系统的层面，由于操作系统在内存管理的时候会将内存分成2部分：棧内存和堆内存，棧和堆除了数据结构上的区别之外，对于棧而言，棧有自己的机器指令而堆没有，而malloc分配的是堆内存，由于堆没有自己的机器指令，所以要由系统自己写算法来管理这部分内存，而最常见的管理是用链表来管理，在每片被分配的内存前加一个表头，里面存储了被分配的内存的起始位置和大小，而malloc函数返回的指针就是表头里的起始指针，这个地址由一系列的算法获得，通常而言不会分配0空间大小，一旦内存分配成功就会返回一个有效的指针，对于分配0空间来说，算法已经算出可用内存的起始地址，但是你占用0空间，所以对那个指针操作就是错误的，操作系统一般不知道其终止地址，因为有占用大小就可以推出终止地址，还有就是即使分配0空间也要释放它，其实是释放的链表结点。还有，返回的指针是可用地址的起始地址，可用大小是固定的，在VC6下是56字节，这个大小可能就是链表的大小。既然malloc另外分配内存来维护该内存块（算法链表占用大小），也就是说分配来用于维护该内存块的内存的大小也是有限的，那么到底是多少呢？</p>
-<pre><code>#include 
-
-int main()
-{
-    char *ptr;
-    ptr = malloc(0*sizeof(char));
-
-    if (NULL == ptr)
-    printf(&quot;got a NULL pointer\n&quot;);
-    else 
-    {
-        printf(&quot;got a Valid pointer\n&quot;);
-        // 有10个a，另外有一个字节用于保存&apos;&apos;\0&apos;
-        strcpy(ptr,&quot;aaaaaaaaaa&quot;); 
-        //printf(&quot;the value at %X is:%c\n&quot;,ptr,*ptr);
-        printf(&quot;the string at %x is :%s\n&quot;,ptr, ptr);
-        // free(ptr);
-    }
-    return 0;
-}
-</code></pre><p>此时没有把 free（ptr）编译进来，同样会发生异常，程序输出很多个10个a,如果把 free(ptr); 编译进来，就会发生运行错误！</p>
-<h4 id="malloc-的总结"><a href="#malloc-的总结" class="headerlink" title="malloc() 的总结"></a>malloc() 的总结</h4><p>malloc()函数其实就在内存中找一片指定大小的空间，然后将这个空间的首地址范围给一个指针变量，这里的指针变量可以是一个单独的指针，也可以是一个数组的首地址，这要看 malloc() 函数中参数 size 的具体内容。我们这里 malloc 分配的内存空间在逻辑上连续的，而在物理上可以连续也可以不连续。对于我们程序员来说，我们关注的是逻辑上的连续，因为操作系统会帮我们安排内存分配，所以我们使用起来就可以当做是连续的。</p>
-<p>那么在理解了malloc的基本内容之后，对于malloc、alloc、calloc、realloc的区别浅显的理解，请移步：<a href="http://www.yanceymichael.com/2018/03/07/%E5%AF%B9%E4%BA%8Emalloc%E3%80%81alloc%E3%80%81calloc%E3%80%81realloc%E7%9A%84%E5%8C%BA%E5%88%AB%E6%B5%85%E6%98%BE%E7%9A%84%E7%90%86%E8%A7%A3/">对于malloc、alloc、calloc、realloc的区别浅显的理解</a>.</p>
+</code></pre>
         
           <a class="article-more-a" href="/2018/02/03/C语言-malloc-和-free/#more">more >></a>
         
@@ -816,26 +764,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
@@ -869,6 +797,26 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -908,10 +856,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
@@ -924,11 +868,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
               </li>
              
               <li class="article-tag-list-item">

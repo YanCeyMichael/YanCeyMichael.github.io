@@ -18,7 +18,7 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
 <meta property="og:description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。
 LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。
 与 LRU 算">
-<meta property="og:updated_time" content="2019-07-13T06:04:14.311Z">
+<meta property="og:updated_time" content="2021-06-05T17:41:22.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="淘汰缓存算法LRU">
 <meta name="twitter:description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。
@@ -178,6 +178,7 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
         <script src="/assets/js/APlayer.min.js"> </script><h1 id="LRU-算法"><a href="#LRU-算法" class="headerlink" title="LRU 算法"></a>LRU 算法</h1><h2 id="一-原理"><a href="#一-原理" class="headerlink" title="一 原理"></a>一 原理</h2><p>如果数据最近被访问过，那么将来被访问的几率也更高。</p>
 <p>LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。</p>
 <p>与 LRU 算法相近的是 LFU（Least Frequently Used）最近最少使用算法。LFU 是指如果一个数据在最近一段时间内使用次数很少，那么在将来一段时间内被使用的可能性也很小。LFU 和 LRU 算法的不同之处，LRU 的淘汰规则是基于访问时间，而 LFU 是基于访问次数的。</p>
+<a id="more"></a>
 <h2 id="二-实现"><a href="#二-实现" class="headerlink" title="二 实现"></a>二 实现</h2><p>常见方法是利用链表保存数据。</p>
 <ol>
 <li>新数据插入到链表头部；</li>
@@ -190,7 +191,6 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
 <p>实现简单。</p>
 <p>【代价】</p>
 <p>命中时需要遍历链表，找到命中的数据块索引，然后需要将数据移到头部。</p>
-<a id="more"></a>
 <h1 id="LRU-K-算法"><a href="#LRU-K-算法" class="headerlink" title="LRU-K 算法"></a>LRU-K 算法</h1><h2 id="一-原理-1"><a href="#一-原理-1" class="headerlink" title="一 原理"></a>一 原理</h2><p>LRU-K中的K代表最近使用的次数，因此LRU可以认为是LRU-1。LRU-K的主要目的是为了解决LRU算法“缓存污染”的问题，其核心思想是将“最近使用过1次”的判断标准扩展为“最近使用过K次”。</p>
 <h2 id="二-实现-1"><a href="#二-实现-1" class="headerlink" title="二 实现"></a>二 实现</h2><p>相比LRU，LRU-K需要多维护一个队列，用于记录所有缓存数据被访问的历史。只有当数据的访问次数达到K次的时候，才将数据放入缓存。当需要淘汰数据时，LRU-K会淘汰第K次访问时间距当前时间最大的数据。详细实现如下：</p>
 <ol>
@@ -573,26 +573,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
@@ -626,6 +606,26 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,10 +665,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
@@ -681,11 +677,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
               </li>
              
               <li class="article-tag-list-item">

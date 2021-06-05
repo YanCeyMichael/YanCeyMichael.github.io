@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>给blog添加一个相册，先把JS干掉 | YanCey’s Blog</title>
+  <title>给Blog添加一个相册，先把JS干掉 | YanCey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="废话写在前面：这个博客没有相册，这会儿刚好不是特别的忙，所以也有点精力来整理一下blog。音乐播放器加了，还差一个相册。为了整个相册出来，我还是要摸一下前端的内容的，也许方向不是特别的对，但是还是先从JS入手吧。
 我对JS不是特别了解的，在iOS这边原生的框架开发做的时间用不了多久，就会遇到JS的交互问题，在iOS这边有个UI控件叫UIWebView，它是专门用来承载html内容的一个控件（通俗">
 <meta property="og:type" content="article">
-<meta property="og:title" content="给blog添加一个相册，先把JS干掉">
-<meta property="og:url" content="http://yoursite.com/2017/03/02/给blog添加一个相册，先把JS干掉/index.html">
+<meta property="og:title" content="给Blog添加一个相册，先把JS干掉">
+<meta property="og:url" content="http://yoursite.com/2017/03/02/给Blog添加一个相册，先把JS干掉/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="废话写在前面：这个博客没有相册，这会儿刚好不是特别的忙，所以也有点精力来整理一下blog。音乐播放器加了，还差一个相册。为了整个相册出来，我还是要摸一下前端的内容的，也许方向不是特别的对，但是还是先从JS入手吧。
 我对JS不是特别了解的，在iOS这边原生的框架开发做的时间用不了多久，就会遇到JS的交互问题，在iOS这边有个UI控件叫UIWebView，它是专门用来承载html内容的一个控件（通俗">
-<meta property="og:updated_time" content="2018-11-14T07:36:36.632Z">
+<meta property="og:updated_time" content="2021-06-05T17:59:29.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="给blog添加一个相册，先把JS干掉">
+<meta name="twitter:title" content="给Blog添加一个相册，先把JS干掉">
 <meta name="twitter:description" content="废话写在前面：这个博客没有相册，这会儿刚好不是特别的忙，所以也有点精力来整理一下blog。音乐播放器加了，还差一个相册。为了整个相册出来，我还是要摸一下前端的内容的，也许方向不是特别的对，但是还是先从JS入手吧。
 我对JS不是特别了解的，在iOS这边原生的框架开发做的时间用不了多久，就会遇到JS的交互问题，在iOS这边有个UI控件叫UIWebView，它是专门用来承载html内容的一个控件（通俗">
   
@@ -152,19 +152,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-给blog添加一个相册，先把JS干掉" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-给Blog添加一个相册，先把JS干掉" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      给blog添加一个相册，先把JS干掉
+      给Blog添加一个相册，先把JS干掉
     </h1>
   
 
         
-        <a href="/2017/03/02/给blog添加一个相册，先把JS干掉/" class="archive-article-date">
+        <a href="/2017/03/02/给Blog添加一个相册，先把JS干掉/" class="archive-article-date">
   	<time datetime="2017-03-02T03:18:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
 </a>
         
@@ -176,11 +176,11 @@
 <p>废话写在前面：这个博客没有相册，这会儿刚好不是特别的忙，所以也有点精力来整理一下blog。音乐播放器加了，还差一个相册。为了整个相册出来，我还是要摸一下前端的内容的，也许方向不是特别的对，但是还是先从JS入手吧。</p>
 <p>我对JS不是特别了解的，在iOS这边原生的框架开发做的时间用不了多久，就会遇到JS的交互问题，在iOS这边有个UI控件叫UIWebView，它是专门用来承载html内容的一个控件（通俗的来说：这个控件是用来加载网页的）。只有简单的代理方法，所以很多时候，iOS这边想要和web前端做一些交互的时候，难免要用到JS。</p>
 </blockquote>
+<a id="more"></a>
 <p>JS简介：</p>
 <p>JS即JavaScript，一般这么解释它：JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。</p>
 <p>目前所有主流浏览器都支持JavaScript，并且很多的网站的网页都用JavaScript来做一些动态功能，当然还可以用其他的脚本语言来丰富网页的动态效果也不仅仅就是JavaScript。</p>
 <p>那么这个开篇的JavaScript的内容就简单介绍一些基本的关于JavaScript的基本概念。</p>
-<a id="more"></a>
 <hr>
 <p>从JavaScript的基本概念介绍看来JavaScript这门语言可用于HTML和Web，更可广泛用于服务器、PC、笔记本电脑、平板电脑和智能手机等设备。所以它的代码怎么书写，怎么使用，怎么调用等问题是我所关心的。</p>
 <p>JavaScript是可插入HTML页面的编程代码。</p>
@@ -315,7 +315,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/03/02/给blog添加一个相册，先把JS干掉/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/03/02/给Blog添加一个相册，先把JS干掉/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -511,26 +511,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
@@ -564,6 +544,26 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,10 +603,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
@@ -619,11 +615,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
               </li>
              
               <li class="article-tag-list-item">

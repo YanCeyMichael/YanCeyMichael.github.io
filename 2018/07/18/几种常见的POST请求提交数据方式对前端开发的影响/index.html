@@ -10,23 +10,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="HTTP协议中,规定的HTTP请求方法大致有: 
 GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW 
-其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.
-1.HTTP请求报文解剖">
+其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="几种常见的POST请求提交数据方式对前端开发的影响">
 <meta property="og:url" content="http://yoursite.com/2018/07/18/几种常见的POST请求提交数据方式对前端开发的影响/index.html">
 <meta property="og:site_name" content="YanCey’s Blog">
 <meta property="og:description" content="HTTP协议中,规定的HTTP请求方法大致有: 
 GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW 
-其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.
-1.HTTP请求报文解剖">
-<meta property="og:updated_time" content="2018-11-14T07:37:58.508Z">
+其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.">
+<meta property="og:updated_time" content="2021-06-05T17:42:29.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几种常见的POST请求提交数据方式对前端开发的影响">
 <meta name="twitter:description" content="HTTP协议中,规定的HTTP请求方法大致有: 
 GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFIND/VIEW 
-其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.
-1.HTTP请求报文解剖">
+其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.">
   
     <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
   
@@ -181,12 +178,12 @@ GET/POST/PUT/PATCH/DELETE/COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/LOCK/UNLOCK/PROPFI
         <script src="/assets/js/APlayer.min.js"> </script><p>HTTP协议中,规定的HTTP请求方法大致有: </p>
 <p>GET/POST/PUT/PATCH/DELETE/<br>COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/<br>LOCK/UNLOCK/PROPFIND/VIEW </p>
 <p>其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.</p>
+<a id="more"></a>
 <h2 id="1-HTTP请求报文解剖"><a href="#1-HTTP请求报文解剖" class="headerlink" title="1.HTTP请求报文解剖"></a>1.HTTP请求报文解剖</h2><p>首先HTTP协议建立在 TCP/IP 协议之上,且以 ASCII 码传输信息内容.</p>
 <p>HTTP 的规范将 HTTP 请求分为三个部分:状态行、请求头、消息主体.举例如下:</p>
 <blockquote>
 <p>HTTP请求报文分析:<br>①是请求方法,GET和POST是最常见的HTTP方法.大多数浏览器只支持GET和POST,Spring 3.0提供了一个HiddenHttpMethodFilter,允许通过“_method”的表单参数指定这些特殊的HTTP方法（实际上还是通过POST提交表单）.服务端配置了HiddenHttpMethodFilter后,Spring会根据_method参数指定的值模拟出相应的HTTP方法,这样,就可以使用这些HTTP方法对处理方法进行映射了.<br>②为请求对应的URL地址,它和报文头的Host属性组成完整的请求URL.<br>③是协议名称及版本号.<br>④是HTTP的报文头,报文头包含若干个属性,格式为“属性名:属性值”,服务端据此获取客户端的信息.<br>⑤是报文体,它将一个页面表单中的组件值通过param1=value1&amp;param2=value2的键值对形式编码成一个格式化串,它承载多个请求参数的数据.不但报文体可以传递请求参数,请求URL也可以通过类似于“/chapter15/user.html? param1=value1&amp;param2=value2”的方式传递请求参数. </p>
 </blockquote>
-<a id="more"></a>
 <h3 id="1-1-常见的HTTP请求报文头属性"><a href="#1-1-常见的HTTP请求报文头属性" class="headerlink" title="1.1 常见的HTTP请求报文头属性"></a>1.1 常见的HTTP请求报文头属性</h3><h4 id="1-1-1-Accept"><a href="#1-1-1-Accept" class="headerlink" title="1.1.1 Accept"></a>1.1.1 Accept</h4><p>请求报文可通过一个“Accept”报文头属性告诉服务端,客户端接受什么类型的响应.</p>
 <pre><code>Accept:text/plain  
 </code></pre><h4 id="1-1-2-Cookie"><a href="#1-1-2-Cookie" class="headerlink" title="1.1.2 Cookie"></a>1.1.2 Cookie</h4><p>客户端的Cookie是通过这个报文头属性传给服务端.Cookie包含一些版本信息内容等,进而服务器可以识别请求是哪个版本的客户端发送来的请求等其他作用.</p>
@@ -628,26 +625,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
@@ -681,6 +658,26 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -720,10 +717,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
@@ -736,11 +729,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
               </li>
              
               <li class="article-tag-list-item">
