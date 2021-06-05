@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>对于malloc、alloc、calloc、realloc的区别浅显的理解 | YanCey’s Blog</title>
+  <title>对于malloc、alloc、calloc、realloc的区别浅显的理解 | Yancey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="总述:
 内存区域可分为栈,堆,静态存储区和常量存储区,对于常见的局部变量,函数形参,临时变量都是在栈上获得内存的,它们的获取方式都是通过编译器直接执行.
@@ -14,7 +14,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="对于malloc、alloc、calloc、realloc的区别浅显的理解">
 <meta property="og:url" content="http://yoursite.com/2018/03/07/对于malloc、alloc、calloc、realloc的区别浅显的理解/index.html">
-<meta property="og:site_name" content="YanCey’s Blog">
+<meta property="og:site_name" content="Yancey’s Blog">
 <meta property="og:description" content="总述:
 内存区域可分为栈,堆,静态存储区和常量存储区,对于常见的局部变量,函数形参,临时变量都是在栈上获得内存的,它们的获取方式都是通过编译器直接执行.
 而利用指针来管理内存的时候,可以更加自由的像汇编一样处理内存的地址, C 标准函数库提供了很多函数来实现对堆上内存的管理,从开辟内存空间到释放内存空间都有相应的函数,这些函数都包含在头文件 stdlib.h 中,其中有几个特别重要的函数需要做区分">
@@ -25,7 +25,7 @@
 内存区域可分为栈,堆,静态存储区和常量存储区,对于常见的局部变量,函数形参,临时变量都是在栈上获得内存的,它们的获取方式都是通过编译器直接执行.
 而利用指针来管理内存的时候,可以更加自由的像汇编一样处理内存的地址, C 标准函数库提供了很多函数来实现对堆上内存的管理,从开辟内存空间到释放内存空间都有相应的函数,这些函数都包含在头文件 stdlib.h 中,其中有几个特别重要的函数需要做区分">
   
-    <link rel="alternative" href="/atom.xml" title="YanCey’s Blog" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Yancey’s Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -55,7 +55,7 @@
 			<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">YanCey</a></h1>
+		  <h1 class="header-author"><a href="/">Yancey</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">Only the paranoid survive!</p>
@@ -109,7 +109,7 @@
 				<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">YanCey</h1>
+			  <h1 class="header-author js-header-author">Yancey</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Only the paranoid survive!<i class="icon icon-quo-right"></i></p>
@@ -426,7 +426,7 @@ int* p = (int *) realloc(0,sizeof(int) * 10);
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 YanCey
+    		&copy; 2021 Yancey
     	</div>
       	<div class="footer-right">
              转载前请联系我,不然别怪我用小拳拳打你哟!
@@ -541,30 +541,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 注释</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 变量</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 数据类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -606,6 +582,30 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 注释</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 变量</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 数据类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -824,7 +824,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">Yancey &lt;br&gt; 2015年毕业于暨大 &lt;br&gt; 2019年就职于讯飞 &lt;br&gt; 2021年就职于百度 &lt;br&gt; &lt;br&gt; 0.5 年算法，2年客户端，3.5年产品 &lt;br&gt;&lt;br&gt; 年少无为，年轻无畏 &lt;br&gt;&lt;br&gt;没有遥远梦想，只想活得开心</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">Yancey &lt;br&gt;&lt;br&gt; 2011 年，暨大 光电信息工程 &lt;br&gt; 2019 年，讯飞 产品经理&lt;br&gt; 2021 年，百度 高级产品经理&lt;br&gt; &lt;br&gt; 0.5 年计算机视觉算法 &lt;br&gt; 2 年iOS客户端研发 &lt;br&gt; 3.5 年产品生涯 &lt;br&gt;&lt;br&gt; 永远年轻，永远热泪盈眶 &lt;br&gt;&lt;br&gt;没有梦想，活得开心</div>
   	  	
     	</section>
     
