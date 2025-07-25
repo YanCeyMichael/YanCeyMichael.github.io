@@ -8,19 +8,23 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JavaScript02 | Yancey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、JavaScript关于对象的理解
-关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而">
+  <meta name="description" content="1、JavaScript关于对象的理解 关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript02">
 <meta property="og:url" content="http://yoursite.com/2017/03/02/JavaScript02/index.html">
 <meta property="og:site_name" content="Yancey’s Blog">
-<meta property="og:description" content="1、JavaScript关于对象的理解
-关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而">
-<meta property="og:updated_time" content="2017-11-24T06:56:52.461Z">
+<meta property="og:description" content="1、JavaScript关于对象的理解 关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-03-02T05:33:19.000Z">
+<meta property="article:modified_time" content="2017-11-24T06:56:52.461Z">
+<meta property="article:author" content="Yancey">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="JavaScript 对象">
+<meta property="article:tag" content="JavaScript 函数">
+<meta property="article:tag" content="JavaScript 运算符">
+<meta property="article:tag" content="JavaScript 判断语句">
+<meta property="article:tag" content="JavaScript 循环语句">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript02">
-<meta name="twitter:description" content="1、JavaScript关于对象的理解
-关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而">
   
     <link rel="alternative" href="/atom.xml" title="Yancey’s Blog" type="application/atom+xml">
   
@@ -38,7 +42,7 @@
 
   
 
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -52,10 +56,8 @@
 			<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Yancey</a></h1>
+		  <h1 class="header-author"><a href="/">undefined</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">资质平庸，认知局限</p>
 		
 
 		<nav class="header-menu">
@@ -70,11 +72,11 @@
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">全部文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">ALL ARTICLES</a>
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">ABOUT ME</a>
     			
             
 		</nav>
@@ -106,10 +108,8 @@
 				<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yancey</h1>
+			  <h1 class="header-author js-header-author">undefined</h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>资质平庸，认知局限<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -188,43 +188,59 @@ person.weight = 87;
 <pre><code>person.eat()
 person.run()
 person.sleep()   
-</code></pre><a id="more"></a>
+</code></pre><span id="more"></span>
 <h1 id="2、JavaScript的函数"><a href="#2、JavaScript的函数" class="headerlink" title="2、JavaScript的函数"></a>2、JavaScript的函数</h1><p>函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块。函数在多数语言中被理解为函数或方法,所以JavaScript的函数概念和其他语言是类似的。</p>
 <p>因为每种语言的格式书写差异很大，所以对于JavaScript函数的格式，要注意它有如下基本的格式：</p>
 <pre><code>function functionname()
-{
+&#123;
   //这里是要执行的代码
- }
+ &#125;
 </code></pre><p>前面使用了关键词 function</p>
 <p>PS:JavaScript 对大小写是敏感的。规定关键词 function 必须是小写，并且必须以与函数名称相同的大小写来调用函数。</p>
 <p>当我们想调用一个函数需要带参数的时候，在（）内增加参数即可，如下：</p>
 <pre><code>function myFunction(var1, var2)
-{
+&#123;
  //这里是要执行的代码
- }
+ &#125;
 </code></pre><p>有时，我们会希望函数将值返回调用它的地方。通过使用 return 语句就可以实现。在使用 return 语句时，函数会停止执行，并返回指定的值。</p>
 <pre><code>function myFunction()
-{
+&#123;
 var x=5;
 return x;
-}
+&#125;
 </code></pre><p>有时候，想要返回值是基于传递到函数中的参数：</p>
 <pre><code>function myFunction(a, b)
-{
+&#123;
   return a * b;
-}
+&#125;
 </code></pre><p>从以上的四种情况来看，JavaScript的函数的特性和C语言函数的情况相类似：无参无返，有参无返，无参有返，有参有返四种大的类型。但是必须要有关键词小写的 function 来修饰函数。</p>
 <hr>
 <blockquote>
 <p>PS：了解完JavaScript的函数之后，避免不了的需要知道和函数有关的全局变量以及局部变量。在JS中对于全局变量和局部变量JS的规定和C语言又不谋而合的类似。</p>
+</blockquote>
+<blockquote>
 <p>在 JavaScript 函数内部声明的变量（使用 var）是局部变量，所以只能在函数内部访问它。（该变量的作用域是局部的）。</p>
+</blockquote>
+<blockquote>
 <p>您可以在不同的函数中使用名称相同的局部变量，因为只有声明过该变量的函数才能识别出该变量。</p>
+</blockquote>
+<blockquote>
 <p>只要函数运行完毕，本地变量就会被删除。</p>
+</blockquote>
+<blockquote>
 <p>在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它。</p>
+</blockquote>
+<blockquote>
 <p>JavaScript 变量的生命期从它们被声明的时间开始。局部变量会在函数运行以后被删除。全局变量会在页面关闭后被删除。</p>
+</blockquote>
+<blockquote>
 <p>如果把值赋给尚未声明的变量，该变量将被自动作为全局变量声明。</p>
+</blockquote>
+<blockquote>
 <pre><code>personName = &quot;YanCeyMichael&quot;;
-</code></pre><p>即使该变量是在函数内执行，也是全局变量。</p>
+</code></pre></blockquote>
+<blockquote>
+<p>即使该变量是在函数内执行，也是全局变量。</p>
 </blockquote>
 <hr>
 <h1 id="3、JavaScript的运算符"><a href="#3、JavaScript的运算符" class="headerlink" title="3、JavaScript的运算符"></a>3、JavaScript的运算符</h1><p>JavaScript的算术运算符和赋值运算符和C以及OC或者其他语言是基本类似的，这里不再赘述。</p>
@@ -435,7 +451,7 @@ document.write(x);
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、JavaScript关于对象的理解"><span class="toc-number">1.</span> <span class="toc-text">1、JavaScript关于对象的理解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、JavaScript的函数"><span class="toc-number">2.</span> <span class="toc-text">2、JavaScript的函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、JavaScript的运算符"><span class="toc-number">3.</span> <span class="toc-text">3、JavaScript的运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、JavaScript的判断语句"><span class="toc-number">4.</span> <span class="toc-text">4、JavaScript的判断语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5、JavaScript的for循环while循环以及break语句和continue语句"><span class="toc-number">5.</span> <span class="toc-text">5、JavaScript的for循环while循环以及break语句和continue语句</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81JavaScript%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">1、JavaScript关于对象的理解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81JavaScript%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">2、JavaScript的函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81JavaScript%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">3.</span> <span class="toc-text">3、JavaScript的运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81JavaScript%E7%9A%84%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5"><span class="toc-number">4.</span> <span class="toc-text">4、JavaScript的判断语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81JavaScript%E7%9A%84for%E5%BE%AA%E7%8E%AFwhile%E5%BE%AA%E7%8E%AF%E4%BB%A5%E5%8F%8Abreak%E8%AF%AD%E5%8F%A5%E5%92%8Ccontinue%E8%AF%AD%E5%8F%A5"><span class="toc-number">5.</span> <span class="toc-text">5、JavaScript的for循环while循环以及break语句和continue语句</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -464,7 +480,7 @@ document.write(x);
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Yancey
+    		&copy; 2025 Yancey
     	</div>
       	<div class="footer-right">
              禁止转载！Prohibited reproduced!
@@ -536,11 +552,11 @@ MathJax.Hub.Queue(function() {
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">全部文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">ALL ARTICLES</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">ABOUT ME</a></li>
       
         
     </ul>
@@ -561,7 +577,39 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,58 +637,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -661,6 +657,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -677,11 +693,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,19 +729,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -745,22 +761,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
               </li>
              
@@ -782,6 +782,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">binary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -860,7 +876,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立将近，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立有三，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
   	  	
     	</section>
     

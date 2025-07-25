@@ -8,43 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JavaScript04 | Yancey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。
-
-常见的 JavaScript 验证的这些典型的表单数据有：
-用户是否已填写表单中的必填项目？
-用户输入的邮件地址是否合法？
-用户是否在数据域 (numeric field) 中输入了文本？
-
-function validate_required(field,alerttxt) 
-{
-   with (f">
+  <meta name="description" content="JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。  常见的 JavaScript 验证的这些典型的表单数据有： 用户是否已填写表单中的必填项目？ 用户输入的邮件地址是否合法？ 用户是否在数据域 (numeric field) 中输入了文本？  function validate_required(field,alerttxt)  &#123;    wi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript04">
 <meta property="og:url" content="http://yoursite.com/2017/03/03/JavaScript04/index.html">
 <meta property="og:site_name" content="Yancey’s Blog">
-<meta property="og:description" content="JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。
-
-常见的 JavaScript 验证的这些典型的表单数据有：
-用户是否已填写表单中的必填项目？
-用户输入的邮件地址是否合法？
-用户是否在数据域 (numeric field) 中输入了文本？
-
-function validate_required(field,alerttxt) 
-{
-   with (f">
-<meta property="og:updated_time" content="2017-11-24T06:57:46.182Z">
+<meta property="og:description" content="JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。  常见的 JavaScript 验证的这些典型的表单数据有： 用户是否已填写表单中的必填项目？ 用户输入的邮件地址是否合法？ 用户是否在数据域 (numeric field) 中输入了文本？  function validate_required(field,alerttxt)  &#123;    wi">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-03-03T02:53:36.000Z">
+<meta property="article:modified_time" content="2017-11-24T06:57:46.182Z">
+<meta property="article:author" content="Yancey">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="JavaScript 表单验证">
+<meta property="article:tag" content="JavaScript with语句">
+<meta property="article:tag" content="JavaScript this语句">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript04">
-<meta name="twitter:description" content="JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。
-
-常见的 JavaScript 验证的这些典型的表单数据有：
-用户是否已填写表单中的必填项目？
-用户输入的邮件地址是否合法？
-用户是否在数据域 (numeric field) 中输入了文本？
-
-function validate_required(field,alerttxt) 
-{
-   with (f">
   
     <link rel="alternative" href="/atom.xml" title="Yancey’s Blog" type="application/atom+xml">
   
@@ -62,7 +40,7 @@ function validate_required(field,alerttxt)
 
   
 
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -76,10 +54,8 @@ function validate_required(field,alerttxt)
 			<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Yancey</a></h1>
+		  <h1 class="header-author"><a href="/">undefined</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">资质平庸，认知局限</p>
 		
 
 		<nav class="header-menu">
@@ -94,11 +70,11 @@ function validate_required(field,alerttxt)
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">全部文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">ALL ARTICLES</a>
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">ABOUT ME</a>
     			
             
 		</nav>
@@ -130,10 +106,8 @@ function validate_required(field,alerttxt)
 				<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yancey</h1>
+			  <h1 class="header-author js-header-author">undefined</h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>资质平庸，认知局限<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -204,39 +178,39 @@ function validate_required(field,alerttxt)
 <p>用户是否在数据域 (numeric field) 中输入了文本？</p>
 </blockquote>
 <pre><code>function validate_required(field,alerttxt) 
-{
+&#123;
    with (field) 
-   {
+   &#123;
      if (value == null || value == &quot;&quot;)
-     {
+     &#123;
          alert(alerttxt);
          return false;
-     }
+     &#125;
      else 
-     {
+     &#123;
          return true;
-     }
-   }
-}
+     &#125;
+   &#125;
+&#125;
 </code></pre><p>有个经典的关于邮箱地址的验证：</p>
 <pre><code>function validate_email(field,alerttxt)
-{
+&#123;
   with (field)
-  {
+  &#123;
     apos = value.indexOf(&quot;@&quot;)
     dotpos = value.lastIndexOf(&quot;.&quot;)
     if (apos&lt;1||dotpos-apos&lt;2) 
-    {
+    &#123;
       alert(alerttxt);
       return false;
-    }
+    &#125;
     else 
-    {
+    &#123;
       return true;
-    }
-   }
- }
-</code></pre><a id="more"></a>
+    &#125;
+   &#125;
+ &#125;
+</code></pre><span id="more"></span>
 <p>一开始对上面的函数并不陌生，但是仔细一瞅发现中间多了一个</p>
 <pre><code>with（field）
 </code></pre><p>查阅资料看了一下JS中的with语句的用法：</p>
@@ -246,18 +220,18 @@ function validate_required(field,alerttxt)
 </blockquote>
 <p>with的语句结构：</p>
 <pre><code>with(object instance) 
-{  
+&#123;  
     //代码块 
-}  
+&#125;  
 </code></pre><p>对比下面二段代码会发现功能是一样的，但是明显有with语句的代码可读性更强，并且易于理解。</p>
 <pre><code>x = Math.cos(3 * Math.PI) + Math.sin(Math.LN10);
 y = Math.tan(14 * Math.E);
 </code></pre><hr>
 <pre><code>with (Math) 
-{
+&#123;
   x = cos(3 * PI) + sin(LN10);
   y = tan(14 * E);
-}
+&#125;
 </code></pre><blockquote>
 <p>PS：但是with语句即使带来了很多方便的地方，它也有不好的之处：with语句是运行缓慢的代码块，尤其是在已设置了属性值时。大多数情况下，如果可能，最好避免使用它。 </p>
 </blockquote>
@@ -267,9 +241,9 @@ y = Math.tan(14 * Math.E);
 <p>下面有个this常见的用法，用于立刻检测表单输入的有效性。</p>
 <pre><code>&lt;script&gt;
 ...
-function check(formObj) {
+function check(formObj) &#123;
 ...
-}
+&#125;
 ...
 &lt;/script&gt;
 &lt;body ...&gt;
@@ -461,7 +435,7 @@ function check(formObj) {
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Yancey
+    		&copy; 2025 Yancey
     	</div>
       	<div class="footer-right">
              禁止转载！Prohibited reproduced!
@@ -533,11 +507,11 @@ MathJax.Hub.Queue(function() {
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">全部文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">ALL ARTICLES</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">ABOUT ME</a></li>
       
         
     </ul>
@@ -558,7 +532,39 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,58 +592,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -658,6 +612,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -674,11 +648,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,19 +684,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,22 +716,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
               </li>
              
@@ -779,6 +737,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">binary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -857,7 +831,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立将近，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立有三，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
   	  	
     	</section>
     

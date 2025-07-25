@@ -12,8 +12,9 @@
 <meta property="og:title" content="Yancey’s Blog">
 <meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="Yancey’s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Yancey">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yancey’s Blog">
   
     <link rel="alternative" href="/atom.xml" title="Yancey’s Blog" type="application/atom+xml">
   
@@ -31,7 +32,7 @@
 
   
 
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -45,10 +46,8 @@
 			<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Yancey</a></h1>
+		  <h1 class="header-author"><a href="/">undefined</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">资质平庸，认知局限</p>
 		
 
 		<nav class="header-menu">
@@ -63,11 +62,11 @@
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">全部文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">ALL ARTICLES</a>
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">ABOUT ME</a>
     			
             
 		</nav>
@@ -99,10 +98,8 @@
 				<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yancey</h1>
+			  <h1 class="header-author js-header-author">undefined</h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>资质平庸，认知局限<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -147,116 +144,69 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-关于运行时的损耗和内存管理在几种语言中的差异纪要" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JavaScript04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/">关于运行时的损耗和内存管理在几种语言中的差异纪要</a>
+      <a class="article-title" href="/2017/03/03/JavaScript04/">JavaScript04</a>
     </h1>
   
 
         
-        <a href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/" class="archive-article-date">
-  	<time datetime="2018-01-31T04:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-31</time>
+        <a href="/2017/03/03/JavaScript04/" class="archive-article-date">
+  	<time datetime="2017-03-03T02:53:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>OC 和 Swift 运行时的损耗主要来自于内存管理中对对象的计数,一个对象会不停地进行 retain 和 release, runtime 必须一直 observe 每一个对象的 retain count,当 retain count 达到 0 的时候就释放这个对象.而 C 就没有这个问题,因为 C 没有对象,不需要对对象进行生命周期的内存维护,没有运行时的损耗.</p>
-<p>目前主流的内存管理方式分三种:</p>
-<p>手动: C 语言的 malloc 库,特点就是无运行时损耗,但不好控制释放内存的时机.关于 C 语言 malloc 和 free 初步了解,移步:<a href="http://www.yanceymichael.com/2018/02/03/C%E8%AF%AD%E8%A8%80-malloc-%E5%92%8C-free/">C语言 malloc 和 free</a>.</p>
-<p>半自动: Objective-C 和 Swift 的 MRC/ARC,有运行时损耗,但基本上可以让程序员不用去考虑内存管理的问题.</p>
-<p>自动的: Java/Go 的 GC.基本上同上,但需要在某个时间点去停止所有线程,释放内存的时机不可控.</p>
-<p>Objective-C 的 MRC 还需要手动去写 retain/release,在进化到 ARC 之后,除了需要在类成员变量声明的时候,显式地声明是 weak/strong/retain/copy 就可以了, retain/release 的插入交给编译器即可, ARC 其实已经是实际上的自动化内存管理模式了.</p>
-<p>而 Swift 在把指针抽象为引用类型,加入 Mutable/Immutable 的概念之后,就只需要偶尔写写 weak 就行了,唯一需要对于内存管理费心的就是 retain cycle 的问题,但也比之前省心很多了.而且随着 Swift 工具链的发展,这些问题都可以在编译期或者 Debug 时就暴露出来.</p>
-        
-          <a class="article-more-a" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内存管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SDWebImage如何支持https协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/18/SDWebImage如何支持https协议/">SDWebImage如何支持https协议</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/18/SDWebImage如何支持https协议/" class="archive-article-date">
-  	<time datetime="2018-01-18T07:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大量的App现在都用优秀的图片处理框架 SDWebImage 来展示图片内容，由于现在 Apple 对 app 的安全管控开始越来越严格。 Apple 的做法是从管控开发者的角度来提升用户的安全度，普及 https 的措施一定会逐渐全面覆盖。</p>
-<p>实际开发当中，我们的网络请求模块，除非 App 内部有下载资源的模块，不然我们很少会将自己的 App 内部的图片做特殊处理，在实际开发过程中，网络模块和 SDWebImage 联合起来才算一个完整的网络架构模块，而 SDWebImage 本身是有校验证书方法的，只不过内部没有具体的操作，也没有详细写，每个开发者可以根据具体业务需要根据实际情况来处理，所以对 SDWebImage 框架在哪里修改，在哪里改写来成功完成 https 的请求，就变成了一个事儿。</p>
-<p>其实只要理解了SDWebImage框架的底层，以及几个关键类的作用，这个问题便不是问题：</p>
-<p>对于 SDWebImage 框架下的 SDWebImageDownloaderOperation 这个类中的这个方法重写：</p>
-<pre><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler;
+        <p>JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证。</p>
+<blockquote>
+<p>常见的 JavaScript 验证的这些典型的表单数据有：</p>
+<p>用户是否已填写表单中的必填项目？</p>
+<p>用户输入的邮件地址是否合法？</p>
+<p>用户是否在数据域 (numeric field) 中输入了文本？</p>
+</blockquote>
+<pre><code>function validate_required(field,alerttxt) 
+&#123;
+   with (field) 
+   &#123;
+     if (value == null || value == &quot;&quot;)
+     &#123;
+         alert(alerttxt);
+         return false;
+     &#125;
+     else 
+     &#123;
+         return true;
+     &#125;
+   &#125;
+&#125;
+</code></pre><p>有个经典的关于邮箱地址的验证：</p>
+<pre><code>function validate_email(field,alerttxt)
+&#123;
+  with (field)
+  &#123;
+    apos = value.indexOf(&quot;@&quot;)
+    dotpos = value.lastIndexOf(&quot;.&quot;)
+    if (apos&lt;1||dotpos-apos&lt;2) 
+    &#123;
+      alert(alerttxt);
+      return false;
+    &#125;
+    else 
+    &#123;
+      return true;
+    &#125;
+   &#125;
+ &#125;
 </code></pre>
         
-          <a class="article-more-a" href="/2018/01/18/SDWebImage如何支持https协议/#more">more >></a>
+          <a class="article-more-a" href="/2017/03/03/JavaScript04/#more">more >></a>
         
       
 
@@ -270,15 +220,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SDWebImage</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 表单验证</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">https</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript with语句</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript this语句</a>
         		</li>
       		
 		</ul>
@@ -288,7 +242,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/18/SDWebImage如何支持https协议/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/03/03/JavaScript04/">展开全文 >></a>
         </p>
       
 
@@ -318,36 +272,452 @@
 
 
   
-    <article id="post-全新的生活和逐渐的喜爱" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JavaScript03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/03/全新的生活和逐渐的喜爱/">全新的生活和逐渐的喜爱</a>
+      <a class="article-title" href="/2017/03/02/JavaScript03/">JavaScript03</a>
     </h1>
   
 
         
-        <a href="/2018/01/03/全新的生活和逐渐的喜爱/" class="archive-article-date">
-  	<time datetime="2018-01-03T05:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-03</time>
+        <a href="/2017/03/02/JavaScript03/" class="archive-article-date">
+  	<time datetime="2017-03-02T09:04:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>17年2月,从上海回来,从有想法离开到回到合肥用了仅仅5天的时间.</p>
-<p>我上海的几个兄弟,都没有来得及道别,可能是我不想犹豫.</p>
-<p>我觉得我的17年可以用收获来概括:收获了爱情,30斤的体重,一起共事的团队.</p>
-<p>心怀感激.</p>
-<p>从3月初到现在的1月初的10个月里,飞修团队从零散几个人到目前的30多人,感受到了一种成长的喜悦.</p>
-<p>这10个月里只做了一丢丢不值一提的工作,心里即便不想再多写业务代码,但是还是对iOS端放心不下,也许是我自己的毛病,总觉得别人写的东西看不惯,当然这里并没有说欢哥代码写的不好,仅仅只是自己性格的原因,但是也足够的信任.</p>
-<p>转型大数据和数据挖掘,是新的起点,也是对自己新的要求.此路很长,要学的东西很多.</p>
-<p>乐一说新年的1月,老乡鸡有个新的需求要做,我也想试试从一个产品的角度,做一下产品.可能心太大,但是还是想试试.</p>
+        <h1 id="JavaScript的-try-catch-throw-语句的用法"><a href="#JavaScript的-try-catch-throw-语句的用法" class="headerlink" title="JavaScript的 try/catch/throw 语句的用法:"></a>JavaScript的 try/catch/throw 语句的用法:</h1><blockquote>
+<p>做iOS开发的时候，调试的时候也会用到这些内容，由于之前开发用这些比较少，所以先来重温一下OC的相关语句，大同小异。</p>
+</blockquote>
+<p>try 语句测试代码块的错误。</p>
+<p>catch 语句处理错误。</p>
+<p>throw 语句创建自定义错误。</p>
+<p>在OC中，经常用到下面的代码块来捕捉异常</p>
+<pre><code>@try &#123;
+   // 可能会出现崩溃的代码
+&#125;
+@catch (NSException *exception) &#123;
+   // 捕获到的异常exception
+ &#125;
+ @finally &#123;
+   // 结果处理
+ &#125;
+</code></pre>
         
-          <a class="article-more-a" href="/2018/01/03/全新的生活和逐渐的喜爱/#more">more >></a>
+          <a class="article-more-a" href="/2017/03/02/JavaScript03/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaScript try语句</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript catch语句</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript throw语句</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/02/JavaScript03/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JavaScript02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/02/JavaScript02/">JavaScript02</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/02/JavaScript02/" class="archive-article-date">
+  	<time datetime="2017-03-02T05:33:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1、JavaScript关于对象的理解"><a href="#1、JavaScript关于对象的理解" class="headerlink" title="1、JavaScript关于对象的理解"></a>1、JavaScript关于对象的理解</h1><blockquote>
+<p>关于JavaScript的对象性有很多种不同的说话，部分说法是JavaScript是面向对象的语言，还有一部的说法是JavaScript不是面向对象的语言，而是基于对象的语言。面向对象是object-oriented，基于对象是Object-Based，二者有着本质上的差别。但是大部分人认同JavaScript语言是基于对象的（Object-Based），而不是面向对象的（object-oriented）。之所以说它是一门基于对象的语言，主要是因为它没有提供象抽象、继承、重载等有关面向对象语言的许多功能。而是把其它语言所创建的复杂对象统一起来，从而形成一个非常强大的对象系统。虽然JavaScript语言是一门基于对象的，但它还是具有一些面向对象的基本特征。它可以根据需要创建自己的对象，从而进一步扩大JavaScript的应用范围，增强编写功能强大的Web文档。</p>
+</blockquote>
+<p>从上面分析的情况来看，无论是基于对象还是面向对象，对于JavaScript的对象的研究，还是重中之重的一点。</p>
+<p>JavaScript 中的所有事物都是对象：字符串、数字、数组、日期，等等。<br>在 JavaScript 中，对象是拥有属性和方法的数据。</p>
+<p>例如：现在有一个人对象</p>
+<pre><code>var person;
+person = new Object();
+</code></pre><p>属性:</p>
+<pre><code>person.name = &quot;YanCey&quot;;
+person.age = 25;
+person.weight = 87;
+</code></pre><p>方法:</p>
+<pre><code>person.eat()
+person.run()
+person.sleep()   
+</code></pre>
+        
+          <a class="article-more-a" href="/2017/03/02/JavaScript02/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 对象</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 函数</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript 运算符</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 判断语句</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 循环语句</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/02/JavaScript02/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JavaScript01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/02/JavaScript01/">JavaScript01</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/02/JavaScript01/" class="archive-article-date">
+  	<time datetime="2017-03-02T04:09:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JavaScript语句是发给浏览器的命令。这些命令的作用是告诉浏览器要做的事情。</p>
+<h1 id="1、JavaScript的输出："><a href="#1、JavaScript的输出：" class="headerlink" title="1、JavaScript的输出："></a>1、JavaScript的输出：</h1><blockquote>
+<p>假如需从JavaScript访问某个HTML元素，可以使用document.getElementById(id) 方法。使用 “id” 属性来标识 HTML 元素：</p>
+</blockquote>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;My First Web Page&lt;/h1&gt;
+
+&lt;p id = &quot;demo&quot;&gt;My First Paragraph&lt;/p&gt;
+
+&lt;script&gt;
+    document.getElementById(&quot;demo&quot;).innerHTML=&quot;My First JavaScript&quot;;
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>JavaScript 由 web 浏览器来执行。在这种情况下，浏览器将访问 id=”demo” 的 HTML 元素，并把它的内容（innerHTML）替换为 “My First JavaScript”。</p>
+<p>使用 document.write() 仅仅向文档输出写内容。<br>如果在文档已完成加载后执行 document.write，整个 HTML 页面将被覆盖。</p>
+        
+          <a class="article-more-a" href="/2017/03/02/JavaScript01/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 输出</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 语句</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 注释</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 变量</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 数据类型</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript 声明变量类型</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/02/JavaScript01/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-给Blog添加一个相册，先把JS干掉" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/02/%E7%BB%99Blog%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%9B%B8%E5%86%8C%EF%BC%8C%E5%85%88%E6%8A%8AJS%E5%B9%B2%E6%8E%89/">给Blog添加一个相册，先把JS干掉</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/02/%E7%BB%99Blog%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%9B%B8%E5%86%8C%EF%BC%8C%E5%85%88%E6%8A%8AJS%E5%B9%B2%E6%8E%89/" class="archive-article-date">
+  	<time datetime="2017-03-02T03:18:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>废话写在前面：这个博客没有相册，这会儿刚好不是特别的忙，所以也有点精力来整理一下blog。音乐播放器加了，还差一个相册。为了整个相册出来，我还是要摸一下前端的内容的，也许方向不是特别的对，但是还是先从JS入手吧。</p>
+<p>我对JS不是特别了解的，在iOS这边原生的框架开发做的时间用不了多久，就会遇到JS的交互问题，在iOS这边有个UI控件叫UIWebView，它是专门用来承载html内容的一个控件（通俗的来说：这个控件是用来加载网页的）。只有简单的代理方法，所以很多时候，iOS这边想要和web前端做一些交互的时候，难免要用到JS。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/03/02/%E7%BB%99Blog%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%9B%B8%E5%86%8C%EF%BC%8C%E5%85%88%E6%8A%8AJS%E5%B9%B2%E6%8E%89/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 简介</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript 基本概念</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/02/%E7%BB%99Blog%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%9B%B8%E5%86%8C%EF%BC%8C%E5%85%88%E6%8A%8AJS%E5%B9%B2%E6%8E%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-阳光正好" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/27/%E9%98%B3%E5%85%89%E6%AD%A3%E5%A5%BD/">阳光正好</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/27/%E9%98%B3%E5%85%89%E6%AD%A3%E5%A5%BD/" class="archive-article-date">
+  	<time datetime="2017-02-27T04:48:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我回来了，比自己想象中的要快好多。离职，收拾行李，落脚合肥。前后只用了2天时间。雾总2天前给我电话说我走的好快啊，一不留神就走了。</p>
+<p>仓促，慌张。</p>
+        
+          <a class="article-more-a" href="/2017/02/27/%E9%98%B3%E5%85%89%E6%AD%A3%E5%A5%BD/#more">more >></a>
         
       
 
@@ -371,7 +741,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/03/全新的生活和逐渐的喜爱/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/27/%E9%98%B3%E5%85%89%E6%AD%A3%E5%A5%BD/">展开全文 >></a>
         </p>
       
 
@@ -401,43 +771,40 @@
 
 
   
-    <article id="post-Python07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-基于Hexo+Yilia的PersonalBlog的PC端添加音乐播放器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/26/Python07/">Python07</a>
+      <a class="article-title" href="/2017/02/22/%E5%9F%BA%E4%BA%8EHexo+Yilia%E7%9A%84PersonalBlog%E7%9A%84PC%E7%AB%AF%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/">基于Hexo+Yilia的PersonalBlog的PC端添加音乐播放器</a>
     </h1>
   
 
         
-        <a href="/2017/12/26/Python07/" class="archive-article-date">
-  	<time datetime="2017-12-26T03:59:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-26</time>
+        <a href="/2017/02/22/%E5%9F%BA%E4%BA%8EHexo+Yilia%E7%9A%84PersonalBlog%E7%9A%84PC%E7%AB%AF%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2017-02-22T08:13:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><pre><code>import sys
-</code></pre><p>导入sys模块,用变量sys指向该模块,利用sys这个变量,就可以访问sys模块的所有功能.<br>sys模块有一个argv变量,用list存储了命令行的所有参数.argv至少有一个元素,因为第一个参数永远是该.py文件的名称.</p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>在Python中函数和变量的访问限制可以用<em>来实现.<br>一般情况下函数和变量名是公开的（public）,可以被直接引用.<br>类似<strong>xxx</strong>这样的变量是特殊变量,可以被直接引用,但是有特殊用途.比如 \</em>_author__和__name__是特殊变量,但是我们一般不这样去定义变量.<br>一般情况下我们定义的变量是:类似_xxx和__xxx这样的函数或变量就是非公开的（private）,不应该被直接引用.<br>值得注意的是private函数和变量“不应该”被直接引用,而不是“不能”被直接引用,是因为Python并没有一种方法可以完全限制访问private函数或变量,但是,从编程习惯上不应该引用private函数或变量.这种意义上来看Python和很多其他语言一样,也是注重开源的.</p>
-<p>举例:</p>
-<pre><code>def _private_1(name):
-    return &apos;Hello, %s&apos; % name
-
-def _private_2(name):
-    return &apos;Hi, %s&apos; % name
-
-def greeting(name):
-    if len(name) &gt; 3:
-        return _private_1(name)
-    else:
-        return _private_2(name)
-</code></pre><p>外部不需要引用的函数全部定义成private,只有外部需要引用的函数才定义为public.</p>
-
+        <blockquote>
+<p>有时候偶尔写东西的时候少音乐挺没劲的。</p>
+<p>音乐也是有毒，难以让人专注去做好一件事。</p>
+<p>我不知道我添加一个音乐播放器的意义是什么。</p>
+<p>纠结那么多好像也没那么多的意义。</p>
+<p>所以不管了，文章都开了，还是个音乐播放器吧。</p>
+<p>别问我为啥不给移动端加一个，就是不加。</p>
+</blockquote>
+<hr>
+<p>准备工作：一个网易云音乐账号 + 一个网易云音乐歌单</p>
+<hr>
+        
+          <a class="article-more-a" href="/2017/02/22/%E5%9F%BA%E4%BA%8EHexo+Yilia%E7%9A%84PersonalBlog%E7%9A%84PC%E7%AB%AF%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/#more">more >></a>
+        
       
 
       
@@ -450,11 +817,15 @@ def greeting(name):
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hexo+Yilia</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Python 模块</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PC端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">音乐播放器</a>
         		</li>
       		
 		</ul>
@@ -464,7 +835,7 @@ def greeting(name):
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/26/Python07/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/22/%E5%9F%BA%E4%BA%8EHexo+Yilia%E7%9A%84PersonalBlog%E7%9A%84PC%E7%AB%AF%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/">展开全文 >></a>
         </p>
       
 
@@ -494,53 +865,121 @@ def greeting(name):
 
 
   
-    <article id="post-Python06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-OpenCV之CascadeClassifier(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/19/Python06/">Python06</a>
+      <a class="article-title" href="/2017/02/20/OpenCV%E4%B9%8BCascadeClassifier(%E4%B8%80)/">OpenCV之CascadeClassifier(一)</a>
     </h1>
   
 
         
-        <a href="/2017/12/19/Python06/" class="archive-article-date">
-  	<time datetime="2017-12-19T04:44:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-19</time>
+        <a href="/2017/02/20/OpenCV%E4%B9%8BCascadeClassifier(%E4%B8%80)/" class="archive-article-date">
+  	<time datetime="2017-02-20T06:23:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.<br>理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作为参数使用传递.</p>
-<h2 id="变量可以指向函数"><a href="#变量可以指向函数" class="headerlink" title="变量可以指向函数"></a>变量可以指向函数</h2><pre><code>&gt;&gt;&gt; x = abs(-10)
-&gt;&gt;&gt; x
-10
-</code></pre><p>abs是函数,abs(-10)是函数的调用,上面是将abs(-10)的结果赋值给x;</p>
-<pre><code>&gt;&gt;&gt; f = abs
-&gt;&gt;&gt; f
-&lt;built-in function abs&gt;
-</code></pre><p>上面是将abs函数整体赋值给f,也就是函数本身赋值给变量,即:变量可以指向函数.</p>
-<p>当一个变量指向了一个函数,那么可以通过该变量来调用这个函数;</p>
-<pre><code>&gt;&gt;&gt; f = abs
-&gt;&gt;&gt; f(-10)
-10
-</code></pre><p>直接调用abs()函数和调用变量f()完全相同;</p>
-<h2 id="函数名也是变量"><a href="#函数名也是变量" class="headerlink" title="函数名也是变量"></a>函数名也是变量</h2><p>那么函数名是什么呢?函数名其实就是指向函数的变量!对于abs()这个函数,完全可以把函数名abs看成变量,它指向一个可以计算绝对值的函数!</p>
-<h2 id="传入函数"><a href="#传入函数" class="headerlink" title="传入函数"></a>传入函数</h2><p>既然变量可以指向函数,函数的参数能接收变量,那么一个函数就可以接收另一个函数作为参数,这种函数就称之为高阶函数.</p>
-<pre><code>def add(x, y, f):
-    return f(x) + f(y)
-</code></pre><p>当调用add(-5, 6, abs)时,推导计算过程为</p>
-<pre><code>x = -5
-y = 6
-f = abs
-f(x) + f(y) ==&gt; abs(-5) + abs(6) ==&gt; 11
-return 11
-</code></pre><p>编写高阶函数,就是让函数的参数能够接收别的函数.</p>
+        <script src="/assets/js/APlayer.min.js"> </script>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Cpp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/20/OpenCV%E4%B9%8BCascadeClassifier(%E4%B8%80)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
         
-          <a class="article-more-a" href="/2017/12/19/Python06/#more">more >></a>
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-OpenCV之Mat(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/20/OpenCV%E4%B9%8BMat(%E4%B8%80)/">OpenCV之Mat(一)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/20/OpenCV%E4%B9%8BMat(%E4%B8%80)/" class="archive-article-date">
+  	<time datetime="2017-02-20T05:43:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<blockquote>
+<p>废话内容，写在前面：</p>
+<p>Mat是个什么玩意?</p>
+<p>2015年下半年我在深圳的时候，一边看C++的入门，一边敲一点点和工作有关的代码。有一天飞哥和勇哥终于按耐不住觉得我总是测试光学打光做电子元器件可能就真的要废了，便让我用Visual Studio把一张图片用窗口显示出来，然后对图片进行二值化处理，提取特征值。</p>
+<p>我印象特别深刻，方法函数里面涉及到了好多Mat，如今开始动OpenCV第一个碰到的东西就是Mat，在这里把研读的关于Mat类，记录一下。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>OpenCV官方文档是这样界定Mat的：基本的图像容器。</p>
+</blockquote>
+<blockquote>
+<p>处理一张图片为何要用到图像的容器这种定义的概念？没有《图像处理技术》基础知识的人可能不太能懂图像为何需要一个基本的图像容器去处理。我本科学的《图像处理技术》的基础内容现在也不太记得，脑海中只有一些隐约的印象：图像是很多像素点构成，每个像素点有具体的像素值(0~255)，一张二维平面上的图片，它上面所有的点平面坐标位置，有点像《线性代数》里的矩阵，处理一张图片就是处理图片上所包含的像素值的信息，所以图片的处理，就可以转换成矩阵运算。</p>
+<p>正如OpenCV官方文档上说到的：如何获取并存储这些像素值由我们的需求而定，最终在计算机世界里所有图像都可以简化为数值矩以及矩阵信息。作为一个计算机视觉库， OpenCV 其主要目的就是通过处理和操作这些信息，来获取更高级的信息。因此，OpenCV如何存储并操作图像是你首先要学习的。</p>
+</blockquote>
+<hr>
+        
+          <a class="article-more-a" href="/2017/02/20/OpenCV%E4%B9%8BMat(%E4%B8%80)/#more">more >></a>
         
       
 
@@ -554,11 +993,11 @@ return 11
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Cpp</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Python 函数式编程</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
         		</li>
       		
 		</ul>
@@ -568,7 +1007,103 @@ return 11
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/19/Python06/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/20/OpenCV%E4%B9%8BMat(%E4%B8%80)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-人脸识别01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/20/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB01/">人脸识别01</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/20/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB01/" class="archive-article-date">
+  	<time datetime="2017-02-20T02:01:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>废话内容，写在前面:</p>
+<p>2016年上半年在上海面试的时候。徐汇区有一家做社交的互联网公司开始打算做人脸识别，由此我了解了深圳脸萌科技的FaceU这款超级激萌的App。很有意思的是徐汇区那家社交公司面试我的时候跟我说的很明确：你做一个类似FaceU的demo给我，我就给你发Offer。有时候我在想一份工作好简单啊，只要你会做人脸识别添加贴纸贴片，一碗饭就来了。</p>
+<p>回去之后，我对比了iOS框架自带的人脸识别框架识别的精度不够高，侧脸极其难识别，我只好放弃转而奔向科大讯飞人脸识别的框架去做。</p>
+<p>那一个礼拜的时间里，我看科大讯飞的人脸识别SDK和官方Demo，在做识别的过程中想加贴片装饰品的时候，遇到了二个代理方法的冲突，导致某个识别状态始终无法修改。所以那次的demo最终是没有做出来。</p>
+<p>时隔快一年，我想人脸识别功能我该动一动了，恰好个人技术博客刚开张，也应该来一点技术干货。同时不一样的是，这次我也不打算用科大讯飞的框架，我想从OpenCV的开源库着手，多多少少还可以学点C++的函数也还不错。</p>
+<p>由此我想把研究人脸识别的过程记录下来。所以这个系列是一个不懂C++的iOS开发小白的学习过程。</p>
+</blockquote>
+<blockquote>
+<p>本系列文章，所有测试内容以及demo的环境如下：</p>
+<p>1）Xcode Version 8.2.1</p>
+<p>2）OpenCV for iOS 3.2.0 </p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/02/20/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB01/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Cpp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人脸识别</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/20/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB01/">展开全文 >></a>
         </p>
       
 
@@ -600,7 +1135,7 @@ return 11
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -612,7 +1147,7 @@ return 11
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Yancey
+    		&copy; 2025 Yancey
     	</div>
       	<div class="footer-right">
              禁止转载！Prohibited reproduced!
@@ -684,11 +1219,11 @@ MathJax.Hub.Queue(function() {
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">全部文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">ALL ARTICLES</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">ABOUT ME</a></li>
       
         
     </ul>
@@ -709,7 +1244,39 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -737,58 +1304,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -809,6 +1324,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -825,11 +1360,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -853,19 +1396,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -893,22 +1428,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
               </li>
              
@@ -930,6 +1449,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">binary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1008,7 +1543,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立将近，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立有三，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
   	  	
     	</section>
     

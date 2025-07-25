@@ -8,25 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>OpenCV之Mat(一) | Yancey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="废话内容，写在前面：
-Mat是个什么玩意?
-2015年下半年我在深圳的时候，一边看C++的入门，一边敲一点点和工作有关的代码。有一天飞哥和勇哥终于按耐不住觉得我总是测试光学打光做电子元器件可能就真的要废了，便让我用Visual Studio把一张图片用窗口显示出来，然后对图片进行二值化处理，提取特征值。
-我印象特别深刻，方法函数里面涉及到了好多Mat，如今开始动OpenCV第一个碰到的东西就是">
+  <meta name="description" content="废话内容，写在前面： Mat是个什么玩意? 2015年下半年我在深圳的时候，一边看C++的入门，一边敲一点点和工作有关的代码。有一天飞哥和勇哥终于按耐不住觉得我总是测试光学打光做电子元器件可能就真的要废了，便让我用Visual Studio把一张图片用窗口显示出来，然后对图片进行二值化处理，提取特征值。 我印象特别深刻，方法函数里面涉及到了好多Mat，如今开始动OpenCV第一个碰到的东西就是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenCV之Mat(一)">
-<meta property="og:url" content="http://yoursite.com/2017/02/20/OpenCV之Mat(一)/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/02/20/OpenCV%E4%B9%8BMat(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="Yancey’s Blog">
-<meta property="og:description" content="废话内容，写在前面：
-Mat是个什么玩意?
-2015年下半年我在深圳的时候，一边看C++的入门，一边敲一点点和工作有关的代码。有一天飞哥和勇哥终于按耐不住觉得我总是测试光学打光做电子元器件可能就真的要废了，便让我用Visual Studio把一张图片用窗口显示出来，然后对图片进行二值化处理，提取特征值。
-我印象特别深刻，方法函数里面涉及到了好多Mat，如今开始动OpenCV第一个碰到的东西就是">
-<meta property="og:updated_time" content="2018-04-20T07:18:05.969Z">
+<meta property="og:description" content="废话内容，写在前面： Mat是个什么玩意? 2015年下半年我在深圳的时候，一边看C++的入门，一边敲一点点和工作有关的代码。有一天飞哥和勇哥终于按耐不住觉得我总是测试光学打光做电子元器件可能就真的要废了，便让我用Visual Studio把一张图片用窗口显示出来，然后对图片进行二值化处理，提取特征值。 我印象特别深刻，方法函数里面涉及到了好多Mat，如今开始动OpenCV第一个碰到的东西就是">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-02-20T05:43:01.000Z">
+<meta property="article:modified_time" content="2018-04-20T07:18:05.969Z">
+<meta property="article:author" content="Yancey">
+<meta property="article:tag" content="Cpp">
+<meta property="article:tag" content="OpenCV">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenCV之Mat(一)">
-<meta name="twitter:description" content="废话内容，写在前面：
-Mat是个什么玩意?
-2015年下半年我在深圳的时候，一边看C++的入门，一边敲一点点和工作有关的代码。有一天飞哥和勇哥终于按耐不住觉得我总是测试光学打光做电子元器件可能就真的要废了，便让我用Visual Studio把一张图片用窗口显示出来，然后对图片进行二值化处理，提取特征值。
-我印象特别深刻，方法函数里面涉及到了好多Mat，如今开始动OpenCV第一个碰到的东西就是">
   
     <link rel="alternative" href="/atom.xml" title="Yancey’s Blog" type="application/atom+xml">
   
@@ -44,7 +38,7 @@ Mat是个什么玩意?
 
   
 
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -58,10 +52,8 @@ Mat是个什么玩意?
 			<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Yancey</a></h1>
+		  <h1 class="header-author"><a href="/">undefined</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">资质平庸，认知局限</p>
 		
 
 		<nav class="header-menu">
@@ -76,11 +68,11 @@ Mat是个什么玩意?
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">全部文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">ALL ARTICLES</a>
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">ABOUT ME</a>
     			
             
 		</nav>
@@ -112,10 +104,8 @@ Mat是个什么玩意?
 				<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yancey</h1>
+			  <h1 class="header-author js-header-author">undefined</h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>资质平庸，认知局限<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -170,7 +160,7 @@ Mat是个什么玩意?
   
 
         
-        <a href="/2017/02/20/OpenCV之Mat(一)/" class="archive-article-date">
+        <a href="/2017/02/20/OpenCV%E4%B9%8BMat(%E4%B8%80)/" class="archive-article-date">
   	<time datetime="2017-02-20T05:43:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
 </a>
         
@@ -188,11 +178,13 @@ Mat是个什么玩意?
 <hr>
 <blockquote>
 <p>OpenCV官方文档是这样界定Mat的：基本的图像容器。</p>
+</blockquote>
+<blockquote>
 <p>处理一张图片为何要用到图像的容器这种定义的概念？没有《图像处理技术》基础知识的人可能不太能懂图像为何需要一个基本的图像容器去处理。我本科学的《图像处理技术》的基础内容现在也不太记得，脑海中只有一些隐约的印象：图像是很多像素点构成，每个像素点有具体的像素值(0~255)，一张二维平面上的图片，它上面所有的点平面坐标位置，有点像《线性代数》里的矩阵，处理一张图片就是处理图片上所包含的像素值的信息，所以图片的处理，就可以转换成矩阵运算。</p>
 <p>正如OpenCV官方文档上说到的：如何获取并存储这些像素值由我们的需求而定，最终在计算机世界里所有图像都可以简化为数值矩以及矩阵信息。作为一个计算机视觉库， OpenCV 其主要目的就是通过处理和操作这些信息，来获取更高级的信息。因此，OpenCV如何存储并操作图像是你首先要学习的。</p>
 </blockquote>
 <hr>
-<a id="more"></a>
+<span id="more"></span>
 <p>Mat的发展情况：</p>
 <p>在2001年刚刚出现的时候，OpenCV基于C语言接口而建。为了在内存（memory）中存放图像，当时采用名为IplImage的C语言结构体，时至今日这仍出现在大多数的旧版教程和教学材料。但这种方法必须接受C语言所有的不足，这其中最大的不足要数手动内存管理，其依据是用户要为开辟和销毁内存负责。虽然对于小型的程序来说手动管理内存不是问题，但一旦代码开始变得越来越庞大，你需要越来越多地纠缠于这个问题，而不是着力解决你的开发目标。</p>
 <p>幸运的是，C++出现了，并且带来类的概念，这给用户带来另外一个选择：自动的内存管理（不严谨地说）。这是一个好消息，如果C++完全兼容C的话，这个变化不会带来兼容性问题。为此，OpenCV在2.0版本中引入了一个新的C++接口，利用自动内存管理给出了解决问题的新方法。使用这个方法，你不需要纠结在管理内存上，而且你的代码会变得简洁（少写多得）。但C++接口唯一的不足是当前许多嵌入式开发系统只支持C语言。所以，当目标不是这种开发平台时，没有必要使用旧方法（除非你是自找麻烦的受虐狂码农）。</p>
@@ -220,7 +212,7 @@ Mat是个什么玩意?
 <p>4.CIE L <em> a </em> b *是一种在感知上均匀的颜色空间，它适合用来度量两个颜色之间的距离。</p>
 <p>每个组成元素都有其自己的定义域，取决于其数据类型。如何存储一个元素决定了我们在其定义域上能够控制的精度。最小的数据类型是 char ，占一个字节或者8位，可以是有符号型（0到255之间）或无符号型（-127到+127之间）。尽管使用三个 char 型元素已经可以表示1600万种可能的颜色（使用RGB颜色空间），但若使用float（4字节，32位）或double（8字节，64位）则能给出更加精细的颜色分辨能力。但同时也要切记增加元素的尺寸也会增加了图像所占的内存空间。</p>
 <hr>
-<p>关于Mat类的创建，具体的代码和内容可以查阅<a href="http://www.opencv.org.cn/" target="_blank" rel="external">OpenCV中文网</a>里的相关入门教学，当然还要具备一点点基础的C++入门知识。</p>
+<p>关于Mat类的创建，具体的代码和内容可以查阅<a href="http://www.opencv.org.cn/">OpenCV中文网</a>里的相关入门教学，当然还要具备一点点基础的C++入门知识。</p>
 <hr>
 <p>待续以后会更新相关内容，等我把C++入门摸一下。</p>
 
@@ -327,7 +319,7 @@ Mat是个什么玩意?
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/02/20/OpenCV之Mat(一)/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/02/20/OpenCV%E4%B9%8BMat(%E4%B8%80)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -341,7 +333,7 @@ Mat是个什么玩意?
   
 <nav id="article-nav">
   
-    <a href="/2017/02/20/OpenCV之CascadeClassifier(一)/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/20/OpenCV%E4%B9%8BCascadeClassifier(%E4%B8%80)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -351,7 +343,7 @@ Mat是个什么玩意?
     </a>
   
   
-    <a href="/2017/02/20/人脸识别01/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/02/20/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB01/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">人脸识别01</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -395,7 +387,7 @@ Mat是个什么玩意?
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Yancey
+    		&copy; 2025 Yancey
     	</div>
       	<div class="footer-right">
              禁止转载！Prohibited reproduced!
@@ -467,11 +459,11 @@ MathJax.Hub.Queue(function() {
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">全部文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">ALL ARTICLES</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">ABOUT ME</a></li>
       
         
     </ul>
@@ -492,7 +484,39 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,58 +544,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -592,6 +564,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -608,11 +600,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,19 +636,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,22 +668,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
               </li>
              
@@ -713,6 +689,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">binary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -791,7 +783,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立将近，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立有三，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
   	  	
     	</section>
     

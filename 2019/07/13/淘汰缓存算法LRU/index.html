@@ -8,22 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>淘汰缓存算法LRU | Yancey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。
-LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。
-与 LRU 算">
+  <meta name="description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。 LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。 与 LRU 算">
 <meta property="og:type" content="article">
 <meta property="og:title" content="淘汰缓存算法LRU">
-<meta property="og:url" content="http://yoursite.com/2019/07/13/淘汰缓存算法LRU/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/07/13/%E6%B7%98%E6%B1%B0%E7%BC%93%E5%AD%98%E7%AE%97%E6%B3%95LRU/index.html">
 <meta property="og:site_name" content="Yancey’s Blog">
-<meta property="og:description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。
-LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。
-与 LRU 算">
-<meta property="og:updated_time" content="2021-06-05T17:41:22.840Z">
+<meta property="og:description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。 LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。 与 LRU 算">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-13T02:40:56.000Z">
+<meta property="article:modified_time" content="2021-06-05T17:41:22.840Z">
+<meta property="article:author" content="Yancey">
+<meta property="article:tag" content="LRU">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="淘汰缓存算法LRU">
-<meta name="twitter:description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。
-LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。
-与 LRU 算">
   
     <link rel="alternative" href="/atom.xml" title="Yancey’s Blog" type="application/atom+xml">
   
@@ -41,7 +37,7 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
 
   
 
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -55,10 +51,8 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
 			<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Yancey</a></h1>
+		  <h1 class="header-author"><a href="/">undefined</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">资质平庸，认知局限</p>
 		
 
 		<nav class="header-menu">
@@ -73,11 +67,11 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">全部文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">ALL ARTICLES</a>
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">ABOUT ME</a>
     			
             
 		</nav>
@@ -109,10 +103,8 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
 				<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yancey</h1>
+			  <h1 class="header-author js-header-author">undefined</h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>资质平庸，认知局限<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -167,7 +159,7 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
   
 
         
-        <a href="/2019/07/13/淘汰缓存算法LRU/" class="archive-article-date">
+        <a href="/2019/07/13/%E6%B7%98%E6%B1%B0%E7%BC%93%E5%AD%98%E7%AE%97%E6%B3%95LRU/" class="archive-article-date">
   	<time datetime="2019-07-13T02:40:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
 </a>
         
@@ -178,7 +170,7 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
         <script src="/assets/js/APlayer.min.js"> </script><h1 id="LRU-算法"><a href="#LRU-算法" class="headerlink" title="LRU 算法"></a>LRU 算法</h1><h2 id="一-原理"><a href="#一-原理" class="headerlink" title="一 原理"></a>一 原理</h2><p>如果数据最近被访问过，那么将来被访问的几率也更高。</p>
 <p>LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。</p>
 <p>与 LRU 算法相近的是 LFU（Least Frequently Used）最近最少使用算法。LFU 是指如果一个数据在最近一段时间内使用次数很少，那么在将来一段时间内被使用的可能性也很小。LFU 和 LRU 算法的不同之处，LRU 的淘汰规则是基于访问时间，而 LFU 是基于访问次数的。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="二-实现"><a href="#二-实现" class="headerlink" title="二 实现"></a>二 实现</h2><p>常见方法是利用链表保存数据。</p>
 <ol>
 <li>新数据插入到链表头部；</li>
@@ -377,7 +369,7 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/13/淘汰缓存算法LRU/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/13/%E6%B7%98%E6%B1%B0%E7%BC%93%E5%AD%98%E7%AE%97%E6%B3%95LRU/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -391,7 +383,7 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
   
 <nav id="article-nav">
   
-    <a href="/2020/01/15/不能用力过猛/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/01/15/%E4%B8%8D%E8%83%BD%E7%94%A8%E5%8A%9B%E8%BF%87%E7%8C%9B/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -401,7 +393,7 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
     </a>
   
   
-    <a href="/2018/08/31/《从点子到产品》读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/08/31/%E3%80%8A%E4%BB%8E%E7%82%B9%E5%AD%90%E5%88%B0%E4%BA%A7%E5%93%81%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">《从点子到产品》读书笔记</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -429,7 +421,7 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU-算法"><span class="toc-number">1.</span> <span class="toc-text">LRU 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-原理"><span class="toc-number">1.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-实现"><span class="toc-number">1.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-分析"><span class="toc-number">1.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU-K-算法"><span class="toc-number">2.</span> <span class="toc-text">LRU-K 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-原理-1"><span class="toc-number">2.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-实现-1"><span class="toc-number">2.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-分析-1"><span class="toc-number">2.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Two-queues（2Q）"><span class="toc-number">3.</span> <span class="toc-text">Two queues（2Q）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-原理-2"><span class="toc-number">3.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-实现-2"><span class="toc-number">3.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-分析-2"><span class="toc-number">3.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Multi-Queue（MQ）"><span class="toc-number">4.</span> <span class="toc-text">Multi Queue（MQ）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-原理-3"><span class="toc-number">4.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-实现-3"><span class="toc-number">4.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-分析-3"><span class="toc-number">4.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU类算法对比"><span class="toc-number">5.</span> <span class="toc-text">LRU类算法对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拓展"><span class="toc-number">6.</span> <span class="toc-text">拓展</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU-%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">LRU 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU-K-%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">LRU-K 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%8E%9F%E7%90%86-1"><span class="toc-number">2.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%9E%E7%8E%B0-1"><span class="toc-number">2.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%88%86%E6%9E%90-1"><span class="toc-number">2.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Two-queues%EF%BC%882Q%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">Two queues（2Q）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%8E%9F%E7%90%86-2"><span class="toc-number">3.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%9E%E7%8E%B0-2"><span class="toc-number">3.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%88%86%E6%9E%90-2"><span class="toc-number">3.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Multi-Queue%EF%BC%88MQ%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">Multi Queue（MQ）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%8E%9F%E7%90%86-3"><span class="toc-number">4.1.</span> <span class="toc-text">一 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%9E%E7%8E%B0-3"><span class="toc-number">4.2.</span> <span class="toc-text">二 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%88%86%E6%9E%90-3"><span class="toc-number">4.3.</span> <span class="toc-text">三 分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU%E7%B1%BB%E7%AE%97%E6%B3%95%E5%AF%B9%E6%AF%94"><span class="toc-number">5.</span> <span class="toc-text">LRU类算法对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%93%E5%B1%95"><span class="toc-number">6.</span> <span class="toc-text">拓展</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -458,7 +450,7 @@ LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Yancey
+    		&copy; 2025 Yancey
     	</div>
       	<div class="footer-right">
              禁止转载！Prohibited reproduced!
@@ -530,11 +522,11 @@ MathJax.Hub.Queue(function() {
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">全部文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">ALL ARTICLES</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">ABOUT ME</a></li>
       
         
     </ul>
@@ -555,7 +547,39 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,58 +607,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -655,6 +627,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -671,11 +663,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -699,19 +699,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,22 +731,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
               </li>
              
@@ -776,6 +752,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">binary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -854,7 +846,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立将近，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立有三，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
   	  	
     	</section>
     

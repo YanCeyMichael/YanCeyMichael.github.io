@@ -8,19 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS自动布局高级用法以及代码约束纪要 | Yancey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="现阶段对于自动布局来说,有一些很成熟的第三方框架,其中较为优秀的是 OC 有: SnapKit/Masonry 框架等. Swift 有: SnapKit/SnapKit 框架等.其本质上都是对 Apple 的 autolayout 的二次封装.提到 autolayout 就不得不提 autoresizing.
-对于 autoresizing 需要注意的是 storyboard 中设置的约束和手">
+  <meta name="description" content="现阶段对于自动布局来说,有一些很成熟的第三方框架,其中较为优秀的是 OC 有: SnapKit&#x2F;Masonry 框架等. Swift 有: SnapKit&#x2F;SnapKit 框架等.其本质上都是对 Apple 的 autolayout 的二次封装.提到 autolayout 就不得不提 autoresizing. 对于 autoresizing 需要注意的是 storyboard 中设置的约束和手">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS自动布局高级用法以及代码约束纪要">
-<meta property="og:url" content="http://yoursite.com/2018/02/03/iOS自动布局高级用法以及代码约束纪要/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/02/03/iOS%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%E4%BB%A5%E5%8F%8A%E4%BB%A3%E7%A0%81%E7%BA%A6%E6%9D%9F%E7%BA%AA%E8%A6%81/index.html">
 <meta property="og:site_name" content="Yancey’s Blog">
-<meta property="og:description" content="现阶段对于自动布局来说,有一些很成熟的第三方框架,其中较为优秀的是 OC 有: SnapKit/Masonry 框架等. Swift 有: SnapKit/SnapKit 框架等.其本质上都是对 Apple 的 autolayout 的二次封装.提到 autolayout 就不得不提 autoresizing.
-对于 autoresizing 需要注意的是 storyboard 中设置的约束和手">
-<meta property="og:updated_time" content="2018-04-20T07:17:28.528Z">
+<meta property="og:description" content="现阶段对于自动布局来说,有一些很成熟的第三方框架,其中较为优秀的是 OC 有: SnapKit&#x2F;Masonry 框架等. Swift 有: SnapKit&#x2F;SnapKit 框架等.其本质上都是对 Apple 的 autolayout 的二次封装.提到 autolayout 就不得不提 autoresizing. 对于 autoresizing 需要注意的是 storyboard 中设置的约束和手">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-02-03T03:48:05.000Z">
+<meta property="article:modified_time" content="2018-04-20T07:17:28.528Z">
+<meta property="article:author" content="Yancey">
+<meta property="article:tag" content="OC">
+<meta property="article:tag" content="autolayout">
+<meta property="article:tag" content="autoresizing">
+<meta property="article:tag" content="约束改变添加动画注意事项">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS自动布局高级用法以及代码约束纪要">
-<meta name="twitter:description" content="现阶段对于自动布局来说,有一些很成熟的第三方框架,其中较为优秀的是 OC 有: SnapKit/Masonry 框架等. Swift 有: SnapKit/SnapKit 框架等.其本质上都是对 Apple 的 autolayout 的二次封装.提到 autolayout 就不得不提 autoresizing.
-对于 autoresizing 需要注意的是 storyboard 中设置的约束和手">
   
     <link rel="alternative" href="/atom.xml" title="Yancey’s Blog" type="application/atom+xml">
   
@@ -38,7 +40,7 @@
 
   
 
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -52,10 +54,8 @@
 			<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Yancey</a></h1>
+		  <h1 class="header-author"><a href="/">undefined</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">资质平庸，认知局限</p>
 		
 
 		<nav class="header-menu">
@@ -70,11 +70,11 @@
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">全部文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">ALL ARTICLES</a>
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">ABOUT ME</a>
     			
             
 		</nav>
@@ -106,10 +106,8 @@
 				<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yancey</h1>
+			  <h1 class="header-author js-header-author">undefined</h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>资质平庸，认知局限<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -164,7 +162,7 @@
   
 
         
-        <a href="/2018/02/03/iOS自动布局高级用法以及代码约束纪要/" class="archive-article-date">
+        <a href="/2018/02/03/iOS%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%E4%BB%A5%E5%8F%8A%E4%BB%A3%E7%A0%81%E7%BA%A6%E6%9D%9F%E7%BA%AA%E8%A6%81/" class="archive-article-date">
   	<time datetime="2018-02-03T03:48:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
 </a>
         
@@ -198,14 +196,14 @@ UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
 <p><strong>约束改变添加动画注意事项:</strong></p>
 <p>由于约束的改变是瞬时操作,这和改变frame的动画的改变存在明显的差异,这里要把更新约束的代码放到动画的block里是无效的.从而必须要把约束写在外面,然后block里包裹 layoutIfNeed.</p>
 <p>错误:</p>
-<pre><code>[UIView animateWithDuration:2.0 animations:^{
+<pre><code>[UIView animateWithDuration:2.0 animations:^&#123;
     NSLayoutConstraint *width = [_constaints firstObject];
     width.constant = 200;
-}];
+&#125;];
 </code></pre><p><strong>正确:</strong></p>
-<pre><code>[UIView animateWithDuration:2.0 animations:^{
+<pre><code>[UIView animateWithDuration:2.0 animations:^&#123;
     [self.view layoutIfNeeded];
-}];
+&#125;];
 </code></pre>
       
 
@@ -318,7 +316,7 @@ UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/02/03/iOS自动布局高级用法以及代码约束纪要/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/02/03/iOS%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%E4%BB%A5%E5%8F%8A%E4%BB%A3%E7%A0%81%E7%BA%A6%E6%9D%9F%E7%BA%AA%E8%A6%81/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -332,7 +330,7 @@ UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
   
 <nav id="article-nav">
   
-    <a href="/2018/02/03/C语言-malloc-和-free/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/02/03/C%E8%AF%AD%E8%A8%80-malloc-%E5%92%8C-free/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -342,7 +340,7 @@ UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
     </a>
   
   
-    <a href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/01/31/%E5%85%B3%E4%BA%8E%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E6%8D%9F%E8%80%97%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%9C%A8%E5%87%A0%E7%A7%8D%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B7%AE%E5%BC%82%E7%BA%AA%E8%A6%81/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">关于运行时的损耗和内存管理在几种语言中的差异纪要</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -386,7 +384,7 @@ UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Yancey
+    		&copy; 2025 Yancey
     	</div>
       	<div class="footer-right">
              禁止转载！Prohibited reproduced!
@@ -458,11 +456,11 @@ MathJax.Hub.Queue(function() {
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">全部文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">ALL ARTICLES</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">ABOUT ME</a></li>
       
         
     </ul>
@@ -483,7 +481,39 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,58 +541,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -583,6 +561,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -599,11 +597,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,19 +633,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -667,22 +665,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
               </li>
              
@@ -704,6 +686,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">binary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -782,7 +780,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立将近，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立有三，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
   	  	
     	</section>
     

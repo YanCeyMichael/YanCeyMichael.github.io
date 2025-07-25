@@ -8,19 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>SDWebImage如何支持https协议 | Yancey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 来展示图片内容，由于现在 Apple 对 app 的安全管控开始越来越严格。 Apple 的做法是从管控开发者的角度来提升用户的安全度，普及 https 的措施一定会逐渐全面覆盖。
-实际开发当中，我们的网络请求模块，除非 App 内部有下载资源的模块，不然我们很少会将自己的 App 内部的图片做特殊处理，在实际开发过程中，网络模块和 S">
+  <meta name="description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 来展示图片内容，由于现在 Apple 对 app 的安全管控开始越来越严格。 Apple 的做法是从管控开发者的角度来提升用户的安全度，普及 https 的措施一定会逐渐全面覆盖。 实际开发当中，我们的网络请求模块，除非 App 内部有下载资源的模块，不然我们很少会将自己的 App 内部的图片做特殊处理，在实际开发过程中，网络模块和 S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SDWebImage如何支持https协议">
-<meta property="og:url" content="http://yoursite.com/2018/01/18/SDWebImage如何支持https协议/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/SDWebImage%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81https%E5%8D%8F%E8%AE%AE/index.html">
 <meta property="og:site_name" content="Yancey’s Blog">
-<meta property="og:description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 来展示图片内容，由于现在 Apple 对 app 的安全管控开始越来越严格。 Apple 的做法是从管控开发者的角度来提升用户的安全度，普及 https 的措施一定会逐渐全面覆盖。
-实际开发当中，我们的网络请求模块，除非 App 内部有下载资源的模块，不然我们很少会将自己的 App 内部的图片做特殊处理，在实际开发过程中，网络模块和 S">
-<meta property="og:updated_time" content="2021-06-05T17:44:00.400Z">
+<meta property="og:description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 来展示图片内容，由于现在 Apple 对 app 的安全管控开始越来越严格。 Apple 的做法是从管控开发者的角度来提升用户的安全度，普及 https 的措施一定会逐渐全面覆盖。 实际开发当中，我们的网络请求模块，除非 App 内部有下载资源的模块，不然我们很少会将自己的 App 内部的图片做特殊处理，在实际开发过程中，网络模块和 S">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-01-18T07:03:00.000Z">
+<meta property="article:modified_time" content="2021-06-05T17:44:00.400Z">
+<meta property="article:author" content="Yancey">
+<meta property="article:tag" content="OC">
+<meta property="article:tag" content="SDWebImage">
+<meta property="article:tag" content="https">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SDWebImage如何支持https协议">
-<meta name="twitter:description" content="大量的App现在都用优秀的图片处理框架 SDWebImage 来展示图片内容，由于现在 Apple 对 app 的安全管控开始越来越严格。 Apple 的做法是从管控开发者的角度来提升用户的安全度，普及 https 的措施一定会逐渐全面覆盖。
-实际开发当中，我们的网络请求模块，除非 App 内部有下载资源的模块，不然我们很少会将自己的 App 内部的图片做特殊处理，在实际开发过程中，网络模块和 S">
   
     <link rel="alternative" href="/atom.xml" title="Yancey’s Blog" type="application/atom+xml">
   
@@ -38,7 +39,7 @@
 
   
 
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -52,10 +53,8 @@
 			<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Yancey</a></h1>
+		  <h1 class="header-author"><a href="/">undefined</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">资质平庸，认知局限</p>
 		
 
 		<nav class="header-menu">
@@ -70,11 +69,11 @@
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">全部文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">ALL ARTICLES</a>
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">ABOUT ME</a>
     			
             
 		</nav>
@@ -106,10 +105,8 @@
 				<img src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yancey</h1>
+			  <h1 class="header-author js-header-author">undefined</h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>资质平庸，认知局限<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -164,7 +161,7 @@
   
 
         
-        <a href="/2018/01/18/SDWebImage如何支持https协议/" class="archive-article-date">
+        <a href="/2018/01/18/SDWebImage%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81https%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
   	<time datetime="2018-01-18T07:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-18</time>
 </a>
         
@@ -177,20 +174,20 @@
 <p>其实只要理解了SDWebImage框架的底层，以及几个关键类的作用，这个问题便不是问题：</p>
 <p>对于 SDWebImage 框架下的 SDWebImageDownloaderOperation 这个类中的这个方法重写：</p>
 <pre><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler;
-</code></pre><a id="more"></a>
+</code></pre><span id="more"></span>
 <p>个人建议不要修改原框架的原文件，无破坏性无入侵式修改的话，对  SDWebImageDownloaderOperation 这个类写一个分类，然后重写上述方法，以下是具体重写内容。</p>
 <pre><code>- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
-{
+&#123;
    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
    __block NSURLCredential *credential = nil;
 
-   if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-       if (!(self.options &amp; SDWebImageDownloaderAllowInvalidSSLCertificates)) {
+   if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) &#123;
+       if (!(self.options &amp; SDWebImageDownloaderAllowInvalidSSLCertificates)) &#123;
            disposition = NSURLSessionAuthChallengePerformDefaultHandling;
-       } else {
+       &#125; else &#123;
            //改写方法 然后插入证书验证代码
            do
-           {
+           &#123;
                SecTrustRef serverTrust = [[challenge protectionSpace] serverTrust];
                NSCAssert(serverTrust != nil, @&quot;serverTrust is nil&quot;);
                if(nil == serverTrust)                break;
@@ -228,17 +225,17 @@
                debug_NSLog(@&quot;stutas:%d&quot;,(int)status);
                debug_NSLog(@&quot;Result: %d&quot;, result);
                BOOL allowConnect = (result == kSecTrustResultUnspecified) || (result == kSecTrustResultProceed);
-               if (allowConnect) {
+               if (allowConnect) &#123;
                    debug_NSLog(@&quot;success&quot;);
-               }else {
+               &#125;else &#123;
                    debug_NSLog(@&quot;error&quot;);
-               }
+               &#125;
 
                /* kSecTrustResultUnspecified and kSecTrustResultProceed are success */
-               if(!allowConnect)            {
+               if(!allowConnect)            &#123;
                    break;
                    /* failed */
-               }
+               &#125;
    #if 0
                /*
                 Treat kSecTrustResultConfirm and kSecTrustResultRecoverableTrustFailure as success
@@ -252,26 +249,26 @@
                debug_NSLog(@&quot;信任该证书&quot;);
                credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
                disposition = NSURLSessionAuthChallengeUseCredential;
-           }
+           &#125;
            while(0);
-       }
-   } else {
-       if (challenge.previousFailureCount == 0) {
-           if (self.credential) {
+       &#125;
+   &#125; else &#123;
+       if (challenge.previousFailureCount == 0) &#123;
+           if (self.credential) &#123;
                credential = self.credential;
                disposition = NSURLSessionAuthChallengeUseCredential;
-           } else {
+           &#125; else &#123;
                disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
-           }
-       } else {
+           &#125;
+       &#125; else &#123;
            disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
-       }
-   }
+       &#125;
+   &#125;
 
-   if (completionHandler) {
+   if (completionHandler) &#123;
        completionHandler(disposition, credential);
-   }
-}
+   &#125;
+&#125;
 </code></pre>
       
 
@@ -380,7 +377,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/18/SDWebImage如何支持https协议/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/18/SDWebImage%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81https%E5%8D%8F%E8%AE%AE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -394,7 +391,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/31/关于运行时的损耗和内存管理在几种语言中的差异纪要/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/01/31/%E5%85%B3%E4%BA%8E%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E6%8D%9F%E8%80%97%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%9C%A8%E5%87%A0%E7%A7%8D%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B7%AE%E5%BC%82%E7%BA%AA%E8%A6%81/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -404,7 +401,7 @@
     </a>
   
   
-    <a href="/2018/01/03/全新的生活和逐渐的喜爱/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/01/03/%E5%85%A8%E6%96%B0%E7%9A%84%E7%94%9F%E6%B4%BB%E5%92%8C%E9%80%90%E6%B8%90%E7%9A%84%E5%96%9C%E7%88%B1/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">全新的生活和逐渐的喜爱</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -461,7 +458,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Yancey
+    		&copy; 2025 Yancey
     	</div>
       	<div class="footer-right">
              禁止转载！Prohibited reproduced!
@@ -533,11 +530,11 @@ MathJax.Hub.Queue(function() {
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">全部文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">ALL ARTICLES</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">ABOUT ME</a></li>
       
         
     </ul>
@@ -558,7 +555,39 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,58 +615,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -658,6 +635,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -674,11 +671,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,19 +707,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,22 +739,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
               </li>
              
@@ -779,6 +760,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">binary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -857,7 +854,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立将近，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立有三，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
   	  	
     	</section>
     
