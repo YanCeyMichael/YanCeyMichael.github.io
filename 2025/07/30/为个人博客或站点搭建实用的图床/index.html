@@ -11,7 +11,7 @@
   <meta name="description" content="前言：个人图床使用场景个人图床的核心价值在于解放本地存储、提升图片管理效率、稳定支持多场景图片调用，适合有图片存储、分享、管理需求。 我自己在日常的个人站点写点内容，进行梳理总结时，难免需要上传一些图片，而我的个人站点是基于Hexo+GitHub，有两个方法可以上传图片。 方案一：使用Hexo内置的资源文件夹（使用场景受限，但个人博客使用足矣）Hexo支持通过资源文件夹管理图片，适合少量图片的情况">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为个人博客或站点搭建实用图床">
-<meta property="og:url" content="http://yoursite.com/2025/07/30/%E4%B8%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%88%96%E7%AB%99%E7%82%B9%E6%89%93%E9%80%A0%E5%AE%9E%E7%94%A8%E7%9A%84%E5%9B%BE%E5%BA%8A/index.html">
+<meta property="og:url" content="http://yoursite.com/2025/07/30/%E4%B8%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%88%96%E7%AB%99%E7%82%B9%E6%90%AD%E5%BB%BA%E5%AE%9E%E7%94%A8%E7%9A%84%E5%9B%BE%E5%BA%8A/index.html">
 <meta property="og:site_name" content="Yancey’s Blog">
 <meta property="og:description" content="前言：个人图床使用场景个人图床的核心价值在于解放本地存储、提升图片管理效率、稳定支持多场景图片调用，适合有图片存储、分享、管理需求。 我自己在日常的个人站点写点内容，进行梳理总结时，难免需要上传一些图片，而我的个人站点是基于Hexo+GitHub，有两个方法可以上传图片。 方案一：使用Hexo内置的资源文件夹（使用场景受限，但个人博客使用足矣）Hexo支持通过资源文件夹管理图片，适合少量图片的情况">
 <meta property="og:locale" content="zh_CN">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730051224384.png">
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730051707673.png">
 <meta property="article:published_time" content="2025-07-29T18:59:28.000Z">
-<meta property="article:modified_time" content="2025-07-29T21:27:17.737Z">
+<meta property="article:modified_time" content="2025-07-29T21:31:46.555Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="图床">
 <meta name="twitter:card" content="summary">
@@ -155,7 +155,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-为个人博客或站点打造实用的图床" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-为个人博客或站点搭建实用的图床" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -167,7 +167,7 @@
   
 
         
-        <a href="/2025/07/30/%E4%B8%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%88%96%E7%AB%99%E7%82%B9%E6%89%93%E9%80%A0%E5%AE%9E%E7%94%A8%E7%9A%84%E5%9B%BE%E5%BA%8A/" class="archive-article-date">
+        <a href="/2025/07/30/%E4%B8%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%88%96%E7%AB%99%E7%82%B9%E6%90%AD%E5%BB%BA%E5%AE%9E%E7%94%A8%E7%9A%84%E5%9B%BE%E5%BA%8A/" class="archive-article-date">
   	<time datetime="2025-07-29T18:59:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-30</time>
 </a>
         
@@ -185,7 +185,7 @@
 <h3 id="关于对象存储OSS"><a href="#关于对象存储OSS" class="headerlink" title="关于对象存储OSS"></a>关于对象存储OSS</h3><p>可按需进行购买，七牛云针对每个用户会提供10GB的对象存储OSS的额度，正常情况下，对于存储图片用于个人博客或个人静态页面的站点够用</p>
 <h3 id="上传图片操作客户端"><a href="#上传图片操作客户端" class="headerlink" title="上传图片操作客户端"></a>上传图片操作客户端</h3><p>建议使用PicGo，开源免费，GitHub地址：<a href="https://github.com/Molunerfinn/PicGo">https://github.com/Molunerfinn/PicGo</a></p>
 <h2 id="域名接入的云服务对象存储-简便客户端上传-的方案搭建核心流程"><a href="#域名接入的云服务对象存储-简便客户端上传-的方案搭建核心流程" class="headerlink" title="域名接入的云服务对象存储 + 简便客户端上传 的方案搭建核心流程"></a>域名接入的云服务对象存储 + 简便客户端上传 的方案搭建核心流程</h2><p>OSS对象存储访问需要绑定域名并进行备案接入，该流程比较繁琐，容易出错。<br>1、阿里云域名：新增解析<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730044739439.png" alt="阿里云域名新增解析"><br>2、阿里云域名解析的记录值配置<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730045545667.png" alt="阿里云域名解析的记录值配置"><br>3、七牛云新增OSS存储空间和文件路径（注存储区域选海外，大陆需要备案）<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730045737174.png" alt="七牛云新增OSS存储空间和文件路径"><br>4、七牛云域名绑定（配合2中的域名解析配置）<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730045952810.png" alt="七牛云域名绑定"><br>5、七牛云存储空间设置外链域名（七牛云免费赠送30日测试域名，可用于测试能力）<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730050305799.png" alt="存储空间设置外链域名"><br>6、安装客户端PicGo和配置PicGo<br>客户端PicGo安装和配置操作简单，此处有一个关于七牛云的配置设置的坑点要注意，在七牛云配置图床时，需要使用到七牛云的密钥管理的AccessKey/SecretKey，七牛云的AK为明文可直接复制粘贴使用，而七牛云的SK为暗文，需要身份验证后成明文复制粘贴，否则无法复制成功，也会导致配置到PicGo中会配置失败，彼时上传图片时一直失败，当然在排查问题时，调取PicGo的操作日志或配置文件，也能发现这个问题（AK和SK的参数value值一样）<br>a、操作日志接口返回权限有问题<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730051224384.png" alt="操作日志接口返回权限有问题"><br>b、配置文件中找AK和SK是否和七牛云个人账号中一致<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730051707673.png" alt="配置文件中找AK和SK是否和七牛云个人账号中一致"></p>
-<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>本文所涉及到所有图片，均来自于个人的七牛云+PicGo图床。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>本文所涉及到所有图片，均来自于个人的七牛云+PicGo图床。</p>
 <h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><p>以上，如果依然有不熟悉的地方，可参考同类近似视频教程描述：<a href="https://www.bilibili.com/video/BV1fw411t7eU/?spm_id_from=333.1387.favlist.content.click&amp;vd_source=ff56e624427d37d39c601ead9169687d">https://www.bilibili.com/video/BV1fw411t7eU/?spm_id_from=333.1387.favlist.content.click&amp;vd_source=ff56e624427d37d39c601ead9169687d</a></p>
 
       
@@ -287,7 +287,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2025/07/30/%E4%B8%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%88%96%E7%AB%99%E7%82%B9%E6%89%93%E9%80%A0%E5%AE%9E%E7%94%A8%E7%9A%84%E5%9B%BE%E5%BA%8A/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2025/07/30/%E4%B8%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%88%96%E7%AB%99%E7%82%B9%E6%90%AD%E5%BB%BA%E5%AE%9E%E7%94%A8%E7%9A%84%E5%9B%BE%E5%BA%8A/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -330,7 +330,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">前言：个人图床使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8Hexo%E5%86%85%E7%BD%AE%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%88%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%8F%97%E9%99%90%EF%BC%8C%E4%BD%86%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E8%B6%B3%E7%9F%A3%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">方案一：使用Hexo内置的资源文件夹（使用场景受限，但个人博客使用足矣）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9A%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%BA%8A%EF%BC%88%E6%8E%A8%E8%8D%90%E8%AF%A5%E6%96%B9%E5%90%91%EF%BC%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%B9%BF%E6%B3%9B%EF%BC%8C%E6%9C%AC%E8%B4%A8%E4%B8%BA%E4%BA%91%E5%AD%98%E5%82%A8%E5%8F%8ACDN%E5%8A%A0%E9%80%9F%E8%AE%BF%E9%97%AE%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">方案二：使用图床（推荐该方向，使用场景广泛，本质为云存储及CDN加速访问）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">图床搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BC%98%E5%8A%A3%E5%8A%BF%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">方案优劣势简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E6%8E%A5%E5%85%A5%E7%9A%84%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8-%E7%AE%80%E4%BE%BF%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E4%BC%A0-%E7%9A%84%E6%96%B9%E6%A1%88%E6%90%AD%E5%BB%BA%E5%87%86%E5%A4%87"><span class="toc-number">2.2.</span> <span class="toc-text">域名接入的云服务对象存储 + 简便客户端上传 的方案搭建准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%9F%9F%E5%90%8D"><span class="toc-number">2.2.1.</span> <span class="toc-text">关于域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS"><span class="toc-number">2.2.2.</span> <span class="toc-text">关于对象存储OSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E6%93%8D%E4%BD%9C%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">2.2.3.</span> <span class="toc-text">上传图片操作客户端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E6%8E%A5%E5%85%A5%E7%9A%84%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8-%E7%AE%80%E4%BE%BF%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E4%BC%A0-%E7%9A%84%E6%96%B9%E6%A1%88%E6%90%AD%E5%BB%BA%E6%A0%B8%E5%BF%83%E6%B5%81%E7%A8%8B"><span class="toc-number">2.3.</span> <span class="toc-text">域名接入的云服务对象存储 + 简便客户端上传 的方案搭建核心流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-number">3.</span> <span class="toc-text">写在最后</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%84"><span class="toc-number">3.0.1.</span> <span class="toc-text">附</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">前言：个人图床使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8Hexo%E5%86%85%E7%BD%AE%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%88%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%8F%97%E9%99%90%EF%BC%8C%E4%BD%86%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E8%B6%B3%E7%9F%A3%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">方案一：使用Hexo内置的资源文件夹（使用场景受限，但个人博客使用足矣）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9A%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%BA%8A%EF%BC%88%E6%8E%A8%E8%8D%90%E8%AF%A5%E6%96%B9%E5%90%91%EF%BC%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%B9%BF%E6%B3%9B%EF%BC%8C%E6%9C%AC%E8%B4%A8%E4%B8%BA%E4%BA%91%E5%AD%98%E5%82%A8%E5%8F%8ACDN%E5%8A%A0%E9%80%9F%E8%AE%BF%E9%97%AE%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">方案二：使用图床（推荐该方向，使用场景广泛，本质为云存储及CDN加速访问）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">图床搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BC%98%E5%8A%A3%E5%8A%BF%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">方案优劣势简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E6%8E%A5%E5%85%A5%E7%9A%84%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8-%E7%AE%80%E4%BE%BF%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E4%BC%A0-%E7%9A%84%E6%96%B9%E6%A1%88%E6%90%AD%E5%BB%BA%E5%87%86%E5%A4%87"><span class="toc-number">2.2.</span> <span class="toc-text">域名接入的云服务对象存储 + 简便客户端上传 的方案搭建准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%9F%9F%E5%90%8D"><span class="toc-number">2.2.1.</span> <span class="toc-text">关于域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS"><span class="toc-number">2.2.2.</span> <span class="toc-text">关于对象存储OSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E6%93%8D%E4%BD%9C%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">2.2.3.</span> <span class="toc-text">上传图片操作客户端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E6%8E%A5%E5%85%A5%E7%9A%84%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8-%E7%AE%80%E4%BE%BF%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E4%BC%A0-%E7%9A%84%E6%96%B9%E6%A1%88%E6%90%AD%E5%BB%BA%E6%A0%B8%E5%BF%83%E6%B5%81%E7%A8%8B"><span class="toc-number">2.3.</span> <span class="toc-text">域名接入的云服务对象存储 + 简便客户端上传 的方案搭建核心流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-number">3.</span> <span class="toc-text">最后</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%84"><span class="toc-number">3.0.1.</span> <span class="toc-text">附</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -560,18 +560,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
@@ -580,11 +568,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,18 +588,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
@@ -628,7 +600,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,11 +636,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,18 +672,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">calloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">realloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
               </li>
              
@@ -693,6 +681,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">calloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">realloc()</a>
               </li>
              
               <li class="article-tag-list-item">
