@@ -144,6 +144,110 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/19/Python06/">Python06</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/19/Python06/" class="archive-article-date">
+  	<time datetime="2017-12-19T04:44:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.<br>理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作为参数使用传递.</p>
+<h2 id="变量可以指向函数"><a href="#变量可以指向函数" class="headerlink" title="变量可以指向函数"></a>变量可以指向函数</h2><pre><code>&gt;&gt;&gt; x = abs(-10)
+&gt;&gt;&gt; x
+10
+</code></pre><p>abs是函数,abs(-10)是函数的调用,上面是将abs(-10)的结果赋值给x;</p>
+<pre><code>&gt;&gt;&gt; f = abs
+&gt;&gt;&gt; f
+&lt;built-in function abs&gt;
+</code></pre><p>上面是将abs函数整体赋值给f,也就是函数本身赋值给变量,即:变量可以指向函数.</p>
+<p>当一个变量指向了一个函数,那么可以通过该变量来调用这个函数;</p>
+<pre><code>&gt;&gt;&gt; f = abs
+&gt;&gt;&gt; f(-10)
+10
+</code></pre><p>直接调用abs()函数和调用变量f()完全相同;</p>
+<h2 id="函数名也是变量"><a href="#函数名也是变量" class="headerlink" title="函数名也是变量"></a>函数名也是变量</h2><p>那么函数名是什么呢?函数名其实就是指向函数的变量!对于abs()这个函数,完全可以把函数名abs看成变量,它指向一个可以计算绝对值的函数!</p>
+<h2 id="传入函数"><a href="#传入函数" class="headerlink" title="传入函数"></a>传入函数</h2><p>既然变量可以指向函数,函数的参数能接收变量,那么一个函数就可以接收另一个函数作为参数,这种函数就称之为高阶函数.</p>
+<pre><code>def add(x, y, f):
+    return f(x) + f(y)
+</code></pre><p>当调用add(-5, 6, abs)时,推导计算过程为</p>
+<pre><code>x = -5
+y = 6
+f = abs
+f(x) + f(y) ==&gt; abs(-5) + abs(6) ==&gt; 11
+return 11
+</code></pre><p>编写高阶函数,就是让函数的参数能够接收别的函数.</p>
+        
+          <a class="article-more-a" href="/2017/12/19/Python06/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Python 函数式编程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/19/Python06/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Python05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -912,98 +1016,6 @@ else:
 
 
   
-    <article id="post-JavaScript05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/JavaScript05/">JavaScript05</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/03/JavaScript05/" class="archive-article-date">
-  	<time datetime="2017-03-03T04:05:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>HTML DOM （文档对象模型）</p>
-<p>当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）。</p>
-<p>HTML DOM 模型被构造为对象的树。</p>
-<p><img src="http://olnzmhc4r.bkt.clouddn.com/JavaScript02.png" alt="JavaScript02"></p>
-<p>从目前我了解的情况来看，JS可以做到以下几点：</p>
-<p>1.JavaScript 能够改变页面中的所有 HTML 元素</p>
-<p>2.JavaScript 能够改变页面中的所有 HTML 属性</p>
-<p>3.JavaScript 能够改变页面中的所有 CSS 样式</p>
-<p>4.JavaScript 能够对页面中的所有事件做出反应</p>
-        
-          <a class="article-more-a" href="/2017/03/03/JavaScript05/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript HTML DOM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript HTML</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/03/JavaScript05/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1131,26 +1143,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
               </li>
              
@@ -1175,6 +1167,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
@@ -1187,11 +1199,39 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Cpp</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1204,26 +1244,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1287,19 +1307,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图床</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1327,6 +1343,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
               </li>
              
@@ -1343,27 +1371,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杭州</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 简介</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杭州</a>
               </li>
             
             <div class="clearfix"></div>
