@@ -144,53 +144,39 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Python06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-《从点子到产品》读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/19/Python06/">Python06</a>
+      <a class="article-title" href="/2018/08/31/%E3%80%8A%E4%BB%8E%E7%82%B9%E5%AD%90%E5%88%B0%E4%BA%A7%E5%93%81%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">《从点子到产品》读书笔记</a>
     </h1>
   
 
         
-        <a href="/2017/12/19/Python06/" class="archive-article-date">
-  	<time datetime="2017-12-19T04:44:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-19</time>
+        <a href="/2018/08/31/%E3%80%8A%E4%BB%8E%E7%82%B9%E5%AD%90%E5%88%B0%E4%BA%A7%E5%93%81%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2018-08-31T03:30:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.<br>理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作为参数使用传递.</p>
-<h2 id="变量可以指向函数"><a href="#变量可以指向函数" class="headerlink" title="变量可以指向函数"></a>变量可以指向函数</h2><pre><code>&gt;&gt;&gt; x = abs(-10)
-&gt;&gt;&gt; x
-10
-</code></pre><p>abs是函数,abs(-10)是函数的调用,上面是将abs(-10)的结果赋值给x;</p>
-<pre><code>&gt;&gt;&gt; f = abs
-&gt;&gt;&gt; f
-&lt;built-in function abs&gt;
-</code></pre><p>上面是将abs函数整体赋值给f,也就是函数本身赋值给变量,即:变量可以指向函数.</p>
-<p>当一个变量指向了一个函数,那么可以通过该变量来调用这个函数;</p>
-<pre><code>&gt;&gt;&gt; f = abs
-&gt;&gt;&gt; f(-10)
-10
-</code></pre><p>直接调用abs()函数和调用变量f()完全相同;</p>
-<h2 id="函数名也是变量"><a href="#函数名也是变量" class="headerlink" title="函数名也是变量"></a>函数名也是变量</h2><p>那么函数名是什么呢?函数名其实就是指向函数的变量!对于abs()这个函数,完全可以把函数名abs看成变量,它指向一个可以计算绝对值的函数!</p>
-<h2 id="传入函数"><a href="#传入函数" class="headerlink" title="传入函数"></a>传入函数</h2><p>既然变量可以指向函数,函数的参数能接收变量,那么一个函数就可以接收另一个函数作为参数,这种函数就称之为高阶函数.</p>
-<pre><code>def add(x, y, f):
-    return f(x) + f(y)
-</code></pre><p>当调用add(-5, 6, abs)时,推导计算过程为</p>
-<pre><code>x = -5
-y = 6
-f = abs
-f(x) + f(y) ==&gt; abs(-5) + abs(6) ==&gt; 11
-return 11
-</code></pre><p>编写高阶函数,就是让函数的参数能够接收别的函数.</p>
+        <h1 id="第一部分-产品价值和用户痛点"><a href="#第一部分-产品价值和用户痛点" class="headerlink" title="第一部分 产品价值和用户痛点"></a>第一部分 产品价值和用户痛点</h1><h2 id="第1章-点子与方案"><a href="#第1章-点子与方案" class="headerlink" title="第1章 点子与方案"></a>第1章 点子与方案</h2><p>Talk is cheap，Show me the code。</p>
+<p>— Linus Torvalds</p>
+<p><strong>成长建议</strong></p>
+<p>无法证明的创意时分文不值的。</p>
+<p>我们在讨论点子的时候并没有意义。单纯有一句话的功能也没有意义。我们要把点子细化成方案，有健全的产品模型和商业模式，并在时空中有延展性、在团队能力上能够匹配，这样的点子才有价值。</p>
+<p><strong>要点反思</strong></p>
+<ul>
+<li>点子落地之前，务必先“纸上谈兵”一回。</li>
+<li>说服身边最理性的人和最吹毛求疵的人认可你的想法。</li>
+<li>证明你的团队可靠，跟证明方案本身的可靠同样重要。</li>
+</ul>
         
-          <a class="article-more-a" href="/2017/12/19/Python06/#more">more >></a>
+          <a class="article-more-a" href="/2018/08/31/%E3%80%8A%E4%BB%8E%E7%82%B9%E5%AD%90%E5%88%B0%E4%BA%A7%E5%93%81%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#more">more >></a>
         
       
 
@@ -204,11 +190,7 @@ return 11
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Python 函数式编程</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
         		</li>
       		
 		</ul>
@@ -218,7 +200,7 @@ return 11
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/19/Python06/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/08/31/%E3%80%8A%E4%BB%8E%E7%82%B9%E5%AD%90%E5%88%B0%E4%BA%A7%E5%93%81%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">展开全文 >></a>
         </p>
       
 
@@ -248,34 +230,31 @@ return 11
 
 
   
-    <article id="post-Python05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-几种常见的POST请求提交数据方式对前端开发的影响" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/16/Python05/">Python05</a>
+      <a class="article-title" href="/2018/07/18/%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84POST%E8%AF%B7%E6%B1%82%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E6%96%B9%E5%BC%8F%E5%AF%B9%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9A%84%E5%BD%B1%E5%93%8D/">几种常见的POST请求提交数据方式对前端开发的影响</a>
     </h1>
   
 
         
-        <a href="/2017/12/16/Python05/" class="archive-article-date">
-  	<time datetime="2017-12-16T05:45:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+        <a href="/2018/07/18/%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84POST%E8%AF%B7%E6%B1%82%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E6%96%B9%E5%BC%8F%E5%AF%B9%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9A%84%E5%BD%B1%E5%93%8D/" class="archive-article-date">
+  	<time datetime="2018-07-18T12:42:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>在很多编程语言中,针对字符串提供了很多各种截取函数（例如,substring）,其实目的就是对字符串切片.Python没有针对字符串的截取函数,只需要切片一个操作就可以完成,非常简单.</p>
-<p>Python针对所有需要截取的操作,统一都用切片操作来处理,比如对list,tuple元素的截取,对string的字符截取,都可以用切片操作来完成.</p>
-<pre><code>[1,2,3,4,5] [0:5]
-(0, 1, 2, 3, 4, 5)[:3]
-&apos;string&apos;[1:3]
-</code></pre>
+        <p>HTTP协议中,规定的HTTP请求方法大致有: </p>
+<p>GET/POST/PUT/PATCH/DELETE/<br>COPY/HEAD/OPTIONS/LINK/UNLINK/PURGE/<br>LOCK/UNLOCK/PROPFIND/VIEW </p>
+<p>其中我们最常用的有 GET/POST/PUT/PATCH/DELETE 这五种,而本文选取其中最典型的 POST 请求提交数据的方法进行探讨分析.</p>
         
-          <a class="article-more-a" href="/2017/12/16/Python05/#more">more >></a>
+          <a class="article-more-a" href="/2018/07/18/%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84POST%E8%AF%B7%E6%B1%82%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E6%96%B9%E5%BC%8F%E5%AF%B9%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9A%84%E5%BD%B1%E5%93%8D/#more">more >></a>
         
       
 
@@ -289,11 +268,27 @@ return 11
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">POST请求</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python 高级特性</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">POSTMAN</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">form-data</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">x-www-form-urlencoded</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">row</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">binary</a>
         		</li>
       		
 		</ul>
@@ -303,7 +298,7 @@ return 11
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/16/Python05/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/07/18/%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84POST%E8%AF%B7%E6%B1%82%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E6%96%B9%E5%BC%8F%E5%AF%B9%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9A%84%E5%BD%B1%E5%93%8D/">展开全文 >></a>
         </p>
       
 
@@ -333,386 +328,41 @@ return 11
 
 
   
-    <article id="post-Python04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-产品入门基本方法论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/15/Python04/">Python04</a>
+      <a class="article-title" href="/2018/03/30/%E4%BA%A7%E5%93%81%E5%85%A5%E9%97%A8%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95%E8%AE%BA/">产品入门基本方法论</a>
     </h1>
   
 
         
-        <a href="/2017/12/15/Python04/" class="archive-article-date">
-  	<time datetime="2017-12-15T08:55:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-15</time>
+        <a href="/2018/03/30/%E4%BA%A7%E5%93%81%E5%85%A5%E9%97%A8%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95%E8%AE%BA/" class="archive-article-date">
+  	<time datetime="2018-03-30T01:55:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h1><p>在函数内部,可以调用其他函数.如果一个函数在内部调用自身本身,这个函数就是递归函数.<br>递归函数的优点是定义简单,逻辑清晰.理论上,所有的递归函数都可以写成循环的方式,但循环的逻辑不如递归清晰.<br>使用递归函数需要注意防止栈溢出.在计算机中,函数调用是通过栈（stack）这种数据结构实现的,每当进入一个函数调用,栈就会加一层栈帧,每当函数返回,栈就会减一层栈帧.由于栈的大小不是无限的,所以,递归调用的次数过多,会导致栈溢出.<br>解决递归调用栈溢出的方法是通过尾递归优化,事实上尾递归和循环的效果是一样的,所以,把循环看成是一种特殊的尾递归函数也是可以的.<br>尾递归是指,在函数返回的时候,调用自身本身,并且,return语句不能包含表达式.这样,编译器或者解释器就可以把尾递归做优化,使递归本身无论调用多少次,都只占用一个栈帧,不会出现栈溢出的情况.<br>尾递归调用时,如果做了优化,栈不会增长,因此,无论多少次调用也不会导致栈溢出.<br>使用递归函数的优点是逻辑简单清晰,缺点是过深的调用会导致栈溢出.<br>针对尾递归优化的语言可以通过尾递归防止栈溢出.尾递归事实上和循环是等价的,没有循环语句的编程语言只能通过尾递归实现循环.<br>Python标准的解释器没有针对尾递归做优化,任何递归函数都存在栈溢出的问题.</p>
-        
-          <a class="article-more-a" href="/2017/12/15/Python04/#more">more >></a>
-        
-      
+        <script src="/assets/js/APlayer.min.js"> </script><ul>
+<li><p>不要从结果去导向目的</p>
+</li>
+<li><p>不要由自己臆想做产品</p>
+</li>
+<li><p>产品不能直观表达是没思考够</p>
+</li>
+<li><p>谈产品时，聊产品，不聊技术</p>
+</li>
+<li><p>维度过多是思考不全，抽象不够或标准不对</p>
+</li>
+<li><p>一定要理解他人，要理解社会，要理解世界</p>
+</li>
+</ul>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python 递归函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/15/Python04/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/13/Python03/">Python03</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/13/Python03/" class="archive-article-date">
-  	<time datetime="2017-12-13T08:04:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>要调用一个函数,需要知道函数的名称和参数,比如求绝对值的函数abs,只有一个参数.<br>调用函数的时候,如果传入的参数数量不对,会报TypeError的错误,并且Python会明确地告诉你:abs()有且仅有1个参数,但给出了两个.<br>如果传入的参数数量是对的,但参数类型不能被函数所接受,也会报TypeError的错误,并且给出错误信息.<br>Python在数据转换的时候,也可以用数据类型转换函数.<br>函数名其实就是指向一个函数对象的引用,完全可以把函数名赋给一个变量,相当于给这个函数起了一个“别名”.</p>
-<h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><p>Python中,定义一个函数要使用def语句,依次写出函数名、括号、括号中的参数和冒号:,然后,在缩进块中编写函数体,函数的返回值用return语句返回.<br>函数体内部的语句在执行时,一旦执行到return时,函数就执行完毕,并将结果返回.<br>如果没有return语句,函数执行完毕后也会返回结果,只是结果为None,return None可以简写为return.<br>如果想定义一个什么事也不做的空函数,可以用pass语句,pass语句什么都不做,那有什么用？实际上pass可以用来作为占位符,比如现在还没想好怎么写函数的代码,就可以先放一个pass,让代码能运行起来.<br>缺少了pass，代码运行就会有语法错误.<br>PS:此处的pass其实相当于别的语言里的空实现,OC/C/Cpp中的空实现,可以不写任何代码或者放任不管不执行,而Python为了达到这一目的,需要用关键词pass来处理.</p>
-<h3 id="参数检查"><a href="#参数检查" class="headerlink" title="参数检查"></a>参数检查</h3><p>调用函数时,如果参数个数不对,Python解释器会自动检查出来,并抛出TypeError.但是如果参数类型不对,Python解释器就无法检查.所以对参数类型做检查,例如只允许整数和浮点数类型的参数会给我们避免很多错误.数据类型检查可以用内置函数isinstance()实现.</p>
-<h3 id="返回多个值"><a href="#返回多个值" class="headerlink" title="返回多个值"></a>返回多个值</h3><p>Python的函数返回多值其实就是返回一个tuple,按照参数位置顺序取值即可</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>定义函数时,需要确定函数名和参数个数;<br>如果有必要,可以先对参数的数据类型做检查;<br>函数体内部可以用return随时返回函数结果;<br>函数执行完毕也没有return语句时,自动return None.<br>函数可以同时返回多个值,但其实就是一个tuple.</p>
-        
-          <a class="article-more-a" href="/2017/12/13/Python03/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Python 函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/13/Python03/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/05/Python02/">Python02</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/05/Python02/" class="archive-article-date">
-  	<time datetime="2017-12-05T07:47:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="list-列表"><a href="#list-列表" class="headerlink" title="list (列表)"></a>list (列表)</h2><p>Python内置一种数据类型是列表:list,list是一种有序的集合,可以随时添加和删除其中的元素;<br>其功效和作用和OC以及swift里的可变数组类似;</p>
-<p>用len(xxxx)函数可以获得list元素的个数;</p>
-<p>用索引来访问list中每一个位置的元素,索引是从0开始;当索引超出了范围时,Python会报一个IndexError错误,所以,要确保索引不要越界,最后一个元素的索引是len(xxxx) - 1;当用来倒数索引查找的时候,我们可以省略len(xxxx),直接写-1,-2,-3,以此类推;</p>
-<p>用append(xxxxxxx)函数可以在list末尾追加元素;</p>
-<p>用insert(index,xxxxxxx)函数可以在list中插入元素,且是指定位置插入;</p>
-<p>用pop()函数可以删除list末尾的元素;</p>
-<p>要删除指定位置的元素,用pop(i)方法,其中i是索引位置;</p>
-<p>要把某个元素替换成别的元素，可以直接赋值给对应的索引位置;</p>
-<p>list里面的元素的数据类型也可以不同;</p>
-<p>list元素也可以是另一个list;</p>
-<h2 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple (元组)"></a>tuple (元组)</h2><p>Python内置另一种有序列表叫元组:tuple,tuple和list非常类似,但是tuple一旦初始化就不能修改;<br>其功效和作用和OC以及swift里的不可变数组类似;<br>tuple没有append()，insert()这样的方法,其他获取元素的方法和list是一样的;<br>因为tuple不可变,所以代码更安全.如果可能,能用tuple代替list就尽量用tuple.<br>当定义一个tuple时,在定义的时候tuple的元素就必须被确定下来;<br>如果要定义一个空的tuple,可以写成();<br>只有1个元素的tuple定义时必须加一个逗号,用来来消除歧义;</p>
-<pre><code>t(1,) 
-</code></pre>
-        
-          <a class="article-more-a" href="/2017/12/05/Python02/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python 数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Python 条件判断循环</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/05/Python02/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/29/Python01/">Python01</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/29/Python01/" class="archive-article-date">
-  	<time datetime="2017-11-29T03:22:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Python基础"><a href="#Python基础" class="headerlink" title="Python基础"></a>Python基础</h1><h2 id="Python的语法比较简单，采用缩进方式"><a href="#Python的语法比较简单，采用缩进方式" class="headerlink" title="Python的语法比较简单，采用缩进方式"></a>Python的语法比较简单，采用缩进方式</h2><p> 实例:</p>
-<pre><code>#这里是注释,可以写随便的内容,Python的注释采用#
-#Python的每一行都是一个语句,假如语句以:结尾,其后缩进的语句相当于代码块
-#Python缩进多少个空格还是一个tab的长度呢,没有明确规定,但是约定俗成采用 4 个空格缩进
-#为了方便在文本编辑器中，把Tab自动转换为4个空格，确保不混用Tab和空格,可以提高编写效率
-#缩进的坏处就是“复制－粘贴”功能失效
-#当你重构代码时，粘贴过去的代码必须重新检查缩进是否正确
-#此外，ide很难像格式化Java代码那样格式化Python代码
-#PS:Python程序是大小写敏感的，是区分大小写的
-
-a = 100
-if a &gt;= 0:
-    print(a)
-else:
-    print(-a)
-</code></pre>
-        
-          <a class="article-more-a" href="/2017/11/29/Python01/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Python 基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/29/Python01/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我打算做什么" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/27/%E6%88%91%E6%89%93%E7%AE%97%E5%81%9A%E4%BB%80%E4%B9%88/">我打算做什么</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/27/%E6%88%91%E6%89%93%E7%AE%97%E5%81%9A%E4%BB%80%E4%B9%88/" class="archive-article-date">
-  	<time datetime="2017-11-27T08:55:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>周末，就着3.0版本上架空档期，也感谢组织没有给我额外的任务，让我愉快的放松了两天，心里一直在思忖着：我能做些什么和我打算做些什么。</p>
-<p>其实说实话，蛮多的感慨，因为我跟团队大部分人可能并不那么特别相似，其实2月份决定来放弃所有的合肥其他的offer来飞修更大的原因是项目的可行性和项目的公益性，项目可行我们已经用这么长的时间进行了验证，可能很少人会像我一样去考虑项目的公益性，我觉得一个项目的社会价值是假如我们做大了可以给更多的人带来福利，这是做实业，是在建设。会让你在跟别人聊天的时候，从你身上透露着你在兼善天下的牛逼感。</p>
-        
-          <a class="article-more-a" href="/2017/11/27/%E6%88%91%E6%89%93%E7%AE%97%E5%81%9A%E4%BB%80%E4%B9%88/#more">more >></a>
-        
       
 
       
@@ -735,7 +385,7 @@ else:
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/27/%E6%88%91%E6%89%93%E7%AE%97%E5%81%9A%E4%BB%80%E4%B9%88/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/30/%E4%BA%A7%E5%93%81%E5%85%A5%E9%97%A8%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95%E8%AE%BA/">展开全文 >></a>
         </p>
       
 
@@ -765,31 +415,37 @@ else:
 
 
   
-    <article id="post-钱塘二渡" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-对于malloc、alloc、calloc、realloc的区别浅显的理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/25/%E9%92%B1%E5%A1%98%E4%BA%8C%E6%B8%A1/">钱塘二渡</a>
+      <a class="article-title" href="/2018/03/07/%E5%AF%B9%E4%BA%8Emalloc%E3%80%81alloc%E3%80%81calloc%E3%80%81realloc%E7%9A%84%E5%8C%BA%E5%88%AB%E6%B5%85%E6%98%BE%E7%9A%84%E7%90%86%E8%A7%A3/">对于malloc、alloc、calloc、realloc的区别浅显的理解</a>
     </h1>
   
 
         
-        <a href="/2017/11/25/%E9%92%B1%E5%A1%98%E4%BA%8C%E6%B8%A1/" class="archive-article-date">
-  	<time datetime="2017-11-24T16:21:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-25</time>
+        <a href="/2018/03/07/%E5%AF%B9%E4%BA%8Emalloc%E3%80%81alloc%E3%80%81calloc%E3%80%81realloc%E7%9A%84%E5%8C%BA%E5%88%AB%E6%B5%85%E6%98%BE%E7%9A%84%E7%90%86%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2018-03-07T04:41:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对杭州的冲动，不在于贪恋江南小家闺秀的气质。</p>
-<p>西湖断桥苏白堤，孤山城中楼外楼。于我而言，一无过往，二无艳羡。</p>
-<p>我感兴趣的是每个城市的人，和我相似的人们，是怎样的活着，根本上来讲还是在追寻自己活的最佳方式的过程中，想要寻找一些借鉴，这是我旅行的第一要点，所以美景其实是附属，西溪湿地也好，西湖断桥也罢，都是锦上添花的东西，并不是特别重要。第二要点是共同经历，姑娘说她没有和我去很多地方，我想现在大抵上还是年轻，走一走还是要的，且把时间拉后，倘若一旦为家庭操劳，这些皆是奢求，都只能是心头念。</p>
+        <h2 id="总述"><a href="#总述" class="headerlink" title="总述:"></a>总述:</h2><blockquote>
+<p>内存区域可分为栈,堆,静态存储区和常量存储区,对于常见的局部变量,函数形参,临时变量都是在栈上获得内存的,它们的获取方式都是通过编译器直接执行.</p>
+</blockquote>
+<blockquote>
+<p>而利用指针来管理内存的时候,可以更加自由的像汇编一样处理内存的地址, C 标准函数库提供了很多函数来实现对堆上内存的管理,从开辟内存空间到释放内存空间都有相应的函数,这些函数都包含在头文件 stdlib.h 中,其中有几个特别重要的函数需要做区分和了解,它们分别是: malloc、alloc、calloc、realloc 以及 free,而对 malloc 和 free 的具体内容分析请移步<a href="http://www.yanceymichael.com/2018/02/03/C%E8%AF%AD%E8%A8%80-malloc-%E5%92%8C-free/">C语言 malloc 和 free</a>.这些函数之间的细微差别在于对内存的管理的细节和操作不同.</p>
+</blockquote>
+<blockquote>
+<p>从函数名的字面上理解:这几个函数都带 alloc 也就是 allocate ,分配的意思. calloc() 是”分配内存给多个对象”, malloc() 是”分配内存给一个对象”, realloc() 是”重新分配内存”.</p>
+</blockquote>
         
-          <a class="article-more-a" href="/2017/11/25/%E9%92%B1%E5%A1%98%E4%BA%8C%E6%B8%A1/#more">more >></a>
+          <a class="article-more-a" href="/2018/03/07/%E5%AF%B9%E4%BA%8Emalloc%E3%80%81alloc%E3%80%81calloc%E3%80%81realloc%E7%9A%84%E5%8C%BA%E5%88%AB%E6%B5%85%E6%98%BE%E7%9A%84%E7%90%86%E8%A7%A3/#more">more >></a>
         
       
 
@@ -803,11 +459,23 @@ else:
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Essays</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杭州</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">malloc()</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">alloc()</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">calloc()</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">realloc()</a>
         		</li>
       		
 		</ul>
@@ -817,7 +485,7 @@ else:
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/25/%E9%92%B1%E5%A1%98%E4%BA%8C%E6%B8%A1/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/07/%E5%AF%B9%E4%BA%8Emalloc%E3%80%81alloc%E3%80%81calloc%E3%80%81realloc%E7%9A%84%E5%8C%BA%E5%88%AB%E6%B5%85%E6%98%BE%E7%9A%84%E7%90%86%E8%A7%A3/">展开全文 >></a>
         </p>
       
 
@@ -847,33 +515,47 @@ else:
 
 
   
-    <article id="post-weak-singleton模式在iOS中的应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-C语言-malloc-和-free" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/19/weak-singleton%E6%A8%A1%E5%BC%8F%E5%9C%A8iOS%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">weak singleton模式在iOS中的应用</a>
+      <a class="article-title" href="/2018/02/03/C%E8%AF%AD%E8%A8%80-malloc-%E5%92%8C-free/">C语言 malloc 和 free</a>
     </h1>
   
 
         
-        <a href="/2017/07/19/weak-singleton%E6%A8%A1%E5%BC%8F%E5%9C%A8iOS%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2017-07-19T07:44:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-19</time>
+        <a href="/2018/02/03/C%E8%AF%AD%E8%A8%80-malloc-%E5%92%8C-free/" class="archive-article-date">
+  	<time datetime="2018-02-03T07:01:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="关于weak要了解的基本内容："><a href="#关于weak要了解的基本内容：" class="headerlink" title="关于weak要了解的基本内容："></a>关于weak要了解的基本内容：</h1><hr>
-<p>weak的使用场景: weak 的常见场景是在 delegate,block,NSTimer 中使用,我们经常用weak来避免以上场景中易产生的循环引用的问题.</p>
-<p>weak的实际作用是:弱引用,在对象释放后置为 nil,避免错误的内存访问.也就是说:weak 可以在不增加对象的引用计数的同时,又使得指针的访问是安全的.</p>
-<hr>
-<p>单例模式在OC和Swift这经常会被用到,好用的小模块工具类、很多SDK的初始化等等.但是这些单例的使用场景里都有一个共同的毛病,单例在被创建之后会伴随着进程一直存活,有时候我们的业务需求,特别是对于前端来说的话,很多单例模式的使用都是为了方便,所以我们其实很想在这些单例不必要存在的时候将它们释放掉,因为这些单例在一定程度上是有内存浪费的.</p>
+        <h2 id="malloc-和free-的基本概念以及基本用法"><a href="#malloc-和free-的基本概念以及基本用法" class="headerlink" title="malloc()和free()的基本概念以及基本用法"></a>malloc()和free()的基本概念以及基本用法</h2><h3 id="malloc"><a href="#malloc" class="headerlink" title="malloc()"></a>malloc()</h3><h4 id="malloc-的函数原型"><a href="#malloc-的函数原型" class="headerlink" title="malloc() 的函数原型"></a>malloc() 的函数原型</h4><p>原型： extern void *malloc(unsigned int num_bytes)。</p>
+<p>头文件： #include &lt;malloc.h&gt; 或 #include &lt;alloc.h&gt; (注意：alloc.h 与 malloc.h 的内容是完全一致的。)。</p>
+<p>功能：分配长度为 num_bytes 字节的内存块。</p>
+<p>当内存不再使用时，应使用free()函数将内存块释放。</p>
+<p>举例：</p>
+<pre><code>#include&lt;stdio.h&gt;  
+#include&lt;malloc.h&gt;  
+int main()  
+&#123;  
+    char *p;  
+    p = (char *)malloc(100);  
+    if(p)  
+        printf(&quot;Memory Allocated at: %x/n&quot;,p);  
+    else  
+        printf(&quot;Not Enough Memory!/n&quot;);  
+    free(p);  
+    return 0;  
+&#125; 
+</code></pre>
         
-          <a class="article-more-a" href="/2017/07/19/weak-singleton%E6%A8%A1%E5%BC%8F%E5%9C%A8iOS%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/#more">more >></a>
+          <a class="article-more-a" href="/2018/02/03/C%E8%AF%AD%E8%A8%80-malloc-%E5%92%8C-free/#more">more >></a>
         
       
 
@@ -887,19 +569,15 @@ else:
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">weak</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">malloc()</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">weak singleton</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">弱单例模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">free()</a>
         		</li>
       		
 		</ul>
@@ -909,84 +587,7 @@ else:
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/19/weak-singleton%E6%A8%A1%E5%BC%8F%E5%9C%A8iOS%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-冷暖自知" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/01/%E5%86%B7%E6%9A%96%E8%87%AA%E7%9F%A5/">冷暖自知</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/01/%E5%86%B7%E6%9A%96%E8%87%AA%E7%9F%A5/" class="archive-article-date">
-  	<time datetime="2017-03-31T16:16:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天晚上9点多写代码的时候，刘玉琦用电脑放了一首《萍聚》，霎那间被旋律带出了些许的难受。</p>
-<p>很感谢尚且足够年轻的自己，感谢自己拥有一个每天爬起来都充满干劲的自己。我仔细的回忆了一下，我已经将近有3年的时间，不曾惶惶度日，从那一刻感到考研复习学习的时间不够的大四开始，我就每天都在数着时间过日子。</p>
-        
-          <a class="article-more-a" href="/2017/04/01/%E5%86%B7%E6%9A%96%E8%87%AA%E7%9F%A5/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Essays</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/01/%E5%86%B7%E6%9A%96%E8%87%AA%E7%9F%A5/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/02/03/C%E8%AF%AD%E8%A8%80-malloc-%E5%92%8C-free/">展开全文 >></a>
         </p>
       
 
@@ -1018,7 +619,7 @@ else:
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -1149,6 +750,30 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 注释</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 变量</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 数据类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -1181,30 +806,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 注释</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 变量</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 数据类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
@@ -1233,11 +834,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1249,31 +862,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">OC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1289,6 +886,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
@@ -1301,19 +902,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1349,18 +950,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
               </li>
              
@@ -1377,15 +966,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杭州</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 简介</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杭州</a>
               </li>
             
             <div class="clearfix"></div>
