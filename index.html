@@ -144,19 +144,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-为个人博客或站点搭建实用的图床" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-博客搭建图床" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2025/07/30/%E4%B8%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%88%96%E7%AB%99%E7%82%B9%E6%90%AD%E5%BB%BA%E5%AE%9E%E7%94%A8%E7%9A%84%E5%9B%BE%E5%BA%8A/">博客搭建图床</a>
+      <a class="article-title" href="/2025/07/30/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/">博客搭建图床</a>
     </h1>
   
 
         
-        <a href="/2025/07/30/%E4%B8%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%88%96%E7%AB%99%E7%82%B9%E6%90%AD%E5%BB%BA%E5%AE%9E%E7%94%A8%E7%9A%84%E5%9B%BE%E5%BA%8A/" class="archive-article-date">
+        <a href="/2025/07/30/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/" class="archive-article-date">
   	<time datetime="2025-07-29T18:59:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-30</time>
 </a>
         
@@ -164,7 +164,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、图床使用场景"><a href="#一、图床使用场景" class="headerlink" title="一、图床使用场景"></a>一、图床使用场景</h1><p>图床的核心价值在于解放本地存储、提升图片管理效率、稳定支持多场景图片调用，适合有图片存储、分享、管理需求的个人用户使用。</p>
+        <h2 id="一、图床使用场景"><a href="#一、图床使用场景" class="headerlink" title="一、图床使用场景"></a>一、图床使用场景</h2><p>图床的核心价值在于解放本地存储、提升图片管理效率、稳定支持多场景图片调用，适合有图片存储、分享、管理需求的个人用户使用。</p>
 <p>日常点滴记录生活及生命哲思感悟，难免有一些图片存储和管理的场景。个人博客或者个人站点在访问量不高的情况下，使用图床来做对应的图片管理最合适不过。</p>
 <p>当下主流的个人博客搭建基于Hexo，个人站点搭建基于Hugo，这两个框架都适合用GitHub Pages的服务器来存储和管理对应的内容，但是图片管理确不太合适。</p>
 <p>针对Hexo搭建的个人站点中如果要使用图片，有以下几类常见方案。</p>
@@ -177,9 +177,9 @@
 <li>降低其他平台的负载<br>常见的社区比如知乎，你在知乎答题时发一张自拍，这张图片并非直接存在知乎的主服务器上，而是由知乎合作的图床服务存储，其他用户查看时，图片从图床的CDN节点快速加载 —— 这就是图床作为 “存储 + 分发” 核心的体现。</li>
 </ul>
 <p>基于上文阐述，图床的服务存储决定了整个图床的服务能力和效果，而具备服务存储的能力有以下几类常见个人易用易获取的服务存储能力。<br>1、GitHub/Gitee<br>2、SM.MS，正常域名：<a href="https://sm.ms/，部分情况下网络限制时国内的备用域名：https://smms.app/">https://sm.ms/，部分情况下网络限制时国内的备用域名：https://smms.app/</a><br>3、七牛云、阿里云、腾讯云、百度云、华为云OR亚马逊云等对象存储<br>集成服务存储能力的基础上，配备一个交互丝滑好用的客户终端，就搭建完成一个图床。</p>
-<h1 id="二、图床搭建"><a href="#二、图床搭建" class="headerlink" title="二、图床搭建"></a>二、图床搭建</h1><h4 id="2-1-存储服务方案优劣势简介"><a href="#2-1-存储服务方案优劣势简介" class="headerlink" title="2.1 存储服务方案优劣势简介"></a>2.1 存储服务方案优劣势简介</h4><p>1、GitHub/Gitee 原理一样，都是<strong>免费</strong>通过管理项目仓库的形式来管理图片，但GitHub的国内访问网络不稳定，Gitee的国际访问不稳定（Gitee主要服务于中国用户群体，国际用户支持较弱）。<br>2、SM.MS不具备图床资源管理能力，适合<strong>临时或一次性</strong>上传图片，而不适合长期数字资产维护。好处也显而易见–<strong>免费</strong>。海量用户的OSS存储对象成本依靠SM.MS的商业化变现来支持（靠广告投放变现）。<br>3、云服务的<strong>部分对象存储需要收费</strong>的，此外基于工信部政策要求，从2018年开始阿里云、七牛云等云服务厂商，针对<strong>对象存储访问需要绑定域名并进行备案接入</strong>，而域名也需要付费。好处是长期稳定的对象存储及国内外合法访问都可以做到足够稳定，适合个人的海外站点素材投放。</p>
+<h2 id="二、图床搭建"><a href="#二、图床搭建" class="headerlink" title="二、图床搭建"></a>二、图床搭建</h2><h4 id="2-1-存储服务方案优劣势简介"><a href="#2-1-存储服务方案优劣势简介" class="headerlink" title="2.1 存储服务方案优劣势简介"></a>2.1 存储服务方案优劣势简介</h4><p>1、GitHub/Gitee 原理一样，都是<strong>免费</strong>通过管理项目仓库的形式来管理图片，但GitHub的国内访问网络不稳定，Gitee的国际访问不稳定（Gitee主要服务于中国用户群体，国际用户支持较弱）。<br>2、SM.MS不具备图床资源管理能力，适合<strong>临时或一次性</strong>上传图片，而不适合长期数字资产维护。好处也显而易见–<strong>免费</strong>。海量用户的OSS存储对象成本依靠SM.MS的商业化变现来支持（靠广告投放变现）。<br>3、云服务的<strong>部分对象存储需要收费</strong>的，此外基于工信部政策要求，从2018年开始阿里云、七牛云等云服务厂商，针对<strong>对象存储访问需要绑定域名并进行备案接入</strong>，而域名也需要付费。好处是长期稳定的对象存储及国内外合法访问都可以做到足够稳定，适合个人的海外站点素材投放。</p>
         
-          <a class="article-more-a" href="/2025/07/30/%E4%B8%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%88%96%E7%AB%99%E7%82%B9%E6%90%AD%E5%BB%BA%E5%AE%9E%E7%94%A8%E7%9A%84%E5%9B%BE%E5%BA%8A/#more">more >></a>
+          <a class="article-more-a" href="/2025/07/30/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/#more">more >></a>
         
       
 
@@ -203,7 +203,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2025/07/30/%E4%B8%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%88%96%E7%AB%99%E7%82%B9%E6%90%AD%E5%BB%BA%E5%AE%9E%E7%94%A8%E7%9A%84%E5%9B%BE%E5%BA%8A/">展开全文 >></a>
+          <a class="article-more-a" href="/2025/07/30/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/">展开全文 >></a>
         </p>
       
 
@@ -1147,15 +1147,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1171,11 +1171,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1191,18 +1191,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
@@ -1215,15 +1203,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Notes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图床</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1259,6 +1255,22 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图床</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
               </li>
              
@@ -1284,18 +1296,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杭州</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
               </li>
             
             <div class="clearfix"></div>
