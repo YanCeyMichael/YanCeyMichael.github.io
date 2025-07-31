@@ -15,6 +15,7 @@
 <meta property="og:site_name" content="Yancey’s Blog">
 <meta property="og:description" content="一、使用场景图床的核心价值在于解放本地存储、提升图片管理效率、稳定支持多场景图片调用，适合有图片存储、分享、管理需求的个人用户使用。 日常点滴记录生活及生命哲思感悟，难免有一些图片存储和管理的场景。个人博客或者个人站点在访问量不高的情况下，使用图床来做对应的图片管理最合适不过。 当下主流的个人博客搭建基于Hexo，个人站点搭建基于Hugo，这两个框架都适合用GitHub Pages的服务器来存储和">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/20250801033817035.png">
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730044739439.png">
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730045545667.png">
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730045737174.png">
@@ -25,11 +26,11 @@
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730051224384.png">
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730051707673.png">
 <meta property="article:published_time" content="2025-07-29T18:59:28.000Z">
-<meta property="article:modified_time" content="2025-07-31T00:54:27.181Z">
+<meta property="article:modified_time" content="2025-07-31T19:57:38.603Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="图床">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://imagehostingservice.yanceymichael.com/images/20250730044739439.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/20250801033817035.png">
   
     <link rel="alternative" href="/atom.xml" title="Yancey’s Blog" type="application/atom+xml">
   
@@ -180,24 +181,34 @@
         <script src="/assets/js/APlayer.min.js"> </script><h2 id="一、使用场景"><a href="#一、使用场景" class="headerlink" title="一、使用场景"></a>一、使用场景</h2><p>图床的核心价值在于解放本地存储、提升图片管理效率、稳定支持多场景图片调用，适合有图片存储、分享、管理需求的个人用户使用。</p>
 <p>日常点滴记录生活及生命哲思感悟，难免有一些图片存储和管理的场景。个人博客或者个人站点在访问量不高的情况下，使用图床来做对应的图片管理最合适不过。</p>
 <p>当下主流的个人博客搭建基于Hexo，个人站点搭建基于Hugo，这两个框架都适合用GitHub Pages的服务器来存储和管理对应的内容，但是图片管理确不太合适。</p>
-<p>针对Hexo搭建的个人站点中如果要使用图片，有以下几类常见方案。</p>
-<h4 id="1-1-用Hexo内置资源文件来管理博客图片"><a href="#1-1-用Hexo内置资源文件来管理博客图片" class="headerlink" title="1.1 用Hexo内置资源文件来管理博客图片"></a>1.1 用Hexo内置资源文件来管理博客图片</h4><p>Hexo支持通过资源文件夹管理图片，基于Hexo的个人博客，在创建新文章时，Hexo会自动生成同名文件夹，该文件夹中可以放入当前的文章所需使用的图片，通过Markdown的语法直接引用图片即可（注：这里引用的图片地址的路径是相对路径而非绝对路径）。</p>
+<p>针对Hexo搭建的个人站点中如果要使用图片，有以下常见方案来管理。</p>
+<h4 id="1-1-使用Hexo内置资源文件来管理博客图片"><a href="#1-1-使用Hexo内置资源文件来管理博客图片" class="headerlink" title="1.1 使用Hexo内置资源文件来管理博客图片"></a>1.1 使用Hexo内置资源文件来管理博客图片</h4><p>Hexo支持通过资源文件夹管理图片，基于Hexo的个人博客，在创建新文章时，Hexo会自动生成同名文件夹，该文件夹中可以放入当前的文章所需使用的图片，通过Markdown的语法直接引用图片即可（注：这里引用的图片地址的路径是相对路径而非绝对路径）。</p>
 <p>在Hexo文章撰写完成后，通过Hexo g&amp;d发布部署到远端后，图片文件会作为静态资源被部署到GitHub Pages服务器上。</p>
-<p>此方案最大的问题是使用场景受限。</p>
-<h4 id="1-2-使用图床图片存储来管理博客图片"><a href="#1-2-使用图床图片存储来管理博客图片" class="headerlink" title="1.2 使用图床图片存储来管理博客图片"></a>1.2 使用图床图片存储来管理博客图片</h4><p>图床的本质是专门用于存储、管理和分发图片文件的在线服务或系统，其核心功能是为用户提供稳定、高效的图片托管能力，并通过网络将图片资源传递给终端用户或应用场景。<br>具备以下特性：</p>
+<p><strong>此方案虽无技术难度简单易用，但是也暴露了最大的问题就是使用场景受限。</strong></p>
+<h4 id="1-2-使用图床来管理博客图片"><a href="#1-2-使用图床来管理博客图片" class="headerlink" title="1.2 使用图床来管理博客图片"></a>1.2 使用图床来管理博客图片</h4><p>图床的本质是专门用于存储、管理和分发图片文件的在线服务或系统，其核心功能是为用户提供稳定、高效的图片托管能力，并通过网络将图片资源传递给终端用户或应用场景。<br>具备以下特性：</p>
 <ul>
 <li>图片的集中存储载体</li>
 <li>图片的高效分发枢纽</li>
 <li>图片的资源管理工具</li>
 <li>降低其他平台的负载<br>常见的社区比如知乎，你在知乎答题时发一张自拍，这张图片并非直接存在知乎的主服务器上，而是由知乎合作的图床服务存储，其他用户查看时，图片从图床的CDN节点快速加载 —— 这就是图床作为 “存储 + 分发” 核心的体现。</li>
 </ul>
-<p>基于上文阐述，图床的服务存储决定了整个图床的服务能力和效果，而具备服务存储的能力有以下几类常见个人易用易获取的服务存储能力。<br>1、GitHub/Gitee<br>2、SM.MS，正常域名：<a href="https://sm.ms/，部分情况下网络限制时国内的备用域名：https://smms.app/">https://sm.ms/，部分情况下网络限制时国内的备用域名：https://smms.app/</a><br>3、七牛云、阿里云、腾讯云、百度云、华为云OR亚马逊云等对象存储<br>集成服务存储能力的基础上，配备一个交互丝滑好用的客户终端，就搭建完成一个图床。</p>
+<p>基于上文阐述，图床的服务存储决定了整个图床的服务能力和效果，而具备服务存储的能力有以下几类常见个人易用易获取的服务存储能力。<br>1、GitHub，虽然是常用的云代码管理服务器，但是也可以作为图床云服务器来使用，但国内部分场景下存在着网络不畅影响访问，这里并不建议用Gitee/Coding或平替<br>2、SM.MS，纯粹的图床云服务器<br>3、七牛云、阿里云、腾讯云、百度云等对象存储结合域名和CDN访问组成云服务器</p>
+<p>在上述远端的服务存储能力的基础上，配备一个客户终端，就可以搭建一套完整的图床系统。</p>
 <span id="more"></span>
-<h2 id="二、图床搭建"><a href="#二、图床搭建" class="headerlink" title="二、图床搭建"></a>二、图床搭建</h2><h4 id="2-1-存储服务方案优劣势简介"><a href="#2-1-存储服务方案优劣势简介" class="headerlink" title="2.1 存储服务方案优劣势简介"></a>2.1 存储服务方案优劣势简介</h4><p>1、GitHub/Gitee 原理一样，都是<strong>免费</strong>通过管理项目仓库的形式来管理图片，但GitHub的国内访问网络不稳定，Gitee的国际访问不稳定（Gitee主要服务于中国用户群体，国际用户支持较弱）。<br>2、SM.MS不具备图床资源管理能力，适合<strong>临时或一次性</strong>上传图片，而不适合长期数字资产维护。好处也显而易见–<strong>免费</strong>。海量用户的OSS存储对象成本依靠SM.MS的商业化变现来支持（靠广告投放变现）。<br>3、云服务的<strong>部分对象存储需要收费</strong>的，此外基于工信部政策要求，从2018年开始阿里云、七牛云等云服务厂商，针对<strong>对象存储访问需要绑定域名并进行备案接入</strong>，而域名也需要付费。好处是长期稳定的对象存储及国内外合法访问都可以做到足够稳定，适合个人的海外站点素材投放。</p>
-<h4 id="2-2-图床方案搭建准备"><a href="#2-2-图床方案搭建准备" class="headerlink" title="2.2 图床方案搭建准备"></a>2.2 图床方案搭建准备</h4><h5 id="关于域名"><a href="#关于域名" class="headerlink" title="关于域名"></a>关于域名</h5><p>建议购买云服务商的域名服务（推荐用阿里云，域名相对齐全）</p>
-<h5 id="关于对象存储"><a href="#关于对象存储" class="headerlink" title="关于对象存储"></a>关于对象存储</h5><p>对象存储可在不同的云服务商处按需进行购买，七牛云针对每个用户每个月提供10GB的对象存储的额度，正常情况下，对于存储图片用于个人博客或个人静态页面的站点够用，同时七牛云提供存储对象的Http强制转成Https的服务能力，该能力可以很好的在用户访问博客时，显示加载照片内容。否则按目前网络安全的处理，Http的图片链接，不会直接被网页访问显示。</p>
-<h5 id="关于图床操作客户端"><a href="#关于图床操作客户端" class="headerlink" title="关于图床操作客户端"></a>关于图床操作客户端</h5><p>建议使用PicGo，开源免费，GitHub地址：<a href="https://github.com/Molunerfinn/PicGo">https://github.com/Molunerfinn/PicGo</a></p>
-<h4 id="2-3-域名接入云服务对象存储-简便客户端图床方案搭建核心流程"><a href="#2-3-域名接入云服务对象存储-简便客户端图床方案搭建核心流程" class="headerlink" title="2.3 域名接入云服务对象存储 + 简便客户端图床方案搭建核心流程"></a>2.3 域名接入云服务对象存储 + 简便客户端图床方案搭建核心流程</h4><p>对象存储访问需要绑定域名并进行备案接入，该流程比较繁琐，容易出错。<br>1、阿里云域名新增解析<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730044739439.png" alt="阿里云域名新增解析"><br>2、阿里云域名解析配置<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730045545667.png" alt="阿里云域名解析的记录值配置"><br>3、七牛云创建存储空间和文件目录<br>注：存储区域选海外，大陆需要备案<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730045737174.png" alt="七牛云新增OSS存储空间和文件路径"><br>4、七牛云存储空间域名绑定</p>
+<h2 id="二、图床搭建"><a href="#二、图床搭建" class="headerlink" title="二、图床搭建"></a>二、图床搭建</h2><h6 id="存储服务方案优劣势简介"><a href="#存储服务方案优劣势简介" class="headerlink" title="存储服务方案优劣势简介"></a>存储服务方案优劣势简介</h6><p>1、GitHub/Gitee/Coding 原理一样，都是<strong>免费</strong>通过管理项目仓库的形式来管理图片，但GitHub的国内访问网络不稳定，国内Gitee保持还是独立运营状态，但没有多少注资，而Coding已经被腾讯云收购，两者在国内作为过去移动互联网时代最好的GitHub的平替，都已经关闭了外链访问（如果你的代码公有库做图床会遭受封禁后转为私有库），就是防止用户白嫖其作为图床的能力。<br>2、SM.MS，正常域名：<a href>https://sm.ms/</a>，部分情况下网络限制时国内的备用域名：<a href>https://smms.app/</a>，<strong>但很遗憾目前该服务器已经关闭用户注册功能，且无法从海鲜市场买断账号来使用，本文对此方案也不过多介绍</strong>。<br>3、七牛云、阿里云、腾讯云、百度云等云服务的<strong>对象存储</strong>的，此外基于工信部政策要求，从2018年开始阿里云、七牛云等云服务厂商，针对<strong>对象存储访问需要绑定域名并进行备案接入</strong>，而域名也需要付费。好处是长期稳定的对象存储及国内外合法访问都可以做到足够稳定，适合个人的海外站点素材投放。</p>
+<h3 id="2-1-GitHub-PicGo-图床方案搭建"><a href="#2-1-GitHub-PicGo-图床方案搭建" class="headerlink" title="2.1 GitHub + PicGo 图床方案搭建"></a>2.1 GitHub + PicGo 图床方案搭建</h3><h6 id="GitHub新建图床专用项目仓库"><a href="#GitHub新建图床专用项目仓库" class="headerlink" title="GitHub新建图床专用项目仓库"></a>GitHub新建图床专用项目仓库</h6><p>和创建普通项目仓库无区别</p>
+<h6 id="解决GitHub访问的加速问题（使用jsdelivr解决）"><a href="#解决GitHub访问的加速问题（使用jsdelivr解决）" class="headerlink" title="解决GitHub访问的加速问题（使用jsdelivr解决）"></a>解决GitHub访问的加速问题（使用jsdelivr解决）</h6><p>jsdelivr：<a href>https://www.jsdelivr.com/</a>，为开源项目提供免费的CDN。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">jsDelivr是一个开源公共CDN平台，专注于加速静态资源加载，提供免费全球缓存节点服务以提升网站性能。 ‌</span><br><span class="line">核心功能：</span><br><span class="line">1、‌全球缓存加速‌：通过分布式节点缓存内容，减少源服务器负载，提升访问速度。 ‌</span><br><span class="line">‌2、自动优化‌：支持 HTTP/2、GZIP压缩、自动启用HTTPS，优化加载效率。 ‌</span><br><span class="line">‌3、资源类型支持‌：涵盖JavaScript、CSS、图片等静态资源，支持npm包及GitHub 项目加速。 ‌</span><br><span class="line">国内使用建议：</span><br><span class="line">默认节点cdn.jsdelivr.net国内访问受限，建议更换为国内镜像节点（如cdn.jsdmirror.com），可显著改善加载速度。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h6 id="关于图床操作客户端"><a href="#关于图床操作客户端" class="headerlink" title="关于图床操作客户端"></a>关于图床操作客户端</h6><p>建议使用PicGo，开源免费，GitHub地址：<a href>https://github.com/Molunerfinn/PicGo</a></p>
+<h4 id="方案搭建核心流程"><a href="#方案搭建核心流程" class="headerlink" title="方案搭建核心流程"></a>方案搭建核心流程</h4><p>1、创建图床专用项目<br>创建项目时，项目需要设置为公开，创建完成后，需要去GitHub个人资料中心拿到settings中的Developer settings，拿到对应的Personal access token，生成的token只会在这里显示一次，所以记得单独保存下来（建议截图保存到电脑本地，后续需要调整token时可以重新生成）。</p>
+<p>2、用jsdelivr为开源项目提供免费的CDN，目前jsdelivr使用比较简单，直接设定域名即可，设定自定义域名：<a href="https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main">https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main</a><br><img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/20250801033817035.png" alt></p>
+<p><strong>注：Gitee和Coding有对外链访问封禁的风险，此处不在赘述。（两者的图床搭建原理和GitHub类似，只是本身这两个码云，本身有Https的外链访问能力，不需要做CDN加速。）</strong></p>
+<h3 id="2-2-SM-MS-PicGo-图床方案搭建"><a href="#2-2-SM-MS-PicGo-图床方案搭建" class="headerlink" title="2.2 SM.MS + PicGo 图床方案搭建"></a>2.2 SM.MS + PicGo 图床方案搭建</h3><p>SM.MS是一个免费的图片服务器，上传图片即可返回图片的网络URL，省去了用户自己搭建专门的图片服务器。<strong>但很遗憾目前该服务器已经关闭用户注册功能，且无法从海鲜市场买断账号来使用，本文对此方案也不过多介绍</strong></p>
+<h3 id="2-3-七牛云对象存储（域名-CDN的强制HTTPS）-PicGo-图床方案搭建"><a href="#2-3-七牛云对象存储（域名-CDN的强制HTTPS）-PicGo-图床方案搭建" class="headerlink" title="2.3 七牛云对象存储（域名/CDN的强制HTTPS）+ PicGo 图床方案搭建"></a>2.3 七牛云对象存储（域名/CDN的强制HTTPS）+ PicGo 图床方案搭建</h3><p>云存储+域名（CDN加速）+图片上传客户端的图床方案搭建准备</p>
+<h6 id="关于域名"><a href="#关于域名" class="headerlink" title="关于域名"></a>关于域名</h6><p>建议购买云服务商的域名服务（推荐用阿里云，域名相对齐全）</p>
+<h6 id="关于对象存储"><a href="#关于对象存储" class="headerlink" title="关于对象存储"></a>关于对象存储</h6><p>对象存储可在不同的云服务商处按需进行购买，七牛云针对每个用户每个月提供10GB的对象存储的额度，正常情况下，对于存储图片用于个人博客或个人静态页面的站点够用，同时七牛云提供存储对象的Http强制转成Https的服务能力，该能力可以很好的在用户访问博客时，显示加载照片内容。否则按目前网络安全的处理，Http的图片链接，不会直接被网页访问显示。</p>
+<h6 id="关于图床操作客户端-1"><a href="#关于图床操作客户端-1" class="headerlink" title="关于图床操作客户端"></a>关于图床操作客户端</h6><p>建议使用PicGo，开源免费，<a href>GitHub地址：https://github.com/Molunerfinn/PicGo</a></p>
+<h4 id="方案搭建核心流程-1"><a href="#方案搭建核心流程-1" class="headerlink" title="方案搭建核心流程"></a>方案搭建核心流程</h4><p>对象存储访问需要绑定域名并进行备案接入，该流程比较繁琐，容易出错。<br>1、阿里云域名新增解析<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730044739439.png" alt="阿里云域名新增解析"><br>2、阿里云域名解析配置<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730045545667.png" alt="阿里云域名解析的记录值配置"><br>3、七牛云创建存储空间和文件目录<br>注：存储区域选海外，大陆需要备案<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730045737174.png" alt="七牛云新增OSS存储空间和文件路径"><br>4、七牛云存储空间域名绑定</p>
 <ul>
 <li>配合2中的服务商域名解析配置<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730045952810.png" alt="七牛云域名绑定"><br>5、七牛云存储空间设置外链域名</li>
 <li>七牛云免费赠送30日测试域名，可用于能力测试<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730050305799.png" alt="存储空间设置外链域名"></li>
@@ -205,8 +216,9 @@
 <li>操作日志接口返回权限有问题<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730051224384.png" alt="操作日志接口返回权限有问题"></li>
 <li>配置文件中找AK和SK是否和七牛云个人账号中一致<br><img src="http://imagehostingservice.yanceymichael.com/images/20250730051707673.png" alt="配置文件中找AK和SK是否和七牛云个人账号中一致"></li>
 </ul>
-<h2 id="三、图床实操"><a href="#三、图床实操" class="headerlink" title="三、图床实操"></a>三、图床实操</h2><p>本文涉及的SOP中的图片，均来自于七牛云和PicGo搭建的图床，个人博客站点在被用户访问时，网页显示加载的Https链接资源的图片，从七牛云的对象存储图床的CDN节点快速加载显示，最终被用户获取。</p>
-<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p>以上内容，如果有部分细节内容依然不熟悉，可参考同类视频教程中的一些步骤描述：<a href="https://www.bilibili.com/video/BV1fw411t7eU/?spm_id_from=333.1387.favlist.content.click&amp;vd_source=ff56e624427d37d39c601ead9169687d">https://www.bilibili.com/video/BV1fw411t7eU/?spm_id_from=333.1387.favlist.content.click&amp;vd_source=ff56e624427d37d39c601ead9169687d</a></p>
+<h2 id="三、图床实操"><a href="#三、图床实操" class="headerlink" title="三、图床实操"></a>三、图床实操</h2><p>本文涉及的SOP中的图片，分别是通过GitHub+PicGo和七牛云+PicGo搭建的图床的实操，个人博客站点在被用户访问时，网页显示加载的Https链接资源的图片，从图床中加载显示，最终被用户获取。</p>
+<p>如果某天，你读到该文章时发现七牛云+PicGo搭建的图床对应的图片已不可见，那一定是我忘记给七牛云的CDN流量付费了，以上。</p>
+<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p>1、如果对于七牛云+PicGo搭建的图床流程中，依然有细节内容不清楚时，可参考视频别的UP主教程中的细节描述，这是传送门：<a href>https://www.bilibili.com/video/BV1fw411t7eU/?spm_id_from=333.1387.favlist.content.click&amp;vd_source=ff56e624427d37d39c601ead9169687d</a><br>2、图床系统本质是搭建一个畅通无阻的云存储对象上传管理及自由访问能力，在此再次强调，在国内必须严格按照相关法律法规要求来落地执行这些多媒体资源的管理。</p>
 
       
 
@@ -350,7 +362,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">一、使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E7%94%A8Hexo%E5%86%85%E7%BD%AE%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E6%9D%A5%E7%AE%A1%E7%90%86%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1 用Hexo内置资源文件来管理博客图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%BA%8A%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8%E6%9D%A5%E7%AE%A1%E7%90%86%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2 使用图床图片存储来管理博客图片</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">二、图床搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1%E6%96%B9%E6%A1%88%E4%BC%98%E5%8A%A3%E5%8A%BF%E7%AE%80%E4%BB%8B"><span class="toc-number">2.0.1.</span> <span class="toc-text">2.1 存储服务方案优劣势简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%9B%BE%E5%BA%8A%E6%96%B9%E6%A1%88%E6%90%AD%E5%BB%BA%E5%87%86%E5%A4%87"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.2 图床方案搭建准备</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%9F%9F%E5%90%8D"><span class="toc-number">2.0.2.1.</span> <span class="toc-text">关于域名</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8"><span class="toc-number">2.0.2.2.</span> <span class="toc-text">关于对象存储</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%BA%8A%E6%93%8D%E4%BD%9C%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">2.0.2.3.</span> <span class="toc-text">关于图床操作客户端</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E5%9F%9F%E5%90%8D%E6%8E%A5%E5%85%A5%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8-%E7%AE%80%E4%BE%BF%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%9B%BE%E5%BA%8A%E6%96%B9%E6%A1%88%E6%90%AD%E5%BB%BA%E6%A0%B8%E5%BF%83%E6%B5%81%E7%A8%8B"><span class="toc-number">2.0.3.</span> <span class="toc-text">2.3 域名接入云服务对象存储 + 简便客户端图床方案搭建核心流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%9B%BE%E5%BA%8A%E5%AE%9E%E6%93%8D"><span class="toc-number">3.</span> <span class="toc-text">三、图床实操</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84"><span class="toc-number">4.</span> <span class="toc-text">附</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">一、使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E4%BD%BF%E7%94%A8Hexo%E5%86%85%E7%BD%AE%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E6%9D%A5%E7%AE%A1%E7%90%86%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1 使用Hexo内置资源文件来管理博客图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%BA%8A%E6%9D%A5%E7%AE%A1%E7%90%86%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2 使用图床来管理博客图片</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">二、图床搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1%E6%96%B9%E6%A1%88%E4%BC%98%E5%8A%A3%E5%8A%BF%E7%AE%80%E4%BB%8B"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">存储服务方案优劣势简介</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-GitHub-PicGo-%E5%9B%BE%E5%BA%8A%E6%96%B9%E6%A1%88%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 GitHub + PicGo 图床方案搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#GitHub%E6%96%B0%E5%BB%BA%E5%9B%BE%E5%BA%8A%E4%B8%93%E7%94%A8%E9%A1%B9%E7%9B%AE%E4%BB%93%E5%BA%93"><span class="toc-number">2.1.0.0.1.</span> <span class="toc-text">GitHub新建图床专用项目仓库</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3GitHub%E8%AE%BF%E9%97%AE%E7%9A%84%E5%8A%A0%E9%80%9F%E9%97%AE%E9%A2%98%EF%BC%88%E4%BD%BF%E7%94%A8jsdelivr%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="toc-number">2.1.0.0.2.</span> <span class="toc-text">解决GitHub访问的加速问题（使用jsdelivr解决）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%BA%8A%E6%93%8D%E4%BD%9C%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">2.1.0.0.3.</span> <span class="toc-text">关于图床操作客户端</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E6%90%AD%E5%BB%BA%E6%A0%B8%E5%BF%83%E6%B5%81%E7%A8%8B"><span class="toc-number">2.1.1.</span> <span class="toc-text">方案搭建核心流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-SM-MS-PicGo-%E5%9B%BE%E5%BA%8A%E6%96%B9%E6%A1%88%E6%90%AD%E5%BB%BA"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 SM.MS + PicGo 图床方案搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E4%B8%83%E7%89%9B%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%EF%BC%88%E5%9F%9F%E5%90%8D-CDN%E7%9A%84%E5%BC%BA%E5%88%B6HTTPS%EF%BC%89-PicGo-%E5%9B%BE%E5%BA%8A%E6%96%B9%E6%A1%88%E6%90%AD%E5%BB%BA"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 七牛云对象存储（域名&#x2F;CDN的强制HTTPS）+ PicGo 图床方案搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%9F%9F%E5%90%8D"><span class="toc-number">2.3.0.0.1.</span> <span class="toc-text">关于域名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8"><span class="toc-number">2.3.0.0.2.</span> <span class="toc-text">关于对象存储</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%BA%8A%E6%93%8D%E4%BD%9C%E5%AE%A2%E6%88%B7%E7%AB%AF-1"><span class="toc-number">2.3.0.0.3.</span> <span class="toc-text">关于图床操作客户端</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E6%90%AD%E5%BB%BA%E6%A0%B8%E5%BF%83%E6%B5%81%E7%A8%8B-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">方案搭建核心流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%9B%BE%E5%BA%8A%E5%AE%9E%E6%93%8D"><span class="toc-number">3.</span> <span class="toc-text">三、图床实操</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84"><span class="toc-number">4.</span> <span class="toc-text">附</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -482,6 +494,18 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -510,42 +534,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -566,11 +554,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,11 +574,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,6 +603,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,18 +642,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">weak</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">weak singleton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">弱单例模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
               </li>
              
@@ -651,6 +651,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">weak</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">weak singleton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">弱单例模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,18 +710,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">calloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">realloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
               </li>
              
@@ -722,19 +722,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杭州</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 简介</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">calloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">realloc()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杭州</a>
               </li>
             
             <div class="clearfix"></div>
