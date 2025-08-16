@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Yancey’s Blog">
 <meta property="og:description" content="一、使用场景图床的核心价值在于解放本地存储、提升图片管理效率、稳定支持多场景图片调用，适合有图片存储、分享、管理需求的个人用户使用。 日常点滴记录，会有一些图片存储和管理的场景。个人博客或者个人站点在访问量并发不高的情况下，使用图床来做对应的图片管理最合适不过。 当下主流的个人博客搭建基于Hexo，个人站点搭建基于Hugo，这两个框架都适合用GitHub Pages的服务器来存储和管理对应的内容，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/20250801033817035.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/1755318399057.png">
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730044739439.png">
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730045545667.png">
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730045737174.png">
@@ -26,11 +26,11 @@
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730051224384.png">
 <meta property="og:image" content="http://imagehostingservice.yanceymichael.com/images/20250730051707673.png">
 <meta property="article:published_time" content="2025-07-29T18:59:28.000Z">
-<meta property="article:modified_time" content="2025-08-03T18:51:49.341Z">
+<meta property="article:modified_time" content="2025-08-16T04:27:19.829Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="图床">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/20250801033817035.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/1755318399057.png">
   
     <link rel="alternative" href="/atom.xml" title="Yancey’s Blog" type="application/atom+xml">
   
@@ -199,7 +199,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">jsDelivr是一个开源公共CDN平台，专注于加速静态资源加载，提供免费全球缓存节点服务以提升网站性能。 ‌</span><br><span class="line">核心功能：</span><br><span class="line">1、‌全球缓存加速‌：通过分布式节点缓存内容，减少源服务器负载，提升访问速度。 ‌</span><br><span class="line">‌2、自动优化‌：支持 HTTP/2、GZIP压缩、自动启用HTTPS，优化加载效率。 ‌</span><br><span class="line">‌3、资源类型支持‌：涵盖JavaScript、CSS、图片等静态资源，支持npm包及GitHub 项目加速。 ‌</span><br><span class="line">国内使用建议：</span><br><span class="line">默认节点cdn.jsdelivr.net国内访问受限，建议更换为国内镜像节点（如cdn.jsdmirror.com），可显著改善加载速度。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h6 id="关于图床操作客户端"><a href="#关于图床操作客户端" class="headerlink" title="关于图床操作客户端"></a>关于图床操作客户端</h6><p>建议使用PicGo，开源免费，GitHub地址：<a href>https://github.com/Molunerfinn/PicGo</a></p>
 <h4 id="方案搭建核心流程"><a href="#方案搭建核心流程" class="headerlink" title="方案搭建核心流程"></a>方案搭建核心流程</h4><p>1、创建图床专用项目<br>创建项目时，项目需要设置为公开，创建完成后，需要去GitHub个人资料中心拿到settings中的Developer settings，拿到对应的Personal access token，生成的token只会在这里显示一次，所以记得单独保存下来（建议截图保存到电脑本地，后续需要调整token时可以重新生成）。</p>
-<p>2、用jsdelivr为开源项目提供免费的CDN，目前jsdelivr使用比较简单，直接设定域名即可，设定自定义域名：<a href="https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main">https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main</a><br><img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/20250801033817035.png" alt></p>
+<p>2、用jsdelivr为开源项目提供免费的CDN，目前jsdelivr使用比较简单，直接设定域名即可，设定自定义域名：<a href="https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main">https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/1755318399057.png" alt></p>
 <p><strong>注：Gitee和Coding有对外链访问封禁的风险（两者的图床搭建原理和GitHub类似，只是这两个类GitHub的代码托管服务器，在国内早些年是提供Https的外链访问的，不需要做CDN加速。）</strong></p>
 <h3 id="2-2-SM-MS-PicGo-图床方案搭建"><a href="#2-2-SM-MS-PicGo-图床方案搭建" class="headerlink" title="2.2 SM.MS + PicGo 图床方案搭建"></a>2.2 SM.MS + PicGo 图床方案搭建</h3><p>SM.MS是一个免费的图片服务器，上传图片即可返回图片的网络URL，省去了用户自己搭建专门的图片存储服务器。<strong>但很遗憾目前该服务器已经关闭用户注册功能，且无法从海鲜市场买断账号来使用，本文对此方案也不过多介绍。</strong></p>
 <p>国内目前平替的产品是：图床小镇，<a href>https://imgbed.cn/</a>每天有一定的免费图片上传额度，超出部分可以付费购买。</p>
@@ -519,30 +520,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
               </li>
              
@@ -560,14 +537,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,11 +564,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cpp</a>
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,6 +604,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Cpp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
@@ -619,11 +620,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,15 +632,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">OC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -667,6 +668,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
@@ -679,31 +684,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图床</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -731,6 +716,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图床</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
               </li>
              
@@ -740,10 +745,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">realloc()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
               </li>
              
               <li class="article-tag-list-item">
