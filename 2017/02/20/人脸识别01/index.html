@@ -16,7 +16,7 @@
 <meta property="og:description" content="废话内容，写在前面: 2016年上半年在上海面试的时候。徐汇区有一家做社交的互联网公司开始打算做人脸识别，由此我了解了深圳脸萌科技的FaceU这款超级激萌的App。很有意思的是徐汇区那家社交公司面试我的时候跟我说的很明确：你做一个类似FaceU的demo给我，我就给你发Offer。有时候我在想一份工作好简单啊，只要你会做人脸识别添加贴纸贴片，一碗饭就来了。 回去之后，我对比了iOS框架自带的人脸">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-02-20T02:01:22.000Z">
-<meta property="article:modified_time" content="2026-11-01T23:00:50.675Z">
+<meta property="article:modified_time" content="2026-11-01T23:01:11.651Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="Cpp">
 <meta property="article:tag" content="OpenCV">
@@ -204,12 +204,13 @@
   #site-admin-error{margin:12px 0 0;padding:10px 12px;border-radius:4px;background:#fff4f3;color:#a33;font-size:13px;line-height:1.55}#site-admin-error[hidden]{display:none}
   .site-admin-foot{margin-top:16px;padding-top:12px;border-top:1px solid #eee;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#999;font-size:11px}
   .site-admin-mobile-hint{display:none}
-  .site-admin-edit{display:inline-flex;min-height:36px;align-items:center;justify-content:center;margin:8px 0 0 10px;padding:0 12px;border:1px solid #d9dfe5;border-radius:4px;background:#fff;color:#536a80;font-size:12px;font-weight:600;cursor:pointer;transition:background .16s,border-color .16s,color .16s}
+  .site-admin-edit{display:inline-flex;min-height:32px;align-items:center;justify-content:center;margin:0;padding:0 11px;border:1px solid #d9dfe5;border-radius:4px;background:#fff;color:#536a80;font-size:12px;font-weight:600;cursor:pointer;transition:background .16s,border-color .16s,color .16s}
   .site-admin-edit:hover{border-color:#c6d2de;background:#f5f8fb;color:#416b97}
   .site-admin-edit:focus-visible{outline:3px solid #6d91b4;outline-offset:2px}
-  .article-title-row{display:flex;align-items:center;gap:12px;padding-right:170px}
-  .article-title-row h1{min-width:0;margin-bottom:0}
-  .article-title-row .site-admin-edit{flex:none;margin:0}
+  .article-title-row{padding-right:170px}
+  .article-title-row h1{margin-bottom:0}
+  .article-admin-meta{position:absolute;top:24px;right:7.6923%;z-index:2;width:150px;display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+  .article-admin-meta .archive-article-date{display:block;float:none;width:100%;margin:0;text-align:right}
   #site-admin-mobile-actions{display:none}
   @media(max-width:800px){
     #site-admin-desktop-toolbar{display:none}
@@ -231,7 +232,9 @@
     .site-admin-desktop-hint{display:none}
     .site-admin-mobile-hint{display:inline;color:#84909a;font-size:12px}
     .site-admin-edit{min-height:44px;padding:0 12px;border-radius:5px;background:#f5f8fb;border-color:#d5e0eb;color:#4d4d4d;font-size:12px;font-weight:600}
-    .article-title-row{gap:8px;padding-right:0;flex-wrap:wrap}
+    .article-title-row{padding-right:0}
+    .article-admin-meta{position:static;width:100%;align-items:flex-end;gap:4px;margin:2px 0 0}
+    .article-admin-meta .archive-article-date{width:auto;max-width:100%;margin-right:0}
   }
   @media(prefers-reduced-motion:reduce){#site-admin-root *,#site-admin-root *::before,#site-admin-root *::after{scroll-behavior:auto!important;transition:none!important}}
   </style>
@@ -360,7 +363,6 @@
     </h1>
   
 
-          
         </div>
         
         <a href="/2017/02/20/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB01/" class="archive-article-date">
@@ -948,11 +950,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -197,12 +197,13 @@
   #site-admin-error{margin:12px 0 0;padding:10px 12px;border-radius:4px;background:#fff4f3;color:#a33;font-size:13px;line-height:1.55}#site-admin-error[hidden]{display:none}
   .site-admin-foot{margin-top:16px;padding-top:12px;border-top:1px solid #eee;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#999;font-size:11px}
   .site-admin-mobile-hint{display:none}
-  .site-admin-edit{display:inline-flex;min-height:36px;align-items:center;justify-content:center;margin:8px 0 0 10px;padding:0 12px;border:1px solid #d9dfe5;border-radius:4px;background:#fff;color:#536a80;font-size:12px;font-weight:600;cursor:pointer;transition:background .16s,border-color .16s,color .16s}
+  .site-admin-edit{display:inline-flex;min-height:32px;align-items:center;justify-content:center;margin:0;padding:0 11px;border:1px solid #d9dfe5;border-radius:4px;background:#fff;color:#536a80;font-size:12px;font-weight:600;cursor:pointer;transition:background .16s,border-color .16s,color .16s}
   .site-admin-edit:hover{border-color:#c6d2de;background:#f5f8fb;color:#416b97}
   .site-admin-edit:focus-visible{outline:3px solid #6d91b4;outline-offset:2px}
-  .article-title-row{display:flex;align-items:center;gap:12px;padding-right:170px}
-  .article-title-row h1{min-width:0;margin-bottom:0}
-  .article-title-row .site-admin-edit{flex:none;margin:0}
+  .article-title-row{padding-right:170px}
+  .article-title-row h1{margin-bottom:0}
+  .article-admin-meta{position:absolute;top:24px;right:7.6923%;z-index:2;width:150px;display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+  .article-admin-meta .archive-article-date{display:block;float:none;width:100%;margin:0;text-align:right}
   #site-admin-mobile-actions{display:none}
   @media(max-width:800px){
     #site-admin-desktop-toolbar{display:none}
@@ -224,7 +225,9 @@
     .site-admin-desktop-hint{display:none}
     .site-admin-mobile-hint{display:inline;color:#84909a;font-size:12px}
     .site-admin-edit{min-height:44px;padding:0 12px;border-radius:5px;background:#f5f8fb;border-color:#d5e0eb;color:#4d4d4d;font-size:12px;font-weight:600}
-    .article-title-row{gap:8px;padding-right:0;flex-wrap:wrap}
+    .article-title-row{padding-right:0}
+    .article-admin-meta{position:static;width:100%;align-items:flex-end;gap:4px;margin:2px 0 0}
+    .article-admin-meta .archive-article-date{width:auto;max-width:100%;margin-right:0}
   }
   @media(prefers-reduced-motion:reduce){#site-admin-root *,#site-admin-root *::before,#site-admin-root *::after{scroll-behavior:auto!important;transition:none!important}}
   </style>
@@ -355,14 +358,16 @@
     </h1>
   
 
-          
-          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="夏天要来" aria-label="编辑文章：夏天要来">编辑文章</button>
-          
         </div>
         
-        <a href="/2021/06/14/%E5%A4%8F%E5%A4%A9%E8%A6%81%E6%9D%A5/" class="archive-article-date">
+        <div class="article-admin-meta">
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="夏天要来" aria-label="编辑文章：夏天要来">编辑文章</button>
+          
+          <a href="/2021/06/14/%E5%A4%8F%E5%A4%A9%E8%A6%81%E6%9D%A5/" class="archive-article-date">
   	<time datetime="2021-06-14T17:55:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-15</time>
 </a>
+          
+        </div>
         
       </header>
     
@@ -438,14 +443,16 @@
     </h1>
   
 
-          
-          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="自律和热爱" aria-label="编辑文章：自律和热爱">编辑文章</button>
-          
         </div>
         
-        <a href="/2021/06/09/%E8%87%AA%E5%BE%8B%E5%92%8C%E7%83%AD%E7%88%B1/" class="archive-article-date">
+        <div class="article-admin-meta">
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="自律和热爱" aria-label="编辑文章：自律和热爱">编辑文章</button>
+          
+          <a href="/2021/06/09/%E8%87%AA%E5%BE%8B%E5%92%8C%E7%83%AD%E7%88%B1/" class="archive-article-date">
   	<time datetime="2021-06-09T01:32:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-09</time>
 </a>
+          
+        </div>
         
       </header>
     
@@ -521,14 +528,16 @@
     </h1>
   
 
-          
-          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="零碎的理解" aria-label="编辑文章：零碎的理解">编辑文章</button>
-          
         </div>
         
-        <a href="/2021/06/08/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%90%86%E8%A7%A3/" class="archive-article-date">
+        <div class="article-admin-meta">
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="零碎的理解" aria-label="编辑文章：零碎的理解">编辑文章</button>
+          
+          <a href="/2021/06/08/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%90%86%E8%A7%A3/" class="archive-article-date">
   	<time datetime="2021-06-08T00:59:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-08</time>
 </a>
+          
+        </div>
         
       </header>
     
@@ -600,14 +609,16 @@
     </h1>
   
 
-          
-          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="胡言乱语" aria-label="编辑文章：胡言乱语">编辑文章</button>
-          
         </div>
         
-        <a href="/2021/06/06/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/" class="archive-article-date">
+        <div class="article-admin-meta">
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="胡言乱语" aria-label="编辑文章：胡言乱语">编辑文章</button>
+          
+          <a href="/2021/06/06/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/" class="archive-article-date">
   	<time datetime="2021-06-06T12:01:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-06</time>
 </a>
+          
+        </div>
         
       </header>
     
@@ -683,14 +694,16 @@
     </h1>
   
 
-          
-          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="不能用力过猛" aria-label="编辑文章：不能用力过猛">编辑文章</button>
-          
         </div>
         
-        <a href="/2020/01/15/%E4%B8%8D%E8%83%BD%E7%94%A8%E5%8A%9B%E8%BF%87%E7%8C%9B/" class="archive-article-date">
+        <div class="article-admin-meta">
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="不能用力过猛" aria-label="编辑文章：不能用力过猛">编辑文章</button>
+          
+          <a href="/2020/01/15/%E4%B8%8D%E8%83%BD%E7%94%A8%E5%8A%9B%E8%BF%87%E7%8C%9B/" class="archive-article-date">
   	<time datetime="2020-01-15T10:38:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-15</time>
 </a>
+          
+        </div>
         
       </header>
     
@@ -1044,11 +1057,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
