@@ -1,0 +1,23 @@
+* { box-sizing: border-box; }
+html, body { min-height: 100%; margin: 0; }
+body { background: #f4f5f6; color: #4d4d4d; font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+.studio-shell { min-height: 100vh; }
+.studio-header { height: 64px; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid #e2e5e8; box-shadow: 0 1px 4px #00000008; }
+.studio-brand { display: flex; align-items: center; gap: 11px; color: #4d4d4d; text-decoration: none; }
+.studio-avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: #1e90ff; color: #fff; font: 20px Georgia, serif; }
+.studio-brand strong, .studio-brand small { display: block; }
+.studio-brand strong { font-size: 14px; font-weight: 600; }
+.studio-brand small { margin-top: 1px; color: #8a9299; font-size: 11px; }
+.studio-back { min-height: 44px; padding: 0 13px; display: flex; align-items: center; border: 1px solid #d9dfe5; border-radius: 4px; color: #536a80; text-decoration: none; font-size: 12px; font-weight: 600; }
+.studio-back:hover { background: #f5f8fb; border-color: #c6d2de; }
+.studio-back:focus-visible { outline: 3px solid #6d91b4; outline-offset: 2px; }
+#nc-root { min-height: calc(100vh - 64px); }
+#nc-root:empty::before { content: "正在加载内容管理…"; display: block; padding: 48px 24px; color: #77828d; text-align: center; font-size: 13px; }
+@media (max-width: 700px) {
+  .studio-header { height: 58px; padding: 0 14px; }
+  .studio-avatar { width: 34px; height: 34px; }
+  .studio-brand strong { font-size: 13px; }
+  .studio-back { min-height: 44px; padding: 0 11px; }
+  #nc-root { min-height: calc(100vh - 58px); }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }

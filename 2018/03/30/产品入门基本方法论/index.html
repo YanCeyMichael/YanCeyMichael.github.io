@@ -16,7 +16,7 @@
 <meta property="og:description" content="不要从结果去导向目的  不要由自己臆想做产品  产品不能直观表达是没思考够  谈产品时，聊产品，不聊技术  维度过多是思考不全，抽象不够或标准不对  一定要理解他人，要理解社会，要理解世界">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-03-30T01:55:42.000Z">
-<meta property="article:modified_time" content="2026-11-01T21:16:49.445Z">
+<meta property="article:modified_time" content="2026-11-01T22:27:46.434Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="Essays">
 <meta name="twitter:card" content="summary">
@@ -44,13 +44,22 @@
     <div id="site-admin-root" data-api-base="https://yancey-blog-admin.514614690.workers.dev">
   <button id="site-admin-trigger" type="button" aria-haspopup="dialog" aria-controls="site-admin-dialog">站点管理</button>
   <div id="site-admin-dialog" role="dialog" aria-modal="true" aria-labelledby="site-admin-title" hidden>
-    <div class="site-admin-card">
-      <button class="site-admin-close" type="button" aria-label="关闭">×</button>
+    <section class="site-admin-card">
+      <div class="site-admin-kicker">YANCEY’S BLOG · OWNER ACCESS</div>
+      <button class="site-admin-close" type="button" aria-label="关闭登录窗口">×</button>
       <h2 id="site-admin-title">站主登录</h2>
-      <p>使用 GitHub 账号验证站主身份后管理文章。</p>
-      <button id="site-admin-login" type="button">使用 GitHub 登录</button>
+      <p class="site-admin-copy">通过 GitHub 验证站主身份后，即可管理文章和图片。</p>
+      <button id="site-admin-login" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.07c-3.1.67-3.75-1.31-3.75-1.31-.5-1.28-1.24-1.62-1.24-1.62-1.02-.7.08-.69.08-.69 1.12.08 1.71 1.15 1.71 1.15 1 .1.55 2.14 3.86 1.52.1-.72.4-1.2.72-1.48-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.97 0 0 .94-.3 3.05 1.15a10.6 10.6 0 0 1 5.55 0c2.12-1.44 3.05-1.15 3.05-1.15.61 1.55.23 2.69.11 2.97.72.78 1.15 1.78 1.15 3 0 4.3-2.61 5.24-5.1 5.51.4.35.76 1.03.76 2.08V22c0 .29.2.64.76.53A11.1 11.1 0 0 0 12 .9Z"/></svg>
+        <span>使用 GitHub 登录</span>
+      </button>
+      <div class="site-admin-access-note">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8V6a5 5 0 0 1 10 0v2M4 8h12v9H4V8Z" stroke="currentColor" stroke-width="1.4"/><path d="M10 11v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span>只有站主账号可以进入管理模式。访客仍可正常阅读博客。</span>
+      </div>
       <p id="site-admin-error" role="alert" hidden>该 GitHub 账号未通过站主权限校验。</p>
-    </div>
+      <div class="site-admin-foot"><span>身份验证由 GitHub 安全完成</span><span class="site-admin-desktop-hint">按 Esc 关闭</span><span class="site-admin-mobile-hint">点击右上角关闭按钮</span></div>
+    </section>
   </div>
   <div id="site-admin-owner" hidden>
     <button type="button" id="site-admin-new-post">＋ 发布文章</button>
@@ -122,8 +131,9 @@
     verifySession();
     consumeAuthCallback();
     trigger.addEventListener('click', function () { error.hidden = true; dialog.hidden = false; login.focus(); });
-    close.addEventListener('click', function () { dialog.hidden = true; trigger.focus(); });
-    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.hidden = true; });
+    function closeDialog() { dialog.hidden = true; trigger.focus(); }
+    close.addEventListener('click', closeDialog);
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) closeDialog(); });
     login.addEventListener('click', function () {
       if (apiBase === '/admin-api') {
         error.hidden = false;
@@ -133,7 +143,16 @@
       try { new URL(apiBase); } catch (_) { return; }
       location.assign(apiBase + '/site-auth');
     });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dialog.hidden) { dialog.hidden = true; trigger.focus(); } });
+    dialog.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var focusable = dialog.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])');
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !dialog.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && (document.activeElement === last || !dialog.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dialog.hidden) closeDialog(); });
     document.getElementById('site-admin-new-post').addEventListener('click', function () { location.href = '/admin/#/collections/posts/new'; });
     document.addEventListener('click', function (event) {
       var item = event.target.closest && event.target.closest('[data-site-admin-edit]');
@@ -143,19 +162,53 @@
   })();
   </script>
   <style>
-  #site-admin-root{position:fixed;right:24px;top:18px;z-index:1200;font:12px/1.5 "lucida grande",Arial,sans-serif}
-  #site-admin-trigger,#site-admin-new-post{min-height:36px;padding:0 13px;border:1px solid #d4d4d4;border-radius:2px;background:#fff;color:#555;cursor:pointer}
-  #site-admin-trigger:hover{background:#f5f5f5}
-  #site-admin-owner{display:flex;align-items:center;gap:9px;color:#4d7b56;background:#fff;padding:5px 9px;border:1px solid #ddd}
-  #site-admin-new-post{background:#4d4d4d;color:#fff;border-color:#4d4d4d}
+  #site-admin-root{position:fixed;right:24px;top:18px;z-index:1200;font:12px/1.5 "lucida grande",Arial,sans-serif;color:#4d4d4d}
+  #site-admin-trigger,#site-admin-new-post{min-height:40px;padding:0 14px;border:1px solid #d8dce0;border-radius:4px;background:#fff;color:#4d4d4d;font:600 12px/1.3 "lucida grande",Arial,sans-serif;cursor:pointer;transition:background .16s,border-color .16s,color .16s,box-shadow .16s}
+  #site-admin-trigger:hover{background:#f5f8fb;border-color:#c6d2de}
+  #site-admin-trigger:focus-visible,#site-admin-new-post:focus-visible,.site-admin-close:focus-visible,#site-admin-login:focus-visible{outline:3px solid #6d91b4;outline-offset:2px}
+  #site-admin-owner{display:flex;align-items:center;gap:9px;color:#52745a;background:#fff;padding:6px 10px;border:1px solid #dfe4df;border-radius:4px;box-shadow:0 2px 8px #0000000d}
+  #site-admin-owner span{font-size:11px;white-space:nowrap}
+  #site-admin-new-post{min-height:38px;background:#4d4d4d;color:#fff;border-color:#4d4d4d}
+  #site-admin-new-post:hover{background:#35393d}
   #site-admin-dialog[hidden],#site-admin-owner[hidden],[data-site-admin-edit][hidden]{display:none!important}
-  #site-admin-dialog{position:fixed;inset:0;background:rgba(0,0,0,.45);display:grid;place-items:center;padding:16px}
-  .site-admin-card{position:relative;width:min(420px,100%);background:#fff;padding:24px;border-left:5px solid #4d4d4d;box-shadow:0 10px 35px #0003}
-  .site-admin-card h2{margin:0 0 5px;color:#555;font-size:20px;font-weight:400}.site-admin-card p{color:#888;font-size:12px}
-  .site-admin-close{position:absolute;right:12px;top:8px;border:0;background:none;color:#999;font-size:22px;cursor:pointer}
-  #site-admin-login{width:100%;height:42px;border:0;border-radius:2px;background:#333;color:#fff;font-weight:600;cursor:pointer}
-  #site-admin-error{color:#a33;background:#fff4f3;padding:9px}#site-admin-error[hidden]{display:none}
-  @media(max-width:800px){#site-admin-root{right:10px;top:9px}#site-admin-trigger,#site-admin-new-post{min-height:34px;padding:0 9px;font-size:11px}.site-admin-card{padding:20px}}
+  #site-admin-dialog{position:fixed;inset:0;z-index:1201;background:rgba(30,36,43,.58);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);display:grid;place-items:center;padding:20px}
+  .site-admin-card{position:relative;width:min(520px,100%);max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);overflow-y:auto;background:#fff;padding:30px 31px 22px;border:1px solid #e3e6e9;border-top:4px solid #88acdb;border-radius:8px;box-shadow:0 18px 50px #18283a35}
+  .site-admin-kicker{margin:0 48px 8px 0;color:#8a9bad;font-size:11px;font-weight:600;letter-spacing:.12em}
+  .site-admin-card h2{margin:0;color:#4d4d4d;font-size:27px;line-height:1.35;font-weight:500}
+  .site-admin-copy{margin:14px 0 20px;color:#858c93;font-size:15px;line-height:1.7}
+  .site-admin-close{position:absolute;top:12px;right:12px;width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:50%;background:transparent;color:#969da5;font:400 29px/1 Arial,sans-serif;cursor:pointer}
+  .site-admin-close:hover{background:#f2f4f6;color:#555}
+  #site-admin-login{width:100%;min-height:52px;display:flex;align-items:center;justify-content:center;gap:12px;border:1px solid #4d4d4d;border-radius:5px;background:#4d4d4d;color:#fff;font:600 16px/1.4 "lucida grande",Arial,sans-serif;cursor:pointer;transition:background .16s,box-shadow .16s}
+  #site-admin-login:hover{background:#35393d;box-shadow:0 3px 8px #0002}
+  #site-admin-login svg{width:21px;height:21px;flex:none}
+  .site-admin-access-note{margin-top:14px;padding:12px 13px;display:flex;align-items:flex-start;gap:10px;border:1px solid #e1ebf5;border-radius:5px;background:#f5f8fb;color:#687e94;font-size:13px;line-height:1.65}
+  .site-admin-access-note svg{width:18px;height:18px;margin-top:2px;flex:none;color:#6387ad}
+  #site-admin-error{margin:12px 0 0;padding:10px 12px;border-radius:4px;background:#fff4f3;color:#a33;font-size:13px;line-height:1.55}#site-admin-error[hidden]{display:none}
+  .site-admin-foot{margin-top:16px;padding-top:12px;border-top:1px solid #eee;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#999;font-size:11px}
+  .site-admin-mobile-hint{display:none}
+  .site-admin-edit{display:inline-flex;min-height:36px;align-items:center;justify-content:center;margin:8px 0 0 10px;padding:0 12px;border:1px solid #d9dfe5;border-radius:4px;background:#fff;color:#536a80;font-size:12px;font-weight:600;cursor:pointer;transition:background .16s,border-color .16s,color .16s}
+  .site-admin-edit:hover{border-color:#c6d2de;background:#f5f8fb;color:#416b97}
+  .site-admin-edit:focus-visible{outline:3px solid #6d91b4;outline-offset:2px}
+  @media(max-width:800px){
+    #site-admin-root{right:10px;top:max(8px,env(safe-area-inset-top))}
+    #site-admin-trigger{min-height:44px;padding:0 12px;font-size:12px}
+    #site-admin-owner{gap:7px;padding:4px 7px}
+    #site-admin-owner span{font-size:10px}
+    #site-admin-new-post{min-height:44px;padding:0 11px;font-size:12px}
+    #site-admin-dialog{padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom))}
+    .site-admin-card{width:min(100%,440px);max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);padding:24px 20px 18px;border-radius:8px}
+    .site-admin-kicker{font-size:10px;margin-bottom:7px}
+    .site-admin-card h2{font-size:23px}
+    .site-admin-copy{font-size:14px;margin:12px 0 17px}
+    .site-admin-close{top:10px;right:10px;width:44px;height:44px;font-size:27px}
+    #site-admin-login{min-height:50px;font-size:15px}
+    .site-admin-access-note{padding:11px 12px;font-size:12px}
+    .site-admin-foot{margin-top:13px;padding-top:10px;font-size:11px;flex-wrap:wrap}
+    .site-admin-desktop-hint{display:none}
+    .site-admin-mobile-hint{display:inline;color:#84909a;font-size:12px}
+    .site-admin-edit{min-height:44px;padding:0 12px;border-radius:5px;background:#f5f8fb;border-color:#d5e0eb;color:#4d4d4d;font-size:12px;font-weight:600}
+  }
+  @media(prefers-reduced-motion:reduce){#site-admin-root *,#site-admin-root *::before,#site-admin-root *::after{scroll-behavior:auto!important;transition:none!important}}
   </style>
 </div>
 
@@ -631,18 +684,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
               </li>
              
@@ -652,6 +693,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
               </li>
              
               <li class="article-tag-list-item">
