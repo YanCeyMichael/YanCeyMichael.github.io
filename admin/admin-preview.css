@@ -1,0 +1,22 @@
+html,body{min-height:100%;margin:0;background:#fff;color:#333;font:16px/1.9 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",Arial,sans-serif}
+body{padding:clamp(20px,4vw,42px)}
+.yilia-v17-preview{max-width:760px;margin:0 auto;padding:0 0 36px;background:#fff}
+.yilia-v17-preview-head{position:relative;padding:5px 0 20px;border-bottom:1px dotted #ddd}
+.yilia-v17-preview-kicker{margin:0 0 10px;color:#9aa1a8;font-size:11px;letter-spacing:.12em;line-height:1.5}
+.yilia-v17-preview-head h1{margin:0 0 10px;padding-left:14px;border-left:4px solid #4d4d4d;color:#696969;font-size:clamp(22px,3vw,29px);font-weight:400;line-height:1.5;overflow-wrap:anywhere}
+.yilia-v17-preview-head time{display:block;color:#999;font-size:12px;text-align:right}
+.yilia-v17-preview-body{padding:18px 14px;color:#333;line-height:1.9;overflow-wrap:anywhere}
+.yilia-v17-preview-body h1,.yilia-v17-preview-body h2,.yilia-v17-preview-body h3,.yilia-v17-preview-body h4{color:#555;font-weight:500;line-height:1.5}
+.yilia-v17-preview-body h2{margin:1.6em 0 .8em;padding-bottom:.25em;border-bottom:1px solid #ddd;font-size:1.45em}
+.yilia-v17-preview-body h3{margin:1.4em 0 .7em;padding-left:10px;border-left:3px solid #4d4d4d;font-size:1.2em}
+.yilia-v17-preview-body p{margin:0 0 1.2em}
+.yilia-v17-preview-body a{color:#1e90ff;text-decoration:none}
+.yilia-v17-preview-body blockquote{margin:1.2em 0;padding:8px 15px;border-left:4px solid #88acdb;background:#f7f9fb;color:#747d85}
+.yilia-v17-preview-body img{display:block;max-width:100%;height:auto;margin:16px auto}
+.yilia-v17-preview-body pre{overflow:auto;padding:14px;background:#f5f6f7;border:1px solid #e5e7e9;border-radius:4px;font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace}
+.yilia-v17-preview-body code{padding:.12em .35em;background:#f1f3f5;border-radius:3px;font:0.9em ui-monospace,SFMono-Regular,Menlo,monospace}
+.yilia-v17-preview-empty{min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;border:1px dashed #dfe3e7;background:#fafbfc;color:#9098a0;text-align:center}
+.yilia-v17-preview-empty-mark{width:42px;height:42px;margin-bottom:12px;display:grid;place-items:center;border-radius:50%;background:#edf4fb;color:#5d86b7;font-size:21px}
+.yilia-v17-preview-empty strong{color:#59616a;font-size:15px;font-weight:600}
+.yilia-v17-preview-empty p{max-width:34em;margin:5px 0 0;font-size:12px;line-height:1.7}
+@media(max-width:640px){body{padding:16px}.yilia-v17-preview-head{padding-bottom:14px}.yilia-v17-preview-body{padding:14px 2px;font-size:15px}.yilia-v17-preview-empty{min-height:240px;padding:18px}}

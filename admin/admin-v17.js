@@ -1,20 +1,54 @@
-/* Small DOM adapters for the v1.7 editor layout; Decap remains responsible for Git writes. */
+/* v1.7 Decap adapters: preserve CMS writes and use a Yilia-styled live preview. */
 (function () {
   var root = document.getElementById('nc-root');
   if (!root) return;
 
   function text(el) { return (el && (el.innerText || el.textContent) || '').replace(/\s+/g, ' ').trim(); }
   function findLabel(name) {
-    return Array.from(root.querySelectorAll('label,span,div,p'))
-      .filter(function (el) { return el.children.length < 3 && text(el).replace(/\s*\(OPTIONAL\)$/i, '') === name; })
-      .sort(function (a, b) { return a.textContent.length - b.textContent.length; })[0];
+    return Array.from(root.querySelectorAll('label'))
+      .filter(function (el) { return text(el).replace(/\s*\(OPTIONAL\)$/i, '') === name; })[0];
   }
   function fieldFor(label) {
     var node = label;
-    for (var i = 0; node && i < 7 && node !== root; i++, node = node.parentElement) {
-      if (node.querySelector('input,textarea,[contenteditable="true"],[role="textbox"]')) return node;
+    var candidate = null;
+    while (node && node !== root && node.parentElement && node.parentElement !== root) {
+      if (node.querySelector('input,textarea,[contenteditable="true"],[role="textbox"]')) candidate = node;
+      var parent = node.parentElement;
+      if (parent.querySelectorAll('label').length > 1) return candidate || node;
+      node = parent;
     }
-    return label && label.parentElement;
+    return candidate || (label && label.parentElement);
+  }
+  function registerPreview() {
+    var cms = window.CMS;
+    if (!cms || !cms.createClass || !cms.registerPreviewTemplate || window.__yiliaV17PreviewRegistered) return;
+    var h = cms.h;
+    var Preview = cms.createClass({
+      render: function () {
+        var entry = this.props.entry;
+        var data = entry && entry.get ? entry.get('data') : null;
+        var title = data && data.get ? data.get('title') : '';
+        var date = data && data.get ? data.get('date') : '';
+        var rawBody = data && data.get ? data.get('body') : '';
+        var body = String(rawBody || '').trim();
+        return h('article', { className: 'yilia-v17-preview' },
+          h('header', { className: 'yilia-v17-preview-head' },
+            h('p', { className: 'yilia-v17-preview-kicker' }, 'YANCEY’S BLOG · 文章预览'),
+            h('h1', null, String(title || '未命名文章')),
+            date ? h('time', null, String(date)) : null
+          ),
+          body ? h('div', { className: 'yilia-v17-preview-body' }, this.props.widgetFor('body')) :
+            h('div', { className: 'yilia-v17-preview-empty' },
+              h('span', { className: 'yilia-v17-preview-empty-mark', 'aria-hidden': 'true' }, '✎'),
+              h('strong', null, '预览将在这里呈现'),
+              h('p', null, '填写文章正文后，可在此检查标题层级、段落、图片和引用效果。')
+            )
+        );
+      }
+    });
+    cms.registerPreviewTemplate('posts', Preview);
+    if (cms.registerPreviewStyle) cms.registerPreviewStyle('/admin/admin-preview.css?v=1.7.1');
+    window.__yiliaV17PreviewRegistered = true;
   }
   function decorate() {
     var workspace = document.querySelector('.admin-workspace');
@@ -24,11 +58,21 @@
     var publish = Array.from(root.querySelectorAll('button')).find(function (button) { return /^publish\b/i.test(text(button)); });
     if (publish) { publish.classList.add('v17-publish-action'); publish.setAttribute('aria-label', '发布更新'); }
 
-    var title = Array.from(root.querySelectorAll('a,button,div')).find(function (el) { return /^Writing in 文章 collection/i.test(text(el)); });
-    if (title && !title.dataset.v17Localized) {
-      Array.from(title.childNodes).filter(function (node) { return node.nodeType === 3 && /Writing in/i.test(node.nodeValue); })
-        .forEach(function (node) { node.nodeValue = node.nodeValue.replace(/Writing in 文章 collection/i, '文章 › 新建文章'); });
-      title.dataset.v17Localized = 'true';
+    var writingText = Array.from(root.querySelectorAll('*')).find(function (el) {
+      return el.children.length === 0 && /文章 › (新建文章|编辑文章)|Writing in 文章 collection/i.test(text(el));
+    });
+    if (writingText && publish) {
+      var toolbar = writingText;
+      while (toolbar.parentElement && toolbar.parentElement !== root && !toolbar.parentElement.contains(publish)) toolbar = toolbar.parentElement;
+      if (toolbar !== root && toolbar.contains(publish)) toolbar.classList.add('v17-entry-toolbar');
+    }
+
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    var textNode;
+    while ((textNode = walker.nextNode())) {
+      if (/Writing in 文章 collection/i.test(textNode.nodeValue)) {
+        textNode.nodeValue = textNode.nodeValue.replace(/Writing in 文章 collection/i, isEditor && /\/new(?:$|\?)/.test(location.hash) ? '文章 › 新建文章' : '文章 › 编辑文章');
+      }
     }
 
     var names = ['标题', '发布日期', '分类', '标签'];
@@ -36,7 +80,10 @@
     if (fields.length === 4) {
       var common = fields[0];
       while (common && !fields.every(function (field) { return common.contains(field); })) common = common.parentElement;
-      if (common && common !== root) common.classList.add('v17-meta-grid');
+      if (common && common !== root) {
+        common.classList.add('v17-meta-grid');
+        fields.forEach(function (field) { field.classList.add('v17-meta-field'); });
+      }
     }
     var bodyLabel = findLabel('正文');
     var bodyField = fieldFor(bodyLabel);
@@ -54,5 +101,6 @@
   var observer = new MutationObserver(decorate);
   observer.observe(root, { childList: true, subtree: true, characterData: true });
   window.addEventListener('hashchange', decorate);
+  registerPreview();
   decorate();
 })();
