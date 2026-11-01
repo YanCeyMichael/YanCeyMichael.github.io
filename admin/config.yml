@@ -1,0 +1,29 @@
+# 部署 Worker 后，将 base_url 替换为它的 workers.dev 根地址。
+# GitHub 登录由 Cloudflare Worker 处理；此文件不得放 OAuth Secret 或 PAT。
+backend:
+  name: github
+  repo: YanCeyMichael/YanCeyBlog-Source
+  branch: main
+  base_url: https://yancey-blog-admin.514614690.workers.dev
+  auth_endpoint: auth
+
+publish_mode: simple
+media_folder: source/images
+public_folder: /images
+locale: zh
+
+collections:
+  - name: posts
+    label: 文章
+    label_singular: 文章
+    folder: source/_posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 发布日期, name: date, widget: datetime }
+      - { label: 分类, name: categories, widget: list, required: false }
+      - { label: 标签, name: tags, widget: list, required: false }
+      - { label: 正文, name: body, widget: markdown }
