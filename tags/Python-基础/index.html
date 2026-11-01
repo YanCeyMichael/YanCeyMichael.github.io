@@ -82,7 +82,40 @@
           else { sessionStorage.removeItem(sessionKey); setOwnerMode(false); }
         }).catch(function () { setOwnerMode(false); });
     }
+    function decodeCallback(value) {
+      try {
+        var base64 = value.replace(/-/g, '+').replace(/_/g, '/');
+        var binary = atob(base64 + '='.repeat((4 - base64.length % 4) % 4));
+        var bytes = Uint8Array.from(binary, function (character) { return character.charCodeAt(0); });
+        return JSON.parse(new TextDecoder().decode(bytes));
+      } catch (_) { return null; }
+    }
+    function consumeAuthCallback() {
+      var match = location.hash.match(/^#site-auth=([A-Za-z0-9_-]+)$/);
+      if (!match) return;
+      var result = decodeCallback(match[1]);
+      history.replaceState(null, document.title, location.pathname + location.search);
+      if (!result || result.status !== 'success' || !result.payload || !result.payload.token) {
+        dialog.hidden = false;
+        error.hidden = false;
+        error.textContent = (result && result.payload && result.payload.error) || 'GitHub 登录未完成，请重试。';
+        return;
+      }
+      fetch(apiBase + '/session', { headers: { Authorization: 'Bearer ' + result.payload.token } })
+        .then(function (response) { return response.ok ? response.json() : null; })
+        .then(function (session) {
+          if (!session || session.isOwner !== true) throw new Error('站主身份校验失败，请重试登录。');
+          sessionStorage.setItem(sessionKey, result.payload.token);
+          setOwnerMode(true);
+        })
+        .catch(function (reason) {
+          dialog.hidden = false;
+          error.hidden = false;
+          error.textContent = reason.message || '登录验证服务暂时不可用，请重试。';
+        });
+    }
     verifySession();
+    consumeAuthCallback();
     trigger.addEventListener('click', function () { error.hidden = true; dialog.hidden = false; login.focus(); });
     close.addEventListener('click', function () { dialog.hidden = true; trigger.focus(); });
     dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.hidden = true; });
@@ -92,27 +125,8 @@
         error.textContent = '站点登录服务尚未配置。';
         return;
       }
-      var proxyOrigin;
-      try { proxyOrigin = new URL(apiBase).origin; } catch (_) { return; }
-      var popup = window.open(apiBase + '/site-auth', 'yancey-blog-login', 'popup,width=560,height=700');
-      if (!popup) { error.hidden = false; error.textContent = '浏览器阻止了登录弹窗，请允许此站点打开弹窗后重试。'; return; }
-      function receiveLogin(event) {
-        if (event.origin !== proxyOrigin || typeof event.data !== 'string' || event.data.indexOf('yancey:site-auth:') !== 0) return;
-        window.removeEventListener('message', receiveLogin);
-        var splitAt = event.data.indexOf(':', 'yancey:site-auth:'.length);
-        var result = event.data.slice('yancey:site-auth:'.length, splitAt);
-        var payload;
-        try { payload = JSON.parse(event.data.slice(splitAt + 1)); } catch (_) { payload = {}; }
-        if (result === 'success' && payload.token) {
-          sessionStorage.setItem(sessionKey, payload.token);
-          dialog.hidden = true;
-          setOwnerMode(true);
-        } else {
-          error.hidden = false;
-          error.textContent = payload.error || '该 GitHub 账号未通过站主权限校验。';
-        }
-      }
-      window.addEventListener('message', receiveLogin);
+      try { new URL(apiBase); } catch (_) { return; }
+      location.assign(apiBase + '/site-auth');
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dialog.hidden) { dialog.hidden = true; trigger.focus(); } });
     document.getElementById('site-admin-new-post').addEventListener('click', function () { location.href = '/admin/#/collections/posts/new'; });
@@ -542,11 +556,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,6 +640,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图床</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
               </li>
              
@@ -635,10 +653,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图床</a>
               </li>
              
               <li class="article-tag-list-item">
