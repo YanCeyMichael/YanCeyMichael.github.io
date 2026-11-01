@@ -9,15 +9,24 @@
   </head>
   <body>
     <div class="studio-shell">
-      <header class="studio-header">
-        <a class="studio-brand" href="/" aria-label="返回 Yancey’s Blog 首页">
-          <span class="studio-avatar" aria-hidden="true">Y</span>
-          <span><strong>Yancey’s Blog</strong><small>内容管理</small></span>
-        </a>
-        <a class="studio-back" href="/">返回博客</a>
-      </header>
-      <main id="nc-root" aria-label="博客内容管理工作区"></main>
+      <div class="admin-workspace">
+        <aside class="admin-side" aria-label="管理导航">
+          <a class="studio-brand" href="/" aria-label="返回 Yancey’s Blog 首页">
+            <span class="studio-avatar" aria-hidden="true">Y</span>
+            <span><strong>Yancey’s Blog</strong><small>内容工作台</small></span>
+          </a>
+          <div class="admin-nav-label">工作区</div>
+          <nav class="admin-nav">
+            <a class="active" href="/admin/#/collections/posts"><span aria-hidden="true">▤</span>文章</a>
+            <a href="/admin/#/media"><span aria-hidden="true">▧</span>媒体库</a>
+          </nav>
+          <a class="studio-back" href="/">返回博客</a>
+          <div class="side-bottom"><span>站主模式</span><span>●</span></div>
+        </aside>
+        <main id="nc-root" aria-label="博客内容管理工作区"></main>
+      </div>
     </div>
     <script defer src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script defer src="/admin/admin-v17.js"></script>
   </body>
 </html>
