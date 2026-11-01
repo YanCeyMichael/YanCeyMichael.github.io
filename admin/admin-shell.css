@@ -1,23 +1,57 @@
-* { box-sizing: border-box; }
-html, body { min-height: 100%; margin: 0; }
-body { background: #f4f5f6; color: #4d4d4d; font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
-.studio-shell { min-height: 100vh; }
-.studio-header { height: 64px; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid #e2e5e8; box-shadow: 0 1px 4px #00000008; }
-.studio-brand { display: flex; align-items: center; gap: 11px; color: #4d4d4d; text-decoration: none; }
-.studio-avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: #1e90ff; color: #fff; font: 20px Georgia, serif; }
-.studio-brand strong, .studio-brand small { display: block; }
-.studio-brand strong { font-size: 14px; font-weight: 600; }
-.studio-brand small { margin-top: 1px; color: #8a9299; font-size: 11px; }
-.studio-back { min-height: 44px; padding: 0 13px; display: flex; align-items: center; border: 1px solid #d9dfe5; border-radius: 4px; color: #536a80; text-decoration: none; font-size: 12px; font-weight: 600; }
-.studio-back:hover { background: #f5f8fb; border-color: #c6d2de; }
-.studio-back:focus-visible { outline: 3px solid #6d91b4; outline-offset: 2px; }
-#nc-root { min-height: calc(100vh - 64px); }
-#nc-root:empty::before { content: "正在加载内容管理…"; display: block; padding: 48px 24px; color: #77828d; text-align: center; font-size: 13px; }
-@media (max-width: 700px) {
-  .studio-header { height: 58px; padding: 0 14px; }
-  .studio-avatar { width: 34px; height: 34px; }
-  .studio-brand strong { font-size: 13px; }
-  .studio-back { min-height: 44px; padding: 0 11px; }
-  #nc-root { min-height: calc(100vh - 58px); }
+/* v1.7 Yilia Content Studio skin: calm gray canvas, blue navigation, white paper cards. */
+:root { color-scheme: light; --yilia-blue:#1e90ff; --yilia-ink:#4d4d4d; --yilia-muted:#89919a; --yilia-line:#e1e5e9; --yilia-canvas:#f1f2f5; --yilia-paper:#fff; --yilia-soft:#edf4fb; }
+* { box-sizing:border-box; }
+html,body { min-height:100%; margin:0; }
+body { background:var(--yilia-canvas); color:var(--yilia-ink); font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; }
+.studio-shell { min-height:100vh; }
+.studio-header { height:64px; padding:0 max(28px,calc((100vw - 1440px)/2)); display:flex; align-items:center; justify-content:space-between; background:#fff; border-bottom:1px solid var(--yilia-line); box-shadow:0 1px 4px #00000008; }
+.studio-brand { display:flex; align-items:center; gap:11px; color:var(--yilia-ink); text-decoration:none; }
+.studio-avatar { width:36px; height:36px; border-radius:50%; display:grid; place-items:center; background:var(--yilia-blue); color:#fff; font:20px Georgia,serif; }
+.studio-brand strong,.studio-brand small { display:block; }
+.studio-brand strong { font-size:14px; font-weight:600; }
+.studio-brand small { margin-top:1px; color:var(--yilia-muted); font-size:11px; }
+.studio-back { min-height:42px; padding:0 14px; display:flex; align-items:center; border:1px solid #d9dfe5; border-radius:4px; color:#536a80; text-decoration:none; font-size:12px; font-weight:600; transition:.16s ease; }
+.studio-back:hover { background:#f5f8fb; border-color:#c6d2de; }
+.studio-back:focus-visible,#nc-root button:focus-visible,#nc-root a:focus-visible,#nc-root input:focus-visible,#nc-root textarea:focus-visible { outline:3px solid #8bb6e1!important; outline-offset:2px; }
+#nc-root { min-height:calc(100vh - 64px); }
+#nc-root:empty::before { content:"正在加载内容管理…"; display:block; padding:48px 24px; color:#77828d; text-align:center; font-size:13px; }
+
+/* Keep Decap's content model and publishing behavior, restyle its workspace to v1.7. */
+#nc-root { color:var(--yilia-ink); }
+#nc-root:has(section[class*="AuthenticationPage"]) > div { min-height:calc(100vh - 64px); display:grid; place-content:center; justify-items:center; padding:32px 20px; }
+#nc-root section[class*="AuthenticationPage"] { display:flex; flex-direction:column; align-items:center; gap:24px; padding:0; background:transparent; box-shadow:none; }
+#nc-root section[class*="AuthenticationPage"] > span:first-child { display:none; }
+#nc-root section[class*="AuthenticationPage"]::before { content:"Yancey’s Blog"; color:var(--yilia-ink); font:34px/1.2 Georgia,"Songti SC",serif; letter-spacing:.01em; }
+#nc-root section[class*="AuthenticationPage"] button { min-height:48px; min-width:230px; padding:0 22px; border:1px solid #3d4549; border-radius:5px; background:#3d4549; color:#fff; box-shadow:0 3px 10px #1d293012; font-size:0; }
+#nc-root section[class*="AuthenticationPage"] button::after { content:"使用 GitHub 登录"; font-size:14px; }
+#nc-root section[class*="AuthenticationPage"] button:hover { background:#2f363a; }
+#nc-root button { font:600 12px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; border-radius:4px; transition:background .16s,border-color .16s,color .16s,box-shadow .16s; }
+#nc-root input,#nc-root textarea,[role="textbox"] { color:var(--yilia-ink); font:14px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; }
+#nc-root input:not([type="checkbox"]):not([type="radio"]),#nc-root textarea { border-color:#d9dfe5; border-radius:4px; box-shadow:none; }
+#nc-root input:focus,#nc-root textarea:focus { border-color:#88acdb; box-shadow:0 0 0 3px #88acdb2b; }
+#nc-root a { color:#587da6; }
+#nc-root [role="navigation"] { background:#fff; border-color:var(--yilia-line); }
+#nc-root [role="main"] { background:var(--yilia-canvas); }
+#nc-root [role="dialog"] { border-radius:6px; box-shadow:0 14px 38px #17243224; }
+#nc-root [role="alert"] { color:#9c3f3a; }
+#nc-root [class*="AppHeader"],#nc-root [class*="appHeader"] { box-shadow:0 1px 4px #00000008; }
+#nc-root [class*="CollectionPage"],#nc-root [class*="collectionPage"],#nc-root [class*="EntryEditor"],#nc-root [class*="entryEditor"] { color:var(--yilia-ink); }
+#nc-root [class*="collection-card"],#nc-root [class*="CollectionCard"],#nc-root [class*="collectionCard"],#nc-root [class*="entry-card"],#nc-root [class*="EntryCard"] { border:1px solid #e6e9ec; border-radius:5px; box-shadow:0 2px 7px #1b26300b; }
+#nc-root [class*="Toolbar"],#nc-root [class*="toolbar"] { border-color:var(--yilia-line); }
+#nc-root [class*="EditorControl"],#nc-root [class*="editorControl"],#nc-root [class*="Field"],#nc-root [class*="field"] { color:var(--yilia-ink); }
+#nc-root img { max-width:100%; }
+
+@media(max-width:700px) {
+  .studio-header { height:58px; padding:0 14px; }
+  .studio-avatar { width:34px; height:34px; }
+  .studio-brand strong { font-size:13px; }
+  .studio-back { min-height:44px; padding:0 11px; }
+  #nc-root { min-height:calc(100vh - 58px); }
+  #nc-root:has(section[class*="AuthenticationPage"]) > div { min-height:calc(100vh - 58px); padding:24px 16px; }
+  #nc-root section[class*="AuthenticationPage"]::before { font-size:30px; }
+  #nc-root button { min-height:42px; touch-action:manipulation; }
+  #nc-root input:not([type="checkbox"]):not([type="radio"]),#nc-root textarea { min-height:44px; font-size:16px; }
+  #nc-root textarea { line-height:1.7; }
+  #nc-root [class*="EditorControl"],#nc-root [class*="editorControl"] { padding-left:12px; padding-right:12px; }
 }
-@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; animation-duration:.01ms!important; } }
