@@ -16,7 +16,7 @@
 <meta property="og:description" content="高阶函数定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作为">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-12-19T04:44:09.000Z">
-<meta property="article:modified_time" content="2026-11-01T22:51:26.395Z">
+<meta property="article:modified_time" content="2026-11-01T22:54:04.529Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Python 函数式编程">
@@ -206,6 +206,9 @@
   .site-admin-edit{display:inline-flex;min-height:36px;align-items:center;justify-content:center;margin:8px 0 0 10px;padding:0 12px;border:1px solid #d9dfe5;border-radius:4px;background:#fff;color:#536a80;font-size:12px;font-weight:600;cursor:pointer;transition:background .16s,border-color .16s,color .16s}
   .site-admin-edit:hover{border-color:#c6d2de;background:#f5f8fb;color:#416b97}
   .site-admin-edit:focus-visible{outline:3px solid #6d91b4;outline-offset:2px}
+  .article-title-row{display:flex;align-items:center;gap:12px;padding-right:170px}
+  .article-title-row h1{min-width:0;margin-bottom:0}
+  .article-title-row .site-admin-edit{flex:none;margin:0}
   #site-admin-mobile-actions{display:none}
   @media(max-width:800px){
     #site-admin-desktop-toolbar{display:none}
@@ -227,6 +230,7 @@
     .site-admin-desktop-hint{display:none}
     .site-admin-mobile-hint{display:inline;color:#84909a;font-size:12px}
     .site-admin-edit{min-height:44px;padding:0 12px;border-radius:5px;background:#f5f8fb;border-color:#d5e0eb;color:#4d4d4d;font-size:12px;font-weight:600}
+    .article-title-row{gap:8px;padding-right:0;flex-wrap:wrap}
   }
   @media(prefers-reduced-motion:reduce){#site-admin-root *,#site-admin-root *::before,#site-admin-root *::after{scroll-behavior:auto!important;transition:none!important}}
   </style>
@@ -347,13 +351,16 @@
   <div class="article-inner">
     
       <header class="article-header">
-        
+        <div class="article-title-row">
+          
   
     <h1 class="article-title" itemprop="name">
       Python06
     </h1>
   
 
+          
+        </div>
         
         <a href="/2017/12/19/Python06/" class="archive-article-date">
   	<time datetime="2017-12-19T04:44:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-19</time>
@@ -597,7 +604,6 @@ execute now():
 
       
 
-      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python06" aria-label="编辑文章：Python06">编辑文章</button>
       
 
       
@@ -934,15 +940,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -990,14 +996,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
@@ -1010,11 +1008,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1070,15 +1072,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 简介</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
               </li>
             
             <div class="clearfix"></div>

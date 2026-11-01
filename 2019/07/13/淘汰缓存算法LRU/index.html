@@ -16,7 +16,7 @@
 <meta property="og:description" content="LRU 算法一 原理如果数据最近被访问过，那么将来被访问的几率也更高。 LRU (Least Recently Used) 是一个置换算法，可以用来多种场景，例如操作系统的内存页面置换，简单来说，就是让最近被访问的对象的访问优先级提高，最少使用的对象能够被淘汰，尽可能的为可能被访问的对象服务，加快访问的速度和效率, 与之相对的有 MRU (Most Recently Used) 。 与 LRU 算">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-07-13T02:40:56.000Z">
-<meta property="article:modified_time" content="2026-11-01T22:51:26.396Z">
+<meta property="article:modified_time" content="2026-11-01T22:54:04.529Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="LRU">
 <meta name="twitter:card" content="summary">
@@ -205,6 +205,9 @@
   .site-admin-edit{display:inline-flex;min-height:36px;align-items:center;justify-content:center;margin:8px 0 0 10px;padding:0 12px;border:1px solid #d9dfe5;border-radius:4px;background:#fff;color:#536a80;font-size:12px;font-weight:600;cursor:pointer;transition:background .16s,border-color .16s,color .16s}
   .site-admin-edit:hover{border-color:#c6d2de;background:#f5f8fb;color:#416b97}
   .site-admin-edit:focus-visible{outline:3px solid #6d91b4;outline-offset:2px}
+  .article-title-row{display:flex;align-items:center;gap:12px;padding-right:170px}
+  .article-title-row h1{min-width:0;margin-bottom:0}
+  .article-title-row .site-admin-edit{flex:none;margin:0}
   #site-admin-mobile-actions{display:none}
   @media(max-width:800px){
     #site-admin-desktop-toolbar{display:none}
@@ -226,6 +229,7 @@
     .site-admin-desktop-hint{display:none}
     .site-admin-mobile-hint{display:inline;color:#84909a;font-size:12px}
     .site-admin-edit{min-height:44px;padding:0 12px;border-radius:5px;background:#f5f8fb;border-color:#d5e0eb;color:#4d4d4d;font-size:12px;font-weight:600}
+    .article-title-row{gap:8px;padding-right:0;flex-wrap:wrap}
   }
   @media(prefers-reduced-motion:reduce){#site-admin-root *,#site-admin-root *::before,#site-admin-root *::after{scroll-behavior:auto!important;transition:none!important}}
   </style>
@@ -346,13 +350,16 @@
   <div class="article-inner">
     
       <header class="article-header">
-        
+        <div class="article-title-row">
+          
   
     <h1 class="article-title" itemprop="name">
       淘汰缓存算法LRU
     </h1>
   
 
+          
+        </div>
         
         <a href="/2019/07/13/%E6%B7%98%E6%B1%B0%E7%BC%93%E5%AD%98%E7%AE%97%E6%B3%95LRU/" class="archive-article-date">
   	<time datetime="2019-07-13T02:40:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
@@ -516,7 +523,6 @@
 
       
 
-      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="淘汰缓存算法LRU" aria-label="编辑文章：淘汰缓存算法LRU">编辑文章</button>
       
 
       
@@ -853,15 +859,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -909,14 +915,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
@@ -929,11 +927,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -989,15 +991,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 简介</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
               </li>
             
             <div class="clearfix"></div>

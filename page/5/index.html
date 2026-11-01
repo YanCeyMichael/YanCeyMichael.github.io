@@ -200,6 +200,9 @@
   .site-admin-edit{display:inline-flex;min-height:36px;align-items:center;justify-content:center;margin:8px 0 0 10px;padding:0 12px;border:1px solid #d9dfe5;border-radius:4px;background:#fff;color:#536a80;font-size:12px;font-weight:600;cursor:pointer;transition:background .16s,border-color .16s,color .16s}
   .site-admin-edit:hover{border-color:#c6d2de;background:#f5f8fb;color:#416b97}
   .site-admin-edit:focus-visible{outline:3px solid #6d91b4;outline-offset:2px}
+  .article-title-row{display:flex;align-items:center;gap:12px;padding-right:170px}
+  .article-title-row h1{min-width:0;margin-bottom:0}
+  .article-title-row .site-admin-edit{flex:none;margin:0}
   #site-admin-mobile-actions{display:none}
   @media(max-width:800px){
     #site-admin-desktop-toolbar{display:none}
@@ -221,6 +224,7 @@
     .site-admin-desktop-hint{display:none}
     .site-admin-mobile-hint{display:inline;color:#84909a;font-size:12px}
     .site-admin-edit{min-height:44px;padding:0 12px;border-radius:5px;background:#f5f8fb;border-color:#d5e0eb;color:#4d4d4d;font-size:12px;font-weight:600}
+    .article-title-row{gap:8px;padding-right:0;flex-wrap:wrap}
   }
   @media(prefers-reduced-motion:reduce){#site-admin-root *,#site-admin-root *::before,#site-admin-root *::after{scroll-behavior:auto!important;transition:none!important}}
   </style>
@@ -343,13 +347,18 @@
   <div class="article-inner">
     
       <header class="article-header">
-        
+        <div class="article-title-row">
+          
   
     <h1 itemprop="name">
       <a class="article-title" href="/2017/12/26/Python07/">Python07</a>
     </h1>
   
 
+          
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python07" aria-label="编辑文章：Python07">编辑文章</button>
+          
+        </div>
         
         <a href="/2017/12/26/Python07/" class="archive-article-date">
   	<time datetime="2017-12-26T03:59:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-26</time>
@@ -400,7 +409,6 @@ def greeting(name):
 
       
 
-      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python07" aria-label="编辑文章：Python07">编辑文章</button>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/12/26/Python07/">展开全文 >></a>
@@ -437,13 +445,18 @@ def greeting(name):
   <div class="article-inner">
     
       <header class="article-header">
-        
+        <div class="article-title-row">
+          
   
     <h1 itemprop="name">
       <a class="article-title" href="/2017/12/19/Python06/">Python06</a>
     </h1>
   
 
+          
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python06" aria-label="编辑文章：Python06">编辑文章</button>
+          
+        </div>
         
         <a href="/2017/12/19/Python06/" class="archive-article-date">
   	<time datetime="2017-12-19T04:44:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-19</time>
@@ -505,7 +518,6 @@ return 11
 
       
 
-      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python06" aria-label="编辑文章：Python06">编辑文章</button>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/12/19/Python06/">展开全文 >></a>
@@ -542,13 +554,18 @@ return 11
   <div class="article-inner">
     
       <header class="article-header">
-        
+        <div class="article-title-row">
+          
   
     <h1 itemprop="name">
       <a class="article-title" href="/2017/12/16/Python05/">Python05</a>
     </h1>
   
 
+          
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python05" aria-label="编辑文章：Python05">编辑文章</button>
+          
+        </div>
         
         <a href="/2017/12/16/Python05/" class="archive-article-date">
   	<time datetime="2017-12-16T05:45:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
@@ -591,7 +608,6 @@ return 11
 
       
 
-      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python05" aria-label="编辑文章：Python05">编辑文章</button>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/12/16/Python05/">展开全文 >></a>
@@ -628,13 +644,18 @@ return 11
   <div class="article-inner">
     
       <header class="article-header">
-        
+        <div class="article-title-row">
+          
   
     <h1 itemprop="name">
       <a class="article-title" href="/2017/12/15/Python04/">Python04</a>
     </h1>
   
 
+          
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python04" aria-label="编辑文章：Python04">编辑文章</button>
+          
+        </div>
         
         <a href="/2017/12/15/Python04/" class="archive-article-date">
   	<time datetime="2017-12-15T08:55:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-15</time>
@@ -672,7 +693,6 @@ return 11
 
       
 
-      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python04" aria-label="编辑文章：Python04">编辑文章</button>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/12/15/Python04/">展开全文 >></a>
@@ -709,13 +729,18 @@ return 11
   <div class="article-inner">
     
       <header class="article-header">
-        
+        <div class="article-title-row">
+          
   
     <h1 itemprop="name">
       <a class="article-title" href="/2017/12/13/Python03/">Python03</a>
     </h1>
   
 
+          
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python03" aria-label="编辑文章：Python03">编辑文章</button>
+          
+        </div>
         
         <a href="/2017/12/13/Python03/" class="archive-article-date">
   	<time datetime="2017-12-13T08:04:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-13</time>
@@ -757,7 +782,6 @@ return 11
 
       
 
-      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python03" aria-label="编辑文章：Python03">编辑文章</button>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/12/13/Python03/">展开全文 >></a>
@@ -1011,15 +1035,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1067,14 +1091,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">weak</a>
               </li>
              
@@ -1087,11 +1103,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1147,15 +1167,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript 简介</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
               </li>
             
             <div class="clearfix"></div>
