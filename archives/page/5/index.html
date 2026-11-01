@@ -130,8 +130,10 @@
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dialog.hidden) { dialog.hidden = true; trigger.focus(); } });
     document.getElementById('site-admin-new-post').addEventListener('click', function () { location.href = '/admin/#/collections/posts/new'; });
-    document.querySelectorAll('[data-site-admin-edit]').forEach(function (item) {
-      item.addEventListener('click', function () { location.href = '/admin/#/collections/posts/entries/' + encodeURIComponent(item.dataset.slug); });
+    document.addEventListener('click', function (event) {
+      var item = event.target.closest && event.target.closest('[data-site-admin-edit]');
+      if (!item || item.hidden || !document.documentElement.classList.contains('site-owner-mode')) return;
+      location.href = '/admin/#/collections/posts/entries/' + encodeURIComponent(item.dataset.slug);
     });
   })();
   </script>

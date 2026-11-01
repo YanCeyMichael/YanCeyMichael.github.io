@@ -16,7 +16,7 @@
 <meta property="og:description" content="递归函数在函数内部,可以调用其他函数.如果一个函数在内部调用自身本身,这个函数就是递归函数.递归函数的优点是定义简单,逻辑清晰.理论上,所有的递归函数都可以写成循环的方式,但循环的逻辑不如递归清晰.使用递归函数需要注意防止栈溢出.在计算机中,函数调用是通过栈（stack）这种数据结构实现的,每当进入一个函数调用,栈就会加一层栈帧,每当函数返回,栈就会减一层栈帧.由于栈的大小不是无限的,所以,递归调">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-12-15T08:55:18.000Z">
-<meta property="article:modified_time" content="2026-11-01T20:41:15.792Z">
+<meta property="article:modified_time" content="2026-11-01T21:03:16.568Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Python 递归函数">
@@ -136,8 +136,10 @@
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dialog.hidden) { dialog.hidden = true; trigger.focus(); } });
     document.getElementById('site-admin-new-post').addEventListener('click', function () { location.href = '/admin/#/collections/posts/new'; });
-    document.querySelectorAll('[data-site-admin-edit]').forEach(function (item) {
-      item.addEventListener('click', function () { location.href = '/admin/#/collections/posts/entries/' + encodeURIComponent(item.dataset.slug); });
+    document.addEventListener('click', function (event) {
+      var item = event.target.closest && event.target.closest('[data-site-admin-edit]');
+      if (!item || item.hidden || !document.documentElement.classList.contains('site-owner-mode')) return;
+      location.href = '/admin/#/collections/posts/entries/' + encodeURIComponent(item.dataset.slug);
     });
   })();
   </script>

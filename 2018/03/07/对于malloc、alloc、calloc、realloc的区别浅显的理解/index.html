@@ -16,7 +16,7 @@
 <meta property="og:description" content="总述: 内存区域可分为栈,堆,静态存储区和常量存储区,对于常见的局部变量,函数形参,临时变量都是在栈上获得内存的,它们的获取方式都是通过编译器直接执行.   而利用指针来管理内存的时候,可以更加自由的像汇编一样处理内存的地址, C 标准函数库提供了很多函数来实现对堆上内存的管理,从开辟内存空间到释放内存空间都有相应的函数,这些函数都包含在头文件 stdlib.h 中,其中有几个特别重要的函数需要做">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-03-07T04:41:15.000Z">
-<meta property="article:modified_time" content="2026-11-01T20:41:15.793Z">
+<meta property="article:modified_time" content="2026-11-01T21:03:16.569Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="malloc()">
@@ -139,8 +139,10 @@
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dialog.hidden) { dialog.hidden = true; trigger.focus(); } });
     document.getElementById('site-admin-new-post').addEventListener('click', function () { location.href = '/admin/#/collections/posts/new'; });
-    document.querySelectorAll('[data-site-admin-edit]').forEach(function (item) {
-      item.addEventListener('click', function () { location.href = '/admin/#/collections/posts/entries/' + encodeURIComponent(item.dataset.slug); });
+    document.addEventListener('click', function (event) {
+      var item = event.target.closest && event.target.closest('[data-site-admin-edit]');
+      if (!item || item.hidden || !document.documentElement.classList.contains('site-owner-mode')) return;
+      location.href = '/admin/#/collections/posts/entries/' + encodeURIComponent(item.dataset.slug);
     });
   })();
   </script>
