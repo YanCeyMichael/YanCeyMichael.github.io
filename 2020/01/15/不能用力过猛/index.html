@@ -16,7 +16,7 @@
 <meta property="og:description" content="今天下了2020年的第二场雪。第一场雪在一周前。同样我的腿也伤了足足12天。    我的膝盖摔伤后，结痂裂开数次今天终于有所好转，今天也是第一次早上骑电驴膝盖不再有撕裂的疼痛感。    12天好漫长，疼痛感让我每时每刻都在感受时间的流逝。有人调侃我说上班太拼了，以至于把腿都摔伤了。    我太拼了吗？我扪心自问好像没有。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-01-15T10:38:21.000Z">
-<meta property="article:modified_time" content="2021-06-05T17:40:46.185Z">
+<meta property="article:modified_time" content="2026-11-01T20:12:45.876Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="Essays">
 <meta name="twitter:card" content="summary">
@@ -41,6 +41,108 @@
 
 <body>
   <div id="container" q-class="show:isCtnShow">
+    <div id="site-admin-root" data-api-base="https://yancey-blog-admin.514614690.workers.dev">
+  <button id="site-admin-trigger" type="button" aria-haspopup="dialog" aria-controls="site-admin-dialog">站点管理</button>
+  <div id="site-admin-dialog" role="dialog" aria-modal="true" aria-labelledby="site-admin-title" hidden>
+    <div class="site-admin-card">
+      <button class="site-admin-close" type="button" aria-label="关闭">×</button>
+      <h2 id="site-admin-title">站主登录</h2>
+      <p>使用 GitHub 账号验证站主身份后管理文章。</p>
+      <button id="site-admin-login" type="button">使用 GitHub 登录</button>
+      <p id="site-admin-error" role="alert" hidden>该 GitHub 账号未通过站主权限校验。</p>
+    </div>
+  </div>
+  <div id="site-admin-owner" hidden>
+    <button type="button" id="site-admin-new-post">＋ 发布文章</button>
+    <span>站主模式</span>
+  </div>
+  <script>
+  (function () {
+    var root = document.getElementById('site-admin-root');
+    if (!root) return;
+    var trigger = document.getElementById('site-admin-trigger');
+    var dialog = document.getElementById('site-admin-dialog');
+    var close = dialog.querySelector('.site-admin-close');
+    var login = document.getElementById('site-admin-login');
+    var error = document.getElementById('site-admin-error');
+    var owner = document.getElementById('site-admin-owner');
+    var apiBase = (root.dataset.apiBase || '/admin-api').replace(/\/$/, '');
+    var sessionKey = 'yancey-blog-owner-session';
+    function readSession() {
+      try { return sessionStorage.getItem(sessionKey) || ''; } catch (_) { return ''; }
+    }
+    function setOwnerMode(enabled) {
+      owner.hidden = !enabled;
+      trigger.hidden = enabled;
+      document.documentElement.classList.toggle('site-owner-mode', enabled);
+      document.querySelectorAll('[data-site-admin-edit]').forEach(function (item) { item.hidden = !enabled; });
+    }
+    function verifySession() {
+      var token = readSession();
+      if (!token || apiBase === '/admin-api') { setOwnerMode(false); return; }
+      fetch(apiBase + '/session', { headers: { Authorization: 'Bearer ' + token } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (s) {
+          if (s && s.isOwner === true) setOwnerMode(true);
+          else { sessionStorage.removeItem(sessionKey); setOwnerMode(false); }
+        }).catch(function () { setOwnerMode(false); });
+    }
+    verifySession();
+    trigger.addEventListener('click', function () { error.hidden = true; dialog.hidden = false; login.focus(); });
+    close.addEventListener('click', function () { dialog.hidden = true; trigger.focus(); });
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.hidden = true; });
+    login.addEventListener('click', function () {
+      if (apiBase === '/admin-api') {
+        error.hidden = false;
+        error.textContent = '站点登录服务尚未配置。';
+        return;
+      }
+      var proxyOrigin;
+      try { proxyOrigin = new URL(apiBase).origin; } catch (_) { return; }
+      var popup = window.open(apiBase + '/site-auth', 'yancey-blog-login', 'popup,width=560,height=700');
+      if (!popup) { error.hidden = false; error.textContent = '浏览器阻止了登录弹窗，请允许此站点打开弹窗后重试。'; return; }
+      function receiveLogin(event) {
+        if (event.origin !== proxyOrigin || typeof event.data !== 'string' || event.data.indexOf('yancey:site-auth:') !== 0) return;
+        window.removeEventListener('message', receiveLogin);
+        var splitAt = event.data.indexOf(':', 'yancey:site-auth:'.length);
+        var result = event.data.slice('yancey:site-auth:'.length, splitAt);
+        var payload;
+        try { payload = JSON.parse(event.data.slice(splitAt + 1)); } catch (_) { payload = {}; }
+        if (result === 'success' && payload.token) {
+          sessionStorage.setItem(sessionKey, payload.token);
+          dialog.hidden = true;
+          setOwnerMode(true);
+        } else {
+          error.hidden = false;
+          error.textContent = payload.error || '该 GitHub 账号未通过站主权限校验。';
+        }
+      }
+      window.addEventListener('message', receiveLogin);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dialog.hidden) { dialog.hidden = true; trigger.focus(); } });
+    document.getElementById('site-admin-new-post').addEventListener('click', function () { location.href = '/admin/#/collections/posts/new'; });
+    document.querySelectorAll('[data-site-admin-edit]').forEach(function (item) {
+      item.addEventListener('click', function () { location.href = '/admin/#/collections/posts/entries/' + encodeURIComponent(item.dataset.slug); });
+    });
+  })();
+  </script>
+  <style>
+  #site-admin-root{position:fixed;right:24px;top:18px;z-index:1200;font:12px/1.5 "lucida grande",Arial,sans-serif}
+  #site-admin-trigger,#site-admin-new-post{min-height:36px;padding:0 13px;border:1px solid #d4d4d4;border-radius:2px;background:#fff;color:#555;cursor:pointer}
+  #site-admin-trigger:hover{background:#f5f5f5}
+  #site-admin-owner{display:flex;align-items:center;gap:9px;color:#4d7b56;background:#fff;padding:5px 9px;border:1px solid #ddd}
+  #site-admin-new-post{background:#4d4d4d;color:#fff;border-color:#4d4d4d}
+  #site-admin-dialog[hidden],#site-admin-owner[hidden],[data-site-admin-edit][hidden]{display:none!important}
+  #site-admin-dialog{position:fixed;inset:0;background:rgba(0,0,0,.45);display:grid;place-items:center;padding:16px}
+  .site-admin-card{position:relative;width:min(420px,100%);background:#fff;padding:24px;border-left:5px solid #4d4d4d;box-shadow:0 10px 35px #0003}
+  .site-admin-card h2{margin:0 0 5px;color:#555;font-size:20px;font-weight:400}.site-admin-card p{color:#888;font-size:12px}
+  .site-admin-close{position:absolute;right:12px;top:8px;border:0;background:none;color:#999;font-size:22px;cursor:pointer}
+  #site-admin-login{width:100%;height:42px;border:0;border-radius:2px;background:#333;color:#fff;font-weight:600;cursor:pointer}
+  #site-admin-error{color:#a33;background:#fff4f3;padding:9px}#site-admin-error[hidden]{display:none}
+  @media(max-width:800px){#site-admin-root{right:10px;top:9px}#site-admin-trigger,#site-admin-new-post{min-height:34px;padding:0 9px;font-size:11px}.site-admin-card{padding:20px}}
+  </style>
+</div>
+
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
@@ -231,6 +333,7 @@
 
       
 
+      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="不能用力过猛" aria-label="编辑文章：不能用力过猛">编辑文章</button>
       
 
       
@@ -347,7 +450,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2025 Yancey
+    		&copy; 2026 Yancey
     	</div>
       	<div class="footer-right">
       		Reproduction of Blogs articles is prohibited！
@@ -574,6 +677,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
@@ -583,6 +690,26 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">OC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,26 +729,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
@@ -630,11 +737,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+                <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">POSTMAN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">form-data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">x-www-form-urlencoded</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">row</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">binary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图床</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,7 +793,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图床</a>
+                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,34 +802,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">POSTMAN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">form-data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">x-www-form-urlencoded</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">row</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">binary</a>
               </li>
             
             <div class="clearfix"></div>

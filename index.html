@@ -36,6 +36,108 @@
 
 <body>
   <div id="container" q-class="show:isCtnShow">
+    <div id="site-admin-root" data-api-base="https://yancey-blog-admin.514614690.workers.dev">
+  <button id="site-admin-trigger" type="button" aria-haspopup="dialog" aria-controls="site-admin-dialog">站点管理</button>
+  <div id="site-admin-dialog" role="dialog" aria-modal="true" aria-labelledby="site-admin-title" hidden>
+    <div class="site-admin-card">
+      <button class="site-admin-close" type="button" aria-label="关闭">×</button>
+      <h2 id="site-admin-title">站主登录</h2>
+      <p>使用 GitHub 账号验证站主身份后管理文章。</p>
+      <button id="site-admin-login" type="button">使用 GitHub 登录</button>
+      <p id="site-admin-error" role="alert" hidden>该 GitHub 账号未通过站主权限校验。</p>
+    </div>
+  </div>
+  <div id="site-admin-owner" hidden>
+    <button type="button" id="site-admin-new-post">＋ 发布文章</button>
+    <span>站主模式</span>
+  </div>
+  <script>
+  (function () {
+    var root = document.getElementById('site-admin-root');
+    if (!root) return;
+    var trigger = document.getElementById('site-admin-trigger');
+    var dialog = document.getElementById('site-admin-dialog');
+    var close = dialog.querySelector('.site-admin-close');
+    var login = document.getElementById('site-admin-login');
+    var error = document.getElementById('site-admin-error');
+    var owner = document.getElementById('site-admin-owner');
+    var apiBase = (root.dataset.apiBase || '/admin-api').replace(/\/$/, '');
+    var sessionKey = 'yancey-blog-owner-session';
+    function readSession() {
+      try { return sessionStorage.getItem(sessionKey) || ''; } catch (_) { return ''; }
+    }
+    function setOwnerMode(enabled) {
+      owner.hidden = !enabled;
+      trigger.hidden = enabled;
+      document.documentElement.classList.toggle('site-owner-mode', enabled);
+      document.querySelectorAll('[data-site-admin-edit]').forEach(function (item) { item.hidden = !enabled; });
+    }
+    function verifySession() {
+      var token = readSession();
+      if (!token || apiBase === '/admin-api') { setOwnerMode(false); return; }
+      fetch(apiBase + '/session', { headers: { Authorization: 'Bearer ' + token } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (s) {
+          if (s && s.isOwner === true) setOwnerMode(true);
+          else { sessionStorage.removeItem(sessionKey); setOwnerMode(false); }
+        }).catch(function () { setOwnerMode(false); });
+    }
+    verifySession();
+    trigger.addEventListener('click', function () { error.hidden = true; dialog.hidden = false; login.focus(); });
+    close.addEventListener('click', function () { dialog.hidden = true; trigger.focus(); });
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.hidden = true; });
+    login.addEventListener('click', function () {
+      if (apiBase === '/admin-api') {
+        error.hidden = false;
+        error.textContent = '站点登录服务尚未配置。';
+        return;
+      }
+      var proxyOrigin;
+      try { proxyOrigin = new URL(apiBase).origin; } catch (_) { return; }
+      var popup = window.open(apiBase + '/site-auth', 'yancey-blog-login', 'popup,width=560,height=700');
+      if (!popup) { error.hidden = false; error.textContent = '浏览器阻止了登录弹窗，请允许此站点打开弹窗后重试。'; return; }
+      function receiveLogin(event) {
+        if (event.origin !== proxyOrigin || typeof event.data !== 'string' || event.data.indexOf('yancey:site-auth:') !== 0) return;
+        window.removeEventListener('message', receiveLogin);
+        var splitAt = event.data.indexOf(':', 'yancey:site-auth:'.length);
+        var result = event.data.slice('yancey:site-auth:'.length, splitAt);
+        var payload;
+        try { payload = JSON.parse(event.data.slice(splitAt + 1)); } catch (_) { payload = {}; }
+        if (result === 'success' && payload.token) {
+          sessionStorage.setItem(sessionKey, payload.token);
+          dialog.hidden = true;
+          setOwnerMode(true);
+        } else {
+          error.hidden = false;
+          error.textContent = payload.error || '该 GitHub 账号未通过站主权限校验。';
+        }
+      }
+      window.addEventListener('message', receiveLogin);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dialog.hidden) { dialog.hidden = true; trigger.focus(); } });
+    document.getElementById('site-admin-new-post').addEventListener('click', function () { location.href = '/admin/#/collections/posts/new'; });
+    document.querySelectorAll('[data-site-admin-edit]').forEach(function (item) {
+      item.addEventListener('click', function () { location.href = '/admin/#/collections/posts/entries/' + encodeURIComponent(item.dataset.slug); });
+    });
+  })();
+  </script>
+  <style>
+  #site-admin-root{position:fixed;right:24px;top:18px;z-index:1200;font:12px/1.5 "lucida grande",Arial,sans-serif}
+  #site-admin-trigger,#site-admin-new-post{min-height:36px;padding:0 13px;border:1px solid #d4d4d4;border-radius:2px;background:#fff;color:#555;cursor:pointer}
+  #site-admin-trigger:hover{background:#f5f5f5}
+  #site-admin-owner{display:flex;align-items:center;gap:9px;color:#4d7b56;background:#fff;padding:5px 9px;border:1px solid #ddd}
+  #site-admin-new-post{background:#4d4d4d;color:#fff;border-color:#4d4d4d}
+  #site-admin-dialog[hidden],#site-admin-owner[hidden],[data-site-admin-edit][hidden]{display:none!important}
+  #site-admin-dialog{position:fixed;inset:0;background:rgba(0,0,0,.45);display:grid;place-items:center;padding:16px}
+  .site-admin-card{position:relative;width:min(420px,100%);background:#fff;padding:24px;border-left:5px solid #4d4d4d;box-shadow:0 10px 35px #0003}
+  .site-admin-card h2{margin:0 0 5px;color:#555;font-size:20px;font-weight:400}.site-admin-card p{color:#888;font-size:12px}
+  .site-admin-close{position:absolute;right:12px;top:8px;border:0;background:none;color:#999;font-size:22px;cursor:pointer}
+  #site-admin-login{width:100%;height:42px;border:0;border-radius:2px;background:#333;color:#fff;font-weight:600;cursor:pointer}
+  #site-admin-error{color:#a33;background:#fff4f3;padding:9px}#site-admin-error[hidden]{display:none}
+  @media(max-width:800px){#site-admin-root{right:10px;top:9px}#site-admin-trigger,#site-admin-new-post{min-height:34px;padding:0 9px;font-size:11px}.site-admin-card{padding:20px}}
+  </style>
+</div>
+
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
@@ -190,6 +292,7 @@
 
       
 
+      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="我和Butter" aria-label="编辑文章：我和Butter">编辑文章</button>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2025/08/15/%E6%88%91%E5%92%8CButter/">展开全文 >></a>
@@ -229,12 +332,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2025/07/30/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/">博客搭建图床</a>
+      <a class="article-title" href="/2025/07/29/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/">博客搭建图床</a>
     </h1>
   
 
         
-        <a href="/2025/07/30/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/" class="archive-article-date">
+        <a href="/2025/07/29/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/" class="archive-article-date">
   	<time datetime="2025-07-29T18:59:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-30</time>
 </a>
         
@@ -256,7 +359,7 @@
 <li>图片的资源管理工具</li>
 <li>降低其他平台的负载<br>常见社区比如知乎，在知乎答题时发一张图片，这张图片并非直接存在知乎的主服务器上，而是由知乎合作的图床服务存储，其他用户查看时，图片从图床的CDN节点快速加载，这就是图床作为 “存储 + 分发” 核心的体现。</li></ul>
         
-          <a class="article-more-a" href="/2025/07/30/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/#more">more >></a>
+          <a class="article-more-a" href="/2025/07/29/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/#more">more >></a>
         
       
 
@@ -278,9 +381,10 @@
 
       
 
+      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="博客搭建图床" aria-label="编辑文章：博客搭建图床">编辑文章</button>
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2025/07/30/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/">展开全文 >></a>
+          <a class="article-more-a" href="/2025/07/29/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/">展开全文 >></a>
         </p>
       
 
@@ -353,6 +457,7 @@
 
       
 
+      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="帆船博弈论的应用" aria-label="编辑文章：帆船博弈论的应用">编辑文章</button>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/21/%E5%B8%86%E8%88%B9%E5%8D%9A%E5%BC%88%E8%AE%BA%E7%9A%84%E5%BA%94%E7%94%A8/">展开全文 >></a>
@@ -430,6 +535,7 @@
 
       
 
+      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="公羊博弈论模型及三个推论" aria-label="编辑文章：公羊博弈论模型及三个推论">编辑文章</button>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/21/%E5%85%AC%E7%BE%8A%E5%8D%9A%E5%BC%88%E8%AE%BA%E6%A8%A1%E5%9E%8B%E5%8F%8A%E4%B8%89%E4%B8%AA%E6%8E%A8%E8%AE%BA/">展开全文 >></a>
@@ -469,12 +575,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/22/%E5%85%B3%E4%BA%8E%E4%BA%BA%E6%80%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B0%8F%E6%95%85%E4%BA%8B/">关于人性的几个小故事</a>
+      <a class="article-title" href="/2021/06/21/%E5%85%B3%E4%BA%8E%E4%BA%BA%E6%80%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B0%8F%E6%95%85%E4%BA%8B/">关于人性的几个小故事</a>
     </h1>
   
 
         
-        <a href="/2021/06/22/%E5%85%B3%E4%BA%8E%E4%BA%BA%E6%80%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B0%8F%E6%95%85%E4%BA%8B/" class="archive-article-date">
+        <a href="/2021/06/21/%E5%85%B3%E4%BA%8E%E4%BA%BA%E6%80%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B0%8F%E6%95%85%E4%BA%8B/" class="archive-article-date">
   	<time datetime="2021-06-21T17:54:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-22</time>
 </a>
         
@@ -512,9 +618,10 @@
 
       
 
+      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="关于人性的几个小故事" aria-label="编辑文章：关于人性的几个小故事">编辑文章</button>
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/22/%E5%85%B3%E4%BA%8E%E4%BA%BA%E6%80%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B0%8F%E6%95%85%E4%BA%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/06/21/%E5%85%B3%E4%BA%8E%E4%BA%BA%E6%80%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B0%8F%E6%95%85%E4%BA%8B/">展开全文 >></a>
         </p>
       
 
@@ -558,7 +665,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2025 Yancey
+    		&copy; 2026 Yancey
     	</div>
       	<div class="footer-right">
       		Reproduction of Blogs articles is prohibited！
@@ -785,6 +892,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
@@ -794,6 +905,26 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">OC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -813,26 +944,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
@@ -841,11 +952,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+                <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">POSTMAN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">form-data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">x-www-form-urlencoded</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">row</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">binary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图床</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -873,7 +1008,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图床</a>
+                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -882,34 +1017,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">POSTMAN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">form-data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">x-www-form-urlencoded</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">row</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">binary</a>
               </li>
             
             <div class="clearfix"></div>

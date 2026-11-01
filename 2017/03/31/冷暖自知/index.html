@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>钱塘二渡 | Yancey’s Blog</title>
+  <title>冷暖自知 | Yancey’s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对杭州的冲动，不在于贪恋江南小家闺秀的气质。 西湖断桥苏白堤，孤山城中楼外楼。于我而言，一无过往，二无艳羡。 我感兴趣的是每个城市的人，和我相似的人们，是怎样的活着，根本上来讲还是在追寻自己活的最佳方式的过程中，想要寻找一些借鉴，这是我旅行的第一要点，所以美景其实是附属，西溪湿地也好，西湖断桥也罢，都是锦上添花的东西，并不是特别重要。第二要点是共同经历，姑娘说她没有和我去很多地方，我想现在大抵上还">
+  <meta name="description" content="今天晚上9点多写代码的时候，刘玉琦用电脑放了一首《萍聚》，霎那间被旋律带出了些许的难受。 很感谢尚且足够年轻的自己，感谢自己拥有一个每天爬起来都充满干劲的自己。我仔细的回忆了一下，我已经将近有3年的时间，不曾惶惶度日，从那一刻感到考研复习学习的时间不够的大四开始，我就每天都在数着时间过日子。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="钱塘二渡">
-<meta property="og:url" content="http://yoursite.com/2017/11/25/%E9%92%B1%E5%A1%98%E4%BA%8C%E6%B8%A1/index.html">
+<meta property="og:title" content="冷暖自知">
+<meta property="og:url" content="http://yoursite.com/2017/03/31/%E5%86%B7%E6%9A%96%E8%87%AA%E7%9F%A5/index.html">
 <meta property="og:site_name" content="Yancey’s Blog">
-<meta property="og:description" content="对杭州的冲动，不在于贪恋江南小家闺秀的气质。 西湖断桥苏白堤，孤山城中楼外楼。于我而言，一无过往，二无艳羡。 我感兴趣的是每个城市的人，和我相似的人们，是怎样的活着，根本上来讲还是在追寻自己活的最佳方式的过程中，想要寻找一些借鉴，这是我旅行的第一要点，所以美景其实是附属，西溪湿地也好，西湖断桥也罢，都是锦上添花的东西，并不是特别重要。第二要点是共同经历，姑娘说她没有和我去很多地方，我想现在大抵上还">
+<meta property="og:description" content="今天晚上9点多写代码的时候，刘玉琦用电脑放了一首《萍聚》，霎那间被旋律带出了些许的难受。 很感谢尚且足够年轻的自己，感谢自己拥有一个每天爬起来都充满干劲的自己。我仔细的回忆了一下，我已经将近有3年的时间，不曾惶惶度日，从那一刻感到考研复习学习的时间不够的大四开始，我就每天都在数着时间过日子。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2017-11-24T16:21:02.000Z">
-<meta property="article:modified_time" content="2025-10-29T19:52:42.338Z">
+<meta property="article:published_time" content="2017-03-31T16:16:31.000Z">
+<meta property="article:modified_time" content="2026-11-01T20:12:45.876Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="Essays">
 <meta name="twitter:card" content="summary">
@@ -41,6 +41,108 @@
 
 <body>
   <div id="container" q-class="show:isCtnShow">
+    <div id="site-admin-root" data-api-base="https://yancey-blog-admin.514614690.workers.dev">
+  <button id="site-admin-trigger" type="button" aria-haspopup="dialog" aria-controls="site-admin-dialog">站点管理</button>
+  <div id="site-admin-dialog" role="dialog" aria-modal="true" aria-labelledby="site-admin-title" hidden>
+    <div class="site-admin-card">
+      <button class="site-admin-close" type="button" aria-label="关闭">×</button>
+      <h2 id="site-admin-title">站主登录</h2>
+      <p>使用 GitHub 账号验证站主身份后管理文章。</p>
+      <button id="site-admin-login" type="button">使用 GitHub 登录</button>
+      <p id="site-admin-error" role="alert" hidden>该 GitHub 账号未通过站主权限校验。</p>
+    </div>
+  </div>
+  <div id="site-admin-owner" hidden>
+    <button type="button" id="site-admin-new-post">＋ 发布文章</button>
+    <span>站主模式</span>
+  </div>
+  <script>
+  (function () {
+    var root = document.getElementById('site-admin-root');
+    if (!root) return;
+    var trigger = document.getElementById('site-admin-trigger');
+    var dialog = document.getElementById('site-admin-dialog');
+    var close = dialog.querySelector('.site-admin-close');
+    var login = document.getElementById('site-admin-login');
+    var error = document.getElementById('site-admin-error');
+    var owner = document.getElementById('site-admin-owner');
+    var apiBase = (root.dataset.apiBase || '/admin-api').replace(/\/$/, '');
+    var sessionKey = 'yancey-blog-owner-session';
+    function readSession() {
+      try { return sessionStorage.getItem(sessionKey) || ''; } catch (_) { return ''; }
+    }
+    function setOwnerMode(enabled) {
+      owner.hidden = !enabled;
+      trigger.hidden = enabled;
+      document.documentElement.classList.toggle('site-owner-mode', enabled);
+      document.querySelectorAll('[data-site-admin-edit]').forEach(function (item) { item.hidden = !enabled; });
+    }
+    function verifySession() {
+      var token = readSession();
+      if (!token || apiBase === '/admin-api') { setOwnerMode(false); return; }
+      fetch(apiBase + '/session', { headers: { Authorization: 'Bearer ' + token } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (s) {
+          if (s && s.isOwner === true) setOwnerMode(true);
+          else { sessionStorage.removeItem(sessionKey); setOwnerMode(false); }
+        }).catch(function () { setOwnerMode(false); });
+    }
+    verifySession();
+    trigger.addEventListener('click', function () { error.hidden = true; dialog.hidden = false; login.focus(); });
+    close.addEventListener('click', function () { dialog.hidden = true; trigger.focus(); });
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.hidden = true; });
+    login.addEventListener('click', function () {
+      if (apiBase === '/admin-api') {
+        error.hidden = false;
+        error.textContent = '站点登录服务尚未配置。';
+        return;
+      }
+      var proxyOrigin;
+      try { proxyOrigin = new URL(apiBase).origin; } catch (_) { return; }
+      var popup = window.open(apiBase + '/site-auth', 'yancey-blog-login', 'popup,width=560,height=700');
+      if (!popup) { error.hidden = false; error.textContent = '浏览器阻止了登录弹窗，请允许此站点打开弹窗后重试。'; return; }
+      function receiveLogin(event) {
+        if (event.origin !== proxyOrigin || typeof event.data !== 'string' || event.data.indexOf('yancey:site-auth:') !== 0) return;
+        window.removeEventListener('message', receiveLogin);
+        var splitAt = event.data.indexOf(':', 'yancey:site-auth:'.length);
+        var result = event.data.slice('yancey:site-auth:'.length, splitAt);
+        var payload;
+        try { payload = JSON.parse(event.data.slice(splitAt + 1)); } catch (_) { payload = {}; }
+        if (result === 'success' && payload.token) {
+          sessionStorage.setItem(sessionKey, payload.token);
+          dialog.hidden = true;
+          setOwnerMode(true);
+        } else {
+          error.hidden = false;
+          error.textContent = payload.error || '该 GitHub 账号未通过站主权限校验。';
+        }
+      }
+      window.addEventListener('message', receiveLogin);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dialog.hidden) { dialog.hidden = true; trigger.focus(); } });
+    document.getElementById('site-admin-new-post').addEventListener('click', function () { location.href = '/admin/#/collections/posts/new'; });
+    document.querySelectorAll('[data-site-admin-edit]').forEach(function (item) {
+      item.addEventListener('click', function () { location.href = '/admin/#/collections/posts/entries/' + encodeURIComponent(item.dataset.slug); });
+    });
+  })();
+  </script>
+  <style>
+  #site-admin-root{position:fixed;right:24px;top:18px;z-index:1200;font:12px/1.5 "lucida grande",Arial,sans-serif}
+  #site-admin-trigger,#site-admin-new-post{min-height:36px;padding:0 13px;border:1px solid #d4d4d4;border-radius:2px;background:#fff;color:#555;cursor:pointer}
+  #site-admin-trigger:hover{background:#f5f5f5}
+  #site-admin-owner{display:flex;align-items:center;gap:9px;color:#4d7b56;background:#fff;padding:5px 9px;border:1px solid #ddd}
+  #site-admin-new-post{background:#4d4d4d;color:#fff;border-color:#4d4d4d}
+  #site-admin-dialog[hidden],#site-admin-owner[hidden],[data-site-admin-edit][hidden]{display:none!important}
+  #site-admin-dialog{position:fixed;inset:0;background:rgba(0,0,0,.45);display:grid;place-items:center;padding:16px}
+  .site-admin-card{position:relative;width:min(420px,100%);background:#fff;padding:24px;border-left:5px solid #4d4d4d;box-shadow:0 10px 35px #0003}
+  .site-admin-card h2{margin:0 0 5px;color:#555;font-size:20px;font-weight:400}.site-admin-card p{color:#888;font-size:12px}
+  .site-admin-close{position:absolute;right:12px;top:8px;border:0;background:none;color:#999;font-size:22px;cursor:pointer}
+  #site-admin-login{width:100%;height:42px;border:0;border-radius:2px;background:#333;color:#fff;font-weight:600;cursor:pointer}
+  #site-admin-error{color:#a33;background:#fff4f3;padding:9px}#site-admin-error[hidden]{display:none}
+  @media(max-width:800px){#site-admin-root{right:10px;top:9px}#site-admin-trigger,#site-admin-new-post{min-height:34px;padding:0 9px;font-size:11px}.site-admin-card{padding:20px}}
+  </style>
+</div>
+
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
@@ -147,42 +249,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-钱塘二渡" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-冷暖自知" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      钱塘二渡
+      冷暖自知
     </h1>
   
 
         
-        <a href="/2017/11/25/%E9%92%B1%E5%A1%98%E4%BA%8C%E6%B8%A1/" class="archive-article-date">
-  	<time datetime="2017-11-24T16:21:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-25</time>
+        <a href="/2017/03/31/%E5%86%B7%E6%9A%96%E8%87%AA%E7%9F%A5/" class="archive-article-date">
+  	<time datetime="2017-03-31T16:16:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>对杭州的冲动，不在于贪恋江南小家闺秀的气质。</p>
-<p>西湖断桥苏白堤，孤山城中楼外楼。于我而言，一无过往，二无艳羡。</p>
-<p>我感兴趣的是每个城市的人，和我相似的人们，是怎样的活着，根本上来讲还是在追寻自己活的最佳方式的过程中，想要寻找一些借鉴，这是我旅行的第一要点，所以美景其实是附属，西溪湿地也好，西湖断桥也罢，都是锦上添花的东西，并不是特别重要。第二要点是共同经历，姑娘说她没有和我去很多地方，我想现在大抵上还是年轻，走一走还是要的，且把时间拉后，倘若一旦为家庭操劳，这些皆是奢求，都只能是心头念。</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>今天晚上9点多写代码的时候，刘玉琦用电脑放了一首《萍聚》，霎那间被旋律带出了些许的难受。</p>
+<p>很感谢尚且足够年轻的自己，感谢自己拥有一个每天爬起来都充满干劲的自己。我仔细的回忆了一下，我已经将近有3年的时间，不曾惶惶度日，从那一刻感到考研复习学习的时间不够的大四开始，我就每天都在数着时间过日子。</p>
 <span id="more"></span>
-<p>这次吃了两顿杭帮菜，感觉自己可能并不是由衷的热爱，但是好像也没那么坏，我觉得杭帮菜蛮适合我，不至于吃得太多因为太腻歪；摇橹船的大叔让我别去楼外楼了，他说味道并不会太好，只是吃个名气，没啥意思。我在想，但凡这个世上所有的事情都听人劝，自己不去经历，那还有什么意义，别人的建议永远不会充耳不闻，但也不会照搬俗套，问自己想不想就行了。想吗？那就去哇！有意义吗？那还去干嘛？！我觉得能满足自己的想，就是最大的意义啊。</p>
-<p>我跟人开玩笑讲：你在西溪湿地和西湖闲逛的时候，一个晃神，你还以为自己在汤池的相思林和金汤湖水库上逛。于苏杭本地人而言，楼外楼外养鱼塘西湖，此般小家碧玉的景致，自不能让人热血沸腾，唯恐是个虚名罢了，自然比不上广阔的天地宏伟的景观，可让人短暂抛却烦心事，也不算太差。</p>
-<p>10月中旬，公司安排参加云栖大会，四天繁忙的交流讲座学习，时间甚是紧迫，外加阴雨绵绵，姑娘讨厌雨天，所以那次杭州的偷闲得空的游逛也随之搁浅。</p>
-<p>云栖大会让我想起了早些年在深圳隔月的“深圳巅峰技术交流会”，跟荣杰蹭饭聚会的同时，和立华他们吹着牛，聊着好多想做却能力不够做不了的事情，那个时候感觉我们这些人都是互联网的希望，我们想做智能家居，我们想做很多东西，想解决最后一公里的需求，想创业想挣票子，这些大抵是那个时候的想法。</p>
-<p>那个时候聊天的内容，很多东西上次在云栖大会上都见到了，仅仅是过了3-4年而已，我们吹的牛已经被这些互联网大佬变现了，我们要搞的无人机快递，我们要搞的人工智能汽车，我们要搞的人工智能家居，我们聊到的神经网络算法的应用于方方面面的同时，还有神经网络对超参数的各种优化，子模函数超模函数的概念，提高了精确度和算法速度的同时极大程度上缩短了神经网络算法参数的确定时间，也就实现了快速获取神经网络算法模型。举个简单的例子并用人话来说就是：现在的技术可以达到用高速运行的相机拍照或者录制视频的同时，就可以进行同步识别了。</p>
-<p>而3-4年前我们在深圳闲聊的时候说的要做实时的监控识别的想法，最大的技术门槛就是在于实时识别的反馈结果。那次我在听云栖的技术报告交流的时候，最大的感慨并不是这些大厂好厉害，这些学者好牛，而是感叹道：时间过的真快，好想回到那些年轻的岁月，多做那些有意义的事情。</p>
-<p>我庆幸现在在很多事情上的努力有所回馈，也感谢自己的年轻，好多可以做的事情还有机会去做，除了庆幸就是感恩，感谢生命里遇到了这么多有意思的事和那些年已遇的奇迹。</p>
-<p>经历放在纵向的意义上来看就会显得尤其的突出和重要，平行时间里的经历，永远都是未知的啊，经历只有有用的时候才会是经历，不然你会觉得是虚度。</p>
-<p>经历了人和事，阅千重山行万里路，丰富生命的宽度，让自己在遇到的时候不会惊慌失措，不会变的无畏无知，而是从容淡然，想热血的时候热血，想激动的时候激动，这才是极佳的。</p>
-<p>大抵上如此，日子慢悠悠的过。忙的时候疯狂陷入一种状态固然是充实的，但是还是要多走动多陪陪身边的人。注意休息注意身体健康，世间事，除死无大事，能活着，健康的活着比什么都强。</p>
-<p>贪恋啊，红尘太过于美好，生活即便残酷，也还有精彩之处。</p>
-<p>所以决定给博客开个新的板块。这也是城南旧事存在的意义。</p>
+<p>虽然有挺多时候熬夜特别幸苦，感到胸闷呼吸不够舒畅，但是好在身体并无大碍，我知道我亏欠年轻的自己太多，所以我好想爬的足够快，快到我自己可以为自己所做的事情开心。</p>
+<p>我深感自己的平凡，但心里总会充满了对平庸的不甘和对庸俗的愤怒，但你却不得不承认，一个人的能力很有限。但是每次挫败的时候，我都在问自己做的够好不。</p>
+<p>自从心里想好好写代码到现在，无时无刻不深感自己的无力，不是所有的事情都和学习成长般简单，你认识到了这世间还有事情是花时间是不够的。编程像一个无底深渊，没有最好，只有更好，一个没有极限的东西，你穷极所有时间，最后只会换来筋疲力竭的妥协。然后臭骂自己一句：你还是那么没用，毫无是处。</p>
+<p>现如今二十多岁，不用多久就三十岁了，好可怕，我瞧瞧我自己，我的确很没用。而立之年，何立？我深知自己的现状，我想好好努力，让自己喜欢，一直过的很煎熬，我挣扎的这一二三年里时间都过的好快，快的我措手不及，让我愈发慌乱。</p>
+<p>是我自己疯了，太心急想一口吃一个胖子，是我还没有好好沉下心来，做足够好的自己，是我太自负，自负到我以为很多事情很简单，但往往比预期漫长得太多。</p>
+<p>但是我这个人好贱的，我不希望别人说我没用。我只知道这个世界上，有些你越在乎的人，肆无忌惮的说挺多话都是伤人的，但是好贱，你却要原谅他们。这些碎言碎语，往往会让我想很多，想很久。你看我就是这么矫情。</p>
+<p>我觉得我始终是个不负责任的人，妄想用年轻的所有精力来对未来好好负责，往往过不好当下。一个不懂得照顾自己的人，不懂得生活的人，不注重身体健康的人，的确有可嫌之处。也难为你们老说我是个傻逼，大抵说的都对，没有错。</p>
+<p>我不愿意我在乎的人说要去乞讨来过好生活，或者为了满足自己的某些物质生活。我可以自己活的没尊严，但是不愿意我心里的你们活的比我难堪。倘若生活中的你们因为遇到我而变得如此艰辛，我愿意远离你们，我愿承担所有，只想你们能快乐。</p>
+<p>假如生活是一场旅行，我愿意做那个留下的人，当我们不足以两个人一起上路的时候，我会囊倾所有，祝你一臂之力。所以这次小长假里，我写代码累了，或者我睡前翻朋友圈，能看到照片中你们的笑脸，我想我做出的这些努力，总是能过自己这一关的。这世上最难尽之事不就是让自己想通么？</p>
+<p>我做的事情不完美，但是我会在能力范围内能做到的足够的完美，这是我跟你们相处，跟家人相爱，所能做的极限。所以如果你让我连聚精会神专注做事最后这点仅有的快乐你都不允许的话，那我怎么面对如此艰辛的生活？怎么麻痹自己让自己觉得还有希望？</p>
+<p>大学四年打了快上万盘的dota，放了整整一年多没玩，我好佩服老甲，在很忙的时候也有勇气拿起吉他玩起来。</p>
+<p>2015年国庆的时候跟自己说2016年的国庆要去一次西藏，每次把手机备忘录打开，还能看到那条没做的愿望我就好难过，我向生活妥协了，我是个没原则的人。后来受不了自己，偷偷又把那条备忘录删掉了。</p>
+<p>我想这些年我都没有做过什么单独背个包去走一走，和陌生人坐在一个桌子上吃顿饭，在旅途中跟陌生人点根烟，一起聊聊风俗乡土和流水光阴里别人奋斗的故事。</p>
+<p>唉。所以别管以后将如何，冷暖自愿尝透。</p>
+<p>今天又是愚人节，但是我说的话又有多少是真的呢，对自己说的都是假的，对你而言都是真的。</p>
+<p>你们明日，若是去了远方，踏上火车，望住窗外，飞越过几十个小镇，几千里土地，几千万个人。你不要怀疑，你的一生里，唯一可以相遇的机会，不在目的地，而在起点，那个愿意等你人往往是心甘情愿送你走的人。</p>
 
       
 
@@ -235,6 +340,7 @@
 
       
 
+      <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="冷暖自知" aria-label="编辑文章：冷暖自知">编辑文章</button>
       
 
       
@@ -283,7 +389,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/11/25/%E9%92%B1%E5%A1%98%E4%BA%8C%E6%B8%A1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/03/31/%E5%86%B7%E6%9A%96%E8%87%AA%E7%9F%A5/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -297,18 +403,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/27/%E6%88%91%E6%89%93%E7%AE%97%E5%81%9A%E4%BB%80%E4%B9%88/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/19/weak-singleton%E6%A8%A1%E5%BC%8F%E5%9C%A8iOS%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          我打算做什么
+          weak singleton模式在iOS中的应用
         
       </div>
     </a>
   
   
-    <a href="/2017/07/19/weak-singleton%E6%A8%A1%E5%BC%8F%E5%9C%A8iOS%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">weak singleton模式在iOS中的应用</div>
+    <a href="/2017/03/03/JavaScript05/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript05</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -351,7 +457,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2025 Yancey
+    		&copy; 2026 Yancey
     	</div>
       	<div class="footer-right">
       		Reproduction of Blogs articles is prohibited！
@@ -578,6 +684,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
               </li>
              
@@ -587,6 +697,26 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">OC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,26 +736,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Essays</a>
               </li>
              
@@ -634,11 +744,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+                <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">POSTMAN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">form-data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">x-www-form-urlencoded</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">row</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">binary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图床</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,7 +800,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图床</a>
+                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,34 +809,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">POSTMAN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">form-data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">x-www-form-urlencoded</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">row</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">binary</a>
               </li>
             
             <div class="clearfix"></div>
