@@ -37,8 +37,6 @@
 #nc-root .v17-body-field{min-width:0}
 #nc-root .v17-body-field label{display:block;padding:0 0 8px;background:transparent;color:#747d85;font-size:12px;font-weight:600}
 #nc-root .v17-body-field textarea{min-height:360px;padding:16px 18px;background:#fff;font:13px/1.8 ui-monospace,SFMono-Regular,Menlo,monospace}
-#nc-root .v17-empty-preview{position:relative}
-#nc-root .v17-empty-preview::after{content:"输入正文后，这里会显示 Yilia 阅读效果";position:absolute;inset:0;display:grid;place-items:center;padding:24px;color:#929aa2;font-size:13px;text-align:center;pointer-events:none;background:#fff}
 #nc-root [class*="CollectionCard"],#nc-root [class*="collectionCard"],#nc-root [class*="EntryCard"],#nc-root [class*="entryCard"]{border:1px solid #e1e3e6;border-radius:4px;box-shadow:0 2px 7px #0000000b}
 /* Decap's login screen stays inside the Yilia workspace and uses the same owner-access styling. */
 #nc-root:has(section[class*="AuthenticationPage"]){display:grid;place-items:center}

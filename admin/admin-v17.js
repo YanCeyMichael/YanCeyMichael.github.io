@@ -29,25 +29,20 @@
         var data = entry && entry.get ? entry.get('data') : null;
         var title = data && data.get ? data.get('title') : '';
         var date = data && data.get ? data.get('date') : '';
-        var rawBody = data && data.get ? data.get('body') : '';
-        var body = String(rawBody || '').trim();
+        /* Decap exposes the markdown body through widgetFor('body'), not entry.data.body. */
+        var bodyPreview = this.props.widgetFor('body');
         return h('article', { className: 'yilia-v17-preview' },
           h('header', { className: 'yilia-v17-preview-head' },
             h('p', { className: 'yilia-v17-preview-kicker' }, 'YANCEY’S BLOG · 文章预览'),
             h('h1', null, String(title || '未命名文章')),
             date ? h('time', null, String(date)) : null
           ),
-          body ? h('div', { className: 'yilia-v17-preview-body' }, this.props.widgetFor('body')) :
-            h('div', { className: 'yilia-v17-preview-empty' },
-              h('span', { className: 'yilia-v17-preview-empty-mark', 'aria-hidden': 'true' }, '✎'),
-              h('strong', null, '预览将在这里呈现'),
-              h('p', null, '填写文章正文后，可在此检查标题层级、段落、图片和引用效果。')
-            )
+          h('div', { className: 'yilia-v17-preview-body' }, bodyPreview)
         );
       }
     });
     cms.registerPreviewTemplate('posts', Preview);
-    if (cms.registerPreviewStyle) cms.registerPreviewStyle('/admin/admin-preview.css?v=1.7.1');
+    if (cms.registerPreviewStyle) cms.registerPreviewStyle('/admin/admin-preview.css?v=1.7.2');
     window.__yiliaV17PreviewRegistered = true;
   }
   function decorate() {
@@ -89,13 +84,6 @@
     var bodyField = fieldFor(bodyLabel);
     if (bodyField) bodyField.classList.add('v17-body-field');
 
-    Array.from(root.querySelectorAll('iframe')).forEach(function (frame) {
-      try {
-        var empty = !frame.contentDocument || !frame.contentDocument.body || !frame.contentDocument.body.textContent.trim();
-        var pane = frame.parentElement && frame.parentElement.parentElement;
-        if (pane) pane.classList.toggle('v17-empty-preview', empty);
-      } catch (_) { /* Cross-origin preview frames are left untouched. */ }
-    });
   }
 
   var observer = new MutationObserver(decorate);
