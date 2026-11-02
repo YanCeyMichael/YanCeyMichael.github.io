@@ -16,7 +16,7 @@
 <meta property="og:description" content="递归函数在函数内部,可以调用其他函数.如果一个函数在内部调用自身本身,这个函数就是递归函数.递归函数的优点是定义简单,逻辑清晰.理论上,所有的递归函数都可以写成循环的方式,但循环的逻辑不如递归清晰.使用递归函数需要注意防止栈溢出.在计算机中,函数调用是通过栈（stack）这种数据结构实现的,每当进入一个函数调用,栈就会加一层栈帧,每当函数返回,栈就会减一层栈帧.由于栈的大小不是无限的,所以,递归调">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-12-15T08:55:18.000Z">
-<meta property="article:modified_time" content="2026-11-02T16:48:01.364Z">
+<meta property="article:modified_time" content="2026-11-02T22:46:13.558Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Python 递归函数">
@@ -65,6 +65,7 @@
   <div id="site-admin-owner" hidden>
     <button type="button" id="site-admin-new-post">＋ 发布文章</button>
     <span>站主模式</span>
+    <button type="button" id="site-admin-logout" aria-label="退出站主模式">退出</button>
   </div>
   <script>
   (function () {
@@ -76,6 +77,7 @@
     var login = document.getElementById('site-admin-login');
     var error = document.getElementById('site-admin-error');
     var owner = document.getElementById('site-admin-owner');
+    var logout = document.getElementById('site-admin-logout');
     var desktopQuery = window.matchMedia ? window.matchMedia('(min-width: 801px)') : null;
     function placeControls() {
       var mobile = (desktopQuery ? !desktopQuery.matches : window.innerWidth <= 800);
@@ -144,6 +146,11 @@
     }
     verifySession();
     consumeAuthCallback();
+    logout.addEventListener('click', function () {
+      sessionStorage.removeItem(sessionKey);
+      setOwnerMode(false);
+      trigger.focus();
+    });
     trigger.addEventListener('click', function () { error.hidden = true; dialog.hidden = false; login.focus(); });
     function closeDialog() { dialog.hidden = true; trigger.focus(); }
     close.addEventListener('click', closeDialog);
@@ -184,6 +191,8 @@
   #site-admin-trigger:hover{background:#f5f8fb;border-color:#c6d2de}
   #site-admin-trigger:focus-visible,#site-admin-new-post:focus-visible,.site-admin-close:focus-visible,#site-admin-login:focus-visible{outline:3px solid #6d91b4;outline-offset:2px}
   #site-admin-owner{display:flex;align-items:center;gap:9px;color:#52745a;background:#fff;padding:6px 10px;border:1px solid #dfe4df;border-radius:4px;box-shadow:0 2px 8px #0000000d}
+  #site-admin-logout{min-height:30px;padding:0 9px;border:1px solid #dfe4df;border-radius:4px;background:#fff;color:#748079;font:600 11px/1.2 "lucida grande",Arial,sans-serif;cursor:pointer}
+  #site-admin-logout:hover{background:#f5f8f6;border-color:#cbd8ce}
   #site-admin-owner span{font-size:11px;white-space:nowrap}
   #site-admin-new-post{min-height:38px;background:#4d4d4d;color:#fff;border-color:#4d4d4d}
   #site-admin-new-post:hover{background:#35393d}
@@ -217,6 +226,7 @@
     #mobile-nav .btnctn.js-mobile-btnctn{width:100%;display:flex;align-items:flex-start;justify-content:space-between;padding-right:8px}
     #site-admin-trigger{min-height:44px;padding:0 12px;font-size:12px}
     #site-admin-owner{gap:7px;padding:4px 7px}
+    #site-admin-logout{min-height:36px;padding:0 8px}
     #site-admin-owner span{font-size:10px}
     #site-admin-new-post{min-height:44px;padding:0 11px;font-size:12px}
     #site-admin-dialog{padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom))}
@@ -363,11 +373,14 @@
   
 
         </div>
-        
-        <a href="/2017/12/15/Python04/" class="archive-article-date">
+        <div class="article-admin-meta">
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="Python04" aria-label="编辑文章：Python04">编辑文章</button>
+          
+          <a href="/2017/12/15/Python04/" class="archive-article-date">
   	<time datetime="2017-12-15T08:55:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-15</time>
 </a>
-        
+          
+        </div>
       </header>
     
     <div class="article-entry" itemprop="articleBody">

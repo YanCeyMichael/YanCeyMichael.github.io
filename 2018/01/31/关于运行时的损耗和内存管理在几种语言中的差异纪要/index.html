@@ -16,7 +16,7 @@
 <meta property="og:description" content="OC 和 Swift 运行时的损耗主要来自于内存管理中对对象的计数,一个对象会不停地进行 retain 和 release, runtime 必须一直 observe 每一个对象的 retain count,当 retain count 达到 0 的时候就释放这个对象.而 C 就没有这个问题,因为 C 没有对象,不需要对对象进行生命周期的内存维护,没有运行时的损耗. 目前主流的内存管理方式分三种:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-01-31T04:33:03.000Z">
-<meta property="article:modified_time" content="2026-11-02T16:48:01.364Z">
+<meta property="article:modified_time" content="2026-11-02T22:46:13.558Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="内存管理">
 <meta name="twitter:card" content="summary">
@@ -64,6 +64,7 @@
   <div id="site-admin-owner" hidden>
     <button type="button" id="site-admin-new-post">＋ 发布文章</button>
     <span>站主模式</span>
+    <button type="button" id="site-admin-logout" aria-label="退出站主模式">退出</button>
   </div>
   <script>
   (function () {
@@ -75,6 +76,7 @@
     var login = document.getElementById('site-admin-login');
     var error = document.getElementById('site-admin-error');
     var owner = document.getElementById('site-admin-owner');
+    var logout = document.getElementById('site-admin-logout');
     var desktopQuery = window.matchMedia ? window.matchMedia('(min-width: 801px)') : null;
     function placeControls() {
       var mobile = (desktopQuery ? !desktopQuery.matches : window.innerWidth <= 800);
@@ -143,6 +145,11 @@
     }
     verifySession();
     consumeAuthCallback();
+    logout.addEventListener('click', function () {
+      sessionStorage.removeItem(sessionKey);
+      setOwnerMode(false);
+      trigger.focus();
+    });
     trigger.addEventListener('click', function () { error.hidden = true; dialog.hidden = false; login.focus(); });
     function closeDialog() { dialog.hidden = true; trigger.focus(); }
     close.addEventListener('click', closeDialog);
@@ -183,6 +190,8 @@
   #site-admin-trigger:hover{background:#f5f8fb;border-color:#c6d2de}
   #site-admin-trigger:focus-visible,#site-admin-new-post:focus-visible,.site-admin-close:focus-visible,#site-admin-login:focus-visible{outline:3px solid #6d91b4;outline-offset:2px}
   #site-admin-owner{display:flex;align-items:center;gap:9px;color:#52745a;background:#fff;padding:6px 10px;border:1px solid #dfe4df;border-radius:4px;box-shadow:0 2px 8px #0000000d}
+  #site-admin-logout{min-height:30px;padding:0 9px;border:1px solid #dfe4df;border-radius:4px;background:#fff;color:#748079;font:600 11px/1.2 "lucida grande",Arial,sans-serif;cursor:pointer}
+  #site-admin-logout:hover{background:#f5f8f6;border-color:#cbd8ce}
   #site-admin-owner span{font-size:11px;white-space:nowrap}
   #site-admin-new-post{min-height:38px;background:#4d4d4d;color:#fff;border-color:#4d4d4d}
   #site-admin-new-post:hover{background:#35393d}
@@ -216,6 +225,7 @@
     #mobile-nav .btnctn.js-mobile-btnctn{width:100%;display:flex;align-items:flex-start;justify-content:space-between;padding-right:8px}
     #site-admin-trigger{min-height:44px;padding:0 12px;font-size:12px}
     #site-admin-owner{gap:7px;padding:4px 7px}
+    #site-admin-logout{min-height:36px;padding:0 8px}
     #site-admin-owner span{font-size:10px}
     #site-admin-new-post{min-height:44px;padding:0 11px;font-size:12px}
     #site-admin-dialog{padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom))}
@@ -362,11 +372,14 @@
   
 
         </div>
-        
-        <a href="/2018/01/31/%E5%85%B3%E4%BA%8E%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E6%8D%9F%E8%80%97%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%9C%A8%E5%87%A0%E7%A7%8D%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B7%AE%E5%BC%82%E7%BA%AA%E8%A6%81/" class="archive-article-date">
+        <div class="article-admin-meta">
+          <button class="site-admin-edit" type="button" data-site-admin-edit hidden data-slug="关于运行时的损耗和内存管理在几种语言中的差异纪要" aria-label="编辑文章：关于运行时的损耗和内存管理在几种语言中的差异纪要">编辑文章</button>
+          
+          <a href="/2018/01/31/%E5%85%B3%E4%BA%8E%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E6%8D%9F%E8%80%97%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%9C%A8%E5%87%A0%E7%A7%8D%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B7%AE%E5%BC%82%E7%BA%AA%E8%A6%81/" class="archive-article-date">
   	<time datetime="2018-01-31T04:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-31</time>
 </a>
-        
+          
+        </div>
       </header>
     
     <div class="article-entry" itemprop="articleBody">

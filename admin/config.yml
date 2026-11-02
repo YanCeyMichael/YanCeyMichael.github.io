@@ -11,6 +11,8 @@ publish_mode: simple
 media_folder: source/images
 public_folder: /images
 locale: zh
+slug:
+  encoding: unicode
 
 collections:
   - name: posts
@@ -26,4 +28,9 @@ collections:
       - { label: 发布日期, name: date, widget: datetime }
       - { label: 分类, name: categories, widget: list, required: false }
       - { label: 标签, name: tags, widget: list, required: false }
-      - { label: 正文, name: body, widget: markdown }
+      - label: 正文
+        name: body
+        widget: richtext
+        modes: [raw]
+        sanitize_preview: true
+        hint: 支持 Markdown。右侧会同步显示 Yilia 阅读预览。
