@@ -21,9 +21,10 @@
   }
   function registerPreview() {
     var cms = window.CMS;
-    if (!cms || !cms.createClass || !cms.registerPreviewTemplate || window.__yiliaV17PreviewRegistered) return;
-    var h = cms.h;
-    var Preview = cms.createClass({
+    var createClass = window.createClass || (cms && cms.createClass);
+    var h = window.h || (cms && cms.h);
+    if (!cms || !createClass || !h || !cms.registerPreviewTemplate || window.__yiliaV17PreviewRegistered) return false;
+    var Preview = createClass({
       render: function () {
         var entry = this.props.entry;
         var data = entry && entry.get ? entry.get('data') : null;
@@ -42,8 +43,9 @@
       }
     });
     cms.registerPreviewTemplate('posts', Preview);
-    if (cms.registerPreviewStyle) cms.registerPreviewStyle('/admin/admin-preview.css?v=1.7.2');
+    if (cms.registerPreviewStyle) cms.registerPreviewStyle('/admin/admin-preview.css?v=1.7.3');
     window.__yiliaV17PreviewRegistered = true;
+    return true;
   }
   function decorate() {
     var workspace = document.querySelector('.admin-workspace');
@@ -89,6 +91,12 @@
   var observer = new MutationObserver(decorate);
   observer.observe(root, { childList: true, subtree: true, characterData: true });
   window.addEventListener('hashchange', decorate);
-  registerPreview();
+  if (!registerPreview()) {
+    var previewAttempts = 0;
+    var previewRetry = window.setInterval(function () {
+      previewAttempts += 1;
+      if (registerPreview() || previewAttempts >= 40) window.clearInterval(previewRetry);
+    }, 100);
+  }
   decorate();
 })();
