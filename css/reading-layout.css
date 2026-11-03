@@ -1,5 +1,5 @@
 .article-inner{background:#fff;color:#30383e}
-.article-entry{max-width:74ch;margin-inline:auto;line-height:1.9;overflow-wrap:break-word}
+.article-entry{line-height:1.9;overflow-wrap:break-word}
 .article-entry img{max-width:100%;height:auto}
 .article-header .article-title{font-family:Georgia,"Songti SC",serif;color:#485158}
 .article{box-shadow:0 2px 8px #1c2c390a}
