@@ -20,3 +20,5 @@ body{padding:clamp(20px,4vw,42px)}
 .yilia-v17-preview-empty strong{color:#59616a;font-size:15px;font-weight:600}
 .yilia-v17-preview-empty p{max-width:34em;margin:5px 0 0;font-size:12px;line-height:1.7}
 @media(max-width:640px){body{padding:16px}.yilia-v17-preview-head{padding-bottom:14px}.yilia-v17-preview-body{padding:14px 2px;font-size:15px}.yilia-v17-preview-empty{min-height:240px;padding:18px}}
+
+.yilia-about-preview{max-width:680px;margin:0 auto;padding:10px 0;color:#4d4d4d}.yilia-about-preview h1{margin:8px 0 20px;padding-left:14px;border-left:4px solid #4d4d4d;color:#696969;font:400 clamp(24px,3vw,31px)/1.5 Georgia,"Songti SC",serif}.yilia-about-preview-bio{margin:0;padding:17px 0;border-top:1px solid #e1e5e9;color:#687178;font-size:15px;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere}

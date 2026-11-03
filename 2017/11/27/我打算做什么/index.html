@@ -16,7 +16,7 @@
 <meta property="og:description" content="周末，就着3.0版本上架空档期，也感谢组织没有给我额外的任务，让我愉快的放松了两天，心里一直在思忖着：我能做些什么和我打算做些什么。 其实说实话，蛮多的感慨，因为我跟团队大部分人可能并不那么特别相似，其实2月份决定来放弃所有的合肥其他的offer来飞修更大的原因是项目的可行性和项目的公益性，项目可行我们已经用这么长的时间进行了验证，可能很少人会像我一样去考虑项目的公益性，我觉得一个项目的社会价值是">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-11-27T08:55:01.000Z">
-<meta property="article:modified_time" content="2026-11-02T22:46:13.559Z">
+<meta property="article:modified_time" content="2026-11-03T17:04:07.949Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="Essays">
 <meta name="twitter:card" content="summary">
@@ -99,7 +99,7 @@
       owner.hidden = !enabled;
       trigger.hidden = enabled;
       document.documentElement.classList.toggle('site-owner-mode', enabled);
-      document.querySelectorAll('[data-site-admin-edit]').forEach(function (item) { item.hidden = !enabled; });
+      document.querySelectorAll('[data-site-admin-edit], [data-site-admin-edit-about]').forEach(function (item) { item.hidden = !enabled; });
     }
     function verifySession() {
       var token = readSession();
@@ -175,6 +175,11 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dialog.hidden) closeDialog(); });
     document.getElementById('site-admin-new-post').addEventListener('click', function () { location.href = '/admin/#/collections/posts/new'; });
     document.addEventListener('click', function (event) {
+      var about = event.target.closest && event.target.closest('[data-site-admin-edit-about]');
+      if (about && !about.hidden && document.documentElement.classList.contains('site-owner-mode')) {
+        location.href = '/admin/#/collections/site/entries/about';
+        return;
+      }
       var item = event.target.closest && event.target.closest('[data-site-admin-edit]');
       if (!item || item.hidden || !document.documentElement.classList.contains('site-owner-mode')) return;
       location.href = '/admin/#/collections/posts/entries/' + encodeURIComponent(item.dataset.slug);
@@ -244,6 +249,8 @@
     .article-admin-meta{position:static;width:100%;align-items:flex-end;gap:4px;margin:2px 0 0}
     .article-admin-meta .archive-article-date{width:auto;max-width:100%;margin-right:0}
   }
+  .site-admin-about-hero{display:flex;align-items:center;gap:14px;margin-bottom:18px}.site-admin-about-avatar{width:62px;height:62px;flex:none;border:4px solid #f1f4f6;border-radius:50%;object-fit:cover}.site-admin-about-kicker{color:#7896b0;font-size:10px;font-weight:700;letter-spacing:.12em}.site-admin-about-hero h2{margin:5px 0 0;color:#50595f;font:400 22px/1.4 Georgia,"Songti SC",serif}.site-admin-about-bio{margin:0;padding:16px 0;border-top:1px solid #e1e5e9;color:#687178;font-size:14px;line-height:1.9;white-space:pre-line;overflow-wrap:anywhere}.site-admin-about-edit{margin-top:10px}
+  .tools-section-all .article-tag-list-item a::after{content:attr(data-count);display:inline-grid;place-items:center;min-width:16px;height:16px;margin-left:5px;padding:0 4px;border-radius:10px;background:#ffffffa8;color:inherit;font-size:10px;line-height:1;opacity:.8}
   @media(prefers-reduced-motion:reduce){#site-admin-root *,#site-admin-root *::before,#site-admin-root *::after{scroll-behavior:auto!important;transition:none!important}}
   </style>
 </div>
@@ -470,8 +477,6 @@
       
 
       
-
-      
         
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
@@ -688,255 +693,255 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="2" aria-label="C，2 篇文章">C</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">malloc()</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="2" aria-label="malloc()，2 篇文章">malloc()</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">free()</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="1" aria-label="free()，1 篇文章">free()</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="6" aria-label="JavaScript，6 篇文章">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 输出</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="JavaScript 输出，1 篇文章">JavaScript 输出</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 语句</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="JavaScript 语句，1 篇文章">JavaScript 语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 注释</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="JavaScript 注释，1 篇文章">JavaScript 注释</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 变量</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="JavaScript 变量，1 篇文章">JavaScript 变量</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 数据类型</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="JavaScript 数据类型，1 篇文章">JavaScript 数据类型</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript 声明变量类型</a>
+                <a href="javascript:void(0)" class="js-tag color3" data-count="1" aria-label="JavaScript 声明变量类型，1 篇文章">JavaScript 声明变量类型</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 对象</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="JavaScript 对象，1 篇文章">JavaScript 对象</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 函数</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="JavaScript 函数，1 篇文章">JavaScript 函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 运算符</a>
+                <a href="javascript:void(0)" class="js-tag color5" data-count="1" aria-label="JavaScript 运算符，1 篇文章">JavaScript 运算符</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 判断语句</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="JavaScript 判断语句，1 篇文章">JavaScript 判断语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 循环语句</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="JavaScript 循环语句，1 篇文章">JavaScript 循环语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript try语句</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="1" aria-label="JavaScript try语句，1 篇文章">JavaScript try语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript catch语句</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="JavaScript catch语句，1 篇文章">JavaScript catch语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript throw语句</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="JavaScript throw语句，1 篇文章">JavaScript throw语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 表单验证</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="JavaScript 表单验证，1 篇文章">JavaScript 表单验证</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript with语句</a>
+                <a href="javascript:void(0)" class="js-tag color3" data-count="1" aria-label="JavaScript with语句，1 篇文章">JavaScript with语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript this语句</a>
+                <a href="javascript:void(0)" class="js-tag color3" data-count="1" aria-label="JavaScript this语句，1 篇文章">JavaScript this语句</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript HTML DOM</a>
+                <a href="javascript:void(0)" class="js-tag color5" data-count="1" aria-label="JavaScript HTML DOM，1 篇文章">JavaScript HTML DOM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="JavaScript HTML，1 篇文章">JavaScript HTML</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cpp</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="3" aria-label="Cpp，3 篇文章">Cpp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="3" aria-label="OpenCV，3 篇文章">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="7" aria-label="Python，7 篇文章">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 基础</a>
+                <a href="javascript:void(0)" class="js-tag color5" data-count="1" aria-label="Python 基础，1 篇文章">Python 基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="1" aria-label="Python 数据结构，1 篇文章">Python 数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Python 条件判断循环</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="Python 条件判断循环，1 篇文章">Python 条件判断循环</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 函数</a>
+                <a href="javascript:void(0)" class="js-tag color5" data-count="1" aria-label="Python 函数，1 篇文章">Python 函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 递归函数</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="1" aria-label="Python 递归函数，1 篇文章">Python 递归函数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python 高级特性</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="1" aria-label="Python 高级特性，1 篇文章">Python 高级特性</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python 函数式编程</a>
+                <a href="javascript:void(0)" class="js-tag color3" data-count="1" aria-label="Python 函数式编程，1 篇文章">Python 函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 模块</a>
+                <a href="javascript:void(0)" class="js-tag color5" data-count="1" aria-label="Python 模块，1 篇文章">Python 模块</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OC</a>
+                <a href="javascript:void(0)" class="js-tag color3" data-count="3" aria-label="OC，3 篇文章">OC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SDWebImage</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="SDWebImage，1 篇文章">SDWebImage</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="https，1 篇文章">https</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">autolayout</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="autolayout，1 篇文章">autolayout</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">autoresizing</a>
+                <a href="javascript:void(0)" class="js-tag color3" data-count="1" aria-label="autoresizing，1 篇文章">autoresizing</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">约束改变添加动画注意事项</a>
+                <a href="javascript:void(0)" class="js-tag color3" data-count="1" aria-label="约束改变添加动画注意事项，1 篇文章">约束改变添加动画注意事项</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">weak</a>
+                <a href="javascript:void(0)" class="js-tag color5" data-count="1" aria-label="weak，1 篇文章">weak</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">weak singleton</a>
+                <a href="javascript:void(0)" class="js-tag color5" data-count="1" aria-label="weak singleton，1 篇文章">weak singleton</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">弱单例模式</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="弱单例模式，1 篇文章">弱单例模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="Notes，1 篇文章">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Essays</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="16" aria-label="Essays，16 篇文章">Essays</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
+                <a href="javascript:void(0)" class="js-tag color5" data-count="1" aria-label="人脸识别，1 篇文章">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+                <a href="javascript:void(0)" class="js-tag color5" data-count="1" aria-label="内存管理，1 篇文章">内存管理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">POST请求</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="1" aria-label="POST请求，1 篇文章">POST请求</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">POSTMAN</a>
+                <a href="javascript:void(0)" class="js-tag color3" data-count="1" aria-label="POSTMAN，1 篇文章">POSTMAN</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">form-data</a>
+                <a href="javascript:void(0)" class="js-tag color5" data-count="1" aria-label="form-data，1 篇文章">form-data</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">x-www-form-urlencoded</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="1" aria-label="x-www-form-urlencoded，1 篇文章">x-www-form-urlencoded</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">row</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="row，1 篇文章">row</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">binary</a>
+                <a href="javascript:void(0)" class="js-tag color2" data-count="1" aria-label="binary，1 篇文章">binary</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图床</a>
+                <a href="javascript:void(0)" class="js-tag color3" data-count="1" aria-label="图床，1 篇文章">图床</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo+Yilia</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="Hexo+Yilia，1 篇文章">Hexo+Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PC端</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="PC端，1 篇文章">PC端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">音乐播放器</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="音乐播放器，1 篇文章">音乐播放器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">alloc()</a>
+                <a href="javascript:void(0)" class="js-tag color3" data-count="1" aria-label="alloc()，1 篇文章">alloc()</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">calloc()</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="calloc()，1 篇文章">calloc()</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">realloc()</a>
+                <a href="javascript:void(0)" class="js-tag color5" data-count="1" aria-label="realloc()，1 篇文章">realloc()</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LRU</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="LRU，1 篇文章">LRU</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 简介</a>
+                <a href="javascript:void(0)" class="js-tag color4" data-count="1" aria-label="JavaScript 简介，1 篇文章">JavaScript 简介</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript 基本概念</a>
+                <a href="javascript:void(0)" class="js-tag color1" data-count="1" aria-label="JavaScript 基本概念，1 篇文章">JavaScript 基本概念</a>
               </li>
             
             <div class="clearfix"></div>
@@ -963,7 +968,6 @@ MathJax.Hub.Queue(function() {
       link: false
       permalink: false
       excerpt: false
-      categories: false
       tags: true
 </pre>
           </p>
@@ -985,15 +989,24 @@ MathJax.Hub.Queue(function() {
     
 
     
-    	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">玩泥长大，乡村野夫 &lt;br&gt;&lt;br&gt; 而立有三，碌碌无为 &lt;br&gt;&lt;br&gt; 资质平庸，认知局限</div>
-  	  	
+    <section class="tools-section tools-section-me" q-show="aboutme">
+      
+      
+        <div class="aboutme-wrap">
+          <div class="site-admin-about-hero">
+            <img class="site-admin-about-avatar" src="https://i.loli.net/2019/12/13/EA94wtrRblMOnN1.jpg" alt="Yancey 的头像">
+            <div><span class="site-admin-about-kicker">ABOUT THE AUTHOR</span><h2>你好，我是 Yancey。</h2></div>
+          </div>
+          <p class="site-admin-about-bio" id="js-aboutme">这里记录技术实践、生活观察和一路上的思考。</p>
+          <button class="site-admin-edit site-admin-about-edit" type="button" data-site-admin-edit-about hidden>编辑简介</button>
+        </div>
+      
     	</section>
     
   </div>
   
 </div>
+
     <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 

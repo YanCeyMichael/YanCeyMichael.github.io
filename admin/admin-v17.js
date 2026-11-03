@@ -30,7 +30,6 @@
         var data = entry && entry.get ? entry.get('data') : null;
         var title = data && data.get ? data.get('title') : '';
         var date = data && data.get ? data.get('date') : '';
-        var categories = data && data.get ? data.get('categories') : null;
         var tags = data && data.get ? data.get('tags') : null;
         var body = data && data.get ? data.get('body') : '';
         var plainBody = typeof body === 'string' ? body.trim() : '';
@@ -39,14 +38,13 @@
         function listText(value) {
           return value && value.toArray ? value.toArray().filter(Boolean).join(' · ') : (Array.isArray(value) ? value.filter(Boolean).join(' · ') : String(value || ''));
         }
-        var categoryText = listText(categories);
         var tagText = listText(tags);
         return h('article', { className: 'yilia-v17-preview' },
           h('header', { className: 'yilia-v17-preview-head' },
             h('p', { className: 'yilia-v17-preview-kicker' }, 'YANCEY’S BLOG · 文章预览'),
             h('h1', null, String(title || '未命名文章')),
             date ? h('time', null, String(date)) : null,
-            (categoryText || tagText) ? h('div', { className: 'yilia-v17-preview-taxonomy' }, [categoryText, tagText].filter(Boolean).join('　/　')) : null
+            tagText ? h('div', { className: 'yilia-v17-preview-taxonomy' }, tagText) : null
           ),
           plainBody
             ? h('div', { className: 'yilia-v17-preview-body' }, bodyPreview)
@@ -59,7 +57,21 @@
       }
     });
     cms.registerPreviewTemplate('posts', Preview);
-    if (cms.registerPreviewStyle) cms.registerPreviewStyle('/admin/admin-preview.css?v=1.7.3');
+    var AboutPreview = createClass({
+      render: function () {
+        var entry = this.props.entry;
+        var data = entry && entry.get ? entry.get('data') : null;
+        var bio = data && data.get ? data.get('bio') : '';
+        var value = typeof bio === 'string' ? bio : String(bio || '');
+        return h('article', { className: 'yilia-about-preview' },
+          h('p', { className: 'yilia-v17-preview-kicker' }, 'ABOUT THE AUTHOR'),
+          h('h1', null, '你好，我是 Yancey。'),
+          h('p', { className: 'yilia-about-preview-bio' }, value || '输入个人简介后，这里会同步显示预览。')
+        );
+      }
+    });
+    cms.registerPreviewTemplate('site', AboutPreview);
+    if (cms.registerPreviewStyle) cms.registerPreviewStyle('/admin/admin-preview.css?v=1.8.1');
     window.__yiliaV17PreviewRegistered = true;
     return true;
   }
@@ -67,6 +79,39 @@
     var workspace = document.querySelector('.admin-workspace');
     var isEditor = /#\/collections\/posts\/(new|entries\/)/.test(location.hash);
     if (workspace) workspace.classList.toggle('v17-editor-mode', isEditor);
+    document.querySelectorAll('.admin-nav a').forEach(function (link) {
+      var aboutActive = /#\/collections\/site\/entries\/about/.test(location.hash);
+      link.classList.toggle('active', aboutActive ? /collections\/site\/entries\/about/.test(link.href) : /collections\/posts/.test(link.href));
+    });
+    var bioLabel = findLabel('个人简介');
+    var bioField = fieldFor(bioLabel);
+    if (bioField) {
+      bioField.classList.add('v17-about-field');
+      var bioInput = bioField.querySelector('textarea');
+      if (bioInput) {
+        bioInput.maxLength = 100;
+        var counter = bioField.querySelector('.v17-about-count');
+        if (!counter) {
+          counter = document.createElement('div');
+          counter.className = 'v17-about-count';
+          bioInput.insertAdjacentElement('afterend', counter);
+        }
+        counter.textContent = Array.from(bioInput.value || '').length + ' / 100';
+        counter.classList.toggle('limit', Array.from(bioInput.value || '').length >= 90);
+      }
+    }
+    if (!root.__v17AboutCounterBound) {
+      root.__v17AboutCounterBound = true;
+      root.addEventListener('input', function (event) {
+        if (!event.target.matches('.v17-about-field textarea')) return;
+        var counter = event.target.parentElement.querySelector('.v17-about-count') || event.target.closest('.v17-about-field').querySelector('.v17-about-count');
+        if (counter) {
+          counter.textContent = Array.from(event.target.value || '').length + ' / 100';
+          counter.classList.toggle('limit', Array.from(event.target.value || '').length >= 90);
+        }
+      });
+    }
+
 
     var publish = Array.from(root.querySelectorAll('button')).find(function (button) { return /^(publish|published|draft)\b/i.test(text(button)); });
     if (publish) { publish.classList.add('v17-publish-action'); publish.setAttribute('aria-label', '发布更新'); }
@@ -88,9 +133,9 @@
       }
     }
 
-    var names = ['标题', '发布日期', '分类', '标签'];
+    var names = ['标题', '发布日期', '标签'];
     var fields = names.map(function (name) { var label = findLabel(name); var field = fieldFor(label); if (field) field.classList.add('v17-meta-field'); return field; }).filter(Boolean);
-    if (fields.length === 4) {
+    if (fields.length === 3) {
       var common = fields[0];
       while (common && !fields.every(function (field) { return common.contains(field); })) common = common.parentElement;
       if (common && common !== root) {

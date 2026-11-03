@@ -26,7 +26,6 @@ collections:
     fields:
       - { label: 标题, name: title, widget: string }
       - { label: 发布日期, name: date, widget: datetime }
-      - { label: 分类, name: categories, widget: list, required: false }
       - { label: 标签, name: tags, widget: list, required: false }
       - label: 正文
         name: body
@@ -34,3 +33,17 @@ collections:
         modes: [raw]
         sanitize_preview: true
         hint: 支持 Markdown。右侧会同步显示 Yilia 阅读预览。
+
+  - name: site
+    label: 站点内容
+    files:
+      - label: About Me
+        name: about
+        file: source/_data/about.yml
+        fields:
+          - label: 个人简介
+            name: bio
+            widget: text
+            required: true
+            hint: 访客可见；最多 100 字。提交后写回站点内容并触发发布。
+            pattern: ['^[\s\S]{1,100}$', '简介需填写且不能超过 100 字']
