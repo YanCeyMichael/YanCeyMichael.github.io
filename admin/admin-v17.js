@@ -71,8 +71,86 @@
       }
     });
     cms.registerPreviewTemplate('site', AboutPreview);
-    if (cms.registerPreviewStyle) cms.registerPreviewStyle('/admin/admin-preview.css?v=1.8.1');
+    if (cms.registerPreviewStyle) cms.registerPreviewStyle('/admin/admin-preview.css?v=1.9.0');
     window.__yiliaV17PreviewRegistered = true;
+    return true;
+  }
+
+  function registerTagPicker() {
+    var cms = window.CMS;
+    var createClass = window.createClass || (cms && cms.createClass);
+    var h = window.h || (cms && cms.h);
+    if (!cms || !createClass || !h || window.__yiliaTagPickerRegistered) return false;
+    var TagPicker = createClass({
+      getInitialState: function () { return { query: '', tags: [] }; },
+      componentDidMount: function () {
+        var self = this;
+        fetch('/content.json?tag-index=' + Date.now()).then(function (response) {
+          if (!response.ok) throw new Error('tag index unavailable');
+          return response.json();
+        }).then(function (posts) {
+          var merged = {};
+          (Array.isArray(posts) ? posts : []).forEach(function (post) {
+            (Array.isArray(post.tags) ? post.tags : []).forEach(function (tag) {
+              var name = String(typeof tag === 'string' ? tag : tag && tag.name || '').normalize('NFC').trim().replace(/\s+/g, ' ');
+              if (!name) return;
+              var key = /[A-Za-z]/.test(name) ? name.toLocaleLowerCase() : name;
+              if (!merged[key]) merged[key] = name;
+            });
+          });
+          self.setState({ tags: Object.keys(merged).map(function (key) { return merged[key]; }).sort(function (a, b) { return a.localeCompare(b, 'zh-CN'); }) });
+        }).catch(function () { self.setState({ tags: [] }); });
+      },
+      getValues: function () {
+        var value = this.props.value;
+        return value && value.toArray ? value.toArray() : (Array.isArray(value) ? value : []);
+      },
+      commit: function (values) {
+        var normalized = [];
+        var seen = {};
+        values.forEach(function (item) {
+          var name = String(item || '').normalize('NFC').trim().replace(/\s+/g, ' ');
+          var key = /[A-Za-z]/.test(name) ? name.toLocaleLowerCase() : name;
+          if (name && !seen[key]) { seen[key] = true; normalized.push(name); }
+        });
+        var Immutable = window.Immutable || (window.CMS && window.CMS.Immutable);
+        var List = (Immutable && Immutable.List) || (this.props.value && this.props.value.constructor);
+        this.props.onChange(List ? List(normalized) : normalized);
+      },
+      addTag: function (name) {
+        var values = this.getValues();
+        var normalized = String(name || '').trim();
+        if (!normalized) return;
+        this.commit(values.concat([normalized]));
+        this.setState({ query: '' });
+      },
+      render: function () {
+        var self = this;
+        var values = this.getValues();
+        var query = this.state.query.trim();
+        var selected = {};
+        values.forEach(function (item) {
+          var name = String(item || '').normalize('NFC').trim().replace(/\s+/g, ' ');
+          selected[/[A-Za-z]/.test(name) ? name.toLocaleLowerCase() : name] = true;
+        });
+        var suggestions = this.state.tags.filter(function (tag) {
+          var tagKey = /[A-Za-z]/.test(tag) ? tag.toLocaleLowerCase() : tag;
+          return !selected[tagKey] && (!query || tag.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1);
+        }).slice(0, 16);
+        return h('div', { className: 'v17-tag-picker' },
+          h('div', { className: 'v17-tag-picked', 'aria-label': '已选标签' }, values.map(function (tag, index) {
+            return h('span', { className: 'v17-tag-chip', key: String(tag) + index }, String(tag),
+              h('button', { type: 'button', 'aria-label': '移除标签 ' + tag, onClick: function () { self.commit(values.filter(function (_, i) { return i !== index; })); } }, '×'));
+          })),
+          h('input', { type: 'text', className: 'v17-tag-search', value: query, placeholder: '搜索已有标签，或输入新标签后按 Enter 添加', 'aria-label': '搜索或添加标签', onChange: function (event) { self.setState({ query: event.target.value }); }, onKeyDown: function (event) { if (event.key === 'Enter') { event.preventDefault(); self.addTag(query); } } }),
+          h('div', { className: 'v17-tag-suggestions', 'aria-label': '已有标签，可搜索复用' }, suggestions.map(function (tag) {
+            return h('button', { type: 'button', className: 'v17-tag-suggestion', key: tag, onClick: function () { self.addTag(tag); } }, tag);
+          })),
+          h('p', { className: 'v17-tag-help' }, '已有标签来自文章 front matter 的汇总；输入新标签并按 Enter 添加。保存后写入当前文章 Markdown 标签。'));
+      }
+    });
+    cms.registerWidget('tag_picker', TagPicker);
+    window.__yiliaTagPickerRegistered = true;
     return true;
   }
   function decorate() {
@@ -212,8 +290,10 @@
     var previewAttempts = 0;
     var previewRetry = window.setInterval(function () {
       previewAttempts += 1;
+      registerTagPicker();
       if (registerPreview() || previewAttempts >= 40) window.clearInterval(previewRetry);
     }, 100);
   }
+  registerTagPicker();
   decorate();
 })();

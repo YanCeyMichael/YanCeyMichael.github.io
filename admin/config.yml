@@ -26,7 +26,7 @@ collections:
     fields:
       - { label: 标题, name: title, widget: string }
       - { label: 发布日期, name: date, widget: datetime }
-      - { label: 标签, name: tags, widget: list, required: false }
+      - { label: 标签, name: tags, widget: tag_picker, required: false }
       - label: 正文
         name: body
         widget: richtext
