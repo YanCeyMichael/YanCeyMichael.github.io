@@ -1,0 +1,13 @@
+.article-inner{background:#fff;color:#30383e}
+.article-entry{max-width:74ch;margin-inline:auto;line-height:1.9;overflow-wrap:break-word}
+.article-entry img{max-width:100%;height:auto}
+.article-header .article-title{font-family:Georgia,"Songti SC",serif;color:#485158}
+.article{box-shadow:0 2px 8px #1c2c390a}
+@media(max-width:800px){
+#mobile-nav .header-author{font:400 25px/1.35 Georgia,"Songti SC",serif}
+#mobile-nav .header-subtitle{display:block;color:#657078;font-size:13px}
+#mobile-nav .header-menu ul{display:flex;justify-content:center;margin-inline:auto}
+#mobile-nav .header-menu a{display:inline-flex;align-items:center;min-height:44px}
+#mobile-nav .header-nav{margin:4px auto 14px}
+.article-entry{font-size:16px;line-height:1.85}
+}
