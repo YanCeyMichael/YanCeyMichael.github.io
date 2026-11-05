@@ -3,6 +3,31 @@
 .article-entry img{max-width:100%;height:auto}
 .article-header .article-title{font-family:Georgia,"Songti SC",serif;color:#485158}
 .article{box-shadow:0 2px 8px #1c2c390a}
+.article-title-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  column-gap:14px;
+  row-gap:4px;
+  margin-left:-5px;
+}
+.article-title-row h1{margin-bottom:0}
+.article-title-row .archive-article-date{
+  display:inline-flex;
+  align-items:center;
+  float:none;
+  width:auto;
+  margin:0;
+  color:#999;
+  font-size:14px;
+  line-height:1.5;
+}
+.article-title-row .archive-article-date .icon{
+  margin:0 4px 0 0;
+  font-size:14px;
+  position:relative;
+  top:1px;
+}
 .article-index.article-has-media .article-inner{overflow:clip}
 .list-entry-layout{
   display:grid;
