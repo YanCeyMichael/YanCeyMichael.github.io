@@ -447,7 +447,8 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Python07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    
+<article id="post-Python07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -543,7 +544,8 @@ def greeting(name):
 
 
   
-    <article id="post-Python06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    
+<article id="post-Python06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -568,7 +570,8 @@ def greeting(name):
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.<br>理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作为参数使用传递.</p>
+        
+          <h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>定义:把函数作为参数传入,这样的函数称为高阶函数,函数式编程就是指这种高度抽象的编程范式.<br>理解:个人以为这种思想和逻辑思路,在C语言上早就有,C中的指向函数指针的指针这种思想概念是可以的,而OC中却没有强化这种概念,OC的Block已经强大到足够完成这种纬度的调用和处理业务的场景复杂度,JavaScript这种脚本语言和Python解释型语言反而愈加强化这种观念,将函数(本质上是指针)作为参数使用传递.</p>
 <h2 id="变量可以指向函数"><a href="#变量可以指向函数" class="headerlink" title="变量可以指向函数"></a>变量可以指向函数</h2><pre><code>&gt;&gt;&gt; x = abs(-10)
 &gt;&gt;&gt; x
 10
@@ -593,8 +596,9 @@ f = abs
 f(x) + f(y) ==&gt; abs(-5) + abs(6) ==&gt; 11
 return 11
 </code></pre><p>编写高阶函数,就是让函数的参数能够接收别的函数.</p>
-        
-          <a class="article-more-a" href="/2017/12/19/Python06/#more">more >></a>
+          
+            <a class="article-more-a" href="/2017/12/19/Python06/#more">more >></a>
+          
         
       
 
@@ -650,7 +654,8 @@ return 11
 
 
   
-    <article id="post-Python05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    
+<article id="post-Python05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -675,14 +680,16 @@ return 11
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>在很多编程语言中,针对字符串提供了很多各种截取函数（例如,substring）,其实目的就是对字符串切片.Python没有针对字符串的截取函数,只需要切片一个操作就可以完成,非常简单.</p>
+        
+          <h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>在很多编程语言中,针对字符串提供了很多各种截取函数（例如,substring）,其实目的就是对字符串切片.Python没有针对字符串的截取函数,只需要切片一个操作就可以完成,非常简单.</p>
 <p>Python针对所有需要截取的操作,统一都用切片操作来处理,比如对list,tuple元素的截取,对string的字符截取,都可以用切片操作来完成.</p>
 <pre><code>[1,2,3,4,5] [0:5]
 (0, 1, 2, 3, 4, 5)[:3]
 &apos;string&apos;[1:3]
 </code></pre>
-        
-          <a class="article-more-a" href="/2017/12/16/Python05/#more">more >></a>
+          
+            <a class="article-more-a" href="/2017/12/16/Python05/#more">more >></a>
+          
         
       
 
@@ -738,7 +745,8 @@ return 11
 
 
   
-    <article id="post-Python04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    
+<article id="post-Python04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -763,9 +771,11 @@ return 11
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h1><p>在函数内部,可以调用其他函数.如果一个函数在内部调用自身本身,这个函数就是递归函数.<br>递归函数的优点是定义简单,逻辑清晰.理论上,所有的递归函数都可以写成循环的方式,但循环的逻辑不如递归清晰.<br>使用递归函数需要注意防止栈溢出.在计算机中,函数调用是通过栈（stack）这种数据结构实现的,每当进入一个函数调用,栈就会加一层栈帧,每当函数返回,栈就会减一层栈帧.由于栈的大小不是无限的,所以,递归调用的次数过多,会导致栈溢出.<br>解决递归调用栈溢出的方法是通过尾递归优化,事实上尾递归和循环的效果是一样的,所以,把循环看成是一种特殊的尾递归函数也是可以的.<br>尾递归是指,在函数返回的时候,调用自身本身,并且,return语句不能包含表达式.这样,编译器或者解释器就可以把尾递归做优化,使递归本身无论调用多少次,都只占用一个栈帧,不会出现栈溢出的情况.<br>尾递归调用时,如果做了优化,栈不会增长,因此,无论多少次调用也不会导致栈溢出.<br>使用递归函数的优点是逻辑简单清晰,缺点是过深的调用会导致栈溢出.<br>针对尾递归优化的语言可以通过尾递归防止栈溢出.尾递归事实上和循环是等价的,没有循环语句的编程语言只能通过尾递归实现循环.<br>Python标准的解释器没有针对尾递归做优化,任何递归函数都存在栈溢出的问题.</p>
         
-          <a class="article-more-a" href="/2017/12/15/Python04/#more">more >></a>
+          <h1 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h1><p>在函数内部,可以调用其他函数.如果一个函数在内部调用自身本身,这个函数就是递归函数.<br>递归函数的优点是定义简单,逻辑清晰.理论上,所有的递归函数都可以写成循环的方式,但循环的逻辑不如递归清晰.<br>使用递归函数需要注意防止栈溢出.在计算机中,函数调用是通过栈（stack）这种数据结构实现的,每当进入一个函数调用,栈就会加一层栈帧,每当函数返回,栈就会减一层栈帧.由于栈的大小不是无限的,所以,递归调用的次数过多,会导致栈溢出.<br>解决递归调用栈溢出的方法是通过尾递归优化,事实上尾递归和循环的效果是一样的,所以,把循环看成是一种特殊的尾递归函数也是可以的.<br>尾递归是指,在函数返回的时候,调用自身本身,并且,return语句不能包含表达式.这样,编译器或者解释器就可以把尾递归做优化,使递归本身无论调用多少次,都只占用一个栈帧,不会出现栈溢出的情况.<br>尾递归调用时,如果做了优化,栈不会增长,因此,无论多少次调用也不会导致栈溢出.<br>使用递归函数的优点是逻辑简单清晰,缺点是过深的调用会导致栈溢出.<br>针对尾递归优化的语言可以通过尾递归防止栈溢出.尾递归事实上和循环是等价的,没有循环语句的编程语言只能通过尾递归实现循环.<br>Python标准的解释器没有针对尾递归做优化,任何递归函数都存在栈溢出的问题.</p>
+          
+            <a class="article-more-a" href="/2017/12/15/Python04/#more">more >></a>
+          
         
       
 
@@ -821,7 +831,8 @@ return 11
 
 
   
-    <article id="post-Python03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    
+<article id="post-Python03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -846,13 +857,15 @@ return 11
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>要调用一个函数,需要知道函数的名称和参数,比如求绝对值的函数abs,只有一个参数.<br>调用函数的时候,如果传入的参数数量不对,会报TypeError的错误,并且Python会明确地告诉你:abs()有且仅有1个参数,但给出了两个.<br>如果传入的参数数量是对的,但参数类型不能被函数所接受,也会报TypeError的错误,并且给出错误信息.<br>Python在数据转换的时候,也可以用数据类型转换函数.<br>函数名其实就是指向一个函数对象的引用,完全可以把函数名赋给一个变量,相当于给这个函数起了一个“别名”.</p>
+        
+          <h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>要调用一个函数,需要知道函数的名称和参数,比如求绝对值的函数abs,只有一个参数.<br>调用函数的时候,如果传入的参数数量不对,会报TypeError的错误,并且Python会明确地告诉你:abs()有且仅有1个参数,但给出了两个.<br>如果传入的参数数量是对的,但参数类型不能被函数所接受,也会报TypeError的错误,并且给出错误信息.<br>Python在数据转换的时候,也可以用数据类型转换函数.<br>函数名其实就是指向一个函数对象的引用,完全可以把函数名赋给一个变量,相当于给这个函数起了一个“别名”.</p>
 <h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><p>Python中,定义一个函数要使用def语句,依次写出函数名、括号、括号中的参数和冒号:,然后,在缩进块中编写函数体,函数的返回值用return语句返回.<br>函数体内部的语句在执行时,一旦执行到return时,函数就执行完毕,并将结果返回.<br>如果没有return语句,函数执行完毕后也会返回结果,只是结果为None,return None可以简写为return.<br>如果想定义一个什么事也不做的空函数,可以用pass语句,pass语句什么都不做,那有什么用？实际上pass可以用来作为占位符,比如现在还没想好怎么写函数的代码,就可以先放一个pass,让代码能运行起来.<br>缺少了pass，代码运行就会有语法错误.<br>PS:此处的pass其实相当于别的语言里的空实现,OC/C/Cpp中的空实现,可以不写任何代码或者放任不管不执行,而Python为了达到这一目的,需要用关键词pass来处理.</p>
 <h3 id="参数检查"><a href="#参数检查" class="headerlink" title="参数检查"></a>参数检查</h3><p>调用函数时,如果参数个数不对,Python解释器会自动检查出来,并抛出TypeError.但是如果参数类型不对,Python解释器就无法检查.所以对参数类型做检查,例如只允许整数和浮点数类型的参数会给我们避免很多错误.数据类型检查可以用内置函数isinstance()实现.</p>
 <h3 id="返回多个值"><a href="#返回多个值" class="headerlink" title="返回多个值"></a>返回多个值</h3><p>Python的函数返回多值其实就是返回一个tuple,按照参数位置顺序取值即可</p>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>定义函数时,需要确定函数名和参数个数;<br>如果有必要,可以先对参数的数据类型做检查;<br>函数体内部可以用return随时返回函数结果;<br>函数执行完毕也没有return语句时,自动return None.<br>函数可以同时返回多个值,但其实就是一个tuple.</p>
-        
-          <a class="article-more-a" href="/2017/12/13/Python03/#more">more >></a>
+          
+            <a class="article-more-a" href="/2017/12/13/Python03/#more">more >></a>
+          
         
       
 
