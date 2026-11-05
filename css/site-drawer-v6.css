@@ -1,7 +1,7 @@
 :root{--drawer-ink:#384047;--drawer-muted:#8a9299;--drawer-line:#e4e8eb;--drawer-blue:#1e90ff;--drawer-blue-dark:#337fbd;--drawer-paper:#fff}
 .site-drawer-open{overflow:hidden!important}
 .site-drawer-scrim[hidden],.site-drawer-page[hidden]{display:none!important}
-.site-drawer-scrim{position:fixed;inset:0;z-index:1190;width:100%;height:100%;padding:0;border:0;background:rgba(35,41,47,.22);cursor:pointer;backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px)}
+.site-drawer-scrim{position:fixed;inset:0 0 0 300px;z-index:1190;width:auto;height:100%;padding:0;border:0;background:rgba(35,41,47,.22);cursor:pointer;backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px)}
 .site-drawer-v6{position:fixed;z-index:1191;top:0;bottom:0;left:300px;width:min(430px,calc(100vw - 300px));display:flex;flex-direction:column;background:var(--drawer-paper);color:var(--drawer-ink);box-shadow:8px 0 28px rgba(21,32,42,.16);transform:translateX(calc(-100% - 310px));visibility:hidden;transition:transform .24s ease,visibility .24s;overflow:hidden;font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
 .site-drawer-v6.is-open{transform:translateX(0);visibility:visible}
 .site-drawer-v6 *{box-sizing:border-box}
@@ -69,6 +69,7 @@
 .site-about-form-actions .site-about-submit{border-color:#4d4d4d;background:#4d4d4d;color:#fff}
 .site-about-form-actions button:disabled{opacity:.5;cursor:not-allowed}
 @media(max-width:800px){
+  .site-drawer-scrim{inset:0;width:100%}
   .site-drawer-v6{left:0;width:min(92vw,430px);padding-bottom:env(safe-area-inset-bottom);transform:translateX(-105%);border-radius:0 12px 12px 0;box-shadow:10px 0 30px rgba(21,32,42,.2)}
   .site-drawer-v6.is-open{transform:translateX(0)}
   .site-drawer-head{height:58px;padding:0 12px 0 17px}

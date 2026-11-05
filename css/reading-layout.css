@@ -3,6 +3,8 @@
 .article-entry img{max-width:100%;height:auto}
 .article-header .article-title{font-family:Georgia,"Songti SC",serif;color:#485158}
 .article{box-shadow:0 2px 8px #1c2c390a}
+.left-col #header .header-smart-menu a,
+.left-col #header .header-smart-menu a:hover{color:#4b9fe8;font-weight:400}
 .article-title-row{
   display:flex;
   flex-wrap:wrap;
