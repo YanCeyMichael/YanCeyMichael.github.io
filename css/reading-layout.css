@@ -77,6 +77,62 @@
   min-height:44px;
   align-items:center;
 }
+.article-index .article-info-index{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 116px;
+  align-items:center;
+  gap:16px;
+}
+.article-index .article-info-index>.clearfix{display:none}
+.article-index .article-info-index .article-tag{
+  display:flex;
+  align-items:center;
+  min-width:0;
+  float:none;
+}
+.article-index .article-info-index .article-tag .icon{
+  display:inline-flex;
+  align-items:center;
+  float:none;
+  margin:0 8px 0 0;
+}
+.article-index .article-info-index .article-tag-list{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px;
+  min-width:0;
+  float:none;
+}
+.article-index .article-info-index .article-tag-list-item{float:none}
+.article-index .article-info-index .article-more-link{
+  width:116px;
+  margin:0;
+  float:none;
+  justify-self:end;
+}
+.article-index .article-info-index .article-more-link a{
+  width:116px;
+  height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  border-radius:4px;
+  background:#4b9fe8;
+  color:#fff;
+  font-size:13px;
+  font-weight:600;
+  line-height:1;
+  white-space:nowrap;
+  transition:background .18s ease,transform .18s ease;
+}
+.article-index .article-info-index .article-more-link a:hover{background:#3286c7}
+.article-index .article-info-index .article-more-link a:active{transform:scale(.97)}
+.article-index .article-info-index .article-more-link a:focus-visible{
+  outline:3px solid rgba(75,159,232,.45);
+  outline-offset:3px;
+}
 .article-index.article-has-media:focus-within .article-inner{
   outline:3px solid rgba(75,159,232,.48);
   outline-offset:5px;
@@ -108,8 +164,13 @@
   column-gap:16px;
 }
 .article-entry .list-entry-media img{aspect-ratio:1/1}
+.article-index .article-info-index{
+  grid-template-columns:minmax(0,1fr) 116px;
+  gap:12px;
+}
 }
 @media(prefers-reduced-motion:reduce){
 .article-entry .list-entry-media img,
-.article-index.article-has-media .article-title{transition:none!important}
+.article-index.article-has-media .article-title,
+.article-index .article-info-index .article-more-link a{transition:none!important}
 }
