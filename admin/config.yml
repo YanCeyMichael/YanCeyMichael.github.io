@@ -1,10 +1,10 @@
-# 部署 Worker 后，将 base_url 替换为它的 workers.dev 根地址。
+# 认证由 aiyancey.com 的区域 Worker 自定义域处理。
 # GitHub 登录由 Cloudflare Worker 处理；此文件不得放 OAuth Secret 或 PAT。
 backend:
   name: github
   repo: YanCeyMichael/YanCeyBlog-Source
   branch: main
-  base_url: https://yancey-blog-admin.514614690.workers.dev
+  base_url: https://auth.aiyancey.com
   auth_endpoint: auth
 
 publish_mode: simple
