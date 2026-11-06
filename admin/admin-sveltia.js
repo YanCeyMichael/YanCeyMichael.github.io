@@ -202,15 +202,12 @@
   function syncShell() {
     var workspace = document.querySelector('.admin-workspace');
     var isEditor = /#\/collections\/posts\/(new|entries\/)/.test(location.hash);
+    var activeTarget = /#\/collections\/site\/entries\/about/.test(location.hash)
+      ? '/admin/#/collections/site/entries/about'
+      : (/#\/assets(?:\/|$)/.test(location.hash) ? '/admin/#/assets' : '/admin/#/collections/posts');
     if (workspace) workspace.classList.toggle('v17-editor-mode', isEditor);
     document.querySelectorAll('.admin-nav a').forEach(function (link) {
-      var aboutActive = /#\/collections\/site\/entries\/about/.test(location.hash);
-      link.classList.toggle(
-        'active',
-        aboutActive
-          ? /collections\/site\/entries\/about/.test(link.href)
-          : /collections\/posts/.test(link.href)
-      );
+      link.classList.toggle('active', link.getAttribute('href') === activeTarget);
     });
   }
 
