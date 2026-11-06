@@ -16,7 +16,7 @@
 <meta property="og:description" content="malloc()和free()的基本概念以及基本用法malloc()malloc() 的函数原型原型： extern void *malloc(unsigned int num_bytes)。 头文件： #include &lt;malloc.h&gt; 或 #include &lt;alloc.h&gt; (注意：alloc.h 与 malloc.h 的内容是完全一致的。)。 功能：分配长度为">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-02-03T07:01:44.000Z">
-<meta property="article:modified_time" content="2026-11-06T03:01:12.798Z">
+<meta property="article:modified_time" content="2026-11-06T03:30:20.107Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="malloc()">
@@ -176,99 +176,13 @@
     document.addEventListener('click', function (event) {
       var about = event.target.closest && event.target.closest('[data-site-admin-edit-about]');
       if (about && !about.hidden && document.documentElement.classList.contains('site-owner-mode')) {
-        var form = document.querySelector('[data-site-about-form]');
-        var bio = document.getElementById('site-about-bio');
-        var input = document.getElementById('site-about-input');
-        var count = document.getElementById('site-about-counter');
-        var submit = document.querySelector('[data-site-about-submit]');
-        var message = document.querySelector('[data-site-about-message]');
-        var saved = document.querySelector('[data-site-about-saved]');
-        if (!form || !bio || !input) return;
-        input.value = bio.textContent.trim();
-        message.hidden = true;
-        if (saved) saved.hidden = true;
-        bio.hidden = true;
-        about.hidden = true;
-        form.hidden = false;
-        count.textContent = Array.from(input.value).length + ' / 100';
-        submit.disabled = !input.value.trim() || Array.from(input.value).length > 100;
-        input.focus();
+        location.href = '/admin/#/collections/site/entries/about';
         return;
       }
       var item = event.target.closest && event.target.closest('[data-site-admin-edit]');
       if (!item || item.hidden || !document.documentElement.classList.contains('site-owner-mode')) return;
       location.href = '/admin/#/collections/posts/entries/' + encodeURIComponent(item.dataset.slug);
     });
-    function bindAboutEditor() {
-      var aboutForm = document.querySelector('[data-site-about-form]');
-      if (!aboutForm || aboutForm.dataset.bound === 'true') return;
-      aboutForm.dataset.bound = 'true';
-      var aboutInput = document.getElementById('site-about-input');
-      var aboutBio = document.getElementById('site-about-bio');
-      var aboutEdit = document.querySelector('[data-site-admin-edit-about]');
-      var aboutCount = document.getElementById('site-about-counter');
-      var aboutSubmit = aboutForm.querySelector('[data-site-about-submit]');
-      var aboutCancel = aboutForm.querySelector('[data-site-about-cancel]');
-      var aboutMessage = aboutForm.querySelector('[data-site-about-message]');
-      var aboutSaved = document.querySelector('[data-site-about-saved]');
-      function closeAboutEditor() {
-        aboutForm.hidden = true;
-        aboutBio.hidden = false;
-        aboutEdit.hidden = !document.documentElement.classList.contains('site-owner-mode');
-        aboutMessage.hidden = true;
-        aboutEdit.focus();
-      }
-      aboutInput.addEventListener('input', function () {
-        var chars = Array.from(aboutInput.value);
-        if (chars.length > 100) {
-          aboutInput.value = chars.slice(0, 100).join('');
-          chars = Array.from(aboutInput.value);
-        }
-        aboutCount.textContent = chars.length + ' / 100';
-        aboutSubmit.disabled = !aboutInput.value.trim();
-        aboutMessage.hidden = true;
-      });
-      aboutCancel.addEventListener('click', closeAboutEditor);
-      aboutForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        if (!document.documentElement.classList.contains('site-owner-mode')) return;
-        var bio = aboutInput.value.trim();
-        if (!bio || Array.from(bio).length > 100) return;
-        aboutSubmit.disabled = true;
-        aboutCancel.disabled = true;
-        aboutSubmit.textContent = '正在提交…';
-        aboutMessage.hidden = true;
-        fetch(apiBase + '/owner/about', {
-          method: 'PUT',
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ bio: bio })
-        }).then(function (response) {
-          return response.json().catch(function () { return {}; }).then(function (payload) {
-            if (!response.ok) throw new Error(payload.error || '简介更新失败，请稍后重试。');
-            return payload;
-          });
-        }).then(function () {
-          aboutBio.textContent = bio;
-          aboutForm.hidden = true;
-          aboutBio.hidden = false;
-          aboutEdit.hidden = false;
-          aboutSaved.textContent = '已提交，网站部署完成后访客即可看到更新。';
-          aboutSaved.hidden = false;
-          aboutEdit.focus();
-        }).catch(function (reason) {
-          aboutMessage.textContent = reason.message || '简介更新失败，请稍后重试。';
-          aboutMessage.setAttribute('role', 'alert');
-          aboutMessage.hidden = false;
-          aboutSubmit.disabled = false;
-        }).finally(function () {
-          aboutSubmit.textContent = '提交修改';
-          aboutCancel.disabled = false;
-        });
-      });
-    }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindAboutEditor);
-    else bindAboutEditor();
   })();
   </script>
   <style>
@@ -971,17 +885,6 @@ MathJax.Hub.Queue(function() {
       <div class="site-about-copy">
         <p id="site-about-bio">这里记录技术实践、生活观察和一路上的思考。</p>
         <button type="button" class="site-about-edit" data-site-admin-edit-about hidden>编辑简介</button>
-        <form class="site-about-form" data-site-about-form hidden>
-          <label for="site-about-input">个人简介</label>
-          <textarea id="site-about-input" maxlength="400" rows="4" aria-describedby="site-about-counter site-about-help"></textarea>
-          <div class="site-about-form-meta"><span id="site-about-help">最多 100 个字符</span><span id="site-about-counter" aria-live="polite">0 / 100</span></div>
-          <p class="site-about-form-message" data-site-about-message role="status" aria-live="polite" hidden></p>
-          <div class="site-about-form-actions">
-            <button type="button" class="site-about-cancel" data-site-about-cancel>取消</button>
-            <button type="submit" class="site-about-submit" data-site-about-submit disabled>提交修改</button>
-          </div>
-        </form>
-        <p class="site-about-form-message site-about-save-status" data-site-about-saved role="status" aria-live="polite" hidden></p>
       </div>
     </div>
   </section>
