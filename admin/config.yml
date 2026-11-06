@@ -27,7 +27,18 @@ collections:
     fields:
       - { label: 标题, name: title, widget: string }
       - { label: 发布日期, name: date, widget: datetime }
-      - { label: 标签, name: tags, widget: tag_picker, required: false }
+      - label: 标签
+        name: tags
+        widget: list
+        required: false
+        label_singular: 标签
+        allow_add: true
+        allow_duplicate: false
+        hint: 点击“标签”添加；输入时可以从已有标签中选择。
+        field:
+          label: 标签
+          name: tag
+          widget: string
       - label: 正文
         name: body
         widget: richtext

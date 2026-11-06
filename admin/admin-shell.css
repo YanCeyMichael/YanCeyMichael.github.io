@@ -54,15 +54,3 @@
 @media(max-width:800px){#nc-root .wrapper.content-editor{position:fixed!important;top:58px!important;right:0!important;bottom:auto!important;left:0!important;width:100%!important;height:calc(100dvh - 58px)!important;z-index:9!important}}
 
 #nc-root .v17-about-field textarea{min-height:118px;max-height:260px}#nc-root .v17-about-count{margin-top:5px;color:#59636d;font-size:12px;text-align:right}#nc-root .v17-about-count.limit{color:#993c35}
-.v17-tag-picker{width:100%;padding:12px;border:1px solid #dfe4e8;border-radius:5px;background:#fff}
-.v17-tag-picked,.v17-tag-suggestions{display:flex;flex-wrap:wrap;gap:7px}
-.v17-tag-picked:empty{display:none}
-.v17-tag-chip{min-height:34px;display:inline-flex;align-items:center;gap:7px;padding:4px 7px 4px 10px;border:1px solid #cfdeea;border-radius:3px;background:#f5f9fc;color:#315f7d;font-size:13px}
-.v17-tag-chip button{width:24px;height:24px;border:0;border-radius:3px;background:transparent;color:#84949e;font-size:18px;line-height:1;cursor:pointer}
-.v17-tag-chip button:hover{background:#e9f0f5;color:#435d70}
-.v17-tag-search{width:100%;height:42px;margin-top:9px;padding:0 11px;border:1px solid #dfe4e8;border-radius:4px;background:#fcfcfc;color:#424a50;font:14px/1.4 inherit}
-.v17-tag-search:focus{border-color:#79bafa;box-shadow:0 0 0 3px #1e90ff20;outline:none}
-.v17-tag-suggestions{margin-top:9px}
-.v17-tag-suggestion{min-height:36px;padding:5px 9px;border:1px solid #d9e0e5;border-radius:3px;background:#f8fafb;color:#3f627c;font-size:13px;cursor:pointer}
-.v17-tag-suggestion:hover{border-color:#a9cae2;background:#f1f7fb}
-.v17-tag-help{margin:9px 0 0;color:#59636d;font-size:12px;line-height:1.6}
