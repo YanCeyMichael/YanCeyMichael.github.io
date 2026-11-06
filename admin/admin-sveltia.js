@@ -4,6 +4,87 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
 (function () {
   var root = document.getElementById('nc-root');
   if (!root) return;
+  var workspace = document.getElementById('admin-workspace');
+  var workspaceToggle = document.getElementById('workspace-toggle');
+  var adminScrim = document.getElementById('admin-scrim');
+  var compactSidebarQuery = window.matchMedia('(max-width: 1050px)');
+  var mobileSidebarQuery = window.matchMedia('(max-width: 800px)');
+  var sidebarPreference = null;
+  var sidebarStorageKey = 'yilia-admin-sidebar-collapsed';
+
+  try {
+    sidebarPreference = window.localStorage.getItem(sidebarStorageKey);
+  } catch (error) {
+    sidebarPreference = null;
+  }
+
+  function syncWorkspaceToggle() {
+    if (!workspace || !workspaceToggle) return;
+    var mobile = mobileSidebarQuery.matches;
+    var open = mobile
+      ? workspace.classList.contains('mobile-sidebar-open')
+      : !workspace.classList.contains('is-sidebar-collapsed');
+    workspaceToggle.setAttribute('aria-expanded', String(open));
+    workspaceToggle.setAttribute('aria-label', mobile
+      ? (open ? '关闭导航' : '打开导航')
+      : (open ? '收起侧边栏' : '展开侧边栏'));
+    workspaceToggle.dataset.tooltip = mobile
+      ? (open ? '关闭导航' : '打开导航')
+      : (open ? '收起侧栏  ⌘ \\' : '展开侧栏  ⌘ \\');
+    if (adminScrim) adminScrim.hidden = !(mobile && open);
+  }
+
+  function setSidebarCollapsed(collapsed, persist) {
+    if (!workspace) return;
+    workspace.classList.toggle('is-sidebar-collapsed', collapsed);
+    workspace.classList.remove('mobile-sidebar-open');
+    if (persist) {
+      sidebarPreference = collapsed ? 'collapsed' : 'expanded';
+      try {
+        window.localStorage.setItem(sidebarStorageKey, sidebarPreference);
+      } catch (error) {
+        // The layout still works when browser storage is unavailable.
+      }
+    }
+    syncWorkspaceToggle();
+  }
+
+  function setMobileSidebar(open) {
+    if (!workspace) return;
+    workspace.classList.toggle('mobile-sidebar-open', open);
+    syncWorkspaceToggle();
+  }
+
+  var initialCollapsed = sidebarPreference === 'collapsed'
+    || (sidebarPreference === null && compactSidebarQuery.matches && !mobileSidebarQuery.matches);
+  setSidebarCollapsed(initialCollapsed, false);
+
+  if (workspaceToggle) {
+    workspaceToggle.addEventListener('click', function () {
+      if (!workspace) return;
+      if (mobileSidebarQuery.matches) {
+        setMobileSidebar(!workspace.classList.contains('mobile-sidebar-open'));
+      } else {
+        setSidebarCollapsed(!workspace.classList.contains('is-sidebar-collapsed'), true);
+      }
+    });
+  }
+  if (adminScrim) adminScrim.addEventListener('click', function () { setMobileSidebar(false); });
+  document.querySelectorAll('.admin-nav a, .foot-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (mobileSidebarQuery.matches) setMobileSidebar(false);
+    });
+  });
+  window.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && workspace?.classList.contains('mobile-sidebar-open')) {
+      setMobileSidebar(false);
+      workspaceToggle?.focus();
+    }
+    if ((event.metaKey || event.ctrlKey) && event.key === '\\' && !mobileSidebarQuery.matches) {
+      event.preventDefault();
+      setSidebarCollapsed(!workspace.classList.contains('is-sidebar-collapsed'), true);
+    }
+  });
 
   var cms = SveltiaModule.default || window.CMS;
   if (!cms) {
