@@ -1,10 +1,10 @@
-# Decap CMS vendor bundle
+# Sveltia CMS vendor bundle
 
-- Package: `decap-cms`
-- Version: `3.16.3`
-- Source: `https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js`
-- License: MIT, retained in `decap-cms-3.16.3.LICENSE.txt`
-- Integrity: `sha384-A/Gdn928CNLufmnGWGs9RM4Q9o8bSNLeJERqBFrBjwzL7FRpoLT3MPF8Tl0+Wd2p`
+- Package: `@sveltia/cms`
+- Version: `0.261.0`
+- Source: `https://registry.npmjs.org/@sveltia/cms/-/cms-0.261.0.tgz`
+- License: MIT, retained in `sveltia-cms-0.261.0/LICENSE.txt`
+- Integrity: `sha384-sty7BGmg7YGd6Wi3G73SvUYWcNE6vztGSEklT7ZI8T/3JSshWKHKH7HuUk99s/HJ`
 
-The copied bundle is served from the same origin as the CMS. Update the version,
-bundle, license, and integrity hash together.
+The copied bundle and lazy chunks are served from the same origin as the CMS.
+Update the version, vendor directory, license, and integrity hash together.

@@ -10,7 +10,8 @@ backend:
 publish_mode: simple
 media_folder: source/images
 public_folder: /images
-locale: zh
+output:
+  omit_empty_optional_fields: true
 slug:
   encoding: unicode
 
