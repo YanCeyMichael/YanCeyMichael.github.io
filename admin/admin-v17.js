@@ -19,6 +19,13 @@
     }
     return candidate || (label && label.parentElement);
   }
+  function updateCounter(counter, value) {
+    if (!counter) return;
+    var length = Array.from(value || '').length;
+    var next = length + ' / 100';
+    if (counter.textContent !== next) counter.textContent = next;
+    counter.classList.toggle('limit', length >= 90);
+  }
   function registerPreview() {
     var cms = window.CMS;
     var createClass = window.createClass || (cms && cms.createClass);
@@ -174,8 +181,7 @@
           counter.className = 'v17-about-count';
           bioInput.insertAdjacentElement('afterend', counter);
         }
-        counter.textContent = Array.from(bioInput.value || '').length + ' / 100';
-        counter.classList.toggle('limit', Array.from(bioInput.value || '').length >= 90);
+        updateCounter(counter, bioInput.value);
       }
     }
     if (!root.__v17AboutCounterBound) {
@@ -183,10 +189,7 @@
       root.addEventListener('input', function (event) {
         if (!event.target.matches('.v17-about-field textarea')) return;
         var counter = event.target.parentElement.querySelector('.v17-about-count') || event.target.closest('.v17-about-field').querySelector('.v17-about-count');
-        if (counter) {
-          counter.textContent = Array.from(event.target.value || '').length + ' / 100';
-          counter.classList.toggle('limit', Array.from(event.target.value || '').length >= 90);
-        }
+        updateCounter(counter, event.target.value);
       });
     }
 
@@ -283,9 +286,19 @@
 
   }
 
-  var observer = new MutationObserver(decorate);
+  var decorateQueued = false;
+  function scheduleDecorate() {
+    if (decorateQueued) return;
+    decorateQueued = true;
+    window.requestAnimationFrame(function () {
+      decorateQueued = false;
+      decorate();
+    });
+  }
+
+  var observer = new MutationObserver(scheduleDecorate);
   observer.observe(root, { childList: true, subtree: true, characterData: true });
-  window.addEventListener('hashchange', decorate);
+  window.addEventListener('hashchange', scheduleDecorate);
   if (!registerPreview()) {
     var previewAttempts = 0;
     var previewRetry = window.setInterval(function () {
@@ -295,5 +308,5 @@
     }, 100);
   }
   registerTagPicker();
-  decorate();
+  scheduleDecorate();
 })();
