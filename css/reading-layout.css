@@ -1,10 +1,29 @@
 .article-inner{background:#fff;color:#30383e}
 .article-entry{line-height:1.9;overflow-wrap:break-word}
+.article:not(.article-index) .article-entry{max-width:70ch}
+.article-index .list-entry-copy{max-width:70ch}
+.article-index:not(.article-has-media) .article-entry{max-width:70ch}
 .article-entry img{max-width:100%;height:auto}
 .article-header .article-title{font-family:Georgia,"Songti SC",serif;color:#485158}
-.article{box-shadow:0 2px 8px #1c2c390a}
+.article-header h2.article-title,
+.article-header h2.article-title a{font-size:26px;line-height:1.35}
 .left-col #header .header-smart-menu a,
-.left-col #header .header-smart-menu a:hover{color:#4b9fe8;font-weight:400}
+.left-col #header .header-smart-menu a:hover{color:#102c45;font-weight:600}
+.left-col #header .header-smart-menu a{color:#245a86;font-size:13px;font-weight:600}
+.left-col #header .header-menu a,
+.left-col #header .header-author a,
+#mobile-nav #header .header-menu a,
+#mobile-nav #header .header-author{color:#102c45}
+.left-col #header .header-subtitle,
+#mobile-nav #header .header-subtitle{color:#42515d}
+.left-col #header a:focus-visible,
+#mobile-nav #header a:focus-visible,
+.share-icons a:focus-visible,
+.share-icons button:focus-visible,
+.page-modal button:focus-visible{outline:3px solid #0c4f85;outline-offset:3px}
+.profilepic:focus-visible{outline:4px solid #0c4f85;outline-offset:5px}
+.left-col #header .profilepic img,
+#mobile-nav #header .profilepic img{width:100%;height:100%;object-fit:cover}
 .article-title-row{
   display:flex;
   flex-wrap:wrap;
@@ -105,6 +124,7 @@
   float:none;
 }
 .article-index .article-info-index .article-tag-list-item{float:none}
+#container .article-tag-list .article-tag-list-link{font-size:11px !important}
 .article-index .article-info-index .article-more-link{
   width:116px;
   margin:0;
@@ -144,6 +164,23 @@
   outline:3px solid rgba(75,159,232,.48);
   outline-offset:5px;
 }
+.share-icons button.share-outer{
+  display:inline-block;
+  vertical-align:middle;
+  margin:10px;
+  border:0;
+  color:#fff;
+  background:#4d4d4d;
+  cursor:pointer;
+  opacity:1;
+}
+.page-modal button.close{
+  border:0;
+  background:transparent;
+  cursor:pointer;
+}
+.wx-qrcode canvas{display:block;width:180px;height:180px;margin:0 auto}
+.wx-qrcode-error{max-width:220px;color:#7b3c35;font-size:13px;line-height:1.7}
 @media(hover:hover) and (pointer:fine){
   .article-index.article-has-media:hover .article-title{
     color:#485158;
@@ -178,6 +215,19 @@
   grid-template-columns:minmax(0,1fr) 116px;
   gap:12px;
 }
+}
+@media(max-width:640px){
+.list-entry-layout{display:block}
+.list-entry-media{
+  width:100%;
+  margin-top:16px;
+}
+.article-entry .list-entry-media img{
+  aspect-ratio:16/10;
+}
+.article-index.article-has-media .article-entry{margin-top:0}
+.article-index .article-header{padding-bottom:8px}
+.article-index .article-entry{padding-bottom:20px}
 }
 @media(prefers-reduced-motion:reduce){
 .article-entry .list-entry-media img,

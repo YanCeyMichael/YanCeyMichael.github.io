@@ -1,14 +1,73 @@
+import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
+
 /* Sveltia adapters: Yilia previews, tag reuse, and the surrounding admin shell. */
 (function () {
   var root = document.getElementById('nc-root');
   if (!root) return;
 
-  var cms = window.CMS;
-  var createClass = window.createClass || (cms && cms.createClass);
-  var h = window.h || (cms && cms.h);
-  if (!cms || !createClass || !h) {
+  var cms = SveltiaModule.default || window.CMS;
+  if (!cms) {
     throw new Error('Sveltia CMS did not initialize its JavaScript API.');
   }
+  Object.keys(SveltiaModule).forEach(function (key) {
+    if (typeof cms[key] === 'undefined') cms[key] = SveltiaModule[key];
+  });
+  window.CMS = cms;
+
+  var React = cms.React || SveltiaModule.React;
+  var h = React.createElement;
+  var lifecycleMethods = new Set([
+    'componentDidMount',
+    'componentDidUpdate',
+    'componentWillUnmount',
+    'getInitialState',
+    'render'
+  ]);
+
+  function createClass(spec) {
+    class LegacyComponent extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = spec.getInitialState ? spec.getInitialState.call(this) : null;
+      }
+
+      componentDidMount() {
+        if (spec.componentDidMount) spec.componentDidMount.call(this);
+      }
+
+      componentDidUpdate(previousProps, previousState) {
+        if (spec.componentDidUpdate) spec.componentDidUpdate.call(this, previousProps, previousState);
+      }
+
+      componentWillUnmount() {
+        if (spec.componentWillUnmount) spec.componentWillUnmount.call(this);
+      }
+
+      render() {
+        return spec.render.call(this);
+      }
+    }
+
+    Object.keys(spec).forEach(function (key) {
+      if (!lifecycleMethods.has(key) && typeof spec[key] === 'function') {
+        LegacyComponent.prototype[key] = spec[key];
+      }
+    });
+    return LegacyComponent;
+  }
+
+  var nativeFetch = window.fetch.bind(window);
+  window.fetch = function (input, init) {
+    var url = new URL(typeof input === 'string' ? input : input.url, location.href);
+    if (url.origin === 'https://unpkg.com' && url.pathname === '/@sveltia/cms/package.json') {
+      return nativeFetch('/admin/vendor/sveltia-cms-0.261.0/package.json', init);
+    }
+    if (url.origin === 'https://unpkg.com' && url.pathname.startsWith('/@sveltia/cms@0.261.0/locales/')) {
+      var localeFile = url.pathname.split('/').pop();
+      return nativeFetch('/admin/vendor/sveltia-cms-0.261.0/locales/' + localeFile, init);
+    }
+    return nativeFetch(input, init);
+  };
 
   function listText(value) {
     if (value && value.toArray) return value.toArray().filter(Boolean).join(' · ');
@@ -209,6 +268,11 @@
     document.querySelectorAll('.admin-nav a').forEach(function (link) {
       link.classList.toggle('active', link.getAttribute('href') === activeTarget);
     });
+    var authHeading = root.querySelector('.container > .inner > h1');
+    if (authHeading && authHeading.textContent.trim() !== 'Yancey’s Blog') {
+      authHeading.dataset.yiliaAuthHeading = 'true';
+      authHeading.textContent = 'Yancey’s Blog';
+    }
   }
 
   registerPreviews();

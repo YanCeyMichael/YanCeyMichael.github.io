@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#f4f5f6">
     <title>博客内容管理 · Yancey’s Blog</title>
-    <link rel="stylesheet" href="/admin/admin-shell.css?v=2.0.2">
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+    <script type="importmap">
+      {
+        "imports": {
+          "https://unpkg.com/immutable@5.1.9/dist/immutable.es.js": "/admin/vendor/sveltia-cms-0.261.0/immutable.es.js"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/admin/admin-shell.css?v=2.1.3">
   </head>
   <body>
     <div class="studio-shell">
@@ -28,7 +36,6 @@
       </div>
     </div>
     <script>window.CMS_MANUAL_INIT = true;</script>
-    <script defer src="/admin/vendor/sveltia-cms-0.261.0/sveltia-cms.js" integrity="sha384-sty7BGmg7YGd6Wi3G73SvUYWcNE6vztGSEklT7ZI8T/3JSshWKHKH7HuUk99s/HJ" crossorigin="anonymous"></script>
-    <script defer src="/admin/admin-sveltia.js?v=1.1.1"></script>
+    <script type="module" src="/admin/admin-sveltia.js?v=1.3.1"></script>
   </body>
 </html>

@@ -1,0 +1,818 @@
+:root {
+  --architecture-ground: #e9edf1;
+  --architecture-surface: #ffffff;
+  --architecture-raised: #f5f7f9;
+  --architecture-frame: #edf1f5;
+  --architecture-border: #d9dfe5;
+  --architecture-rule: #edf0f3;
+  --architecture-text: #272c31;
+  --architecture-muted: #5f6872;
+  --architecture-faint: #5f6974;
+  --architecture-accent: #2f78d0;
+  --architecture-nav-active: #e6ebf0;
+  --architecture-radius-sheet: 16px;
+  --architecture-radius-control: 8px;
+  --architecture-sans: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --architecture-serif: Georgia, "Songti SC", "STSong", serif;
+  --architecture-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.architecture-is-open,
+html.architecture-is-open body {
+  overflow: hidden;
+}
+
+#footer {
+  opacity: 0.84;
+}
+
+#footer #footer-info {
+  display: grid;
+  grid-template-columns: minmax(160px, 1.1fr) minmax(140px, 0.7fr) minmax(220px, 1.4fr) minmax(250px, 1.5fr);
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+}
+
+#footer .footer-right,
+#footer .footer-copy,
+#footer .footer-stats {
+  float: none;
+  min-width: 0;
+}
+
+#footer .footer-right {
+  text-align: right;
+}
+
+.architecture-entry {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--architecture-accent);
+  font-family: var(--architecture-sans);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.architecture-entry-mark {
+  width: 21px;
+  height: 21px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+  transition: transform 220ms var(--architecture-ease-out);
+}
+
+.architecture-entry span {
+  text-decoration: underline;
+  text-decoration-color: rgba(47, 120, 208, 0.34);
+  text-underline-offset: 0.24em;
+}
+
+.architecture-entry small {
+  color: var(--architecture-muted);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.architecture-entry:hover .architecture-entry-mark,
+.architecture-entry:focus-visible .architecture-entry-mark {
+  transform: rotate(8deg) scale(1.06);
+}
+
+.architecture-entry:active {
+  transform: translateY(1px);
+}
+
+.architecture-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  padding: 8px;
+  background: rgba(30, 37, 45, 0.62);
+  font-family: var(--architecture-sans);
+  opacity: 0;
+  transition: opacity 220ms var(--architecture-ease-out);
+}
+
+.architecture-overlay.is-open {
+  opacity: 1;
+}
+
+html.architecture-is-open #container {
+  display: none;
+}
+
+.architecture-frame {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--architecture-radius-sheet);
+  background: var(--architecture-surface);
+  transform: translateY(18px) scale(0.992);
+  transition: transform 320ms var(--architecture-ease-out);
+}
+
+.architecture-overlay.is-open .architecture-frame {
+  transform: translateY(0) scale(1);
+}
+
+.architecture-topbar {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 18px 0 22px;
+  background: var(--architecture-frame);
+}
+
+.architecture-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--architecture-text);
+  text-decoration: none;
+}
+
+.architecture-brand-mark {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--architecture-accent);
+  color: #ffffff;
+  font-family: var(--architecture-serif);
+  font-size: 17px;
+}
+
+.architecture-brand > span:last-child {
+  display: grid;
+  line-height: 1.25;
+}
+
+.architecture-brand strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.architecture-brand small {
+  color: var(--architecture-muted);
+  font-size: 11px;
+}
+
+.architecture-actions {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.architecture-commit {
+  overflow: hidden;
+  max-width: 30vw;
+  color: var(--architecture-faint);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.architecture-share {
+  min-height: 34px;
+  padding: 0 13px;
+  border: 1px solid var(--architecture-border);
+  border-radius: var(--architecture-radius-control);
+  background: var(--architecture-surface);
+  color: var(--architecture-text);
+  font-family: var(--architecture-sans);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.architecture-share:hover {
+  border-color: #c9d0d7;
+  background: #fafbfc;
+}
+
+.architecture-close {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--architecture-muted);
+  cursor: pointer;
+}
+
+.architecture-close span {
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.architecture-close:hover {
+  background: var(--architecture-surface);
+  color: var(--architecture-text);
+}
+
+.architecture-workspace {
+  display: grid;
+  min-height: 0;
+  flex: 1;
+  grid-template-columns: 238px minmax(0, 1fr);
+  gap: 8px;
+  padding: 0 8px 8px 0;
+  background: var(--architecture-frame);
+}
+
+.architecture-rail {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  padding: 26px 18px 20px;
+}
+
+.architecture-rail-head p,
+.architecture-sync p {
+  margin: 0;
+  color: var(--architecture-faint);
+  font-size: 11px;
+}
+
+.architecture-rail-head strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--architecture-text);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.architecture-nav {
+  display: grid;
+  gap: 4px;
+  margin-top: 28px;
+}
+
+.architecture-nav button {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--architecture-muted);
+  font-family: var(--architecture-sans);
+  text-align: left;
+  cursor: pointer;
+}
+
+.architecture-nav button span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.architecture-nav button small {
+  color: var(--architecture-faint);
+  font-size: 11px;
+}
+
+.architecture-nav button:hover {
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.architecture-nav button.is-active {
+  background: var(--architecture-nav-active);
+  color: var(--architecture-text);
+}
+
+.architecture-nav button.is-active small {
+  color: var(--architecture-muted);
+}
+
+.architecture-sync {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.architecture-sync span {
+  display: block;
+  margin-top: 8px;
+  color: var(--architecture-muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.architecture-sheet {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  border: 1px solid var(--architecture-border);
+  border-radius: var(--architecture-radius-sheet);
+  background: var(--architecture-surface);
+}
+
+.architecture-view {
+  display: none;
+  padding: 28px 28px 36px;
+}
+
+.architecture-view.is-active {
+  display: block;
+}
+
+.architecture-intro {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.55fr) minmax(280px, 1fr);
+  align-items: end;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.architecture-intro h1 {
+  margin: 0;
+  color: var(--architecture-text);
+  font-family: var(--architecture-serif);
+  font-size: clamp(26px, 2.4vw, 32px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.architecture-intro p {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--architecture-muted);
+  font-family: var(--architecture-sans);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.architecture-map-frame {
+  display: block;
+  width: 100%;
+  height: clamp(500px, 66vh, 760px);
+  border: 1px solid var(--architecture-border);
+  border-radius: 12px;
+  background: #fbfcfd;
+}
+
+.architecture-mobile-map {
+  display: none;
+}
+
+.architecture-mobile-loading,
+.architecture-module-status {
+  margin: 0;
+  color: var(--architecture-muted);
+  font-size: 13px;
+}
+
+.architecture-module-retry {
+  margin-top: 12px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--architecture-border);
+  border-radius: var(--architecture-radius-control);
+  background: var(--architecture-surface);
+  color: var(--architecture-accent);
+  font-family: var(--architecture-sans);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.architecture-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 14px;
+  border: 1px solid var(--architecture-border);
+  border-radius: 10px;
+  background: var(--architecture-raised);
+}
+
+.architecture-facts > div {
+  padding: 15px 18px;
+}
+
+.architecture-facts > div + div {
+  border-left: 1px solid var(--architecture-border);
+}
+
+.architecture-facts strong {
+  display: block;
+  color: var(--architecture-text);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.architecture-facts span {
+  color: var(--architecture-muted);
+  font-size: 11px;
+}
+
+.architecture-reader-note {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.55fr) minmax(280px, 1fr);
+  gap: 32px;
+  margin-top: 34px;
+  padding-top: 22px;
+  border-top: 1px solid var(--architecture-rule);
+}
+
+.architecture-reader-note h2 {
+  margin: 0;
+  color: var(--architecture-text);
+  font-family: var(--architecture-sans);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.architecture-reader-note p {
+  max-width: 65ch;
+  margin: 0;
+  color: var(--architecture-muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.architecture-module-list {
+  border: 1px solid var(--architecture-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.architecture-module-item + .architecture-module-item {
+  border-top: 1px solid var(--architecture-rule);
+}
+
+.architecture-module-summary {
+  display: grid;
+  width: 100%;
+  min-height: 72px;
+  grid-template-columns: minmax(150px, 0.7fr) minmax(260px, 1.3fr) auto;
+  align-items: center;
+  gap: 24px;
+  padding: 15px 18px;
+  border: 0;
+  background: var(--architecture-surface);
+  color: var(--architecture-text);
+  font-family: var(--architecture-sans);
+  text-align: left;
+  cursor: pointer;
+}
+
+.architecture-module-summary:hover {
+  background: #fafbfc;
+}
+
+.architecture-module-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.architecture-module-copy {
+  color: var(--architecture-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.architecture-module-toggle {
+  color: var(--architecture-accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.architecture-module-detail {
+  display: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  padding: 0 18px 20px;
+  background: #fafbfc;
+}
+
+.architecture-module-item.is-open .architecture-module-detail {
+  display: grid;
+}
+
+.architecture-module-detail h3 {
+  margin: 0 0 8px;
+  color: var(--architecture-faint);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.architecture-module-detail p,
+.architecture-module-detail ul {
+  margin: 0;
+  color: var(--architecture-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.architecture-module-files {
+  grid-column: 1 / -1;
+}
+
+.architecture-module-files code {
+  display: inline-block;
+  margin: 0 8px 8px 0;
+  padding: 3px 7px;
+  border: 1px solid var(--architecture-border);
+  border-radius: 5px;
+  background: var(--architecture-surface);
+  color: #45515d;
+  font-size: 11px;
+}
+
+.architecture-toast {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 2100;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #22272d;
+  color: #ffffff;
+  font-family: var(--architecture-sans);
+  font-size: 13px;
+}
+
+@media (max-width: 1000px) {
+  #footer #footer-info {
+    grid-template-columns: minmax(160px, 1fr) minmax(220px, 1.45fr);
+  }
+
+  #footer .footer-right {
+    text-align: left;
+  }
+
+  .architecture-workspace {
+    grid-template-columns: 210px minmax(0, 1fr);
+  }
+
+  .architecture-module-summary {
+    grid-template-columns: 150px minmax(0, 1fr) auto;
+  }
+}
+
+@media (max-width: 960px) {
+  .architecture-map-frame {
+    display: none;
+  }
+
+  .architecture-mobile-map {
+    display: grid;
+    border: 1px solid var(--architecture-border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .architecture-mobile-step {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 4px 14px;
+    padding: 18px 16px;
+    background: var(--architecture-surface);
+  }
+
+  .architecture-mobile-step + .architecture-mobile-step {
+    border-top: 1px solid var(--architecture-rule);
+  }
+
+  .architecture-mobile-step span {
+    grid-row: 1 / 3;
+    color: var(--architecture-accent);
+    font-family: var(--architecture-sans);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .architecture-mobile-step strong {
+    color: var(--architecture-text);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .architecture-mobile-step small {
+    color: var(--architecture-muted);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 800px) {
+  #footer {
+    opacity: 0.88;
+  }
+
+  #footer #footer-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 16px 20px 20px;
+    text-align: left;
+  }
+
+  #footer .footer-right {
+    text-align: left;
+  }
+
+  .architecture-overlay {
+    padding: 0;
+  }
+
+  .architecture-frame {
+    border-radius: 0;
+    transform: translateY(24px);
+  }
+
+  .architecture-topbar {
+    min-height: 58px;
+    padding: 0 12px 0 16px;
+  }
+
+  .architecture-brand-mark {
+    width: 28px;
+    height: 28px;
+  }
+
+  .architecture-commit {
+    display: none;
+  }
+
+  .architecture-share {
+    min-height: 40px;
+    padding: 0 10px;
+  }
+
+  .architecture-close {
+    width: 44px;
+    height: 44px;
+  }
+
+  .architecture-workspace {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+
+  .architecture-rail {
+    display: block;
+    flex: none;
+    padding: 14px 16px 12px;
+  }
+
+  .architecture-rail-head {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+  }
+
+  .architecture-rail-head strong {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .architecture-nav {
+    display: flex;
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .architecture-nav button {
+    min-height: 40px;
+    padding: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .architecture-nav button.is-active {
+    border-bottom-color: var(--architecture-accent);
+    background: transparent;
+  }
+
+  .architecture-nav button small {
+    display: none;
+  }
+
+  .architecture-sync {
+    display: none;
+  }
+
+  .architecture-sheet {
+    flex: 1;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+
+  .architecture-view {
+    padding: 24px 18px calc(36px + env(safe-area-inset-bottom));
+  }
+
+  .architecture-intro {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .architecture-intro h1 {
+    font-size: 28px;
+  }
+
+  .architecture-intro p {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+
+  .architecture-facts {
+    margin-top: 12px;
+  }
+
+  .architecture-facts > div {
+    padding: 12px 10px;
+  }
+
+  .architecture-facts strong {
+    font-size: 18px;
+  }
+
+  .architecture-reader-note {
+    display: block;
+    margin-top: 28px;
+  }
+
+  .architecture-reader-note p {
+    margin-top: 9px;
+  }
+
+  .architecture-module-summary {
+    min-height: 78px;
+    grid-template-columns: 1fr auto;
+    gap: 6px 16px;
+    padding: 14px 16px;
+  }
+
+  .architecture-module-copy {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .architecture-module-toggle {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .architecture-module-detail {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 16px 18px;
+  }
+
+  .architecture-module-files {
+    grid-column: auto;
+  }
+
+  .architecture-toast {
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    left: 16px;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .architecture-entry-mark,
+  .architecture-overlay,
+  .architecture-frame {
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -203,7 +203,7 @@
     }
   });
 
-  fetch(root + 'content.json?t=' + Date.now(), { credentials: 'same-origin' })
+  fetch(root + 'content.json?view=drawer', { credentials: 'same-origin' })
     .then(function (response) { if (!response.ok) throw new Error('content index unavailable'); return response.json(); })
     .then(function (data) { posts = Array.isArray(data) ? data : []; tagCloudCounts(); render(); })
     .catch(function () {
