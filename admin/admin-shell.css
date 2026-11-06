@@ -296,6 +296,7 @@ body {
   background: var(--admin-frame);
 }
 #nc-root .content-editor > .sui.toolbar.primary h2 {
+  order: 1;
   min-width: 0;
   flex: 1 1 auto;
   margin: 0;
@@ -307,6 +308,37 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+#nc-root .content-editor > .sui.toolbar.primary > .yilia-view-switch {
+  order: 2;
+  display: inline-flex;
+  flex: none;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid #dbe4eb;
+  border-radius: 9px;
+  background: #eaf0f5;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .yilia-view-switch button {
+  width: auto;
+  min-width: 0;
+  min-height: 28px !important;
+  padding: 0 10px !important;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #5d6d79;
+  font-size: 12px;
+  font-weight: 600;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .yilia-view-switch button.is-active {
+  background: #fff;
+  color: var(--admin-ink);
+  box-shadow: 0 1px 3px #14233314;
+}
+#nc-root .content-editor > .sui.toolbar.primary > :not(h2):not(.yilia-view-switch) {
+  order: 3;
+}
+#nc-root .content-editor > .sui.toolbar.primary > :first-child { order: 0 !important; }
 #nc-root .content-editor > .sui.toolbar.primary button {
   min-height: 34px;
   flex: none;
@@ -343,11 +375,21 @@ body {
 }
 #nc-root .content-editor .pane[data-mode="edit"] .content {
   --field-editor-padding: 19px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 18px;
+  align-content: start;
   background: #fff;
 }
+#nc-root .content-editor .pane[data-mode="edit"] .content > * { grid-column: 1 / -1; }
+#nc-root .content-editor .pane[data-mode="edit"] .content > section.field[data-key-path="date"] {
+  grid-column: 1;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .content > section.field[data-key-path="tags"] {
+  grid-column: 2;
+}
 #nc-root .content-editor .pane[data-mode="edit"] section.field:not(:last-child)::after {
-  inset-inline: 24px;
-  background: var(--admin-line-soft);
+  display: none;
 }
 #nc-root .content-editor .pane[data-mode="edit"] section.field > header {
   margin-bottom: 7px;
@@ -361,6 +403,17 @@ body {
   max-width: 820px;
 }
 #nc-root .content-editor [data-mode="preview"] .content { background: #fbfcfd; }
+#nc-root .content-editor[data-yilia-view="edit"] .content-area .sui.resizable-pane:has(.pane[data-mode="preview"]),
+#nc-root .content-editor[data-yilia-view="edit"] .content-area > .sui.resizable-handle,
+#nc-root .content-editor[data-yilia-view="edit"] .content-area > .swap-button,
+#nc-root .content-editor[data-yilia-view="preview"] .content-area .sui.resizable-pane:has(.pane[data-mode="edit"]),
+#nc-root .content-editor[data-yilia-view="preview"] .content-area > .sui.resizable-handle,
+#nc-root .content-editor[data-yilia-view="preview"] .content-area > .swap-button { display: none !important; }
+#nc-root .content-editor[data-yilia-view="edit"] .content-area .sui.resizable-pane:has(.pane[data-mode="edit"]),
+#nc-root .content-editor[data-yilia-view="preview"] .content-area .sui.resizable-pane:has(.pane[data-mode="preview"]) {
+  flex-basis: 100% !important;
+  max-width: none !important;
+}
 #nc-root .content-editor textarea { min-height: 300px; line-height: 1.85; }
 #nc-root .content-editor [class*="Toolbar"],
 #nc-root .content-editor [class*="toolbar"] { border-color: var(--admin-line); }
@@ -472,9 +525,21 @@ body {
   }
   #nc-root .content-editor > .sui.toolbar.primary::-webkit-scrollbar { display: none; }
   #nc-root .content-editor > .sui.toolbar.primary h2 { font-size: 14px; }
+  #nc-root .content-editor > .sui.toolbar.primary > .yilia-view-switch button {
+    min-height: 32px !important;
+    padding-inline: 8px !important;
+  }
   #nc-root .content-editor > .sui.toolbar.primary button { min-height: 40px; }
   #nc-root .content-editor > .sui.toolbar.primary button[aria-label] { width: 40px; min-width: 40px; }
   #nc-root .content-editor .header > .sui.toolbar { padding-inline: 12px !important; }
+  #nc-root .content-editor .pane[data-mode="edit"] .content {
+    display: block;
+    --field-editor-padding: 16px;
+  }
+  #nc-root .content-editor .pane[data-mode="edit"] .content > section.field[data-key-path="date"],
+  #nc-root .content-editor .pane[data-mode="edit"] .content > section.field[data-key-path="tags"] {
+    grid-column: auto;
+  }
   #nc-root .content-editor textarea { min-height: 280px; font-size: 16px; line-height: 1.75; }
   #nc-root:has(section[class*="AuthenticationPage"]) { min-height: 100dvh; }
   #nc-root section[class*="AuthenticationPage"] h1 { font-size: 30px; }

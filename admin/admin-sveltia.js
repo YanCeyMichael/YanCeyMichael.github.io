@@ -282,6 +282,72 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
       });
   }
 
+  function applyEditorView(editor, view) {
+    var nextView = ['edit', 'split', 'preview'].includes(view) ? view : 'split';
+    editor.dataset.yiliaView = nextView;
+    var picker = editor.querySelector('.yilia-view-switch');
+    if (picker) {
+      picker.querySelectorAll('[data-yilia-view]').forEach(function (button) {
+        var active = button.dataset.yiliaView === nextView;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+    }
+    try {
+      window.localStorage.setItem('yilia-admin-editor-view', nextView);
+    } catch (error) {
+      // The view still works when browser storage is unavailable.
+    }
+  }
+
+  function enhanceEditorChrome() {
+    var editor = root.querySelector('.wrapper.content-editor');
+    if (!editor) return;
+    var toolbar = editor.querySelector(':scope > .sui.toolbar.primary');
+    var editPane = editor.querySelector('.content-area .pane[data-mode="edit"]');
+    var previewPane = editor.querySelector('.content-area .pane[data-mode="preview"]');
+    var picker = toolbar && toolbar.querySelector(':scope > .yilia-view-switch');
+
+    if (!toolbar || !editPane || !previewPane) {
+      picker?.remove();
+      delete editor.dataset.yiliaView;
+      return;
+    }
+
+    if (!picker) {
+      picker = document.createElement('div');
+      picker.className = 'yilia-view-switch';
+      picker.setAttribute('role', 'group');
+      picker.setAttribute('aria-label', '编辑视图');
+      [
+        ['edit', '编辑'],
+        ['split', '分屏'],
+        ['preview', '预览']
+      ].forEach(function ([view, label]) {
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = label;
+        button.dataset.yiliaView = view;
+        button.addEventListener('click', function () {
+          applyEditorView(editor, view);
+        });
+        picker.appendChild(button);
+      });
+      var title = toolbar.querySelector('h2');
+      toolbar.insertBefore(picker, title ? title.nextSibling : toolbar.firstChild);
+    }
+
+    var savedView = editor.dataset.yiliaView;
+    if (!savedView) {
+      try {
+        savedView = window.localStorage.getItem('yilia-admin-editor-view') || 'split';
+      } catch (error) {
+        savedView = 'split';
+      }
+    }
+    applyEditorView(editor, savedView);
+  }
+
   function syncShell() {
     var workspace = document.querySelector('.admin-workspace');
     var isEditor = /#\/collections\/posts\/(new|entries\/)/.test(location.hash);
@@ -298,6 +364,7 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
       authHeading.textContent = 'Yancey’s Blog';
     }
     enhanceTagFields();
+    enhanceEditorChrome();
   }
 
   registerPreviews();
