@@ -1,5 +1,5 @@
 # 认证由 aiyancey.com 的区域 Worker 自定义域处理。
-# GitHub 登录由 Cloudflare Worker 处理；此文件不得放 OAuth Secret 或 PAT。
+# GitHub App 登录由 Cloudflare Worker 处理；此文件不得放 Client Secret、私钥或 PAT。
 backend:
   name: github
   repo: YanCeyMichael/YanCeyBlog-Source
