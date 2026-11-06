@@ -163,6 +163,9 @@
 #mobile-nav .header-menu ul{display:flex;justify-content:center;margin-inline:auto}
 #mobile-nav .header-menu a{display:inline-flex;align-items:center;min-height:44px}
 #mobile-nav .header-nav{margin:4px auto 14px}
+.article-index{padding:12px 16px}
+.article-index .article-header{padding:2px 0 12px}
+.article-index .article-title-row{margin-left:0;column-gap:10px;row-gap:6px}
 .article-entry{font-size:16px;line-height:1.85}
 }
 @media(max-width:720px){

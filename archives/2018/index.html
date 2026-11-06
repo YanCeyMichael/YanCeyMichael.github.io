@@ -24,7 +24,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
-<link rel="stylesheet" href="/css/reading-layout.css?v=20261106-article-list-9">
+<link rel="stylesheet" href="/css/reading-layout.css?v=20261106-mobile-detail-10">
 
   <link rel="stylesheet" href="/css/site-drawer-v6.css?v=2.0.1">
   <style type="text/css">
@@ -221,6 +221,12 @@
   @media(max-width:800px){
     #site-admin-desktop-toolbar{display:none}
     #site-admin-mobile-actions{position:absolute;z-index:105;top:max(6px,env(safe-area-inset-top));right:10px;display:flex;align-items:flex-start;gap:7px}
+    html.site-owner-mode #mobile-nav{position:relative}
+    html.site-owner-mode #mobile-nav .btnctn.js-mobile-btnctn{position:absolute;top:max(4px,env(safe-area-inset-top));left:0;right:0;width:auto;height:56px;display:flex;align-items:center;justify-content:space-between;padding:4px 12px;z-index:110;pointer-events:none}
+    html.site-owner-mode #mobile-nav .btnctn.js-mobile-btnctn .slider-trigger.list{position:static;width:44px;height:44px;display:grid;place-items:center;line-height:1;border-radius:4px;pointer-events:auto}
+    html.site-owner-mode #site-admin-mobile-actions{position:static;max-width:calc(100% - 56px);margin-left:auto;display:flex;align-items:center;justify-content:flex-end;gap:6px;pointer-events:auto}
+    html.site-owner-mode #mobile-nav .overlay{height:198px}
+    html.site-owner-mode #mobile-nav #header{padding-top:64px}
     #mobile-nav .btnctn.js-mobile-btnctn{width:100%;display:flex;align-items:flex-start;justify-content:space-between;padding-right:8px}
     #site-admin-trigger{min-height:44px;padding:0 12px;font-size:12px}
     #site-admin-owner{gap:7px;padding:4px 7px}
