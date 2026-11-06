@@ -70,6 +70,16 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     });
   }
   if (adminScrim) adminScrim.addEventListener('click', function () { setMobileSidebar(false); });
+  mobileSidebarQuery.addEventListener('change', function () {
+    setMobileSidebar(false);
+  });
+  compactSidebarQuery.addEventListener('change', function (event) {
+    if (sidebarPreference === null && !mobileSidebarQuery.matches) {
+      setSidebarCollapsed(event.matches, false);
+    } else {
+      syncWorkspaceToggle();
+    }
+  });
   document.querySelectorAll('.admin-nav a, .foot-link').forEach(function (link) {
     link.addEventListener('click', function () {
       if (mobileSidebarQuery.matches) setMobileSidebar(false);
