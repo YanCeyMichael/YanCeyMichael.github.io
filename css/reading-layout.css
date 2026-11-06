@@ -2,7 +2,7 @@
 .article-entry{line-height:1.9;overflow-wrap:break-word}
 .article:not(.article-index) .article-entry{max-width:70ch}
 .article-index .list-entry-copy{max-width:70ch}
-.article-index:not(.article-has-media) .article-entry{max-width:70ch}
+.article-index:not(.article-has-media) .article-entry{max-width:none}
 .article-entry img{max-width:100%;height:auto}
 .article-header .article-title{font-family:Georgia,"Songti SC",serif;color:#485158}
 .article-header h2.article-title,
@@ -14,6 +14,8 @@
 .left-col #header .header-author a,
 #mobile-nav #header .header-menu a,
 #mobile-nav #header .header-author{color:#102c45}
+.left-col #header .header-menu a.active,
+#mobile-nav #header .header-menu a.active{background:transparent;color:#102c45}
 .left-col #header .header-subtitle,
 #mobile-nav #header .header-subtitle{color:#42515d}
 .left-col #header a:focus-visible,
@@ -61,11 +63,19 @@
 .list-entry-copy>:first-child{margin-top:0}
 .list-entry-media{
   display:grid;
+  grid-column:2;
+  grid-row:1 / span 2;
   gap:10px;
   min-width:0;
   margin:0;
   overflow:clip;
   background:#f2f3f4;
+}
+.list-entry-more{
+  grid-column:1;
+  grid-row:2;
+  align-self:start;
+  justify-self:start;
 }
 .article-entry .list-entry-media p{margin:0}
 .article-entry .list-entry-media img{
@@ -221,6 +231,11 @@
 .list-entry-media{
   width:100%;
   margin-top:16px;
+}
+.list-entry-more{
+  display:flex;
+  width:max-content;
+  margin-top:12px;
 }
 .article-entry .list-entry-media img{
   aspect-ratio:16/10;
