@@ -10,7 +10,7 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
   var compactSidebarQuery = window.matchMedia('(max-width: 1050px)');
   var mobileSidebarQuery = window.matchMedia('(max-width: 800px)');
   var sidebarPreference = null;
-  var sidebarStorageKey = 'yilia-admin-sidebar-collapsed';
+  var sidebarStorageKey = 'yilia-admin-sidebar-collapsed-v3';
 
   try {
     sidebarPreference = window.localStorage.getItem(sidebarStorageKey);
@@ -293,11 +293,157 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
         button.setAttribute('aria-pressed', String(active));
       });
     }
+    var panes = editor.querySelectorAll('.content-area .pane[data-mode]');
+    if (panes.length === 1) {
+      var pane = panes[0];
+      var desiredMode = nextView === 'preview' ? 'preview' : 'edit';
+      if (pane.dataset.mode !== desiredMode) {
+        var previewToggle = pane.querySelector('.header button[aria-label="预览"]');
+        previewToggle?.click();
+      }
+    }
     try {
       window.localStorage.setItem('yilia-admin-editor-view', nextView);
     } catch (error) {
       // The view still works when browser storage is unavailable.
     }
+  }
+
+  function decorateEditorTitle(toolbarInner) {
+    var title = toolbarInner.querySelector(':scope > h2');
+    if (!title) return;
+
+    var isEntryTitle = Boolean(title.querySelector('bdi'));
+    title.classList.toggle('is-entry-title', isEntryTitle);
+    if (isEntryTitle) {
+      title.classList.remove('is-new-entry');
+      delete title.dataset.yiliaNewEntry;
+      return;
+    }
+
+    var normalized = title.textContent.replace(/[\u2066-\u2069]/g, '').replace(/\s+/g, ' ').trim();
+    var isNewEntry = title.dataset.yiliaNewEntry === 'true' || /^创建\s*文章/.test(normalized);
+    title.classList.toggle('is-new-entry', isNewEntry);
+    if (!isNewEntry) return;
+
+    title.dataset.yiliaNewEntry = 'true';
+    var text = title.querySelector('.truncated-text');
+    if (text && text.textContent.trim() !== '新建文章') {
+      text.textContent = '新建文章';
+    }
+  }
+
+  function ensureMobileTitle(toolbarInner) {
+    var title = toolbarInner.querySelector(':scope > .yilia-mobile-title');
+    if (!title) {
+      title = document.createElement('span');
+      title.className = 'yilia-mobile-title';
+      title.setAttribute('aria-hidden', 'true');
+      toolbarInner.appendChild(title);
+    }
+    var documentTitle = document.title.split('–')[0]
+      .replace(/[\u2066-\u2069]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    var label = /^创建\s*文章$/.test(documentTitle)
+      ? '新建文章'
+      : documentTitle.split('›').pop().trim();
+    if (title.textContent !== label) title.textContent = label;
+  }
+
+  function ensureSaveState(toolbarInner, saveButton) {
+    var state = toolbarInner.querySelector(':scope > .yilia-save-state');
+    if (!saveButton) {
+      state?.remove();
+      return;
+    }
+    if (!state) {
+      state = document.createElement('span');
+      state.className = 'yilia-save-state';
+      state.setAttribute('role', 'status');
+      toolbarInner.insertBefore(state, saveButton);
+    }
+    var dirty = !saveButton.disabled;
+    var nextState = dirty ? 'dirty' : 'saved';
+    var nextLabel = dirty ? '待保存' : '已保存';
+    if (state.dataset.state !== nextState) state.dataset.state = nextState;
+    if (state.textContent !== nextLabel) state.textContent = nextLabel;
+  }
+
+  function decoratePaneHeaders(editPane, previewPane) {
+    var editHeading = editPane?.querySelector('.header .sui.toolbar h3');
+    if (editHeading && editHeading.textContent.trim() !== '编辑') {
+      editHeading.textContent = '编辑';
+    }
+
+    var previewHeading = previewPane?.querySelector('.header .sui.toolbar h3');
+    if (previewHeading && previewHeading.textContent.trim() !== '实时预览') {
+      previewHeading.textContent = '实时预览';
+    }
+
+    var previewToolbar = previewPane?.querySelector('.header .sui.toolbar > .inner');
+    if (previewToolbar && !previewToolbar.querySelector(':scope > .yilia-preview-size')) {
+      var note = document.createElement('small');
+      note.className = 'yilia-preview-size';
+      note.textContent = '桌面阅读宽度';
+      previewToolbar.appendChild(note);
+    }
+  }
+
+  function ensureTagHint(tagsField) {
+    if (tagsField.querySelector(':scope > .yilia-tag-hint')) return;
+    var hint = document.createElement('p');
+    hint.className = 'yilia-tag-hint';
+    hint.textContent = '可从已有标签中选择，也可以直接输入新标签。';
+    tagsField.appendChild(hint);
+  }
+
+  function closePanelDrawer(editor) {
+    editor.classList.remove('yilia-panel-drawer-open');
+  }
+
+  function openPanelDrawer(editor, label) {
+    var button = Array.from(editor.querySelectorAll('.sidebar .tabs button'))
+      .find(function (item) {
+        return item.getAttribute('aria-label') === label && !item.disabled;
+      });
+    if (!button) return;
+
+    editor.classList.add('yilia-panel-drawer-open');
+    if (button.getAttribute('aria-checked') !== 'true') button.click();
+  }
+
+  function decorateEditorMenu(editor, toolbarInner) {
+    var menu = document.querySelector('[role="menu"][aria-label="编辑器选项"]');
+    if (!menu || menu.querySelector(':scope > .yilia-panel-menu')) return;
+
+    var tabs = Array.from(editor.querySelectorAll('.sidebar .tabs button'))
+      .filter(function (button) { return !button.disabled; });
+    if (!tabs.length) return;
+
+    var panelMenu = document.createElement('div');
+    panelMenu.className = 'yilia-panel-menu';
+    var heading = document.createElement('span');
+    heading.textContent = '内容面板';
+    panelMenu.appendChild(heading);
+
+    tabs.forEach(function (tab) {
+      var item = document.createElement('button');
+      var label = tab.getAttribute('aria-label') || '内容面板';
+      item.type = 'button';
+      item.setAttribute('role', 'menuitem');
+      item.textContent = label;
+      item.addEventListener('click', function () {
+        openPanelDrawer(editor, label);
+        window.setTimeout(function () {
+          var trigger = toolbarInner.querySelector(':scope > button[aria-label="显示编辑器选项"]');
+          if (trigger && trigger.getAttribute('aria-expanded') === 'true') trigger.click();
+        }, 0);
+      });
+      panelMenu.appendChild(item);
+    });
+
+    menu.appendChild(panelMenu);
   }
 
   function enhanceEditorChrome() {
@@ -306,13 +452,18 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     var toolbar = editor.querySelector(':scope > .sui.toolbar.primary');
     var editPane = editor.querySelector('.content-area .pane[data-mode="edit"]');
     var previewPane = editor.querySelector('.content-area .pane[data-mode="preview"]');
-    var picker = toolbar && toolbar.querySelector(':scope > .yilia-view-switch');
+    var toolbarInner = toolbar && (toolbar.querySelector(':scope > .inner') || toolbar);
+    var picker = toolbarInner && toolbarInner.querySelector(':scope > .yilia-view-switch');
 
-    if (!toolbar || !editPane || !previewPane) {
+    if (!toolbar || (!editPane && !previewPane)) {
       picker?.remove();
       delete editor.dataset.yiliaView;
+      closePanelDrawer(editor);
       return;
     }
+
+    decorateEditorTitle(toolbarInner);
+    ensureMobileTitle(toolbarInner);
 
     if (!picker) {
       picker = document.createElement('div');
@@ -333,9 +484,16 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
         });
         picker.appendChild(button);
       });
-      var title = toolbar.querySelector('h2');
-      toolbar.insertBefore(picker, title ? title.nextSibling : toolbar.firstChild);
+      var title = toolbarInner.querySelector(':scope > h2');
+      toolbarInner.insertBefore(picker, title ? title.nextSibling : toolbarInner.firstChild);
     }
+
+    var saveButton = toolbarInner.querySelector(':scope > button.primary');
+    ensureSaveState(toolbarInner, saveButton);
+    decoratePaneHeaders(editPane, previewPane);
+
+    var tagsField = editPane?.querySelector('section.field[data-key-path="tags"]');
+    if (tagsField) ensureTagHint(tagsField);
 
     var savedView = editor.dataset.yiliaView;
     if (!savedView) {
@@ -346,6 +504,7 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
       }
     }
     applyEditorView(editor, savedView);
+    decorateEditorMenu(editor, toolbarInner);
   }
 
   function syncShell() {
@@ -373,5 +532,19 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
   syncShell();
 
   window.addEventListener('hashchange', syncShell);
+  document.addEventListener('pointerdown', function (event) {
+    var editor = root.querySelector('.wrapper.content-editor');
+    if (!editor?.classList.contains('yilia-panel-drawer-open')) return;
+    if (event.target.closest('.sidebar, .yilia-panel-menu')) return;
+    closePanelDrawer(editor);
+  });
+  window.addEventListener('keydown', function (event) {
+    var editor = root.querySelector('.wrapper.content-editor');
+    if (event.key === 'Escape' && editor?.classList.contains('yilia-panel-drawer-open')) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closePanelDrawer(editor);
+    }
+  }, true);
   new MutationObserver(syncShell).observe(root, { childList: true, subtree: true });
 })();

@@ -119,7 +119,7 @@ body {
 .workspace-toggle {
   position: fixed;
   top: 12px;
-  left: calc(var(--admin-side-width) + 16px);
+  left: calc(var(--admin-side-width) + 22px);
   z-index: 1000 !important;
   width: 36px;
   height: 34px;
@@ -275,6 +275,15 @@ body {
   height: auto !important;
   margin: 0 !important;
   overflow: hidden !important;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+#nc-root .content-editor > .body {
+  position: relative;
+  min-height: 0;
+  display: flex !important;
+  overflow: hidden;
   border: 1px solid #e1e7ec;
   border-radius: 16px;
   background: var(--admin-paper);
@@ -290,26 +299,59 @@ body {
   justify-content: flex-start;
   gap: 7px;
   margin: 0;
-  padding: 0 16px 0 60px !important;
+  padding: 0 16px 0 68px !important;
   border: 0;
-  border-bottom: 1px solid var(--admin-line);
   background: var(--admin-frame);
 }
-#nc-root .content-editor > .sui.toolbar.primary h2 {
+#nc-root .content-editor > .sui.toolbar.primary > .inner {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 7px;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > h2 {
   order: 1;
   min-width: 0;
   flex: 1 1 auto;
   margin: 0;
   overflow: hidden;
   color: var(--admin-ink);
-  font-size: 18px;
+  font-size: 28px;
   font-weight: 650;
-  line-height: 1.3;
+  line-height: 1.2;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-#nc-root .content-editor > .sui.toolbar.primary > .yilia-view-switch {
-  order: 2;
+#nc-root .content-editor > .sui.toolbar.primary > .inner > h2.is-entry-title {
+  font-size: 0;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > h2.is-entry-title bdi:first-of-type {
+  color: var(--admin-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > h2.is-entry-title bdi:first-of-type::after {
+  margin-inline: 7px;
+  color: #91a0aa;
+  content: "/";
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > h2.is-entry-title bdi:last-of-type {
+  color: var(--admin-ink);
+  font-size: 28px;
+  font-weight: 650;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > h2.is-new-entry::before {
+  margin-inline-end: 10px;
+  color: var(--admin-muted);
+  font-size: 14px;
+  font-weight: 500;
+  content: "文章 /";
+}
+.yilia-mobile-title { display: none; }
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-view-switch {
+  order: 2 !important;
   display: inline-flex;
   flex: none;
   gap: 2px;
@@ -318,7 +360,7 @@ body {
   border-radius: 9px;
   background: #eaf0f5;
 }
-#nc-root .content-editor > .sui.toolbar.primary > .yilia-view-switch button {
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-view-switch button {
   width: auto;
   min-width: 0;
   min-height: 28px !important;
@@ -330,15 +372,38 @@ body {
   font-size: 12px;
   font-weight: 600;
 }
-#nc-root .content-editor > .sui.toolbar.primary > .yilia-view-switch button.is-active {
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-view-switch button.is-active {
   background: #fff;
   color: var(--admin-ink);
   box-shadow: 0 1px 3px #14233314;
 }
-#nc-root .content-editor > .sui.toolbar.primary > :not(h2):not(.yilia-view-switch) {
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-save-state {
+  order: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-inline-start: 3px;
+  color: var(--admin-muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-save-state::before {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: #4d9b73;
+  content: "";
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-save-state[data-state="dirty"]::before {
+  background: #d09a43;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > :not(h2):not(.yilia-view-switch):not(.yilia-save-state):not(.yilia-mobile-title) {
   order: 3;
 }
-#nc-root .content-editor > .sui.toolbar.primary > :first-child { order: 0 !important; }
+#nc-root .content-editor > .sui.toolbar.primary > .inner > :first-child:not(.yilia-view-switch) {
+  order: 0 !important;
+}
 #nc-root .content-editor > .sui.toolbar.primary button {
   min-height: 34px;
   flex: none;
@@ -349,6 +414,8 @@ body {
   border-color: var(--admin-ink);
   background: var(--admin-ink);
   color: #fff;
+  font-size: 13px;
+  font-weight: 650;
 }
 #nc-root .content-editor > .sui.toolbar.primary button[aria-label] {
   width: 34px;
@@ -369,16 +436,50 @@ body {
 }
 #nc-root .content-editor .header .sui.toolbar h3 {
   margin: 0;
-  color: #354650;
+  color: var(--admin-ink);
   font-size: 14px;
   font-weight: 650;
 }
+#nc-root .content-editor .header .yilia-preview-size {
+  margin-inline-start: auto;
+  color: var(--admin-muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+#nc-root .content-editor .content-area {
+  border-block-start: 0 !important;
+  border-inline-end: 0 !important;
+  background: #fff;
+}
+#nc-root .content-editor .content-area > .sui.resizable-handle {
+  width: 4px !important;
+  border: 0;
+  background: #fff;
+}
+#nc-root .content-editor .content-area > .sui.resizable-handle::after {
+  position: absolute;
+  inset: 0 auto 0 50%;
+  width: 1px;
+  background: var(--admin-line);
+  content: "";
+}
+#nc-root .content-editor .swap-button {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .16s ease;
+}
+#nc-root .content-editor .swap-button:focus-visible {
+  opacity: .72;
+  pointer-events: auto;
+}
 #nc-root .content-editor .pane[data-mode="edit"] .content {
-  --field-editor-padding: 19px 24px;
+  --field-editor-padding: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(210px, .8fr) minmax(260px, 1.2fr);
   column-gap: 18px;
+  row-gap: 21px;
   align-content: start;
+  padding: 24px 28px 48px;
   background: #fff;
 }
 #nc-root .content-editor .pane[data-mode="edit"] .content > * { grid-column: 1 / -1; }
@@ -392,17 +493,286 @@ body {
   display: none;
 }
 #nc-root .content-editor .pane[data-mode="edit"] section.field > header {
+  height: 17px;
+  min-height: 17px;
   margin-bottom: 7px;
+  align-items: center;
 }
 #nc-root .content-editor .pane[data-mode="edit"] section.field > header h4 {
-  color: #495b69;
-  font-size: 13px;
+  margin: 0;
+  color: #354650;
+  font-size: 12px;
   font-weight: 650;
+  line-height: 1.375;
+}
+#nc-root .content-editor .pane[data-mode="edit"] section.field > header button[aria-label="显示字段选项"] {
+  display: none;
 }
 #nc-root .content-editor .pane[data-mode="edit"] section.field > * {
   max-width: 820px;
 }
+#nc-root .content-editor[data-yilia-view="split"] .content-area .sui.resizable-pane:first-of-type {
+  flex-basis: 54% !important;
+}
+#nc-root .content-editor[data-yilia-view="split"] .content-area .sui.resizable-pane:last-of-type {
+  flex-basis: 46% !important;
+}
 #nc-root .content-editor [data-mode="preview"] .content { background: #fbfcfd; }
+#nc-root .content-editor .pane[data-mode="edit"] .field-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0 !important;
+}
+#nc-root .content-editor .pane[data-mode="edit"] :is(
+  .field[data-field-type="string"],
+  .field[data-field-type="datetime"]
+) > .field-wrapper {
+  height: 40px;
+  overflow: visible;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field-wrapper > * {
+  width: 100%;
+  min-width: 0;
+  margin-block: 0 !important;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field > .footer:not(:has(> *)) {
+  display: none;
+}
+#nc-root .content-editor .pane[data-mode="edit"] :is(
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  textarea
+) {
+  border-color: #d6e0e7;
+  border-radius: 8px;
+  box-shadow: none;
+  background: #fff;
+}
+#nc-root .content-editor .pane[data-mode="edit"] input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+  min-height: 40px;
+  width: 100%;
+  margin: 0;
+  padding-inline: 11px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="date"] .field-wrapper > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="date"] input {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="date"] button {
+  width: auto;
+  min-width: 0;
+  min-height: 40px;
+  flex: none;
+  margin: 0 !important;
+  padding-inline: 9px;
+  border: 1px solid #d5dfe6;
+  border-radius: 8px;
+  background: #fff;
+  color: #405362;
+  font-size: 12px;
+  font-weight: 650;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .sui.group {
+  min-height: 122px;
+  border: 1px solid #dce4ea;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fbfcfd;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .sui.group:has(.item-list:empty) {
+  min-height: 85px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .sui.group:has(.item-list > *) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .sui.group:has(.item-list > *) > .inner {
+  width: 100%;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .sui.group:has(.item-list > *) .toolbar.top {
+  display: none;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .sui.group:has(.item-list:empty) > .inner > .toolbar.bottom {
+  display: none;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item-list {
+  padding: 0;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item-wrapper {
+  border: 1px solid #e1e7ec;
+  border-radius: 7px;
+  overflow: hidden;
+  background: #fff;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item {
+  position: relative;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item > .header {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  min-height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item > .header :is(.start, .center) {
+  display: none;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item > .header .end {
+  width: 28px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item > .header .end button:not([aria-label="移除"]) {
+  display: none;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item-body section.field > header {
+  display: none;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item-body section.field > .field-wrapper {
+  height: 40px;
+  padding: 0 !important;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item-body .sui.text-input {
+  margin: 0 !important;
+  padding-inline-end: 34px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item-body input {
+  height: 38px;
+  min-height: 38px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .toolbar.bottom {
+  min-height: 36px;
+  padding: 0;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .toolbar.top {
+  min-height: 46px;
+  padding: 6px 9px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .toolbar.top button {
+  min-height: 30px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item-list {
+  padding: 0 9px 9px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .yilia-tag-hint {
+  margin: 7px 0 0;
+  color: var(--admin-muted);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.36;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] .text-editor {
+  min-height: 340px;
+  margin: 0 !important;
+  border: 1px solid #d6e0e7;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  --sui-text-editor-toolbar-height: 46px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] .text-editor > .wrapper {
+  border: 0;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] .sui.toolbar.horizontal {
+  min-height: 46px;
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--admin-line-soft);
+  background: #fbfcfd;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] .sui.toolbar.horizontal button {
+  width: 34px;
+  min-width: 34px;
+  min-height: 34px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] .sui.toolbar.horizontal > .inner {
+  gap: 4px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] .sui.divider {
+  width: 1px;
+  min-width: 1px;
+  height: 20px;
+  min-height: 20px;
+  margin-inline: 4px;
+  background: var(--admin-line);
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] .text-area {
+  min-height: 292px;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] textarea {
+  min-height: 292px;
+  padding: 17px 18px;
+  border: 0 !important;
+  border-radius: 0;
+  background: #fff;
+  font-size: 13px;
+  line-height: 1.85;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .footer .hint {
+  margin: 8px 0 0;
+  color: var(--admin-muted);
+  font-size: 11px;
+}
+
+/* The native side rail stays available from the editor menu, but no longer squeezes the canvas. */
+#nc-root .content-editor .sidebar {
+  display: none;
+}
+#nc-root .content-editor.yilia-panel-drawer-open .sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  padding: 8px;
+  background: #fff;
+  box-shadow: -14px 0 34px #17243224;
+}
+#nc-root .content-editor.yilia-panel-drawer-open .sidebar .tabs {
+  gap: 4px;
+}
+#nc-root .content-editor.yilia-panel-drawer-open .sidebar .content {
+  margin-inline-start: 8px;
+}
+#nc-root .content-editor.yilia-panel-drawer-open .sidebar .content > section {
+  height: 100%;
+}
+.yilia-panel-menu {
+  display: grid;
+  gap: 2px;
+  padding: 8px 4px 4px;
+}
+.yilia-panel-menu > span {
+  padding: 3px 9px 6px;
+  color: #8b98a2;
+  font-size: 11px;
+  font-weight: 650;
+}
+.yilia-panel-menu button {
+  min-height: 34px;
+  padding: 0 9px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #354955;
+  font-size: 12px;
+  text-align: start;
+  cursor: pointer;
+}
+.yilia-panel-menu button:hover,
+.yilia-panel-menu button:focus-visible {
+  background: #f0f4f7;
+}
 #nc-root .content-editor[data-yilia-view="edit"] .content-area .sui.resizable-pane:has(.pane[data-mode="preview"]),
 #nc-root .content-editor[data-yilia-view="edit"] .content-area > .sui.resizable-handle,
 #nc-root .content-editor[data-yilia-view="edit"] .content-area > .swap-button,
@@ -461,6 +831,15 @@ body {
 @media (max-width: 1050px) and (min-width: 801px) {
   .admin-workspace:not(.is-sidebar-collapsed) { --admin-side-width: 196px; }
   .brand-copy small { display: none; }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > h2 {
+    font-size: 22px;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > h2.is-entry-title bdi:last-of-type {
+    font-size: 22px;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-save-state {
+    display: none;
+  }
 }
 
 @media (max-width: 800px) {
@@ -516,6 +895,10 @@ body {
     border: 0;
     border-radius: 0;
   }
+  #nc-root .content-editor > .body {
+    border: 0;
+    border-radius: 0;
+  }
   #nc-root .content-editor > .sui.toolbar.primary {
     min-height: 58px;
     gap: 4px;
@@ -524,8 +907,14 @@ body {
     scrollbar-width: none;
   }
   #nc-root .content-editor > .sui.toolbar.primary::-webkit-scrollbar { display: none; }
-  #nc-root .content-editor > .sui.toolbar.primary h2 { font-size: 14px; }
-  #nc-root .content-editor > .sui.toolbar.primary > .yilia-view-switch button {
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > h2 { font-size: 20px; }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > h2.is-new-entry::before {
+    display: none;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-save-state {
+    display: none;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-view-switch button {
     min-height: 32px !important;
     padding-inline: 8px !important;
   }
@@ -533,8 +922,11 @@ body {
   #nc-root .content-editor > .sui.toolbar.primary button[aria-label] { width: 40px; min-width: 40px; }
   #nc-root .content-editor .header > .sui.toolbar { padding-inline: 12px !important; }
   #nc-root .content-editor .pane[data-mode="edit"] .content {
-    display: block;
-    --field-editor-padding: 16px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 21px;
+    padding: 18px 16px 50px;
+    --field-editor-padding: 0;
   }
   #nc-root .content-editor .pane[data-mode="edit"] .content > section.field[data-key-path="date"],
   #nc-root .content-editor .pane[data-mode="edit"] .content > section.field[data-key-path="tags"] {
@@ -543,6 +935,60 @@ body {
   #nc-root .content-editor textarea { min-height: 280px; font-size: 16px; line-height: 1.75; }
   #nc-root:has(section[class*="AuthenticationPage"]) { min-height: 100dvh; }
   #nc-root section[class*="AuthenticationPage"] h1 { font-size: 30px; }
+}
+
+@media (max-width: 560px) {
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > h2 {
+    display: block;
+    font-size: 14px;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-mobile-title {
+    order: 1;
+    min-width: 0;
+    flex: 1 1 auto;
+    display: block;
+    overflow: hidden;
+    color: var(--admin-ink);
+    font-size: 14px;
+    font-weight: 650;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > button[aria-label="取消编辑"] {
+    display: none;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > button[aria-label="显示编辑器选项"] {
+    display: none;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-view-switch {
+    margin-inline-start: auto;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-view-switch button {
+    min-height: 30px !important;
+    padding-inline: 7px !important;
+    font-size: 11px;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > button.primary {
+    width: 40px;
+    min-width: 40px;
+    padding: 0 !important;
+    font-size: 0 !important;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > button.primary > * {
+    display: none !important;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > button.primary::before {
+    width: 10px;
+    height: 5px;
+    border-bottom: 2px solid currentColor;
+    border-left: 2px solid currentColor;
+    content: "";
+    transform: translateY(-1px) rotate(-45deg);
+  }
+  #nc-root .content-editor .pane .header .sui.toolbar > .inner {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
