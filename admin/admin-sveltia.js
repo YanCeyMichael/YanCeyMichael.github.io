@@ -868,7 +868,9 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     (workspace || root).appendChild(panel);
 
     var elements = mediaLibraryElements();
-    elements.close.addEventListener('click', closeMediaLibrary);
+    elements.close.addEventListener('click', function () {
+      closeMediaLibrary({ restoreFocus: true });
+    });
     elements.upload.addEventListener('change', function () {
       uploadMedia(elements.upload.files);
       elements.upload.value = '';
@@ -908,14 +910,20 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     mediaLibraryElements().search.focus();
   }
 
-  function closeMediaLibrary() {
+  function closeMediaLibrary(options) {
+    var restoreFocus = Boolean(options && options.restoreFocus);
     var panel = document.getElementById('yilia-media-library');
     if (!panel) return;
+    var wasVisible = !panel.hidden;
+    var returnFocus = mediaState.returnFocus;
     panel.hidden = true;
     panel.classList.remove('is-dragging');
     workspace?.classList.remove('yilia-media-mode');
-    if (mediaState.returnFocus?.focus) mediaState.returnFocus.focus();
+    mediaState.returnFocus = null;
     mediaState.mode = 'page';
+    if (wasVisible && restoreFocus && returnFocus?.focus && returnFocus.isConnected) {
+      returnFocus.focus();
+    }
   }
 
   function syncMediaLibraryRoute() {
@@ -924,8 +932,11 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
       if (mediaState.mode !== 'editor' || document.getElementById('yilia-media-library').hidden) {
         openMediaLibrary('page');
       }
-    } else if (mediaState.mode === 'page') {
-      closeMediaLibrary();
+    } else {
+      var panel = document.getElementById('yilia-media-library');
+      if (panel && !panel.hidden && mediaState.mode === 'page') {
+        closeMediaLibrary({ restoreFocus: false });
+      }
     }
   }
 
