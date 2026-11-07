@@ -664,6 +664,7 @@ body {
 .yilia-media-status[data-state="success"] { color: #2c7652; }
 .yilia-media-status[data-state="error"] { color: #a24742; }
 .yilia-media-status[data-state="warning"] { color: #8b6a20; }
+.yilia-media-status[data-state="auth"] { color: #526b7d; font-weight: 600; }
 .yilia-media-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -747,6 +748,51 @@ body {
 }
 .yilia-media-empty strong { color: #435764; }
 .yilia-media-empty span { font-size: 12px; }
+.yilia-media-auth {
+  grid-column: 1 / -1;
+  min-height: 220px;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 24px;
+  border: 1px dashed #cbd9e3;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #455d6d;
+}
+.yilia-media-auth-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #e8eff4;
+  color: #537187;
+}
+.yilia-media-auth strong {
+  display: block;
+  color: #2f4656;
+  font-size: 15px;
+}
+.yilia-media-auth p {
+  max-width: 520px;
+  margin: 5px 0 0;
+  color: #6e7f8a;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.yilia-media-login {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--admin-ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 680;
+}
+.yilia-media-login:hover { background: #263845; }
 
 #nc-root .content-editor .header > .sui.toolbar {
   min-height: 50px;
@@ -1361,6 +1407,15 @@ body {
   .yilia-media-actions { padding: 0 10px 10px; }
   .yilia-media-actions button { flex: 1 1 auto; padding-inline: 7px; }
   .yilia-media-actions button.is-danger { margin-left: 0; }
+  .yilia-media-auth {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 12px;
+    padding: 18px;
+  }
+  .yilia-media-login {
+    grid-column: 2;
+    justify-self: start;
+  }
 }
 
 @media (max-width: 560px) {

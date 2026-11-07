@@ -603,7 +603,9 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     query: '',
     loading: false,
     mode: 'page',
-    returnFocus: null
+    returnFocus: null,
+    authRequired: false,
+    authPopup: null
   };
 
   function formatMediaSize(bytes) {
@@ -716,6 +718,27 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
   function renderMediaItems() {
     var elements = mediaLibraryElements();
     if (!elements || !mediaState.items) return;
+    if (mediaState.authRequired) {
+      elements.count.textContent = '未登录';
+      elements.grid.textContent = '';
+      var authPanel = document.createElement('div');
+      authPanel.className = 'yilia-media-auth';
+      authPanel.innerHTML = `
+        <span class="yilia-media-auth-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="10" width="16" height="10" rx="2"></rect>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+          </svg>
+        </span>
+        <div>
+          <strong>登录后管理图片</strong>
+          <p>媒体库保存在 imagesforblogs。完成 GitHub 登录后即可浏览、上传和刷新。</p>
+        </div>
+        <button class="yilia-media-login" type="button">使用 GitHub 登录</button>
+      `;
+      elements.grid.appendChild(authPanel);
+      return;
+    }
     var query = mediaState.query.trim().toLocaleLowerCase();
     var items = mediaState.items.filter(function (item) {
       return !query || item.name.toLocaleLowerCase().includes(query);
@@ -853,13 +876,24 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
       });
       var payload = await response.json().catch(function () { return {}; });
       if (!response.ok) {
-        throw new Error(payload.error || ('HTTP ' + response.status));
+        var requestError = new Error(payload.error || ('HTTP ' + response.status));
+        requestError.status = response.status;
+        requestError.code = payload.code || '';
+        throw requestError;
       }
+      mediaState.authRequired = false;
       mediaState.items = Array.isArray(payload.items) ? payload.items : [];
       setMediaStatus('已同步 imagesforblogs', 'success');
       renderMediaItems();
     } catch (error) {
       mediaState.items = [];
+      if (error.status === 401 || /AUTH_(?:REQUIRED|EXPIRED)/.test(error.code)) {
+        mediaState.authRequired = true;
+        setMediaStatus('需要登录后读取 imagesforblogs', 'auth');
+        renderMediaItems();
+        return;
+      }
+      mediaState.authRequired = false;
       var message = /login|unauthorized|owner/i.test(error.message)
         ? '请先在文章页完成 GitHub 登录，再打开媒体库。'
         : '媒体库读取失败：' + error.message;
@@ -899,8 +933,20 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
           body: body
         });
         var payload = await response.json().catch(function () { return {}; });
-        if (!response.ok) throw new Error(payload.error || ('HTTP ' + response.status));
+        if (!response.ok) {
+          var uploadError = new Error(payload.error || ('HTTP ' + response.status));
+          uploadError.status = response.status;
+          uploadError.code = payload.code || '';
+          throw uploadError;
+        }
       } catch (error) {
+        if (error.status === 401 || /AUTH_(?:REQUIRED|EXPIRED)/.test(error.code)) {
+          mediaState.authRequired = true;
+          mediaState.items = [];
+          setMediaStatus('登录已失效，请重新登录后继续上传', 'auth');
+          renderMediaItems();
+          return;
+        }
         failures.push(originalFile.name + '：' + error.message);
       }
     }
@@ -926,13 +972,25 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
         { method: 'DELETE', credentials: 'include' }
       );
       var payload = await response.json().catch(function () { return {}; });
-      if (!response.ok) throw new Error(payload.error || ('HTTP ' + response.status));
+      if (!response.ok) {
+        var deleteError = new Error(payload.error || ('HTTP ' + response.status));
+        deleteError.status = response.status;
+        deleteError.code = payload.code || '';
+        throw deleteError;
+      }
       mediaState.items = (mediaState.items || []).filter(function (entry) {
         return entry.path !== item.path;
       });
       setMediaStatus('已删除 ' + item.name, 'success');
       renderMediaItems();
     } catch (error) {
+      if (error.status === 401 || /AUTH_(?:REQUIRED|EXPIRED)/.test(error.code)) {
+        mediaState.authRequired = true;
+        mediaState.items = [];
+        setMediaStatus('登录已失效，请重新登录后继续操作', 'auth');
+        renderMediaItems();
+        return;
+      }
       setMediaStatus('删除失败：' + error.message, 'error');
       button.disabled = false;
     }
@@ -1004,6 +1062,10 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     panel.querySelector('.yilia-media-refresh').addEventListener('click', function () {
       loadMedia(true);
     });
+    panel.querySelector('.yilia-media-grid').addEventListener('click', function (event) {
+      if (!event.target.closest('.yilia-media-login')) return;
+      openMediaLogin();
+    });
     panel.addEventListener('dragover', function (event) {
       event.preventDefault();
       panel.classList.add('is-dragging');
@@ -1017,6 +1079,18 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
       uploadMedia(event.dataTransfer?.files);
     });
     return panel;
+  }
+
+  function openMediaLogin() {
+    var loginUrl = 'https://auth.aiyancey.com/auth?provider=github&site_id=' + encodeURIComponent(location.hostname);
+    mediaState.authPopup = window.open(
+      loginUrl,
+      'yilia_media_auth',
+      'popup=yes,width=720,height=760'
+    );
+    if (!mediaState.authPopup) {
+      setMediaStatus('浏览器阻止了登录窗口，请允许弹窗后重试', 'error');
+    }
   }
 
   function openMediaLibrary(mode) {
@@ -1190,6 +1264,16 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
   syncShell();
 
   window.addEventListener('hashchange', syncShell);
+  window.addEventListener('message', function (event) {
+    if (event.origin !== 'https://auth.aiyancey.com') return;
+    var message = typeof event.data === 'string' ? event.data : '';
+    if (message.indexOf('authorization:github:success:') !== 0) return;
+    if (mediaState.authPopup && !mediaState.authPopup.closed) mediaState.authPopup.close();
+    mediaState.authPopup = null;
+    mediaState.authRequired = false;
+    setMediaStatus('登录成功，正在读取 imagesforblogs…', 'loading');
+    loadMedia(true);
+  });
   document.addEventListener('pointerdown', function (event) {
     var editor = root.querySelector('.wrapper.content-editor');
     if (!editor?.classList.contains('yilia-panel-drawer-open')) return;
