@@ -486,6 +486,9 @@ body {
 #nc-root .content-editor .pane[data-mode="edit"] .content > section.field[data-key-path="date"] {
   grid-column: 1;
 }
+#nc-root .content-editor[data-yilia-view="edit"] .pane[data-mode="edit"] .content > section.field[data-key-path="date"] {
+  grid-column: 1 / -1;
+}
 #nc-root .content-editor .pane[data-mode="edit"] .content > section.field[data-key-path="tags"] {
   grid-column: 1 / -1;
 }
