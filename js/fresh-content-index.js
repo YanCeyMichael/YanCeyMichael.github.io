@@ -109,8 +109,12 @@
       if (!Array.isArray(posts)) return;
       document.querySelectorAll('[data-fresh-post]').forEach(function (node) { node.remove(); });
       var existing = new Set();
+      var existingSlugs = new Set();
       content.querySelectorAll('.article-index .article-title a').forEach(function (link) {
         existing.add(pathKey(link.getAttribute('href')));
+      });
+      content.querySelectorAll('article.article-index[id^="post-"]').forEach(function (article) {
+        existingSlugs.add(article.id.slice('post-'.length));
       });
       var newestStaticTime = -Infinity;
       content.querySelectorAll('.article-index .archive-article-date').forEach(function (node) {
@@ -119,6 +123,8 @@
       });
       var fresh = posts.filter(function (post) {
         if (!post || !post.path || existing.has(pathKey(post.path))) return false;
+        var slug = pathKey(post.path).split('/').pop();
+        if (existingSlugs.has(slug)) return false;
         var timestamp = new Date(post.date).getTime();
         return Number.isFinite(timestamp) && timestamp >= newestStaticTime;
       }).slice(0, 6);
