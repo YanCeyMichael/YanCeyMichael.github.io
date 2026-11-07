@@ -417,6 +417,42 @@ body {
   font-size: 13px;
   font-weight: 650;
 }
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-local-save {
+  width: auto;
+  min-width: 0;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 11px;
+  border: 1px solid #d5e1e9;
+  background: #fff;
+  color: #405362;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-local-save:hover {
+  border-color: #aec9dc;
+  background: #f7fbfe;
+  color: #2d607e;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-local-save[data-state="success"] {
+  border-color: #b8d7c6;
+  color: #2d7652;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-local-save[data-state="error"] {
+  border-color: #e2c3c1;
+  color: #9c4540;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-local-save:disabled {
+  opacity: .62;
+  cursor: wait;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-local-save svg {
+  flex: none;
+}
 #nc-root .content-editor > .sui.toolbar.primary button[aria-label] {
   width: 34px;
   min-width: 34px;
@@ -848,6 +884,14 @@ body {
   #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-save-state {
     display: none;
   }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-local-save .yilia-local-save-label {
+    display: none;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-local-save {
+    width: 40px;
+    min-width: 40px;
+    padding: 0;
+  }
 }
 
 @media (max-width: 800px) {
@@ -921,6 +965,14 @@ body {
   }
   #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-save-state {
     display: none;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-local-save .yilia-local-save-label {
+    display: none;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-local-save {
+    width: 40px;
+    min-width: 40px;
+    padding: 0;
   }
   #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-view-switch button {
     min-height: 32px !important;

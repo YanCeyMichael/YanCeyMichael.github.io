@@ -438,6 +438,163 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     menu.appendChild(panelMenu);
   }
 
+  function yamlString(value) {
+    return JSON.stringify(String(value || '').normalize('NFC').replace(/\r\n?/g, '\n'));
+  }
+
+  function safeFilename(value) {
+    var name = String(value || '')
+      .normalize('NFC')
+      .replace(/[\\/:*?"<>|]+/g, '-')
+      .replace(/\s+/g, ' ')
+      .replace(/[. ]+$/g, '')
+      .trim()
+      .slice(0, 120);
+    return name || '未命名文章';
+  }
+
+  function currentBackupFilename(editor, title) {
+    var match = location.hash.match(/\/entries\/([^/?#]+)/);
+    if (match) {
+      try {
+        var routeName = decodeURIComponent(match[1]).replace(/\.md$/i, '');
+        if (routeName) return safeFilename(routeName) + '.md';
+      } catch (error) {
+        // Fall back to the title when the route cannot be decoded.
+      }
+    }
+    if (editor.dataset.yiliaBackupFilename) return editor.dataset.yiliaBackupFilename;
+    return safeFilename(title) + '.md';
+  }
+
+  function normalizedDate(value) {
+    var raw = String(value || '').trim();
+    var match = raw.match(/^(\d{4})[-/](\d{2})[-/](\d{2})[T\s](\d{2}):(\d{2})(?::(\d{2}))?/);
+    if (!match) return raw;
+    return `${match[1]}-${match[2]}-${match[3]}T${match[4]}:${match[5]}:${match[6] || '00'}`;
+  }
+
+  function serializeCurrentMarkdown(editor) {
+    var editPane = editor.querySelector('.content-area .pane[data-mode="edit"]');
+    var titleInput = editPane?.querySelector('[data-key-path="title"] input');
+    var dateInput = editPane?.querySelector('[data-key-path="date"] input');
+    var bodyInput = editPane?.querySelector('[data-key-path="body"] textarea');
+
+    if (!titleInput || !bodyInput) {
+      throw new Error('当前编辑视图无法读取 Markdown 内容');
+    }
+
+    var title = titleInput.value.trim();
+    if (!title) throw new Error('请先填写文章标题');
+
+    var tags = [];
+    var seenTags = new Set();
+    editPane.querySelectorAll('[data-key-path="tags"] section[data-key-path^="tags."] input').forEach(function (input) {
+      var name = input.value.normalize('NFC').trim().replace(/\s+/g, ' ');
+      var key = /[A-Za-z]/.test(name) ? name.toLocaleLowerCase() : name;
+      if (!name || seenTags.has(key)) return;
+      seenTags.add(key);
+      tags.push(name);
+    });
+
+    var frontmatter = ['---', `title: ${yamlString(title)}`];
+    var date = normalizedDate(dateInput?.value);
+    if (date) frontmatter.push(`date: ${date}`);
+    if (tags.length) {
+      frontmatter.push('tags:');
+      tags.forEach(function (tag) {
+        frontmatter.push(`  - ${yamlString(tag)}`);
+      });
+    }
+    frontmatter.push('---', '');
+
+    var body = bodyInput.value.replace(/\r\n?/g, '\n');
+    if (!body.endsWith('\n')) body += '\n';
+    return {
+      filename: currentBackupFilename(editor, title),
+      markdown: `${frontmatter.join('\n')}\n${body}`
+    };
+  }
+
+  function setLocalSaveState(button, state, label) {
+    var text = button.querySelector('.yilia-local-save-label');
+    if (text) text.textContent = label;
+    button.dataset.state = state;
+  }
+
+  async function saveCurrentMarkdown(editor, button) {
+    var payload;
+    try {
+      payload = serializeCurrentMarkdown(editor);
+    } catch (error) {
+      setLocalSaveState(button, 'error', '无法保存');
+      window.setTimeout(function () { setLocalSaveState(button, '', '保存到本地'); }, 2200);
+      return;
+    }
+
+    button.disabled = true;
+    try {
+      if (typeof window.showSaveFilePicker === 'function') {
+        var handle = await window.showSaveFilePicker({
+          suggestedName: payload.filename,
+          types: [{
+            description: 'Markdown',
+            accept: { 'text/markdown': ['.md'] }
+          }]
+        });
+        var writable = await handle.createWritable();
+        await writable.write(new Blob([payload.markdown], { type: 'text/markdown;charset=utf-8' }));
+        await writable.close();
+        setLocalSaveState(button, 'success', '已保存');
+      } else {
+        var url = URL.createObjectURL(new Blob([payload.markdown], { type: 'text/markdown;charset=utf-8' }));
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = payload.filename;
+        link.click();
+        window.setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        setLocalSaveState(button, 'success', '已下载');
+      }
+      window.setTimeout(function () { setLocalSaveState(button, '', '保存到本地'); }, 2200);
+    } catch (error) {
+      if (error?.name !== 'AbortError') {
+        console.error('Local Markdown save failed', error);
+        setLocalSaveState(button, 'error', '保存失败');
+        window.setTimeout(function () { setLocalSaveState(button, '', '保存到本地'); }, 2200);
+      }
+    } finally {
+      button.disabled = false;
+    }
+  }
+
+  function ensureLocalSaveButton(editor, toolbarInner, saveButton) {
+    var button = toolbarInner.querySelector(':scope > .yilia-local-save');
+    if (!saveButton) {
+      button?.remove();
+      return;
+    }
+    if (!button) {
+      button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'yilia-local-save';
+      button.setAttribute('aria-label', '保存当前文章到本地');
+      button.innerHTML = `
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 4v10"></path>
+          <path d="m8 10 4 4 4-4"></path>
+          <path d="M5 19h14"></path>
+        </svg>
+        <span class="yilia-local-save-label">保存到本地</span>
+      `;
+      button.addEventListener('click', function () {
+        saveCurrentMarkdown(editor, button);
+      });
+    }
+    if (button.previousElementSibling !== saveButton) {
+      saveButton.insertAdjacentElement('afterend', button);
+    }
+  }
+
   function enhanceEditorChrome() {
     var editor = root.querySelector('.wrapper.content-editor');
     if (!editor) return;
@@ -482,6 +639,7 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
 
     var saveButton = toolbarInner.querySelector(':scope > button.primary');
     ensureSaveState(toolbarInner, saveButton);
+    ensureLocalSaveButton(editor, toolbarInner, saveButton);
     decoratePaneHeaders(editPane, previewPane);
 
     var savedView = editor.dataset.yiliaView;
