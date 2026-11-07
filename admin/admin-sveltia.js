@@ -701,7 +701,8 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
       grid: panel.querySelector('.yilia-media-grid'),
       search: panel.querySelector('.yilia-media-search'),
       upload: panel.querySelector('.yilia-media-file'),
-      close: panel.querySelector('.yilia-media-close')
+      close: panel.querySelector('.yilia-media-close'),
+      count: panel.querySelector('.yilia-media-count')
     } : null;
   }
 
@@ -719,6 +720,11 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     var items = mediaState.items.filter(function (item) {
       return !query || item.name.toLocaleLowerCase().includes(query);
     });
+    if (elements.count) {
+      elements.count.textContent = query
+        ? items.length + ' / ' + mediaState.items.length + ' 张'
+        : mediaState.items.length + ' 张图片';
+    }
     elements.grid.textContent = '';
 
     if (!items.length) {
@@ -850,7 +856,7 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
         throw new Error(payload.error || ('HTTP ' + response.status));
       }
       mediaState.items = Array.isArray(payload.items) ? payload.items : [];
-      setMediaStatus(mediaState.items.length + ' 张图片 · 全部通过 jsDelivr 分发', 'success');
+      setMediaStatus('已同步 imagesforblogs', 'success');
       renderMediaItems();
     } catch (error) {
       mediaState.items = [];
@@ -953,13 +959,29 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
         <div class="yilia-media-toolbar">
           <label class="yilia-media-upload">
             <input class="yilia-media-file" type="file" accept="image/png,image/jpeg,image/gif,image/webp,image/avif" multiple>
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 16V5"></path>
+              <path d="m8 9 4-4 4 4"></path>
+              <path d="M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"></path>
+            </svg>
             <span>上传图片</span>
           </label>
           <label class="yilia-media-search-wrap">
-            <span>搜索</span>
-            <input class="yilia-media-search" type="search" placeholder="按文件名筛选">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5"></circle>
+              <path d="m15.5 15.5 4 4"></path>
+            </svg>
+            <span class="yilia-visually-hidden">搜索图片</span>
+            <input class="yilia-media-search" type="search" aria-label="搜索图片" placeholder="搜索文件名">
           </label>
-          <button class="yilia-media-refresh" type="button">刷新</button>
+          <button class="yilia-media-refresh" type="button" aria-label="刷新媒体库" title="刷新媒体库">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 7v5h-5"></path>
+              <path d="M19 12a7 7 0 1 0-2.1 5"></path>
+            </svg>
+            <span>刷新</span>
+          </button>
+          <span class="yilia-media-count" aria-live="polite">正在读取…</span>
         </div>
         <p class="yilia-media-status" role="status">正在准备媒体库…</p>
         <div class="yilia-media-grid" aria-live="polite"></div>

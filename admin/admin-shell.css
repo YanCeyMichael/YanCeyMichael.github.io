@@ -495,9 +495,7 @@ body {
   z-index: 31;
   overflow: auto;
   padding: clamp(18px, 3vw, 42px);
-  background:
-    radial-gradient(circle at 92% 4%, #d9edf8 0, transparent 30%),
-    var(--admin-frame);
+  background: var(--admin-frame);
 }
 .yilia-media-library[hidden] { display: none; }
 .yilia-media-library.is-dragging::after {
@@ -561,25 +559,34 @@ body {
 }
 .yilia-media-toolbar {
   display: grid;
-  grid-template-columns: auto minmax(180px, 360px) auto;
-  gap: 10px;
+  grid-template-columns: 132px minmax(220px, 440px) 86px minmax(0, 1fr);
+  gap: 8px;
   align-items: center;
-  margin-top: 22px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #e2e9ee;
+  border-radius: 12px;
+  background: #f7f9fb;
 }
 .yilia-media-upload {
   position: relative;
-  min-height: 42px;
+  min-height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 18px;
+  gap: 8px;
+  padding: 0 15px;
   overflow: hidden;
-  border-radius: 9px;
+  border-radius: 8px;
   background: var(--admin-ink);
   color: #fff;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 680;
   cursor: pointer;
 }
+.yilia-media-upload:hover { background: #263845; }
+.yilia-media-upload:focus-within { outline: 3px solid #8fc7f3; outline-offset: 2px; }
+.yilia-media-upload svg { flex: none; }
 .yilia-media-upload input {
   position: absolute;
   width: 1px;
@@ -590,30 +597,63 @@ body {
 .yilia-media-search-wrap {
   position: relative;
   display: block;
+  min-width: 0;
 }
-.yilia-media-search-wrap > span {
+.yilia-media-search-wrap > svg {
   position: absolute;
   top: 50%;
-  left: 13px;
+  left: 14px;
+  z-index: 1;
   color: #8997a1;
-  font-size: 11px;
+  pointer-events: none;
   transform: translateY(-50%);
+}
+.yilia-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 .yilia-media-search {
   width: 100%;
-  height: 42px;
-  padding: 0 13px 0 48px !important;
+  height: 40px;
+  padding: 0 14px 0 41px !important;
   border: 1px solid #dbe4e9;
-  border-radius: 9px;
-  background: #f9fbfc;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
 }
 .yilia-media-refresh {
-  min-height: 42px;
-  padding: 0 16px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
   border: 1px solid #d7e1e7;
+  border-radius: 8px;
   background: #fff;
   color: #536673;
-  font-weight: 650;
+  font-size: 12px;
+  font-weight: 680;
+}
+.yilia-media-refresh:hover {
+  border-color: #b7cedd;
+  background: #fbfdfe;
+  color: #355b74;
+}
+.yilia-media-refresh svg { flex: none; }
+.yilia-media-count {
+  min-width: 0;
+  justify-self: end;
+  color: #778791;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 .yilia-media-status {
   min-height: 24px;
@@ -1290,10 +1330,32 @@ body {
   .yilia-media-head h1 { font-size: 28px; }
   .yilia-media-head span { padding-right: 12px; line-height: 1.55; }
   .yilia-media-toolbar {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
   }
-  .yilia-media-upload { grid-column: 1 / -1; }
-  .yilia-media-search-wrap { min-width: 0; }
+  .yilia-media-upload {
+    grid-column: 1;
+    grid-row: 1;
+    width: 132px;
+    justify-self: start;
+  }
+  .yilia-media-count {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+  }
+  .yilia-media-search-wrap {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .yilia-media-refresh {
+    grid-column: 2;
+    grid-row: 2;
+    width: 44px;
+    min-width: 44px;
+    padding: 0;
+  }
+  .yilia-media-refresh span { display: none; }
   .yilia-media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .yilia-media-meta { padding: 10px 10px 7px; }
   .yilia-media-actions { padding: 0 10px 10px; }
