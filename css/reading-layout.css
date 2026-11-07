@@ -1,6 +1,6 @@
 .article-inner{background:#fff;color:#30383e}
 .article-entry{line-height:1.9;overflow-wrap:break-word}
-.article:not(.article-index) .article-entry{max-width:70ch}
+.article:not(.article-index) .article-entry{max-width:none}
 .article-index .list-entry-copy{max-width:70ch}
 .article-index:not(.article-has-media) .article-entry{max-width:none}
 .article-entry img{max-width:100%;height:auto}

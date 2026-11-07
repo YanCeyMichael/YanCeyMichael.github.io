@@ -596,6 +596,8 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
   }
 
   var MEDIA_API = 'https://auth.aiyancey.com/media';
+  var MEDIA_MAX_BYTES = 10 * 1024 * 1024;
+  var MEDIA_MAX_DIMENSION = 4096;
   var mediaState = {
     items: null,
     query: '',
@@ -609,6 +611,86 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     if (bytes < 1024) return bytes + ' B';
     if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
     return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function canvasToBlob(canvas, type, quality) {
+    return new Promise(function (resolve) {
+      canvas.toBlob(resolve, type, quality);
+    });
+  }
+
+  async function loadImageBitmap(file) {
+    if (typeof window.createImageBitmap === 'function') {
+      try {
+        return { source: await window.createImageBitmap(file), close: function () { this.source.close(); } };
+      } catch (error) {
+        // Fall through to an HTML image for browsers with partial bitmap support.
+      }
+    }
+    var url = URL.createObjectURL(file);
+    return new Promise(function (resolve, reject) {
+      var image = new Image();
+      image.onload = function () {
+        resolve({
+          source: image,
+          close: function () { URL.revokeObjectURL(url); }
+        });
+      };
+      image.onerror = function () {
+        URL.revokeObjectURL(url);
+        reject(new Error('图片无法解码'));
+      };
+      image.src = url;
+    });
+  }
+
+  async function compressLargeImage(file) {
+    if (file.size <= MEDIA_MAX_BYTES) return { file: file, compressed: false };
+    if (file.type === 'image/gif') {
+      throw new Error('GIF 超过 10 MB，压缩会丢失动画，请先转换后上传');
+    }
+
+    var decoded = await loadImageBitmap(file);
+    try {
+      var width = decoded.source.naturalWidth || decoded.source.width;
+      var height = decoded.source.naturalHeight || decoded.source.height;
+      if (!width || !height) throw new Error('图片尺寸无法读取');
+      var scale = Math.min(1, MEDIA_MAX_DIMENSION / Math.max(width, height));
+      var qualitySteps = [0.9, 0.82, 0.74, 0.66, 0.58, 0.5];
+
+      for (var resizeAttempt = 0; resizeAttempt < 7; resizeAttempt += 1) {
+        var targetWidth = Math.max(1, Math.round(width * scale));
+        var targetHeight = Math.max(1, Math.round(height * scale));
+        var canvas = document.createElement('canvas');
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        var context = canvas.getContext('2d', { alpha: true });
+        if (!context) throw new Error('浏览器无法创建图片压缩画布');
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = 'high';
+        context.drawImage(decoded.source, 0, 0, targetWidth, targetHeight);
+
+        for (var qualityIndex = 0; qualityIndex < qualitySteps.length; qualityIndex += 1) {
+          var quality = qualitySteps[qualityIndex];
+          var blob = await canvasToBlob(canvas, 'image/webp', quality);
+          if (blob && blob.size <= MEDIA_MAX_BYTES) {
+            var stem = file.name.replace(/\.[^.]+$/, '');
+            return {
+              file: new File([blob], stem + '.webp', {
+                type: 'image/webp',
+                lastModified: file.lastModified
+              }),
+              compressed: true
+            };
+          }
+        }
+        scale *= 0.82;
+        if (Math.max(targetWidth, targetHeight) < 720) break;
+      }
+      throw new Error('压缩后仍超过 10 MB，请先缩小图片尺寸');
+    } finally {
+      decoded.close();
+    }
   }
 
   function mediaLibraryElements() {
@@ -785,11 +867,25 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
   async function uploadMedia(files) {
     var accepted = Array.from(files || []);
     if (!accepted.length) return;
-    setMediaStatus('正在上传 ' + accepted.length + ' 张图片…', 'loading');
+    setMediaStatus('正在处理 ' + accepted.length + ' 张图片…', 'loading');
     var failures = [];
-    for (var file of accepted) {
+    var compressedCount = 0;
+    for (var index = 0; index < accepted.length; index += 1) {
+      var originalFile = accepted[index];
+      var prepared;
+      try {
+        setMediaStatus(
+          '正在处理 ' + (index + 1) + '/' + accepted.length + '：' + originalFile.name,
+          'loading'
+        );
+        prepared = await compressLargeImage(originalFile);
+      } catch (error) {
+        failures.push(originalFile.name + '：' + error.message);
+        continue;
+      }
+      if (prepared.compressed) compressedCount += 1;
       var body = new FormData();
-      body.append('file', file);
+      body.append('file', prepared.file);
       try {
         var response = await nativeFetch(MEDIA_API, {
           method: 'POST',
@@ -799,14 +895,18 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
         var payload = await response.json().catch(function () { return {}; });
         if (!response.ok) throw new Error(payload.error || ('HTTP ' + response.status));
       } catch (error) {
-        failures.push(file.name + '：' + error.message);
+        failures.push(originalFile.name + '：' + error.message);
       }
     }
     await loadMedia(true);
+    var successCount = accepted.length - failures.length;
+    var compressedNote = compressedCount
+      ? '，其中 ' + compressedCount + ' 张已自动压缩'
+      : '';
     setMediaStatus(
       failures.length
         ? failures.length + ' 张上传失败 · ' + failures[0]
-        : accepted.length + ' 张图片已上传到 imagesforblogs',
+        : successCount + ' 张图片已上传到 imagesforblogs' + compressedNote,
       failures.length ? 'error' : 'success'
     );
   }
