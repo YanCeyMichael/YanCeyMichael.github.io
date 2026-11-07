@@ -112,12 +112,19 @@
       content.querySelectorAll('.article-index .article-title a').forEach(function (link) {
         existing.add(pathKey(link.getAttribute('href')));
       });
+      var newestStaticTime = -Infinity;
+      content.querySelectorAll('.article-index .archive-article-date').forEach(function (node) {
+        var timestamp = new Date(node.getAttribute('datetime') || node.textContent).getTime();
+        if (Number.isFinite(timestamp)) newestStaticTime = Math.max(newestStaticTime, timestamp);
+      });
       var fresh = posts.filter(function (post) {
-        return post && post.path && !existing.has(pathKey(post.path));
+        if (!post || !post.path || existing.has(pathKey(post.path))) return false;
+        var timestamp = new Date(post.date).getTime();
+        return Number.isFinite(timestamp) && timestamp >= newestStaticTime;
       }).slice(0, 6);
       if (!fresh.length) return;
       var anchor = content.querySelector('.article-index');
-      fresh.reverse().forEach(function (post) {
+      fresh.forEach(function (post) {
         content.insertBefore(createFreshArticle(post), anchor || content.firstChild);
       });
     } catch (error) {
