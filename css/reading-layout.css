@@ -206,7 +206,6 @@
 }
 @media(max-width:800px){
 #mobile-nav .header-author{font:400 25px/1.35 Georgia,"Songti SC",serif}
-#mobile-nav .header-subtitle{display:block;color:#657078;font-size:13px}
 #mobile-nav .header-menu ul{display:flex;justify-content:center;margin-inline:auto}
 #mobile-nav .header-menu a{display:inline-flex;align-items:center;min-height:44px}
 #mobile-nav .header-nav{margin:4px auto 14px}
