@@ -555,7 +555,10 @@ body {
   min-height: 40px;
   width: 100%;
   margin: 0;
-  padding-inline: 11px;
+  padding: 0 12px !important;
+  text-indent: 0;
+  letter-spacing: normal;
+  caret-color: var(--admin-ink);
 }
 #nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="date"] .field-wrapper > div {
   display: flex;
@@ -648,6 +651,7 @@ body {
 #nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item-body .sui.text-input {
   margin: 0 !important;
   padding-inline-end: 34px;
+  --sui-textbox-singleline-padding: 0 12px;
 }
 #nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="tags"] .item-body input {
   height: 38px;
@@ -703,15 +707,23 @@ body {
 }
 #nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] .text-area {
   min-height: 292px;
+  --sui-textbox-multiline-padding: 17px 18px;
+  --sui-textbox-font-size: 13px;
+  --sui-textbox-multiline-line-height: 1.85;
 }
-#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] textarea {
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] .text-area :is(textarea, .clone) {
   min-height: 292px;
-  padding: 17px 18px;
+  padding: 17px 18px !important;
   border: 0 !important;
   border-radius: 0;
   background: #fff;
-  font-size: 13px;
-  line-height: 1.85;
+  font-size: 13px !important;
+  line-height: 1.85 !important;
+  text-indent: 0;
+  letter-spacing: normal;
+}
+#nc-root .content-editor .pane[data-mode="edit"] .field[data-key-path="body"] textarea {
+  caret-color: var(--admin-ink);
 }
 #nc-root .content-editor .pane[data-mode="edit"] .footer .hint {
   margin: 8px 0 0;
