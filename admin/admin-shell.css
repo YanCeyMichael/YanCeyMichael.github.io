@@ -456,11 +456,257 @@ body {
 #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-local-save svg {
   flex: none;
 }
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-media-open {
+  width: auto;
+  min-width: 0;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 11px;
+  border: 1px solid #d5e1e9;
+  background: #f8fbfd;
+  color: #35566d;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-media-open:hover {
+  border-color: #a9c8dc;
+  background: #eef7fc;
+}
+#nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-media-open svg {
+  flex: none;
+}
 #nc-root .content-editor > .sui.toolbar.primary button[aria-label] {
   width: 34px;
   min-width: 34px;
   padding: 0;
 }
+
+.admin-workspace.yilia-media-mode > #nc-root {
+  visibility: hidden;
+  pointer-events: none;
+}
+.yilia-media-library {
+  position: fixed;
+  inset: 0 0 0 var(--admin-side-width);
+  z-index: 31;
+  overflow: auto;
+  padding: clamp(18px, 3vw, 42px);
+  background:
+    radial-gradient(circle at 92% 4%, #d9edf8 0, transparent 30%),
+    var(--admin-frame);
+}
+.yilia-media-library[hidden] { display: none; }
+.yilia-media-library.is-dragging::after {
+  position: fixed;
+  inset: calc(var(--admin-side-width) + 18px) 18px 18px;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--admin-blue);
+  border-radius: 18px;
+  background: #f7fcffeb;
+  color: var(--admin-blue-deep);
+  font-size: 18px;
+  font-weight: 700;
+  content: "松开以上传到 imagesforblogs";
+  pointer-events: none;
+}
+.yilia-media-shell {
+  width: min(1320px, 100%);
+  min-height: calc(100vh - 84px);
+  margin: 0 auto;
+  padding: clamp(20px, 3vw, 38px);
+  border: 1px solid #dce5ea;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 18px 52px #2443570d;
+}
+.yilia-media-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--admin-line-soft);
+}
+.yilia-media-head p {
+  margin: 0 0 7px;
+  color: var(--admin-blue-deep);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: .13em;
+}
+.yilia-media-head h1 {
+  margin: 0;
+  font: 34px/1.15 Georgia, "Songti SC", serif;
+  letter-spacing: -.02em;
+}
+.yilia-media-head span {
+  display: block;
+  margin-top: 8px;
+  color: var(--admin-muted);
+  font-size: 13px;
+}
+.yilia-media-close {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid #d7e1e7;
+  background: #fff;
+  color: #536673;
+  font-weight: 650;
+}
+.yilia-media-toolbar {
+  display: grid;
+  grid-template-columns: auto minmax(180px, 360px) auto;
+  gap: 10px;
+  align-items: center;
+  margin-top: 22px;
+}
+.yilia-media-upload {
+  position: relative;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  overflow: hidden;
+  border-radius: 9px;
+  background: var(--admin-ink);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.yilia-media-upload input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.yilia-media-search-wrap {
+  position: relative;
+  display: block;
+}
+.yilia-media-search-wrap > span {
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  color: #8997a1;
+  font-size: 11px;
+  transform: translateY(-50%);
+}
+.yilia-media-search {
+  width: 100%;
+  height: 42px;
+  padding: 0 13px 0 48px !important;
+  border: 1px solid #dbe4e9;
+  border-radius: 9px;
+  background: #f9fbfc;
+}
+.yilia-media-refresh {
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid #d7e1e7;
+  background: #fff;
+  color: #536673;
+  font-weight: 650;
+}
+.yilia-media-status {
+  min-height: 24px;
+  margin: 18px 0 10px;
+  color: var(--admin-muted);
+  font-size: 12px;
+}
+.yilia-media-status[data-state="success"] { color: #2c7652; }
+.yilia-media-status[data-state="error"] { color: #a24742; }
+.yilia-media-status[data-state="warning"] { color: #8b6a20; }
+.yilia-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 16px;
+}
+.yilia-media-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #dee6eb;
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+.yilia-media-card:hover {
+  border-color: #bdd5e4;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px #203e5012;
+}
+.yilia-media-preview {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #edf2f5;
+}
+.yilia-media-preview img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.yilia-media-meta {
+  display: grid;
+  gap: 3px;
+  padding: 12px 13px 8px;
+}
+.yilia-media-meta strong {
+  overflow: hidden;
+  color: #2f414d;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.yilia-media-meta span {
+  color: #87949d;
+  font-size: 11px;
+}
+.yilia-media-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 13px 13px;
+}
+.yilia-media-actions button {
+  min-height: 30px;
+  padding: 0 9px;
+  border: 1px solid #dbe4e9;
+  background: #f9fbfc;
+  color: #4c6371;
+  font-size: 11px;
+  font-weight: 650;
+}
+.yilia-media-actions button.is-primary {
+  border-color: #246b9e;
+  background: #246b9e;
+  color: #fff;
+}
+.yilia-media-actions button.is-danger {
+  margin-left: auto;
+  color: #9c4d48;
+}
+.yilia-media-empty {
+  grid-column: 1 / -1;
+  min-height: 220px;
+  display: grid;
+  place-content: center;
+  gap: 6px;
+  border: 1px dashed #cfdce4;
+  border-radius: 12px;
+  color: var(--admin-muted);
+  text-align: center;
+}
+.yilia-media-empty strong { color: #435764; }
+.yilia-media-empty span { font-size: 12px; }
 
 #nc-root .content-editor .header > .sui.toolbar {
   min-height: 50px;
@@ -879,7 +1125,7 @@ body {
   height: 92px;
   border-radius: 50%;
   object-fit: cover;
-  content: url("/images/avatar-yancey-cat.jpg");
+  content: url("https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/avatar-yancey-cat.jpg");
 }
 #nc-root .container:has(> .inner > .logo) h1 {
   margin: 0;
@@ -911,6 +1157,14 @@ body {
     width: 40px;
     min-width: 40px;
     padding: 0;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-media-open {
+    width: 40px;
+    min-width: 40px;
+    padding: 0;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-media-open span {
+    display: none;
   }
 }
 
@@ -997,6 +1251,14 @@ body {
     min-width: 40px;
     padding: 0;
   }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-media-open {
+    width: 40px;
+    min-width: 40px;
+    padding: 0;
+  }
+  #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-media-open span {
+    display: none;
+  }
   #nc-root .content-editor > .sui.toolbar.primary > .inner > .yilia-view-switch button {
     min-height: 32px !important;
     padding-inline: 8px !important;
@@ -1018,6 +1280,25 @@ body {
   #nc-root .content-editor textarea { min-height: 280px; font-size: 16px; line-height: 1.75; }
   #nc-root:has(section[class*="AuthenticationPage"]) { min-height: 100dvh; }
   #nc-root section[class*="AuthenticationPage"] h1 { font-size: 30px; }
+  .yilia-media-library { inset: 0; padding: 64px 12px 12px; }
+  .yilia-media-library.is-dragging::after { inset: 20px; }
+  .yilia-media-shell {
+    min-height: calc(100dvh - 76px);
+    padding: 20px 14px;
+    border-radius: 14px;
+  }
+  .yilia-media-head h1 { font-size: 28px; }
+  .yilia-media-head span { padding-right: 12px; line-height: 1.55; }
+  .yilia-media-toolbar {
+    grid-template-columns: 1fr auto;
+  }
+  .yilia-media-upload { grid-column: 1 / -1; }
+  .yilia-media-search-wrap { min-width: 0; }
+  .yilia-media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .yilia-media-meta { padding: 10px 10px 7px; }
+  .yilia-media-actions { padding: 0 10px 10px; }
+  .yilia-media-actions button { flex: 1 1 auto; padding-inline: 7px; }
+  .yilia-media-actions button.is-danger { margin-left: 0; }
 }
 
 @media (max-width: 560px) {

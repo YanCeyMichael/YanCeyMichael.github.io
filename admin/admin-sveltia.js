@@ -595,6 +595,372 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     }
   }
 
+  var MEDIA_API = 'https://auth.aiyancey.com/media';
+  var mediaState = {
+    items: null,
+    query: '',
+    loading: false,
+    mode: 'page',
+    returnFocus: null
+  };
+
+  function formatMediaSize(bytes) {
+    if (!Number.isFinite(bytes) || bytes <= 0) return '未知大小';
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function mediaLibraryElements() {
+    var panel = document.getElementById('yilia-media-library');
+    return panel ? {
+      panel: panel,
+      status: panel.querySelector('.yilia-media-status'),
+      grid: panel.querySelector('.yilia-media-grid'),
+      search: panel.querySelector('.yilia-media-search'),
+      upload: panel.querySelector('.yilia-media-file'),
+      close: panel.querySelector('.yilia-media-close')
+    } : null;
+  }
+
+  function setMediaStatus(message, state) {
+    var elements = mediaLibraryElements();
+    if (!elements) return;
+    elements.status.textContent = message;
+    elements.status.dataset.state = state || '';
+  }
+
+  function renderMediaItems() {
+    var elements = mediaLibraryElements();
+    if (!elements || !mediaState.items) return;
+    var query = mediaState.query.trim().toLocaleLowerCase();
+    var items = mediaState.items.filter(function (item) {
+      return !query || item.name.toLocaleLowerCase().includes(query);
+    });
+    elements.grid.textContent = '';
+
+    if (!items.length) {
+      var empty = document.createElement('div');
+      empty.className = 'yilia-media-empty';
+      empty.innerHTML = '<strong>图片库还是空的</strong><span>上传第一张图片后，这里会显示 jsDelivr 地址。</span>';
+      elements.grid.appendChild(empty);
+      return;
+    }
+
+    items.forEach(function (item) {
+      var card = document.createElement('article');
+      card.className = 'yilia-media-card';
+      card.dataset.mediaPath = item.path;
+
+      var preview = document.createElement('a');
+      preview.className = 'yilia-media-preview';
+      preview.href = item.url;
+      preview.target = '_blank';
+      preview.rel = 'noopener';
+      var image = document.createElement('img');
+      image.src = item.url;
+      image.alt = item.name;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      preview.appendChild(image);
+
+      var meta = document.createElement('div');
+      meta.className = 'yilia-media-meta';
+      var name = document.createElement('strong');
+      name.textContent = item.name;
+      name.title = item.name;
+      var size = document.createElement('span');
+      size.textContent = formatMediaSize(item.size);
+      meta.append(name, size);
+
+      var actions = document.createElement('div');
+      actions.className = 'yilia-media-actions';
+      var copyButton = document.createElement('button');
+      copyButton.type = 'button';
+      copyButton.textContent = '复制 URL';
+      copyButton.addEventListener('click', function () {
+        copyMediaUrl(item.url, copyButton);
+      });
+      actions.appendChild(copyButton);
+
+      if (mediaState.mode === 'editor') {
+        var insertButton = document.createElement('button');
+        insertButton.type = 'button';
+        insertButton.className = 'is-primary';
+        insertButton.textContent = '插入正文';
+        insertButton.addEventListener('click', function () {
+          insertMediaMarkdown(item);
+        });
+        actions.appendChild(insertButton);
+      }
+
+      var deleteButton = document.createElement('button');
+      deleteButton.type = 'button';
+      deleteButton.className = 'is-danger';
+      deleteButton.textContent = '删除';
+      deleteButton.addEventListener('click', function () {
+        deleteMedia(item, deleteButton);
+      });
+      actions.appendChild(deleteButton);
+
+      card.append(preview, meta, actions);
+      elements.grid.appendChild(card);
+    });
+  }
+
+  async function copyText(value) {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      return;
+    }
+    var input = document.createElement('textarea');
+    input.value = value;
+    input.setAttribute('readonly', '');
+    input.style.position = 'fixed';
+    input.style.opacity = '0';
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    input.remove();
+  }
+
+  async function copyMediaUrl(url, button) {
+    try {
+      await copyText(url);
+      var previous = button.textContent;
+      button.textContent = '已复制';
+      window.setTimeout(function () { button.textContent = previous; }, 1400);
+    } catch (error) {
+      setMediaStatus('复制失败，请打开图片后从地址栏复制。', 'error');
+    }
+  }
+
+  function insertMediaMarkdown(item) {
+    var textarea = root.querySelector('.content-editor [data-key-path="body"] textarea');
+    if (!textarea) {
+      copyMediaUrl(item.url);
+      setMediaStatus('当前视图未找到 Markdown 输入框，URL 已复制。', 'warning');
+      return;
+    }
+    var markdown = '![' + item.name.replace(/[\[\]]/g, '') + '](' + item.url + ')';
+    var start = textarea.selectionStart ?? textarea.value.length;
+    var end = textarea.selectionEnd ?? start;
+    var prefix = start > 0 && textarea.value[start - 1] !== '\n' ? '\n\n' : '';
+    var suffix = textarea.value[end] === '\n' ? '\n' : '\n\n';
+    textarea.setRangeText(prefix + markdown + suffix, start, end, 'end');
+    textarea.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText', data: markdown }));
+    textarea.focus();
+    closeMediaLibrary();
+    setMediaStatus('已插入正文。', 'success');
+  }
+
+  async function loadMedia(force) {
+    if (mediaState.loading || (mediaState.items && !force)) return;
+    mediaState.loading = true;
+    setMediaStatus('正在读取 imagesforblogs…', 'loading');
+    try {
+      var response = await nativeFetch(MEDIA_API + '?t=' + Date.now(), {
+        credentials: 'include',
+        cache: 'no-store'
+      });
+      var payload = await response.json().catch(function () { return {}; });
+      if (!response.ok) {
+        throw new Error(payload.error || ('HTTP ' + response.status));
+      }
+      mediaState.items = Array.isArray(payload.items) ? payload.items : [];
+      setMediaStatus(mediaState.items.length + ' 张图片 · 全部通过 jsDelivr 分发', 'success');
+      renderMediaItems();
+    } catch (error) {
+      mediaState.items = [];
+      var message = /login|unauthorized|owner/i.test(error.message)
+        ? '请先在文章页完成 GitHub 登录，再打开媒体库。'
+        : '媒体库读取失败：' + error.message;
+      setMediaStatus(message, 'error');
+      renderMediaItems();
+    } finally {
+      mediaState.loading = false;
+    }
+  }
+
+  async function uploadMedia(files) {
+    var accepted = Array.from(files || []);
+    if (!accepted.length) return;
+    setMediaStatus('正在上传 ' + accepted.length + ' 张图片…', 'loading');
+    var failures = [];
+    for (var file of accepted) {
+      var body = new FormData();
+      body.append('file', file);
+      try {
+        var response = await nativeFetch(MEDIA_API, {
+          method: 'POST',
+          credentials: 'include',
+          body: body
+        });
+        var payload = await response.json().catch(function () { return {}; });
+        if (!response.ok) throw new Error(payload.error || ('HTTP ' + response.status));
+      } catch (error) {
+        failures.push(file.name + '：' + error.message);
+      }
+    }
+    await loadMedia(true);
+    setMediaStatus(
+      failures.length
+        ? failures.length + ' 张上传失败 · ' + failures[0]
+        : accepted.length + ' 张图片已上传到 imagesforblogs',
+      failures.length ? 'error' : 'success'
+    );
+  }
+
+  async function deleteMedia(item, button) {
+    if (!window.confirm('确认从 imagesforblogs 删除“' + item.name + '”？线上引用会失效。')) return;
+    button.disabled = true;
+    try {
+      var response = await nativeFetch(
+        MEDIA_API + '?path=' + encodeURIComponent(item.path),
+        { method: 'DELETE', credentials: 'include' }
+      );
+      var payload = await response.json().catch(function () { return {}; });
+      if (!response.ok) throw new Error(payload.error || ('HTTP ' + response.status));
+      mediaState.items = (mediaState.items || []).filter(function (entry) {
+        return entry.path !== item.path;
+      });
+      setMediaStatus('已删除 ' + item.name, 'success');
+      renderMediaItems();
+    } catch (error) {
+      setMediaStatus('删除失败：' + error.message, 'error');
+      button.disabled = false;
+    }
+  }
+
+  function ensureMediaLibrary() {
+    var panel = document.getElementById('yilia-media-library');
+    if (panel) return panel;
+    panel = document.createElement('section');
+    panel.id = 'yilia-media-library';
+    panel.className = 'yilia-media-library';
+    panel.hidden = true;
+    panel.setAttribute('aria-label', '图床媒体库');
+    panel.innerHTML = `
+      <div class="yilia-media-shell">
+        <header class="yilia-media-head">
+          <div>
+            <p>IMAGESFORBLOGS · JSDELIVR</p>
+            <h1>媒体库</h1>
+            <span>图片统一存入独立图床仓库，公开地址固定使用 jsDelivr。</span>
+          </div>
+          <button class="yilia-media-close" type="button" aria-label="关闭媒体库">关闭</button>
+        </header>
+        <div class="yilia-media-toolbar">
+          <label class="yilia-media-upload">
+            <input class="yilia-media-file" type="file" accept="image/png,image/jpeg,image/gif,image/webp,image/avif" multiple>
+            <span>上传图片</span>
+          </label>
+          <label class="yilia-media-search-wrap">
+            <span>搜索</span>
+            <input class="yilia-media-search" type="search" placeholder="按文件名筛选">
+          </label>
+          <button class="yilia-media-refresh" type="button">刷新</button>
+        </div>
+        <p class="yilia-media-status" role="status">正在准备媒体库…</p>
+        <div class="yilia-media-grid" aria-live="polite"></div>
+      </div>
+    `;
+    (workspace || root).appendChild(panel);
+
+    var elements = mediaLibraryElements();
+    elements.close.addEventListener('click', closeMediaLibrary);
+    elements.upload.addEventListener('change', function () {
+      uploadMedia(elements.upload.files);
+      elements.upload.value = '';
+    });
+    elements.search.addEventListener('input', function () {
+      mediaState.query = elements.search.value;
+      renderMediaItems();
+    });
+    panel.querySelector('.yilia-media-refresh').addEventListener('click', function () {
+      loadMedia(true);
+    });
+    panel.addEventListener('dragover', function (event) {
+      event.preventDefault();
+      panel.classList.add('is-dragging');
+    });
+    panel.addEventListener('dragleave', function (event) {
+      if (!panel.contains(event.relatedTarget)) panel.classList.remove('is-dragging');
+    });
+    panel.addEventListener('drop', function (event) {
+      event.preventDefault();
+      panel.classList.remove('is-dragging');
+      uploadMedia(event.dataTransfer?.files);
+    });
+    return panel;
+  }
+
+  function openMediaLibrary(mode) {
+    var panel = ensureMediaLibrary();
+    mediaState.mode = mode;
+    mediaState.returnFocus = document.activeElement;
+    panel.hidden = false;
+    panel.dataset.mode = mode;
+    workspace?.classList.add('yilia-media-mode');
+    mediaLibraryElements().close.hidden = mode === 'page';
+    renderMediaItems();
+    loadMedia(false);
+    mediaLibraryElements().search.focus();
+  }
+
+  function closeMediaLibrary() {
+    var panel = document.getElementById('yilia-media-library');
+    if (!panel) return;
+    panel.hidden = true;
+    panel.classList.remove('is-dragging');
+    workspace?.classList.remove('yilia-media-mode');
+    if (mediaState.returnFocus?.focus) mediaState.returnFocus.focus();
+    mediaState.mode = 'page';
+  }
+
+  function syncMediaLibraryRoute() {
+    ensureMediaLibrary();
+    if (/#\/assets(?:\/|$)/.test(location.hash)) {
+      if (mediaState.mode !== 'editor' || document.getElementById('yilia-media-library').hidden) {
+        openMediaLibrary('page');
+      }
+    } else if (mediaState.mode === 'page') {
+      closeMediaLibrary();
+    }
+  }
+
+  function ensureMediaButton(toolbarInner, saveButton) {
+    var button = toolbarInner.querySelector(':scope > .yilia-media-open');
+    if (!saveButton) {
+      button?.remove();
+      return;
+    }
+    if (!button) {
+      button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'yilia-media-open';
+      button.setAttribute('aria-label', '打开 jsDelivr 图床媒体库');
+      button.innerHTML = `
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3.5" y="5" width="17" height="14" rx="2"></rect>
+          <circle cx="8.5" cy="9.5" r="1.4"></circle>
+          <path d="m5.5 16 4-4.2 3.2 3 2.4-2.6 3.4 3.8"></path>
+        </svg>
+        <span>媒体库</span>
+      `;
+      button.addEventListener('click', function () {
+        openMediaLibrary('editor');
+      });
+    }
+    var localSave = toolbarInner.querySelector(':scope > .yilia-local-save');
+    if (localSave) {
+      if (localSave.previousElementSibling !== saveButton) saveButton.after(localSave);
+      if (button.previousElementSibling !== localSave) localSave.after(button);
+    } else if (button.previousElementSibling !== saveButton) {
+      saveButton.after(button);
+    }
+  }
+
   function enhanceEditorChrome() {
     var editor = root.querySelector('.wrapper.content-editor');
     if (!editor) return;
@@ -640,6 +1006,7 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     var saveButton = toolbarInner.querySelector(':scope > button.primary');
     ensureSaveState(toolbarInner, saveButton);
     ensureLocalSaveButton(editor, toolbarInner, saveButton);
+    ensureMediaButton(toolbarInner, saveButton);
     decoratePaneHeaders(editPane, previewPane);
 
     var savedView = editor.dataset.yiliaView;
@@ -671,6 +1038,17 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     }
     enhanceTagFields();
     enhanceEditorChrome();
+    syncMediaLibraryRoute();
+  }
+
+  var shellSyncPending = false;
+  function scheduleShellSync() {
+    if (shellSyncPending) return;
+    shellSyncPending = true;
+    window.requestAnimationFrame(function () {
+      shellSyncPending = false;
+      syncShell();
+    });
   }
 
   registerPreviews();
@@ -685,6 +1063,14 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     if (event.target.closest('.sidebar, .yilia-panel-menu')) return;
     closePanelDrawer(editor);
   });
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.content-editor button[aria-label]');
+    if (!button || button.classList.contains('yilia-media-open')) return;
+    if (!/图片|媒体/.test(button.getAttribute('aria-label') || '')) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    openMediaLibrary('editor');
+  }, true);
   window.addEventListener('keydown', function (event) {
     var editor = root.querySelector('.wrapper.content-editor');
     if (event.key === 'Escape' && editor?.classList.contains('yilia-panel-drawer-open')) {
@@ -693,5 +1079,5 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
       closePanelDrawer(editor);
     }
   }, true);
-  new MutationObserver(syncShell).observe(root, { childList: true, subtree: true });
+  new MutationObserver(scheduleShellSync).observe(root, { childList: true, subtree: true });
 })();

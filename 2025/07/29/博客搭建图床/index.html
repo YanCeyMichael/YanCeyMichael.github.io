@@ -17,18 +17,18 @@
 <meta property="og:site_name" content="Yancey’s Blog">
 <meta property="og:description" content="技术实践、产品方法、生活观察与持续学习。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.aiyancey.com/images/og-cover.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/og-cover.jpg">
 <meta property="article:published_time" content="2025-07-29T18:59:28.000Z">
-<meta property="article:modified_time" content="2026-11-07T03:47:20.748Z">
+<meta property="article:modified_time" content="2026-11-07T04:48:14.199Z">
 <meta property="article:author" content="Yancey">
 <meta property="article:tag" content="图床">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.aiyancey.com/images/og-cover.jpg">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/og-cover.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Yancey’s Blog" type="application/atom+xml">
   
   
-    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/favicon.svg" type="image/svg+xml">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
 <link rel="stylesheet" href="/css/reading-layout.css?v=20261107-article-list-1">
@@ -274,7 +274,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic" aria-label="返回 Yancey 的博客首页">
-				<img src="/images/avatar-yancey-cat.jpg" class="js-avatar" width="512" height="512" decoding="async" alt="Yancey 的博客头像：橘猫趴在笔记本电脑旁">
+				<img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/avatar-yancey-cat.jpg" class="js-avatar" width="512" height="512" decoding="async" alt="Yancey 的博客头像：橘猫趴在笔记本电脑旁">
 		</a>
 		<hgroup>
 		  
@@ -329,7 +329,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/images/avatar-yancey-cat.jpg" class="js-avatar" width="512" height="512" decoding="async" alt="Yancey 的博客头像：橘猫趴在笔记本电脑旁" loading="lazy">
+				<img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/avatar-yancey-cat.jpg" class="js-avatar" width="512" height="512" decoding="async" alt="Yancey 的博客头像：橘猫趴在笔记本电脑旁" loading="lazy">
 			</div>
 			<hgroup>
 			  <p class="header-author js-header-author">Yancey</p>
@@ -444,7 +444,7 @@
 <p>1、创建图床专用项目
 创建项目时，项目需要设置为公开，创建完成后，需要去GitHub个人资料中心拿到settings中的Developer settings，拿到对应的Personal access token，生成的token只会在这里显示一次，所以记得单独保存下来（建议截图保存到电脑本地，后续需要调整token时可以重新生成）。</p>
 <p>2、用jsdelivr为开源项目提供免费的CDN，目前jsdelivr使用比较简单，直接设定域名即可，设定自定义域名：<a href="https://cdn.jsdelivr.net/gh/%5Bgithub%E7%94%A8%E6%88%B7%E5%90%8D%5D/%5B%E4%BB%93%E5%BA%93%E5%90%8D%5D@main">https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main</a></p>
-<p><img src="/images/posts/blog-image-hosting-01.png" alt="" decoding="async" loading="lazy"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/posts/blog-image-hosting-01.png" alt="" decoding="async" loading="lazy"></p>
 <p><strong>注：Gitee和Coding有对外链访问封禁的风险（两者的图床搭建原理和GitHub类似，只是这两个类GitHub的代码托管服务器，在国内早些年是提供Https的外链访问的，不需要做CDN加速。）</strong></p>
 <h4 id="2-2-sm-ms-picgo-图床方案搭建">2.2 SM.MS + PicGo 图床方案搭建</h4>
 <p>SM.MS是一个免费的图片服务器，上传图片即可返回图片的网络URL，省去了用户自己搭建专门的图片存储服务器。<strong>但很遗憾目前该服务器已经关闭用户注册功能，且无法从海鲜市场买断账号来使用，本文对此方案也不过多介绍。</strong></p>
@@ -460,28 +460,28 @@
 <h5 id="方案搭建核心流程-2">方案搭建核心流程</h5>
 <p>对象存储访问需要绑定域名并进行备案接入，该流程比较繁琐，容易出错。
 1、阿里云域名新增解析
-<img src="/images/blog-image-hosting/20250730044739439.png" alt="阿里云域名新增解析" decoding="async" loading="lazy">
+<img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/blog-image-hosting/20250730044739439.png" alt="阿里云域名新增解析" decoding="async" loading="lazy">
 2、阿里云域名解析配置
-<img src="/images/blog-image-hosting/20250730045545667.png" alt="阿里云域名解析的记录值配置" decoding="async" loading="lazy">
+<img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/blog-image-hosting/20250730045545667.png" alt="阿里云域名解析的记录值配置" decoding="async" loading="lazy">
 3、七牛云创建存储空间和文件目录
 注：存储区域选海外，大陆需要备案
-<img src="/images/blog-image-hosting/20250730045737174.png" alt="七牛云新增OSS存储空间和文件路径" decoding="async" loading="lazy">
+<img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/blog-image-hosting/20250730045737174.png" alt="七牛云新增OSS存储空间和文件路径" decoding="async" loading="lazy">
 4、七牛云存储空间域名绑定</p>
 <ul>
 <li>配合2中的服务商域名解析配置
-<img src="/images/blog-image-hosting/20250730045952810.png" alt="七牛云域名绑定" decoding="async" loading="lazy">
+<img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/blog-image-hosting/20250730045952810.png" alt="七牛云域名绑定" decoding="async" loading="lazy">
 5、七牛云存储空间设置外链域名</li>
 <li>七牛云免费赠送30日测试域名，可用于能力测试
-<img src="/images/blog-image-hosting/20250730050305799.png" alt="存储空间设置外链域名" decoding="async" loading="lazy"></li>
+<img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/blog-image-hosting/20250730050305799.png" alt="存储空间设置外链域名" decoding="async" loading="lazy"></li>
 <li>设置外链域名后针对域名调整配置
-<img src="/images/blog-image-hosting/20250731021756691.png" alt="设置外链域名后针对域名调整配置" decoding="async" loading="lazy">
-<img src="/images/blog-image-hosting/20250731085327993.png" alt="Http强制转成Https的服务能力" decoding="async" loading="lazy">
+<img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/blog-image-hosting/20250731021756691.png" alt="设置外链域名后针对域名调整配置" decoding="async" loading="lazy">
+<img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/blog-image-hosting/20250731085327993.png" alt="Http强制转成Https的服务能力" decoding="async" loading="lazy">
 6、安装&amp;配置PicGo客户端
 安装&amp;配置PicGo客户端操作简单，但是配置时关于七牛云的配置设置需要注意，使用到七牛云的密钥管理的AccessKey/SecretKey，七牛云的AK为明文可直接复制粘贴使用，而SK为暗文，需要身份验证后成明文复制粘贴，否则无法复制成功，也会导致配置到PicGo中会配置失败，彼时上传图片时一直失败，在排查问题时，可调取PicGo的操作日志或配置文件，也能发现这个问题（AK和SK的参数value值一样）</li>
 <li>操作日志接口返回权限有问题
-<img src="/images/blog-image-hosting/20250730051224384.png" alt="操作日志接口返回权限有问题" decoding="async" loading="lazy"></li>
+<img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/blog-image-hosting/20250730051224384.png" alt="操作日志接口返回权限有问题" decoding="async" loading="lazy"></li>
 <li>配置文件中找AK和SK是否和七牛云个人账号中一致
-<img src="/images/blog-image-hosting/20250730051707673.png" alt="配置文件中找AK和SK是否和七牛云个人账号中一致" decoding="async" loading="lazy"></li>
+<img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/blog-image-hosting/20250730051707673.png" alt="配置文件中找AK和SK是否和七牛云个人账号中一致" decoding="async" loading="lazy"></li>
 </ul>
 <h3 id="三-图床实操">三、图床实操</h3>
 <p>本文涉及的SOP中的图片，分别是通过GitHub+PicGo和七牛云+PicGo搭建图床系统实操。</p>
@@ -886,7 +886,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
   <section class="site-drawer-page site-drawer-about" data-drawer-page="about" hidden>
     <div class="site-drawer-pad">
       <div class="site-about-hero">
-        <img src="/images/avatar-yancey-cat.jpg" width="512" height="512" decoding="async" alt="Yancey 的博客头像：橘猫趴在笔记本电脑旁" loading="lazy">
+        <img src="https://cdn.jsdelivr.net/gh/YanCeyMichael/imagesforblogs@main/images/avatar-yancey-cat.jpg" width="512" height="512" decoding="async" alt="Yancey 的博客头像：橘猫趴在笔记本电脑旁" loading="lazy">
         <div><span>ABOUT THE AUTHOR</span><h2>你好，我是 Yancey。</h2></div>
       </div>
       <div class="site-about-copy">

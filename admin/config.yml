@@ -8,6 +8,9 @@ backend:
   auth_endpoint: auth
 
 publish_mode: simple
+# Sveltia keeps these compatibility paths for existing entries and previews.
+# The admin shell routes media navigation and editor image actions through the
+# Worker-backed imagesforblogs media library.
 media_folder: source/images
 public_folder: /images
 output:
