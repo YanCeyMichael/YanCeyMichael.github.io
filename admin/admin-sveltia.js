@@ -390,14 +390,6 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     }
   }
 
-  function ensureTagHint(tagsField) {
-    if (tagsField.querySelector(':scope > .yilia-tag-hint')) return;
-    var hint = document.createElement('p');
-    hint.className = 'yilia-tag-hint';
-    hint.textContent = '可从已有标签中选择，也可以直接输入新标签。';
-    tagsField.appendChild(hint);
-  }
-
   function closePanelDrawer(editor) {
     editor.classList.remove('yilia-panel-drawer-open');
   }
@@ -491,9 +483,6 @@ import * as SveltiaModule from './vendor/sveltia-cms-0.261.0/npm/index.js';
     var saveButton = toolbarInner.querySelector(':scope > button.primary');
     ensureSaveState(toolbarInner, saveButton);
     decoratePaneHeaders(editPane, previewPane);
-
-    var tagsField = editPane?.querySelector('section.field[data-key-path="tags"]');
-    if (tagsField) ensureTagHint(tagsField);
 
     var savedView = editor.dataset.yiliaView;
     if (!savedView) {
